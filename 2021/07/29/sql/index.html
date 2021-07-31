@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		
+<title>sql学习笔记-Remember me</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/logo.ico">
+
+
+<meta name="keywords" content="note,sql,">
+<meta name="description" content="Structured Query Language">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+
+<!-- Baidu Analytics -->
+<script defer>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a9682086becb148caa4f1270cab9fc97";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+	<meta name="generator" content="Hexo 5.4.0"></head>
+
+	<body>
+		
+<link rel="stylesheet" href="/css/page.css">
+
+
+<link rel="stylesheet" href="/css/page_cente.css">
+
+
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+
+<link rel="stylesheet" href="/css/header.css">
+
+	<div class="header">
+		<div class="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.jpg" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Maskros</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/qiaobug">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'
+    style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'>
+</div>
+<style>
+    .sidebar {
+        width: 0;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        z-index: 999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815)
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $(function () { $('.h-right-close>svg').click(function () { $('.sidebar').animate({ width: "66%" }, 500); $('.shelter').fadeIn("slow") }); $('.shelter').click(function (e) { $('.sidebar').animate({ width: "0" }, 500); $('.shelter').fadeOut("slow") }) })
+</script>
+		<script>
+			$(function () { $(window).scroll(function () { if ($(document).scrollTop() > 100) { $(".header-top").removeClass("header-move2"); $('.header-top').addClass('header-move1') } else { $(".header-top").removeClass("header-move1"); $('.header-top').addClass('header-move2') } }) });
+		</script>
+<div class="header-bg bg-content-img">
+    <div class="bg-content">
+        <ul class="tag">
+            
+            
+            <li><a href="/tags/note">note</a></li>
+            
+            <li><a href="/tags/sql">sql</a></li>
+            
+            
+        </ul>
+        <h1>sql学习笔记</h1>
+        <div class="article-info">
+            <div class="article-author">
+                
+                <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                    <path
+                        d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                        p-id="2902" fill="#ffffff"></path>
+                </svg>
+                
+                <span> <a href="">Maskros</a></span>
+                <p>2021-07-29 00:07:28</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article-content">
+    <div id="article" class="content">
+        <h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><p>结构化查询语言-Structured Query Language</p>
+<p><em><strong>@author：Maskros</strong></em></p>
+<hr>
+<h2 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h2><p>类型</p>
+<ul>
+<li>字符型<ul>
+<li>VARCHAR型和CHAR型</li>
+</ul>
+</li>
+<li>文本型<ul>
+<li>TEXT</li>
+</ul>
+</li>
+<li>数值型<ul>
+<li>整数INT 、小数NUMERIC、钱数MONEY)</li>
+</ul>
+</li>
+<li>逻辑型<ul>
+<li>BIT</li>
+</ul>
+</li>
+<li>日期型<ul>
+<li>DATETIME </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><p>操作</p>
+<p>增删改查 CURD</p>
+<p>tips : 不区分大小写，列名表名前``可以省略</p>
+<h3 id="SELECT-FROM"><a href="#SELECT-FROM" class="headerlink" title="SELECT(FROM)"></a>SELECT(FROM)</h3><ul>
+<li>SELECT COLUMN 查询单个列</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> `column_name`<br><span class="hljs-keyword">FROM</span> `table_name`;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>SELECT COLUMN, COLUMN 查询多个列</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> `column_name_1`, `column_name_2`  <br><span class="hljs-keyword">FROM</span> `table_name`;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 SELECT * 查询所有列</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> `table_name`;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 SELECT DISTINCT 查询不同行</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> `column_name`<br><span class="hljs-keyword">FROM</span> `table_name`<br></code></pre></td></tr></table></figure>
+
+<p>​    希望查询的值都是唯一不重复的</p>
+<ul>
+<li>SELECT WHERE 对行进行筛选过滤</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> `column_name1`,`column_name2`…<br><span class="hljs-keyword">FROM</span> `table_name`<br><span class="hljs-keyword">WHERE</span> `column_name` operator `<span class="hljs-keyword">value</span>`;<br></code></pre></td></tr></table></figure>
+
+<h3 id="INSERT-INTO"><a href="#INSERT-INTO" class="headerlink" title="INSERT(INTO)"></a>INSERT(INTO)</h3><ul>
+<li>INSERT INTO 在不指定列的情况下插入数据</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `table_name`<br><span class="hljs-keyword">VALUES</span> (value1, value2, value3,...);<br># <span class="hljs-string">&#x27;value&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>INSERT INTO 在指定的列中插入数据</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `table_name`<br>(`column1`, `column2`, `column3`,...)<br><span class="hljs-keyword">VALUES</span> (value1, value2, value3,...);<br></code></pre></td></tr></table></figure>
+
+<h3 id="UPDATE-SET"><a href="#UPDATE-SET" class="headerlink" title="UPDATE(SET)"></a>UPDATE(SET)</h3><ul>
+<li>UPDATE 更新数据</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">UPDATE `table_name`<br><span class="hljs-keyword">SET</span> `column1`<span class="hljs-operator">=</span>value1,`column2`<span class="hljs-operator">=</span>value2,...<br><span class="hljs-keyword">WHERE</span> `some_column`<span class="hljs-operator">=</span>some_value;<br># <span class="hljs-keyword">WHERE</span> 可以省略<br></code></pre></td></tr></table></figure>
+
+<h3 id="DELETE-FROM"><a href="#DELETE-FROM" class="headerlink" title="DELETE(FROM)"></a>DELETE(FROM)</h3><ul>
+<li>DELETE 删除数据</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> `table_name`<br><span class="hljs-keyword">WHERE</span> `some_column` <span class="hljs-operator">=</span> `some_value`;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>TRUNCATE TABLE 清空表</li>
+</ul>
+<hr>
+<h2 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h2><p>条件</p>
+<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">WHERE</span> A OPERATOR B<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>tips:  <code>&lt;&gt;</code> , <code>!=</code> 均为不等于，但用法不同</li>
+</ul>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><ul>
+<li><p>AND 连接多条件</p>
+</li>
+<li><p>OR 连接多条件</p>
+</li>
+<li><p>NOT 过滤不满足条件的数据</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> `column_name` <br><span class="hljs-keyword">FROM</span> `table_name` <br><span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> `<span class="hljs-keyword">condition</span>`;<br># (condition1 operator condition2)<br></code></pre></td></tr></table></figure>
+
+<h3 id="特殊条件"><a href="#特殊条件" class="headerlink" title="特殊条件"></a>特殊条件</h3><ul>
+<li>IN 查询多条件</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">Where</span> `column_name1` <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">condition</span>)<br># <span class="hljs-keyword">condition</span> 中也可以写<br><span class="hljs-keyword">IN</span> (<span class="hljs-keyword">select</span> `column_name1` xxxxxxxx)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>NOT IN 排除</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">FROM</span> `table_name`<br><span class="hljs-keyword">WHERE</span> `column_name` (<span class="hljs-keyword">NOT</span>) <span class="hljs-keyword">IN</span> `<span class="hljs-keyword">value</span>`;<br># （value1, value2）<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>BETWEEN AND 查询两值间的数据范围</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">FROM</span> `table_name`<br><span class="hljs-keyword">WHERE</span> `column_name` <span class="hljs-keyword">BETWEEN</span> `<span class="hljs-keyword">value</span>` <span class="hljs-keyword">AND</span> `<span class="hljs-keyword">value</span>`;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>IS NULL 查询空数据</li>
+<li>使用 LIKE 模糊查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">FROM</span> `table_name`<br><span class="hljs-keyword">WHERE</span> `column_name` <span class="hljs-keyword">LIKE</span> `<span class="hljs-keyword">value</span>`;<br># <span class="hljs-keyword">LIKE</span> `D<span class="hljs-operator">%</span>`<br># <span class="hljs-string">&#x27;D%&#x27;</span> 表示以D开头的所有单词，<span class="hljs-operator">%</span> 表示为通配符，可以替代<span class="hljs-number">0</span><span class="hljs-operator">~</span>n个字符<br></code></pre></td></tr></table></figure>
+
+<h3 id="ORDER-BY-amp-LIMIT"><a href="#ORDER-BY-amp-LIMIT" class="headerlink" title="ORDER BY &amp; LIMIT"></a>ORDER BY &amp; LIMIT</h3><ul>
+<li><p>ORDER BY 对数据进行排序（一列/多列(多列按SELECT顺序)）</p>
+<p>ASC (ascend)升序(默认)  |  DESC(descend) 降序</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">SELECT</span> `column_name`, `column_name`<br><span class="hljs-keyword">FROM</span> `table_name`<br># <span class="hljs-keyword">WHERE</span> XXXX<br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> `column_name`, `column_name` <span class="hljs-keyword">ASC</span><span class="hljs-operator">|</span><span class="hljs-keyword">DESC</span>; <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>使用 LIMIT 限制输出行数</p>
+<p>offset ：是返回集的初始标注，起始点是0</p>
+<p>count ：制定返回的数量</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> `column_name`, `column_name`<br><span class="hljs-keyword">FROM</span> `table_name`<br># <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> XXXX<br>LIMIT `<span class="hljs-keyword">offset</span>` , `count`;<br># <span class="hljs-keyword">offset</span>和count通常只用一个count：LIMIT (<span class="hljs-number">0</span>,)<span class="hljs-number">1</span> <br></code></pre></td></tr></table></figure>
+
+<h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><p>函数</p>
+<h3 id="算数函数"><a href="#算数函数" class="headerlink" title="算数函数"></a>算数函数</h3><ul>
+<li>AVG() 函数求数值列的平均值</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(`column_name`) # <span class="hljs-keyword">AS</span> `column2_name`<br><span class="hljs-keyword">FROM</span> `table_name`;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>MAX() 函数返回指定列中的最大值</p>
+</li>
+<li><p>MIN() 函数返回指定列中的最小值</p>
+</li>
+<li><p>SUM() 函数统计数值列的总数</p>
+</li>
+<li><p>ROUND() 函数将数值四舍五入</p>
+<ul>
+<li>ROUND() 返回值数据类型会被变换为一个BIGINT 。</li>
+<li>当 decimals 为正数时，column_name 四舍五入为 decimals 所指定的小数位数。省略decimals自动保留四舍五入后的整数。当 decimals 为负数时，column_name 则按 decimals 所指定的在小数点的左边四舍五入。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> ROUND(`column_name`, `decimals`) <br><span class="hljs-keyword">FROM</span> `table_name`;<br>#decimals 规定要返回的小数位数<br></code></pre></td></tr></table></figure></li>
+<li><p>NULL() 函数判断空值</p>
+<ul>
+<li><p>ISNULL()</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> ISNULL(`column_name`)<br><span class="hljs-keyword">FROM</span> `table_name`;<br># 返回 <span class="hljs-number">0</span> 或 <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure></li>
+<li><p>IFNULL()</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> IFNULL(`column_name`, `<span class="hljs-keyword">value</span>`)<br><span class="hljs-keyword">FROM</span> `table_name`;<br># 是 <span class="hljs-keyword">NULL</span> 则返回 <span class="hljs-keyword">value</span> 值，不是则返回对应内容<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>COUNT() 函数计数</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"># <span class="hljs-built_in">COUNT</span>(column_name) 对列具有的行数进行计数 除去值为 <span class="hljs-keyword">NULL</span> 的行<br># 主要用于查看各列数据的数量情况，便于统计数据的缺失值<br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(`column_name`) <br><span class="hljs-keyword">FROM</span> `table_name`;<br># <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) 对表中行的数目进行计数,包括 <span class="hljs-keyword">NULL</span> 所在行和重复项所在行<br># 主要用于查看表中的记录数<br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <br><span class="hljs-keyword">FROM</span> `table_name`;<br># <span class="hljs-built_in">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> column_name) 函数返回指定列的不同值的数目<br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> `column_name`) <br><span class="hljs-keyword">FROM</span> `table_name`;<br></code></pre></td></tr></table></figure>
+
+<h3 id="时间函数"><a href="#时间函数" class="headerlink" title="时间函数"></a>时间函数</h3><ul>
+<li><p>NOW()，CURDATE()、CURTIME() 获取当前时间</p>
+<ul>
+<li><code>NOW()</code> 返回当前日期和时间  YYYY-MM-DD hh:mm:ss</li>
+<li><code>CURDATE()</code> 返回当前日期  YYYY-MM-DD</li>
+<li><code>CURTIME()</code> 返回当前时间  hh:mm:ss</li>
+<li>要精确的秒以后的时间的话，可以在 () 中加数字，加多少，就表示精确到秒后多少位</li>
+</ul>
+</li>
+<li><p>DATE()、TIME() 函数提取日期和时间</p>
+</li>
+<li><p>EXTRACT() 函数提取指定的时间信息</p>
+<ul>
+<li><p>FROM</p>
+</li>
+<li><p>返回日期/时间的单独部分</p>
+</li>
+<li><p>unit :  <code>YEAR</code> (年)、<code>MONTH</code> (月)、<code>DAY</code> (日)、<code>HOUR</code> (小时)、<code>MINUTE</code> (分钟)、 <code>SECOND</code> (秒)</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">EXTRACT</span>(unit <span class="hljs-keyword">FROM</span> <span class="hljs-type">date</span>) # unit 为单独部分名<br><span class="hljs-keyword">FROM</span> `<span class="hljs-keyword">table</span>`<br># <span class="hljs-type">date</span> <span class="hljs-operator">-</span> 合法<span class="hljs-keyword">column</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>DATE_FORMAT() 格式化输出日期</p>
+<ul>
+<li>%Y 年份 %m 月份 %d 日期 %w 星期 %H 小时  %i 分钟 %s 秒</li>
+<li>小写y 表示年份后两位，小写h表示12小时计的小时</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> DATE_FORMAT(<span class="hljs-type">date</span>,<span class="hljs-string">&#x27;format&#x27;</span>);<br></code></pre></td></tr></table></figure></li>
+<li><p>DATE_ADD() 增加时间</p>
+<ul>
+<li>INTERVAL</li>
+<li>向日期添加指定的时间间隔</li>
+<li> <code>expr</code> 是希望添加的时间间隔的数值</li>
+<li>type :  MICROSECOND , SECOND , MINUTE , HOUR , DAY , WEEK , MONTH , QUARTER , YEAR</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> DATE_ADD(<span class="hljs-type">date</span>, <span class="hljs-type">INTERVAL</span> expr type)<br><span class="hljs-keyword">FROM</span> table_name<br></code></pre></td></tr></table></figure></li>
+<li><p>DATE_SUB() 减少时间</p>
+</li>
+<li><p>DATEDIFF() 和 TIMESTAMPDIFF() 计算日期差</p>
+<ul>
+<li>时间1-时间2</li>
+<li>DATEDIFF() 默认只能计算天数差</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">SELECT</span> DATEDIFF(时间<span class="hljs-number">1</span>,时间<span class="hljs-number">2</span>) <span class="hljs-keyword">AS</span> date_diff <span class="hljs-keyword">FROM</span> courses;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>TIMESTAMPDIFF() 计算相差年月周日时<ul>
+<li>类型YEAR,MONTH,WEEK,DAY,HOUR</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> TIMESTAMPDIFF (类型,时间<span class="hljs-number">1</span>,时间<span class="hljs-number">2</span>) <span class="hljs-keyword">AS</span> year_diff；<br></code></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints"></a>Constraints</h2><p>约束</p>
+<h3 id="NOT-NULL"><a href="#NOT-NULL" class="headerlink" title="NOT NULL"></a>NOT NULL</h3><p>非空约束</p>
+<ul>
+<li>强制列不接受 NULL 值</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs SQL"># 建表<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `Persons` (<br>    `ID` <span class="hljs-type">int</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,<br>    `LastName` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>)<br>);<br># 已建表<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Persons`<br>MODIFY `Age` <span class="hljs-type">int</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>;<br># 撤销<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Persons`<br>MODIFY `Age` <span class="hljs-type">int</span> <span class="hljs-keyword">NULL</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="UNIQUE"><a href="#UNIQUE" class="headerlink" title="UNIQUE"></a>UNIQUE</h3><p>唯一约束</p>
+<ul>
+<li>不希望出现重复记录</li>
+<li>CONSTRAINT 命名</li>
+<li>DROP 撤销</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"># 建表<br>## MySQL<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `Persons`(<br>    `P_Id` <span class="hljs-type">int</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,<br>    <span class="hljs-keyword">UNIQUE</span> (`P_Id`)<br>)<br>## <span class="hljs-keyword">SQL</span> Server <span class="hljs-operator">/</span> Oracle <span class="hljs-operator">/</span> MS Access<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `Persons`(<br>	`P_Id` <span class="hljs-type">int</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">UNIQUE</span>,<br>)<br>## 命名<span class="hljs-operator">+</span>多列<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `Persons`(<br>    `P_Id` <span class="hljs-type">int</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,<br>    `LastName` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,<br>    <span class="hljs-keyword">CONSTRAINT</span> uc_PersonID <span class="hljs-keyword">UNIQUE</span> (`P_Id`,`LastName`)<br>)<br><br># 已建<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Persons`<br><span class="hljs-keyword">ADD</span> <span class="hljs-keyword">UNIQUE</span>（`P_Id`）<br>## 多列<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Persons`<br><span class="hljs-keyword">ADD</span> <span class="hljs-keyword">CONSTRAINT</span> uc_PersonID <span class="hljs-keyword">UNIQUE</span> (`P_Id`,`LastName`)<br><br># 撤销<br>## MySQL<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Persons`<br><span class="hljs-keyword">DROP</span> INDEX uc_PersonID<br>## <span class="hljs-keyword">SQL</span> Server <span class="hljs-operator">/</span> Oracle <span class="hljs-operator">/</span> MS Access<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Persons`<br><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">CONSTRAINT</span> uc_PersonID<br></code></pre></td></tr></table></figure>
+
+<h3 id="PRIMARY-KEY"><a href="#PRIMARY-KEY" class="headerlink" title="PRIMARY KEY"></a>PRIMARY KEY</h3><p>主键约束</p>
+<ul>
+<li>简单的说，PRIMARY KEY = UNIQUE + NOT NULL </li>
+<li>NOT NULL UNIQUE 可以将表的一列或多列定义为唯一性属性，而 PRIMARY KEY 设为多列时，仅能保证多列之和是唯一的，具体到某一列可能会重复。</li>
+<li>PRIMARY KEY 可以与外键配合，从而形成主从表的关系</li>
+<li>PRIMARY KEY 一般在逻辑设计中用作记录标识，这也是设置 PRIMARY KEY 的本来用意，而 UNIQUE 只是为了保证域/域组的唯一性</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"># 建表<br>## MySQL<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `Persons(<br>    `P_Id` <span class="hljs-type">int</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,<br>    <span class="hljs-keyword">PRIMARY</span> KEY (`P_Id`)<br>);<br>## <span class="hljs-keyword">SQL</span> Server <span class="hljs-operator">/</span> Oracle <span class="hljs-operator">/</span> MS Access<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `Persons`(<br>    `P_Id` <span class="hljs-type">int</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">PRIMARY</span> KEY,<br>)<br>## 命名<span class="hljs-operator">+</span>多列<br><span class="hljs-keyword">CONSTRAINT</span> pk_PersonID <span class="hljs-keyword">PRIMARY</span> KEY (`P_Id`,`LastName`)<br><br># 已建<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Persons`<br><span class="hljs-keyword">ADD</span> <span class="hljs-keyword">PRIMARY</span> KEY (`P_Id`)<br>## 多列<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Persons`<br><span class="hljs-keyword">ADD</span> <span class="hljs-keyword">CONSTRAINT</span> pk_PersonID <span class="hljs-keyword">PRIMARY</span> KEY (`P_Id`,`LastName`)<br><br># 撤销<br>## MySQL<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Persons`<br><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">PRIMARY</span> KEY<br>## <span class="hljs-keyword">SQL</span> Server <span class="hljs-operator">/</span> Oracle <span class="hljs-operator">/</span> MS Access<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Persons`<br><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">CONSTRAINT</span> pk_PersonID<br></code></pre></td></tr></table></figure>
+
+<h3 id="FOREIGN-KEY"><a href="#FOREIGN-KEY" class="headerlink" title="FOREIGN KEY"></a>FOREIGN KEY</h3><p>外键约束 </p>
+<ul>
+<li>一个表中的 FOREIGN KEY 指向另一个表中的 UNIQUE KEY </li>
+<li>保证数据的完整性和一致性</li>
+<li>在两个表之间建立关系，需要指定引用主表的哪一列，REFERENCES 表示引用一个表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"># 建表<br>## MySQL<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `Orders`(<br>    `P_Id` <span class="hljs-type">int</span>,<br>    <span class="hljs-keyword">FOREIGN</span> KEY (P_Id) <span class="hljs-keyword">REFERENCES</span> Persons(P_Id)<br>)<br>## <span class="hljs-keyword">SQL</span> Server <span class="hljs-operator">/</span> Oracle <span class="hljs-operator">/</span> MS Access<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `Orders`(<br>    P_Id <span class="hljs-type">int</span> <span class="hljs-keyword">FOREIGN</span> KEY <span class="hljs-keyword">REFERENCES</span> Persons(P_Id)<br>)<br>## 命名<span class="hljs-operator">+</span>多列<br><span class="hljs-keyword">CONSTRAINT</span> fk_PerOrders <span class="hljs-keyword">FOREIGN</span> KEY (P_Id)<br><span class="hljs-keyword">REFERENCES</span> Persons(P_Id)<br><br># 已建<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Orders`<br><span class="hljs-keyword">ADD</span> <span class="hljs-keyword">FOREIGN</span> KEY (P_Id)<br><span class="hljs-keyword">REFERENCES</span> Persons(P_Id)<br>## 命名<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Orders`<br><span class="hljs-keyword">ADD</span> <span class="hljs-keyword">CONSTRAINT</span> fk_PerOrders<br><span class="hljs-keyword">FOREIGN</span> KEY (P_Id)<br><span class="hljs-keyword">REFERENCES</span> Persons(P_Id)<br><br># 撤销<br>## MySQL<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Orders`<br><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">FOREIGN</span> KEY fk_PerOrders<br>## <span class="hljs-keyword">SQL</span> Server <span class="hljs-operator">/</span> Oracle <span class="hljs-operator">/</span> MS Access<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Orders`<br><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">CONSTRAINT</span> fk_PerOrders<br></code></pre></td></tr></table></figure>
+
+<h3 id="CHECK"><a href="#CHECK" class="headerlink" title="CHECK"></a>CHECK</h3><p>检查约束 </p>
+<ul>
+<li>限制列中的值的范围，评估插入或修改后的值。满足条件插入，否不插</li>
+<li>可以为同一列指定多个 CHECK 约束</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"># 建表<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `courses`(<br>	`student_count` <span class="hljs-type">int</span>, …<br>	<span class="hljs-keyword">CHECK</span> (Condition1 <span class="hljs-keyword">AND</span> Condition2)<br>)<br>## 命名<br><span class="hljs-keyword">CONSTRAINT</span> chk_courses <span class="hljs-keyword">CHECK</span> (`student_count` <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span>);<br><br># 已建<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `courses` <br><span class="hljs-keyword">ADD</span> <span class="hljs-keyword">CHECK</span> ( `student_count` <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span>);<br>## <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">CONSTRAINT</span> XXX <span class="hljs-keyword">CHECK</span> (<span class="hljs-keyword">Condition</span>);<br><br># 撤销<br>## MySQL<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `courses` <br><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">CHECK</span> chk_courses<br>## <span class="hljs-keyword">SQL</span> Server <span class="hljs-operator">/</span> Oracle <span class="hljs-operator">/</span> MS Access<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `courses` <br><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">CONSTRAINT</span> chk_courses<br></code></pre></td></tr></table></figure>
+
+<h3 id="DEFAULT"><a href="#DEFAULT" class="headerlink" title="DEFAULT"></a>DEFAULT</h3><p>默认约束</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">`City` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;Sandnes&#x27;</span><br>`OrderDate` <span class="hljs-type">date</span> <span class="hljs-keyword">DEFAULT</span> GETDATE()  # 可以用函数<br><br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `Persons`<br><span class="hljs-keyword">ALTER</span> `City` <span class="hljs-keyword">SET</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;SANDNES&#x27;</span><br><span class="hljs-keyword">ADD</span> <span class="hljs-keyword">CONSTRAINT</span> ab_c <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;SANDNES&#x27;</span> <span class="hljs-keyword">for</span> `City`<br><br><span class="hljs-keyword">ALTER</span> `City` <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">DEFAULT</span><br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">COLUMN</span> `City` <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">DEFAULT</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Join"><a href="#Join" class="headerlink" title="Join"></a>Join</h2><p>多表联结</p>
+<h3 id="联结"><a href="#联结" class="headerlink" title="联结"></a>联结</h3><ul>
+<li><p>在一条 SELECT 语句中关联多个表，返回一组输出</p>
+</li>
+<li><p>两大主角 : 主键 (PRIMARY KEY) 和外键 (FOREIGN KEY)</p>
+</li>
+<li><p>使用完全限定列名（用一个点分隔表名和列名）</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"># <span class="hljs-keyword">condition</span><br>`table1`.`common_field` <span class="hljs-operator">=</span> `table2`.`common_field`<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>JOIN 连接子句<ul>
+<li><strong>INNER JOIN</strong> 内连接：如果表中有至少一个匹配，则返回行</li>
+<li><strong>OUTER JOIN</strong> 外连接<ul>
+<li><strong>LEFT JOIN</strong>：即使右表中没有匹配，也从左表返回所有的行</li>
+<li><strong>RIGHT JOIN</strong>：即使左表中没有匹配，也从右表返回所有的行</li>
+</ul>
+</li>
+<li><strong>FULL JOIN</strong> 全连接：只要其中一个表中存在匹配，则返回行</li>
+<li><strong>CROSS JOIN</strong> 交叉连接：又称<strong>笛卡尔积</strong>，两个表数据一一对应，返回结果的行数等于两个表行数的乘积</li>
+</ul>
+</li>
+</ul>
+<h3 id="INNER-JOIN"><a href="#INNER-JOIN" class="headerlink" title="INNER JOIN"></a>INNER JOIN</h3><p>内连接 又称为EQUIJOIN 等值连接</p>
+<ul>
+<li>内连接就是取两个表的交集，返回的结果就是连接的两张表中都满足条件的部分</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> `table1`.`column1`, `table2`.`column2`...<br><span class="hljs-keyword">FROM</span> `table1`<br>(<span class="hljs-keyword">INNER</span>) <span class="hljs-keyword">JOIN</span> `table2` # <span class="hljs-keyword">INNER</span> 可省略不写<br><span class="hljs-keyword">ON</span> `table1`.`common_field` <span class="hljs-operator">=</span> `table2`.`common_field`;<br># <span class="hljs-keyword">ON</span> <span class="hljs-keyword">CONDITION</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"># exp<br><span class="hljs-keyword">SELECT</span> `c`.`id`, `c`.`name` <span class="hljs-keyword">AS</span> `course_name`, `t`.`name` <span class="hljs-keyword">AS</span> `teacher_email`<br><span class="hljs-keyword">FROM</span> `courses` `c`<br>    (<span class="hljs-keyword">INNER</span>) <span class="hljs-keyword">JOIN</span> `teachers` `t` <span class="hljs-keyword">ON</span> `c`.`teacher_id` <span class="hljs-operator">=</span> `t`.`id`;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>courses</code> <code>c</code> 等同于 <code>courses</code> AS <code>c</code> ，给<code>courses</code> 表取别名为 <code>c</code></li>
+</ul>
+<h3 id="OUTER-JOIN"><a href="#OUTER-JOIN" class="headerlink" title="OUTER JOIN"></a>OUTER JOIN</h3><p>外连接 分为左外连接 右外连接 全外连接</p>
+<ul>
+<li>外连接可以将某个表格中，在另外一张表格中无对应关系，但是也能将数据匹配出来</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> column_name <span class="hljs-number">1</span>,column_name <span class="hljs-number">2</span> ... column_name n<br>    <span class="hljs-keyword">FROM</span> table1<br>        <span class="hljs-keyword">LEFT</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">RIGHT</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">FULL</span>  (<span class="hljs-keyword">OUTER</span>) <span class="hljs-keyword">JOIN</span> table2<br>        <span class="hljs-keyword">ON</span> <span class="hljs-keyword">CONDITION</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>LEFT JOIN : 以左表为参考表，返回左表中的所有记录，加上右表中匹配到的记录</li>
+<li>RIGHT JOIN :  以右表为参考表</li>
+<li>FULL JOIN : 只要左表和右表其中一个表中存在匹配，则返回行</li>
+</ul>
+<blockquote>
+<p>tips :  MySQL 数据库不支持全连接，想要实现全连接可以使用 UNION ALL 来将左连接和右连接结果组合在一起实现全连接</p>
+</blockquote>
+<ul>
+<li>UNION :  联合，把两次或多次查询结果合并起来<ul>
+<li>要求：两次查询的列数必须一致，同时，每条 SELECT 语句中的列的顺序必须相同</li>
+<li>UNION 会去掉重复的行。 如果不想去掉重复的行，可以使用 UNION ALL </li>
+<li>如果子句中有 order by , limit，需用括号()包起来。推荐放到所有子句之后，即对最终合并的结果来排序或筛选</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> column_name <span class="hljs-number">1</span>,column_name <span class="hljs-number">2</span> ... column_name n<br>    <span class="hljs-keyword">FROM</span> table1<br>        <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> table2 <span class="hljs-keyword">ON</span> <span class="hljs-keyword">CONDITION</span> <br><span class="hljs-keyword">UNION</span><br><span class="hljs-keyword">SELECT</span> column_name <span class="hljs-number">1</span>,column_name <span class="hljs-number">2</span> ... column_name n<br>    <span class="hljs-keyword">FROM</span> table1<br>        <span class="hljs-keyword">RIGHT</span> <span class="hljs-keyword">JOIN</span> table2 <span class="hljs-keyword">ON</span> <span class="hljs-keyword">CONDITION</span> ;<br></code></pre></td></tr></table></figure>
+
+<h3 id="CROSS-JOIN"><a href="#CROSS-JOIN" class="headerlink" title="CROSS JOIN"></a>CROSS JOIN</h3><p>交叉连接 结果也称作笛卡尔积</p>
+<ul>
+<li>返回左表中的所有行，左表中的每一行与右表中的所有行组合。即将两个表的数据一一对应，其查询结果的行数为左表中的行数乘以右表中的行数。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"># 隐式连接 不需要使用 <span class="hljs-keyword">CROSS</span> <span class="hljs-keyword">JOIN</span> 关键字<br><span class="hljs-keyword">SELECT</span> `table1`.`column1`, `table2`.`column2`...<br><span class="hljs-keyword">FROM</span> `table1`,`table2`;<br># 显式连接<br><span class="hljs-keyword">SELECT</span> `table1`.`column1`, `table2`.`column2`...<br><span class="hljs-keyword">FROM</span> `table1`<br><span class="hljs-keyword">CROSS</span> <span class="hljs-keyword">JOIN</span> `table2`;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>通过增加联结条件，使用 WHERE 子句帮助筛选过滤无效的数据</li>
+</ul>
+<hr>
+<h2 id="Advanced-Select"><a href="#Advanced-Select" class="headerlink" title="Advanced Select"></a>Advanced Select</h2><h3 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h3><ul>
+<li><p>GROUP BY 子句</p>
+<ul>
+<li>对同类的数据进行分类</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> `column_name`, aggregate_function(`column_name`)<br><span class="hljs-keyword">FROM</span> `table_name`<br><span class="hljs-keyword">WHERE</span> `column_name` operator <span class="hljs-keyword">value</span><br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> `column_name`;<br></code></pre></td></tr></table></figure></li>
+<li><p>HAVING 子句</p>
+<ul>
+<li>使用 WHERE 条件子句时不能与聚合函数联合使用</li>
+<li> HAVING 子句经常与 GROUP BY 联合使用，HAVING 子句就是对分组统计函数进行过滤的子句</li>
+<li>HAVING 子句对于 GROUP BY 子句设置条件的方式其实与 WHERE 子句与 SELECT 的方式类似，语法相近，但 WHERE 子句搜索条件是在分组操作之前，而 HAVING 则是在之后</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>   `column_name`, aggregate_function(`column_name`) <br><span class="hljs-keyword">FROM</span>     `table_name` <br><span class="hljs-keyword">WHERE</span>    `column_name` operator <span class="hljs-keyword">value</span> <br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> `column_name` <br><span class="hljs-keyword">HAVING</span>   aggregate_function(`column_name`) operator <span class="hljs-keyword">value</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>ex: 查询教师表 teachers计算不同国籍教师的平均年龄和所有教师的平均年龄，比较两者的大小，最后返回大于所有教师平均年龄的不同国籍下的全部教师信息</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"># 子查询<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> teachers <br>    <span class="hljs-keyword">WHERE</span> country <span class="hljs-keyword">IN</span><br>        (<span class="hljs-keyword">SELECT</span> country <span class="hljs-keyword">FROM</span> teachers <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> country<br>            <span class="hljs-keyword">HAVING</span> <span class="hljs-built_in">AVG</span>(age) <span class="hljs-operator">&gt;</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(age) <span class="hljs-keyword">FROM</span> teachers))<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="子查询-Base"><a href="#子查询-Base" class="headerlink" title="子查询(Base)"></a>子查询(Base)</h3><ul>
+<li>SELECT 语句中的子查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> `column_name(s)`<br><span class="hljs-keyword">FROM</span> `table_name`<br><span class="hljs-keyword">WHERE</span> `column_name` OPERATOR (<br>    <span class="hljs-keyword">SELECT</span> `column_name(s)`<br>    <span class="hljs-keyword">FROM</span> `table_name`<br>);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>INSERT 语句中的子查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `table_name`<br>	<span class="hljs-keyword">SELECT</span> `colnum_name(s)`<br>	<span class="hljs-keyword">FROM</span> `table_name`<br>	[ <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">VALUE</span> OPERATOR ]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>UPDATE 语句中的子查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">UPDATE `table_name` <br><span class="hljs-keyword">SET</span> `column_name` <span class="hljs-operator">=</span> `new_value`<br><span class="hljs-keyword">WHERE</span> `column_name` OPERATOR <br>   (<span class="hljs-keyword">SELECT</span> `column_name`<br>   <span class="hljs-keyword">FROM</span> `table_name`<br>   [<span class="hljs-keyword">WHERE</span>] )<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>DELETE 语句中的子查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> `table_name`<br><span class="hljs-keyword">WHERE</span> `column_name` OPERATOR <br>   (<span class="hljs-keyword">SELECT</span> `column_name`<br>   <span class="hljs-keyword">FROM</span> `table_name`  <br>   [<span class="hljs-keyword">WHERE</span>] )<br></code></pre></td></tr></table></figure>
+
+<h3 id="子查询-Adv"><a href="#子查询-Adv" class="headerlink" title="子查询(Adv.)"></a>子查询(Adv.)</h3><ul>
+<li><p>内联视图子查询</p>
+<ul>
+<li>将查询的结果集作为一个查询表，继续进行查询操作</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">FROM</span> (<br>	<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> xxxx<br>) `T`<br><span class="hljs-keyword">WHERE</span> xxx <span class="hljs-operator">=</span> (<br>	<span class="hljs-keyword">SELECT</span> xxxx<br>);<br></code></pre></td></tr></table></figure></li>
+<li><p>IN 操作符的多行子查询 / NOT IN </p>
+</li>
+<li><p>ANY 操作符的多行子查询</p>
+<ul>
+<li>在子查询中使用 ANY ，表示与子查询返回的任何值比较为真，则返回真</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> `column_name(s)`<br><span class="hljs-keyword">FROM</span> `table_name`<br><span class="hljs-keyword">WHERE</span> `column_name` OPERATOR<br>   <span class="hljs-keyword">ANY</span>(<span class="hljs-keyword">SELECT</span> column_name<br>   <span class="hljs-keyword">FROM</span> table_name)<br></code></pre></td></tr></table></figure></li>
+<li><p>ALL 操作符的多行子查询</p>
+<ul>
+<li>在子查询中使用 ALL ，表示与子查询返回的所有值比较为真，则返回真</li>
+</ul>
+</li>
+<li><p>多列子查询</p>
+</li>
+<li><p>HAVING 子句中的子查询</p>
+</li>
+</ul>
+
+    </div>
+</div>
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 109;
+        width: 600px !important;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            width: 88%
+        }
+    }
+</style>
+<script>
+    $(function () { $('#article').click(function (e) { if (e.target.tagName == "IMG") { if ($('#nonediv').length == 0) { let MImg = `<div id='noneimg'><img src='${e.target.currentSrc}'></div>`; let MDiv = "<div id='nonediv' style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'></div>"; $('#article').append(MDiv); $('#article').append(MImg); $("#nonediv").fadeIn("slow"); $("#noneimg img").fadeIn("slow") } } else { if ($('#nonediv').length !== 0) { $("#noneimg ").fadeOut("slow"); $("#nonediv").fadeOut("slow"); setTimeout(function () { $('#nonediv').remove(); $('#noneimg').remove() }, 500) } } }); $('.article-content').addClass('content-move') });
+</script>
+<div class="Last-Next">
+    
+    <a href="/2021/07/31/%E5%8D%9A%E5%BC%88%E8%AE%BA/">
+        <div class="last">
+            <span>上一篇</span>
+            <p>博弈论</p>
+        </div>
+    </a>
+    
+
+    
+</div>
+		
+<link rel="stylesheet" href="/css/food.css">
+
+<div class="footer">
+	<div class="Copyright">
+		©2021 By Maskros. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/qiaobug/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/qiaobug">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: block;
+            border-radius: 50%;
+            width: 66px;
+            height: 66px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            transition: border .5s;
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 30px;
+            height: 30px;
+            margin-top: 17.5px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $('#js-go_top').gotoTop({ offset: 500, speed: 300, animationShow: { 'transform': 'translate(0,0)', 'transition': 'transform .5s ease-in-out' }, animationHide: { 'transform': 'translate(100px,0)', 'transition': 'transform .5s ease-in-out' } });
+</script>
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/QiaoBug/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+
+</html>
