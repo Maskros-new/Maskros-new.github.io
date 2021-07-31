@@ -10,7 +10,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="/image/logo.ico">
 
 
-<meta name="keywords" content="sql,note,">
+<meta name="keywords" content="note,sql,">
 <meta name="description" content="Structured Query Language">
 
 
@@ -258,9 +258,9 @@
         <ul class="tag">
             
             
-            <li><a href="/tags/sql">sql</a></li>
-            
             <li><a href="/tags/note">note</a></li>
+            
+            <li><a href="/tags/sql">sql</a></li>
             
             
         </ul>
@@ -701,6 +701,13 @@
     $(function () { $('#article').click(function (e) { if (e.target.tagName == "IMG") { if ($('#nonediv').length == 0) { let MImg = `<div id='noneimg'><img src='${e.target.currentSrc}'></div>`; let MDiv = "<div id='nonediv' style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'></div>"; $('#article').append(MDiv); $('#article').append(MImg); $("#nonediv").fadeIn("slow"); $("#noneimg img").fadeIn("slow") } } else { if ($('#nonediv').length !== 0) { $("#noneimg ").fadeOut("slow"); $("#nonediv").fadeOut("slow"); setTimeout(function () { $('#nonediv').remove(); $('#noneimg').remove() }, 500) } } }); $('.article-content').addClass('content-move') });
 </script>
 <div class="Last-Next">
+    
+    <a href="/2021/07/31/%E5%8D%9A%E5%BC%88%E8%AE%BA/">
+        <div class="last">
+            <span>上一篇</span>
+            <p>博弈论</p>
+        </div>
+    </a>
     
 
     

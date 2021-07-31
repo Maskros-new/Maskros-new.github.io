@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		
+<title>博弈论-Remember me</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/logo.ico">
+
+
+<meta name="keywords" content="Algorithm,note,ACM,">
+<meta name="description" content="Game Theory">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+
+<!-- Baidu Analytics -->
+<script defer>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a9682086becb148caa4f1270cab9fc97";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+	<meta name="generator" content="Hexo 5.4.0"></head>
+
+	<body>
+		
+<link rel="stylesheet" href="/css/page.css">
+
+
+<link rel="stylesheet" href="/css/page_cente.css">
+
+
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+
+<link rel="stylesheet" href="/css/header.css">
+
+	<div class="header">
+		<div class="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.jpg" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Maskros</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/qiaobug">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'
+    style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'>
+</div>
+<style>
+    .sidebar {
+        width: 0;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        z-index: 999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815)
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $(function () { $('.h-right-close>svg').click(function () { $('.sidebar').animate({ width: "66%" }, 500); $('.shelter').fadeIn("slow") }); $('.shelter').click(function (e) { $('.sidebar').animate({ width: "0" }, 500); $('.shelter').fadeOut("slow") }) })
+</script>
+		<script>
+			$(function () { $(window).scroll(function () { if ($(document).scrollTop() > 100) { $(".header-top").removeClass("header-move2"); $('.header-top').addClass('header-move1') } else { $(".header-top").removeClass("header-move1"); $('.header-top').addClass('header-move2') } }) });
+		</script>
+<div class="header-bg bg-content-img">
+    <div class="bg-content">
+        <ul class="tag">
+            
+            
+            <li><a href="/tags/Algorithm">Algorithm</a></li>
+            
+            <li><a href="/tags/note">note</a></li>
+            
+            <li><a href="/tags/ACM">ACM</a></li>
+            
+            
+        </ul>
+        <h1>博弈论</h1>
+        <div class="article-info">
+            <div class="article-author">
+                
+                <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                    <path
+                        d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                        p-id="2902" fill="#ffffff"></path>
+                </svg>
+                
+                <span> <a href="">Maskros</a></span>
+                <p>2021-07-31 09:51:28</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article-content">
+    <div id="article" class="content">
+        <h1 id="博弈论"><a href="#博弈论" class="headerlink" title="博弈论"></a>博弈论</h1><p>Game Theory</p>
+<p><em><strong>@author：Maskros</strong></em></p>
+<hr>
+<h2 id="Nim游戏"><a href="#Nim游戏" class="headerlink" title="Nim游戏"></a>Nim游戏</h2><p>属于 ICG (Impartial Combinatorial Games) 的一种，满足条件如下：</p>
+<ul>
+<li>两名选手交替移动，在有限的合法移动集合中任选一种进行移动</li>
+<li>对于任何一种局面，合法的移动集合只取决于局面本身</li>
+<li>到谁无法移动谁就输了</li>
+</ul>
+<p>以下给出 P/N 的定义：</p>
+<ul>
+<li>P-Position：先手必败点 (Previous)</li>
+<li>N-Position：先手必胜点 (Next)</li>
+<li>可知所有终结点都是P点，一步就<strong>能</strong>到P点的一定是N点，通过一步<strong>只能</strong>到N点的一定是P点</li>
+</ul>
+<p>下面来说说Nim游戏：“有若干堆石子，每堆石子的数量有限，合法的移动是“选择一堆石子并拿走若干颗（不能不拿）”，如果轮到某个人时所有的石子堆都已经被拿空了，则判负（因为没有任何合法的移动）“，简单来想，我们可以想到一个递归的算法：对于当前的局面，递归计算它的所有子局面的性质，如果存在某个子局面是P，那么向这个子局面的移动就是必胜策略。这其中有大量的重叠子问题，所以可以用DP或者记忆化搜索的方法以提高效率。</p>
+<p>但是👴们已经有了一个nb的结论：</p>
+<p><strong>对于一个Nim游戏的局面(a1,a2,…,an)，它是P-position当且仅当a1^a2^…^an=0，其中^表示异或(xor)运算</strong></p>
+<p>根据这个定理，我们可以在O(n)的时间内判断一个Nim的局面的性质，且如果它是N-position，也可以在O(n)的时间内找到所有的必胜策略。Nim问题就这样基本上完美的解决了。</p>
+<hr>
+<h2 id="Sprague-Grundy函数"><a href="#Sprague-Grundy函数" class="headerlink" title="Sprague-Grundy函数"></a>Sprague-Grundy函数</h2><p>ICG的抽象模型：给定一个有向无环图和一个起始顶点上的一枚棋子，两名选手交替的将这枚棋子沿有向边进行移动，无法移动者判负</p>
+<p>首先定义mex(minimal excludnt) 运算：</p>
+<p>施加于集合，表示<strong>最小</strong>的<strong>不属于</strong>这个集合的<strong>非负整数</strong>，exp: mex{0,1,2,4}=3、mex{2,3,5}=0、mex{}=0。</p>
+<p>下面给出SG函数的定义：</p>
+<p>对于一个给定的<strong>有向无环图</strong>，定义关于图的每个顶点的Sprague-Garundy函数如下：sg(x)=mex{ sg(y) | y是x的<strong>后继</strong> }。</p>
+<p>结论：当SG[x] = 0时，x为必败状态；当SG[x] &gt; 0时，x为必胜状态</p>
+<p>所以从1~n的SG函数值应该如何计算呢？</p>
+<ol>
+<li>使用 数组 f[ ] 将可改变当前状态 的方式记录下来</li>
+<li>然后我们使用 另一个数组 S[ ] 将当前状态x 的后继状态标记</li>
+<li>模拟mex运算，也就是我们在标记值中 搜索 <strong>未被标记值</strong> 的最小值，将其赋值给SG(x)</li>
+<li>不断重复 2-3 的步骤，即完成计算 1-n 的SG函数值</li>
+</ol>
+<p><strong>SG定理</strong>：<strong>SG(G)=SG(G1)^SG(G2)^…^SG(Gn)<strong>，原游戏的SG函数值是它的所有子游戏的SG函数值的</strong>异或</strong></p>
+<hr>
+<h2 id="解题模型"><a href="#解题模型" class="headerlink" title="解题模型"></a>解题模型</h2><ol>
+<li><p>把原游戏分解成多个独立的子游戏，则原游戏的SG函数值就变为<strong>SG(G)=SG(G1)^SG(G2)^…^Sg(Gn)</strong></p>
+</li>
+<li><p>分别考虑每一个子游戏，计算其SG值</p>
+<p><strong>SG值的计算方法</strong>（important）：</p>
+<p>​    a. <strong>可选步数为1~m的连续整数，直接取模即可，SG(x) = x % (m+1)</strong> <strong>（Bash game）</strong></p>
+<p>​    b. <strong>可选步数为任意步，SG(x) = x（Nim game）</strong></p>
+<p>​    c. <strong>可选步数为一系列不连续的数，用模板计算</strong></p>
+</li>
+</ol>
+<h2 id="板子"><a href="#板子" class="headerlink" title="板子"></a>板子</h2><blockquote>
+<p>首选打表预处理，打表没法使的时候就怼dfs</p>
+</blockquote>
+<h3 id="☆打表"><a href="#☆打表" class="headerlink" title="☆打表"></a>☆打表</h3><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//打表</span><br><span class="hljs-keyword">int</span> f[N],SG[MAXN],S[MAXN]; <span class="hljs-comment">// f[] 可改变当前状态的方式(可取走石子个数)   S[] 当前状态的后继状态集合</span><br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">getSG</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>	<span class="hljs-keyword">int</span> i,j;<br>	<span class="hljs-built_in">memset</span>(SG,<span class="hljs-number">0</span>,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(SG));<br>	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;=n;i++) &#123; <br>		<span class="hljs-built_in">memset</span>(S,<span class="hljs-number">0</span>,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(S));<br>		<span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>; f[j]&lt;=i &amp;&amp; j&lt;=N;j++)<br>			S[SG[i-f[j]]]=<span class="hljs-number">1</span>; <span class="hljs-comment">//S[]数组来保存当前状态的后继状态集合</span><br>		<span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;=n;j++)&#123; <br>        	<span class="hljs-keyword">if</span>(!S[j])&#123;<span class="hljs-comment">//模拟mex运算</span><br>				SG[i]=j;<br>				<span class="hljs-keyword">break</span>;<br>            &#125;<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="深搜"><a href="#深搜" class="headerlink" title="深搜"></a>深搜</h3><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//注意 f数组要按从小到大排序 SG函数要初始化为-1 对于每个集合只需初始化1遍</span><br><span class="hljs-comment">//n是集合f的大小 f[i]是定义的特殊取法规则的数组</span><br><span class="hljs-keyword">int</span> f[<span class="hljs-number">110</span>],SG[<span class="hljs-number">10010</span>],n;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">SG_dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>&#123;<br>    <span class="hljs-keyword">int</span> i;<br>    <span class="hljs-keyword">if</span>(SG[x]!=<span class="hljs-number">-1</span>)<br>        <span class="hljs-keyword">return</span> SG[x];<br>    <span class="hljs-keyword">bool</span> vis[<span class="hljs-number">110</span>];<br>    <span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(vis));<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        <span class="hljs-keyword">if</span>(x&gt;=f[i])&#123;<br>            <span class="hljs-built_in">SG_dfs</span>(x-f[i]);<br>            vis[SG[x-f[i]]]=<span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">int</span> e;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;;i++)<br>        <span class="hljs-keyword">if</span>(!vis[i])&#123;<br>            e=i;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    <span class="hljs-keyword">return</span> SG[x]=e;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="常见博弈"><a href="#常见博弈" class="headerlink" title="常见博弈"></a>常见博弈</h2><h3 id="Bash-Game"><a href="#Bash-Game" class="headerlink" title="Bash Game"></a>Bash Game</h3><p>只有一堆n个物品，两个人轮流取物，每次至少取一个，最多取m个。最后取光者得胜（谁拿了最后一个谁赢）</p>
+<p>结论：最优选择为保持给对手留下 <strong>m+1</strong> 的倍数</p>
+<ul>
+<li><p>if(n%(m+1) != 0)  则先手必赢 </p>
+</li>
+<li><p>if(n%(m+1) == 0)  则后手必赢</p>
+</li>
+</ul>
+<h3 id="Wythoff-Game"><a href="#Wythoff-Game" class="headerlink" title="Wythoff Game"></a>Wythoff Game</h3><blockquote>
+<p>各位👴属实🐮，黄金分割数（1+√5）/2 = 1.618 都给整上了</p>
+</blockquote>
+<p>有两堆各若干个物品，两个人轮流从某一堆取物或同时从两堆中取同样多的物品，规定每次至少取一个，多者不限，最后取光者得胜</p>
+<p>这里用（ak，bk）（ak ≤ bk ,k=0，1，2，…,n)表示两堆物品的数量并称其为<strong>局势</strong></p>
+<p>由ak，bk组成的矩形近似为黄金矩形</p>
+<p>结论：</p>
+<ul>
+<li><p>(int)((bk-ak)*(1+sqrt(5.0))/2) != ak ,  先手必赢</p>
+</li>
+<li><p>(int)((bk-ak)*(1+sqrt(5.0))/2) == ak , 后手必赢</p>
+</li>
+</ul>
+<h3 id="Nim-Game"><a href="#Nim-Game" class="headerlink" title="Nim Game"></a>Nim Game</h3><p>若干堆石子，每堆石子的数量有限，两个人可以选择一堆石子并拿走若干颗</p>
+<p>结论：xor 略</p>
+<h3 id="Fibonacci-Nim"><a href="#Fibonacci-Nim" class="headerlink" title="Fibonacci Nim"></a>Fibonacci Nim</h3><p>有一堆个数为n的石子，游戏双方轮流取石子，满足: (1)先手不能在第一次把所有的石子取完 (2)每次可以取的石子数介于1到对手刚取的石子数的2倍之间(包含)  (3) 取走最后一个石子的人为赢家</p>
+<p>结论：<strong>当n为Fibonacci数的时候，必败</strong></p>
+<p>f[i]：1,2,3,5,8,13,21,34,55,89……</p>
+
+    </div>
+</div>
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 109;
+        width: 600px !important;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            width: 88%
+        }
+    }
+</style>
+<script>
+    $(function () { $('#article').click(function (e) { if (e.target.tagName == "IMG") { if ($('#nonediv').length == 0) { let MImg = `<div id='noneimg'><img src='${e.target.currentSrc}'></div>`; let MDiv = "<div id='nonediv' style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'></div>"; $('#article').append(MDiv); $('#article').append(MImg); $("#nonediv").fadeIn("slow"); $("#noneimg img").fadeIn("slow") } } else { if ($('#nonediv').length !== 0) { $("#noneimg ").fadeOut("slow"); $("#nonediv").fadeOut("slow"); setTimeout(function () { $('#nonediv').remove(); $('#noneimg').remove() }, 500) } } }); $('.article-content').addClass('content-move') });
+</script>
+<div class="Last-Next">
+    
+
+    
+    <a href="/2021/07/29/sql/">
+        <div class="next">
+            <span>下一篇</span>
+            <p>sql学习笔记</p>
+        </div>
+    </a>
+    
+</div>
+		
+<link rel="stylesheet" href="/css/food.css">
+
+<div class="footer">
+	<div class="Copyright">
+		©2021 By Maskros. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/qiaobug/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/qiaobug">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: block;
+            border-radius: 50%;
+            width: 66px;
+            height: 66px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            transition: border .5s;
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 30px;
+            height: 30px;
+            margin-top: 17.5px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $('#js-go_top').gotoTop({ offset: 500, speed: 300, animationShow: { 'transform': 'translate(0,0)', 'transition': 'transform .5s ease-in-out' }, animationHide: { 'transform': 'translate(100px,0)', 'transition': 'transform .5s ease-in-out' } });
+</script>
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/QiaoBug/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+
+</html>
