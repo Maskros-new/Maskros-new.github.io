@@ -1,291 +1,234 @@
+
+
 <!DOCTYPE html>
-<html>
-
-	<head>
-		
-<title>线 段 树-Remember me</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="shortcut icon" type="image/x-icon" href="/image/logo.ico">
-
-
-<meta name="keywords" content="Algorithm,note,ACM,">
-<meta name="description" content="Segment Tree">
-
-
-<script src="/js/jquery.min.js"></script>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
-<!-- Baidu Analytics -->
-<script defer>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?a9682086becb148caa4f1270cab9fc97";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="Segment Tree">
+  <meta name="author" content="Maskros">
+  <meta name="keywords" content="">
+  
+  <title>线 段 树 - Maskros&#39; Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
 
-	<meta name="generator" content="Hexo 5.4.0"></head>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-	<body>
-		
-<link rel="stylesheet" href="/css/page.css">
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
-<link rel="stylesheet" href="/css/page_cente.css">
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
-<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
-<link rel="stylesheet" href="/css/header.css">
+<link  rel="stylesheet" href="/css/main.css" />
 
-	<div class="header">
-		<div class="header-top">
-			<div class="h-left">
-				<a href="/">
-					<img src="/image/logo.jpg" alt="Quiet">
-				</a>
-			</div>
-			<div class="h-right">
-				<ul>
-					
-						
-								<li>
-									<a href="/">
-										HOME
-									</a>
-									<span class="dot"></span>
-								</li>
-								
-									
-						
-								<li>
-									<a href="/archives">
-										ARCHIVE
-									</a>
-									<span class="dot"></span>
-								</li>
-								
-									
-						
-								<li>
-									<a href="/categories">
-										CATEGORIES
-									</a>
-									<span class="dot"></span>
-								</li>
-								
-									
-						
-								<li>
-									<a href="/tags">
-										TAGS
-									</a>
-									<span class="dot"></span>
-								</li>
-								
-									
-						
-								<li>
-									<a href="/links">
-										LINKS
-									</a>
-									<span class="dot"></span>
-								</li>
-								
-									
-						
-								<li>
-									<a href="/about">
-										ABOUT
-									</a>
-									<span class="dot"></span>
-								</li>
-								
-									
-				</ul>
-			</div>
-			<div class="h-right-close">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-					<path fill="none" d="M0 0h24v24H0z" />
-					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
-				</svg>
-			</div>
-		</div>
-	</div>
-	<div class="sidebar">
-    <div class="topo">
-        <h2>Maskros</h2>
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"maskros.icu","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
-    <ul>
-        
-        <li>
-            <a href="/">HOME</a>
-        </li>
-        
-        <li>
-            <a href="/archives">ARCHIVE</a>
-        </li>
-        
-        <li>
-            <a href="/categories">CATEGORIES</a>
-        </li>
-        
-        <li>
-            <a href="/tags">TAGS</a>
-        </li>
-        
-        <li>
-            <a href="/links">LINKS</a>
-        </li>
-        
-        <li>
-            <a href="/about">ABOUT</a>
-        </li>
-        
-    </ul>
-    <div class="my_foot">
-        
-        <a target="_blank" rel="noopener" href="https://github.com/qiaobug">
-            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
-        </a>
-        
-    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="线 段 树">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-06 16:14" pubdate>
+        2021年8月6日 下午
+      </time>
+    </span>
+  
 </div>
-<div class='shelter'
-    style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      43
+       分钟
+    </span>
+  
+
+  
+  
 </div>
-<style>
-    .sidebar {
-        width: 0;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        background: #fff;
-        z-index: 999;
-        text-align: center;
-        box-shadow: -6px 0 20px rgba(98, 94, 94, .815)
-    }
 
-    .topo {
-        width: 100%;
-        height: 200px;
-        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
-        background-size: 100% 100%;
-        position: relative;
-        display: flex;
-        align-items: flex-end
-    }
-
-    .topo h2 {
-        color: #fff;
-        z-index: 1;
-        position: relative;
-        margin: 0 0 10px 10px;
-        font-size: 1.2em;
-        box-sizing: border-box
-    }
-
-    .topo:before {
-        content: '';
-        background-image: url(/image/pattern.png);
-        background-repeat: repeat;
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 1
-    }
-
-    .sidebar ul {
-        width: 100%;
-        margin-top: 50px
-    }
-
-    .sidebar ul li {
-        height: 50px;
-        list-style: none;
-        font-size: 1.2em;
-        text-align: right;
-        margin-right: 10px
-    }
-
-    .sidebar ul li a {
-        display: grid;
-        color: #5d606a;
-        text-overflow: ellipsis;
-        width: 100%;
-        text-decoration: none
-    }
-
-    .my_foot {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-        position: absolute;
-        bottom: 0
-    }
-
-    .my_foot a {
-        text-decoration: none;
-        margin-right: 10px;
-        display: inline-block
-    }
-
-    .my_foot a img {
-        width: 30px;
-        height: 30px
-    }
-</style>
-
-<script>
-    $(function () { $('.h-right-close>svg').click(function () { $('.sidebar').animate({ width: "66%" }, 500); $('.shelter').fadeIn("slow") }); $('.shelter').click(function (e) { $('.sidebar').animate({ width: "0" }, 500); $('.shelter').fadeOut("slow") }) })
-</script>
-		<script>
-			$(function () { $(window).scroll(function () { if ($(document).scrollTop() > 100) { $(".header-top").removeClass("header-move2"); $('.header-top').addClass('header-move1') } else { $(".header-top").removeClass("header-move1"); $('.header-top').addClass('header-move2') } }) });
-		</script>
-<div class="header-bg bg-content-img">
-    <div class="bg-content">
-        <ul class="tag">
             
-            
-            <li><a href="/tags/Algorithm">Algorithm</a></li>
-            
-            <li><a href="/tags/note">note</a></li>
-            
-            <li><a href="/tags/ACM">ACM</a></li>
-            
-            
-        </ul>
-        <h1>线 段 树</h1>
-        <div class="article-info">
-            <div class="article-author">
-                
-                <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                    xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
-                    <path
-                        d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
-                        p-id="2902" fill="#ffffff"></path>
-                </svg>
-                
-                <span> <a href="">Maskros</a></span>
-                <p>2021-08-06 16:14:31</p>
-            </div>
+          </div>
+
+          
         </div>
+      </div>
     </div>
-</div>
-<div class="article-content">
-    <div id="article" class="content">
-        <h1 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h1><p>Segment Tree</p>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">线 段 树</h1>
+            
+            <div class="markdown-body">
+              <h1 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h1><p>Segment Tree</p>
 <blockquote>
 <p>一个问题，只要能化成对一些连续点的修改和统计问题，基本就可以用线段树来艹了</p>
 </blockquote>
@@ -304,15 +247,15 @@
 </blockquote>
 <h3 id="建树-build"><a href="#建树-build" class="headerlink" title="建树 (build)"></a>建树 (build)</h3><p>线段树是一棵平衡二叉树，每个节点都对应一条线段(区间)，反之不成立，每个节点 $p$ 的左右子节点的编号分别为 $2p$ 和 $2p+1$ ，假如节点 $p$ 储存区间 $[a,b]$ 的和，设 $mid=[\frac{l+r}{2}]$，那么两个子节点分别储存 $[l,mid]$ 和 $[mid+1,r]$ 的和。可以发现，左节点对应的区间长度，与右节点相同或者比之恰好多 $1$。</p>
 <p>故建树可考虑递归进行：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">(ll l = <span class="hljs-number">1</span>, ll r = n, ll p = <span class="hljs-number">1</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (l == r) <span class="hljs-comment">// 到达叶子节点</span><br>        tree[p]=A[l]; <span class="hljs-comment">// 用数组中的数据赋值</span><br>    <span class="hljs-keyword">else</span>&#123;<br>        ll mid = (l + r) / <span class="hljs-number">2</span>;<br>        <span class="hljs-built_in">build</span>(l, mid, p * <span class="hljs-number">2</span>); <span class="hljs-comment">// 先建立左右子节点</span><br>        <span class="hljs-built_in">build</span>(mid + <span class="hljs-number">1</span>, r, p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>);<br>        tree[p] = tree[p * <span class="hljs-number">2</span>] + tree[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>]; <span class="hljs-comment">// 该节点的值等于左右子节点之和</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">(ll l = <span class="hljs-number">1</span>, ll r = n, ll p = <span class="hljs-number">1</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (l == r) <span class="hljs-comment">// 到达叶子节点</span><br>        tree[p]=A[l]; <span class="hljs-comment">// 用数组中的数据赋值</span><br>    <span class="hljs-keyword">else</span>&#123;<br>        ll mid = (l + r) / <span class="hljs-number">2</span>;<br>        <span class="hljs-built_in">build</span>(l, mid, p * <span class="hljs-number">2</span>); <span class="hljs-comment">// 先建立左右子节点</span><br>        <span class="hljs-built_in">build</span>(mid + <span class="hljs-number">1</span>, r, p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>);<br>        tree[p] = tree[p * <span class="hljs-number">2</span>] + tree[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>]; <span class="hljs-comment">// 该节点的值等于左右子节点之和</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p> 这里👴偷了个 gif 来演示一下过程 (虽然大部分都是偷的🤡)</p>
-<img src="https://pic4.zhimg.com/v2-c2d11b12c87b6a7076e3df0bb3585423_b.webp" alt="img" style="zoom:60%;" />
+<img src="https://pic4.zhimg.com/v2-c2d11b12c87b6a7076e3df0bb3585423_b.webp" srcset="/img/loading.gif" lazyload alt="img" style="zoom:60%;" />
 
 <h3 id="区间修改-update"><a href="#区间修改-update" class="headerlink" title="区间修改(update)"></a>区间修改(update)</h3><p>首先定义”<strong>懒标记</strong>“(即“延迟标记”) <code>mark[]</code>：</p>
 <p>对于区间修改，朴素的想法是用<strong>递归</strong>的方式一层层修改（类似于线段树的建立），但这样的时间复杂度比较高。使用懒标记后，对于那些正好是线段树节点的区间，我们不继续递归下去，而是打上一个<strong>标记</strong>，将来要用到它的<strong>子区间</strong>的时候，再向下<strong>传递</strong></p>
 <p>直接上🐴 (非最简):</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(ll l, ll r, ll d, ll p = <span class="hljs-number">1</span>, ll cl = <span class="hljs-number">1</span>, ll cr = n)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl &gt; r || cr &lt; l) <span class="hljs-comment">// 区间无交集</span><br>        <span class="hljs-keyword">return</span>; <span class="hljs-comment">// 剪枝</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cl &gt;= l &amp;&amp; cr &lt;= r) <span class="hljs-comment">// 当前节点对应的区间包含在目标区间中</span><br>    &#123;<br>        tree[p] += (cr - cl + <span class="hljs-number">1</span>) * d; <span class="hljs-comment">// 更新当前区间的值</span><br>        <span class="hljs-keyword">if</span> (cr &gt; cl) <span class="hljs-comment">// 如果不是叶子节点</span><br>            mark[p] += d; <span class="hljs-comment">// 给当前区间打上标记</span><br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-comment">// 与目标区间有交集，但不包含于其中</span><br>    &#123;<br>        ll mid = (cl + cr) / <span class="hljs-number">2</span>;<br>        mark[p * <span class="hljs-number">2</span>] += mark[p]; <span class="hljs-comment">// 标记向下传递</span><br>        mark[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] += mark[p];<br>        tree[p * <span class="hljs-number">2</span>] += mark[p] * (mid - cl + <span class="hljs-number">1</span>); <span class="hljs-comment">// 往下更新一层</span><br>        tree[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] += mark[p] * (cr - mid);<br>        mark[p] = <span class="hljs-number">0</span>; <span class="hljs-comment">// 清除标记</span><br>        <span class="hljs-built_in">update</span>(l, r, d, p * <span class="hljs-number">2</span>, cl, mid); <span class="hljs-comment">// 递归地往下寻找</span><br>        <span class="hljs-built_in">update</span>(l, r, d, p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, cr);<br>        tree[p] = tree[p * <span class="hljs-number">2</span>] + tree[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>]; <span class="hljs-comment">// 根据子节点更新当前节点的值</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(ll l, ll r, ll d, ll p = <span class="hljs-number">1</span>, ll cl = <span class="hljs-number">1</span>, ll cr = n)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl &gt; r || cr &lt; l) <span class="hljs-comment">// 区间无交集</span><br>        <span class="hljs-keyword">return</span>; <span class="hljs-comment">// 剪枝</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cl &gt;= l &amp;&amp; cr &lt;= r) <span class="hljs-comment">// 当前节点对应的区间包含在目标区间中</span><br>    &#123;<br>        tree[p] += (cr - cl + <span class="hljs-number">1</span>) * d; <span class="hljs-comment">// 更新当前区间的值</span><br>        <span class="hljs-keyword">if</span> (cr &gt; cl) <span class="hljs-comment">// 如果不是叶子节点</span><br>            mark[p] += d; <span class="hljs-comment">// 给当前区间打上标记</span><br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-comment">// 与目标区间有交集，但不包含于其中</span><br>    &#123;<br>        ll mid = (cl + cr) / <span class="hljs-number">2</span>;<br>        mark[p * <span class="hljs-number">2</span>] += mark[p]; <span class="hljs-comment">// 标记向下传递</span><br>        mark[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] += mark[p];<br>        tree[p * <span class="hljs-number">2</span>] += mark[p] * (mid - cl + <span class="hljs-number">1</span>); <span class="hljs-comment">// 往下更新一层</span><br>        tree[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] += mark[p] * (cr - mid);<br>        mark[p] = <span class="hljs-number">0</span>; <span class="hljs-comment">// 清除标记</span><br>        <span class="hljs-built_in">update</span>(l, r, d, p * <span class="hljs-number">2</span>, cl, mid); <span class="hljs-comment">// 递归地往下寻找</span><br>        <span class="hljs-built_in">update</span>(l, r, d, p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, cr);<br>        tree[p] = tree[p * <span class="hljs-number">2</span>] + tree[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>]; <span class="hljs-comment">// 根据子节点更新当前节点的值</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>更新时，我们是从最大的区间开始，递归向下处理。注意到，<strong>任何区间都是线段树上某些节点的并集</strong>。于是我们记目标区间为 $[l,r] $，当前区间为 $[cl,cr]$ ， 当前节点为 $p$ ，我们会遇到三种情况：</p>
 <ol>
@@ -321,21 +264,21 @@
 </li>
 <li><p>当前区间被包括在目标区间里：</p>
 <p>可以更新区间，不能忘记乘上区间长度</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">tree[p] += (cr - cl + <span class="hljs-number">1</span>) * d;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">tree[p] += (cr - cl + <span class="hljs-number">1</span>) * d;<br></code></pre></td></tr></table></figure>
 
 <p>然后打上懒标记（叶子节点可以不打标记，因为不会再向下传递了）</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">mark[p] += d;	<span class="hljs-comment">//表示“该区间上每一个点都要加上d”。因为原来可能存在标记，所以是+=而不是=</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">mark[p] += d;	<span class="hljs-comment">//表示“该区间上每一个点都要加上d”。因为原来可能存在标记，所以是+=而不是=</span><br></code></pre></td></tr></table></figure></li>
 <li><p>当前区间与目标区间相交，但不包含于其中:</p>
 <p>这时把当前区间一分为二，分别进行处理。如果存在懒标记，要先把懒标记传递给子节点（注意也是+=，因为原来可能存在懒标记)</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">ll mid = (cl + cr) / <span class="hljs-number">2</span>;<br>mark[p * <span class="hljs-number">2</span>] += mark[p];<br>mark[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] += mark[p];<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">ll mid = (cl + cr) / <span class="hljs-number">2</span>;<br>mark[p * <span class="hljs-number">2</span>] += mark[p];<br>mark[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] += mark[p];<br></code></pre></td></tr></table></figure>
 
 <p>两个子节点的值也就需要相应的更新（后面乘的是区间长度) :[p * 2] += mark[p] * (mid - cl + 1);</p>
 <p>tree[p * 2 + 1] += mark[p] * (cr - mid);</p>
 <p>不要忘记清除该节点的懒标记：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">mark[p]=<span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">mark[p]=<span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
 
 <p>因为贵标记和👴一样是个懒蛋，只往下传递一层，所以这个过程并不是递归的，以后要用再才继续传递。其实我们常常把这个传递过程封装成一个函数<strong>扑屎裆</strong> :</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push_down</span><span class="hljs-params">(ll p, ll len)</span></span>&#123;<br>    mark[p * <span class="hljs-number">2</span>] += mark[p];<br>    mark[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] += mark[p];<br>    tree[p * <span class="hljs-number">2</span>] += mark[p] * (len - len / <span class="hljs-number">2</span>);<br>    tree[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] += mark[p] * (len / <span class="hljs-number">2</span>); <span class="hljs-comment">// 右边的区间可能要短一点</span><br>    mark[p] = <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//这样儿 update() 里面调用的时候直接 push_down(p, cr - cl + 1); 就彳亍</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push_down</span><span class="hljs-params">(ll p, ll len)</span></span>&#123;<br>    mark[p * <span class="hljs-number">2</span>] += mark[p];<br>    mark[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] += mark[p];<br>    tree[p * <span class="hljs-number">2</span>] += mark[p] * (len - len / <span class="hljs-number">2</span>);<br>    tree[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] += mark[p] * (len / <span class="hljs-number">2</span>); <span class="hljs-comment">// 右边的区间可能要短一点</span><br>    mark[p] = <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//这样儿 update() 里面调用的时候直接 push_down(p, cr - cl + 1); 就彳亍</span><br></code></pre></td></tr></table></figure>
 
 <p>传递完标记后，再递归地去处理左右两个子节点就彳亍乐</p>
 </li>
@@ -344,7 +287,7 @@
 <p><video width=70% src="https://vdn1.vzuu.com/SD/534181e0-23ad-11eb-905e-ca0d7949bec0.mp4?disable_local_cache=1&auth_key=1628242679-0-0-804945d6146979c7aa1236d8806960d8&f=mp4&bu=pico&expiration=1628242679&v=hw"></video></p>
 <p>至于单点修改，只需要令左右端点相等即可~</p>
 <h3 id="区间查询-query"><a href="#区间查询-query" class="headerlink" title="区间查询(query)"></a>区间查询(query)</h3><p>还就那个直接上🐴</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">ll <span class="hljs-title">query</span><span class="hljs-params">(ll l, ll r, ll p = <span class="hljs-number">1</span>, ll cl = <span class="hljs-number">1</span>, ll cr = n)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl &gt; r || cr &lt; l)<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cl &gt;= l &amp;&amp; cr &lt;= r)<br>        <span class="hljs-keyword">return</span> tree[p];<br>    <span class="hljs-keyword">else</span>&#123;<br>        ll mid = (cl + cr) / <span class="hljs-number">2</span>;<br>        <span class="hljs-built_in">push_down</span>(p, cr - cl + <span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">query</span>(l, r, p * <span class="hljs-number">2</span>, cl, mid) + <span class="hljs-built_in">query</span>(l, r, p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, cr); <br>        <span class="hljs-comment">// 上一行拆成三行写就和区间修改格式一致了</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">ll <span class="hljs-title">query</span><span class="hljs-params">(ll l, ll r, ll p = <span class="hljs-number">1</span>, ll cl = <span class="hljs-number">1</span>, ll cr = n)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl &gt; r || cr &lt; l)<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cl &gt;= l &amp;&amp; cr &lt;= r)<br>        <span class="hljs-keyword">return</span> tree[p];<br>    <span class="hljs-keyword">else</span>&#123;<br>        ll mid = (cl + cr) / <span class="hljs-number">2</span>;<br>        <span class="hljs-built_in">push_down</span>(p, cr - cl + <span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">query</span>(l, r, p * <span class="hljs-number">2</span>, cl, mid) + <span class="hljs-built_in">query</span>(l, r, p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, cr); <br>        <span class="hljs-comment">// 上一行拆成三行写就和区间修改格式一致了</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>一样的递归，一样自顶至底地寻找，一样的合并信息，即插即用😍</p>
 <h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><blockquote>
@@ -356,12 +299,12 @@
 <h3 id="龙鸣version"><a href="#龙鸣version" class="headerlink" title="龙鸣version"></a>龙鸣version</h3><blockquote>
 <p>(此龙鸣非彼龙鸣，意为把上面的龙鸣🐴整合起来):</p>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 100005</span><br>ll n, m, A[MAXN], tree[MAXN * <span class="hljs-number">4</span>], mark[MAXN * <span class="hljs-number">4</span>]; <br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push_down</span><span class="hljs-params">(ll p, ll len)</span></span>&#123;<br>    mark[p * <span class="hljs-number">2</span>] += mark[p];<br>    mark[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] += mark[p];<br>    tree[p * <span class="hljs-number">2</span>] += mark[p] * (len - len / <span class="hljs-number">2</span>);<br>    tree[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] += mark[p] * (len / <span class="hljs-number">2</span>);<br>    mark[p] = <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">(ll l = <span class="hljs-number">1</span>, ll r = n, ll p = <span class="hljs-number">1</span>)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (l == r)<br>        tree[p] = A[l];<br>    <span class="hljs-keyword">else</span>&#123;<br>        ll mid = (l + r) / <span class="hljs-number">2</span>;<br>        <span class="hljs-built_in">build</span>(l, mid, p * <span class="hljs-number">2</span>);<br>        <span class="hljs-built_in">build</span>(mid + <span class="hljs-number">1</span>, r, p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>);<br>        tree[p] = tree[p * <span class="hljs-number">2</span>] + tree[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>];<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(ll l, ll r, ll d, ll p = <span class="hljs-number">1</span>, ll cl = <span class="hljs-number">1</span>, ll cr = n)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl &gt; r || cr &lt; l)<br>        <span class="hljs-keyword">return</span>;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cl &gt;= l &amp;&amp; cr &lt;= r)&#123;<br>        tree[p] += (cr - cl + <span class="hljs-number">1</span>) * d;<br>        <span class="hljs-keyword">if</span> (cr &gt; cl)<br>            mark[p] += d;<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        ll mid = (cl + cr) / <span class="hljs-number">2</span>;<br>        <span class="hljs-built_in">push_down</span>(p, cr - cl + <span class="hljs-number">1</span>);<br>        <span class="hljs-built_in">update</span>(l, r, d, p * <span class="hljs-number">2</span>, cl, mid);<br>        <span class="hljs-built_in">update</span>(l, r, d, p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, cr);<br>        tree[p] = tree[p * <span class="hljs-number">2</span>] + tree[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>];<br>    &#125;<br>&#125;<br><span class="hljs-function">ll <span class="hljs-title">query</span><span class="hljs-params">(ll l, ll r, ll p = <span class="hljs-number">1</span>, ll cl = <span class="hljs-number">1</span>, ll cr = n)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl &gt; r || cr &lt; l)<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cl &gt;= l &amp;&amp; cr &lt;= r)<br>        <span class="hljs-keyword">return</span> tree[p];<br>    <span class="hljs-keyword">else</span>&#123;<br>        ll mid = (cl + cr) / <span class="hljs-number">2</span>;<br>        <span class="hljs-built_in">push_down</span>(p, cr - cl + <span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">query</span>(l, r, p * <span class="hljs-number">2</span>, cl, mid) + <span class="hljs-built_in">query</span>(l, r, p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, cr);<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    n = <span class="hljs-built_in">read</span>();<br>    m = <span class="hljs-built_in">read</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++i)<br>        A[i] = <span class="hljs-built_in">read</span>();<br>    <span class="hljs-built_in">build</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m; ++i)&#123;<br>        ll opr = <span class="hljs-built_in">read</span>(), l = <span class="hljs-built_in">read</span>(), r = <span class="hljs-built_in">read</span>();<br>        <span class="hljs-keyword">if</span> (opr == <span class="hljs-number">1</span>)&#123;<br>            ll d = <span class="hljs-built_in">read</span>();<br>            <span class="hljs-built_in">update</span>(l, r, d);<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld\n&quot;</span>, <span class="hljs-built_in">query</span>(l, r));<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 100005</span><br>ll n, m, A[MAXN], tree[MAXN * <span class="hljs-number">4</span>], mark[MAXN * <span class="hljs-number">4</span>]; <br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push_down</span><span class="hljs-params">(ll p, ll len)</span></span>&#123;<br>    mark[p * <span class="hljs-number">2</span>] += mark[p];<br>    mark[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] += mark[p];<br>    tree[p * <span class="hljs-number">2</span>] += mark[p] * (len - len / <span class="hljs-number">2</span>);<br>    tree[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] += mark[p] * (len / <span class="hljs-number">2</span>);<br>    mark[p] = <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">(ll l = <span class="hljs-number">1</span>, ll r = n, ll p = <span class="hljs-number">1</span>)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (l == r)<br>        tree[p] = A[l];<br>    <span class="hljs-keyword">else</span>&#123;<br>        ll mid = (l + r) / <span class="hljs-number">2</span>;<br>        <span class="hljs-built_in">build</span>(l, mid, p * <span class="hljs-number">2</span>);<br>        <span class="hljs-built_in">build</span>(mid + <span class="hljs-number">1</span>, r, p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>);<br>        tree[p] = tree[p * <span class="hljs-number">2</span>] + tree[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>];<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(ll l, ll r, ll d, ll p = <span class="hljs-number">1</span>, ll cl = <span class="hljs-number">1</span>, ll cr = n)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl &gt; r || cr &lt; l)<br>        <span class="hljs-keyword">return</span>;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cl &gt;= l &amp;&amp; cr &lt;= r)&#123;<br>        tree[p] += (cr - cl + <span class="hljs-number">1</span>) * d;<br>        <span class="hljs-keyword">if</span> (cr &gt; cl)<br>            mark[p] += d;<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        ll mid = (cl + cr) / <span class="hljs-number">2</span>;<br>        <span class="hljs-built_in">push_down</span>(p, cr - cl + <span class="hljs-number">1</span>);<br>        <span class="hljs-built_in">update</span>(l, r, d, p * <span class="hljs-number">2</span>, cl, mid);<br>        <span class="hljs-built_in">update</span>(l, r, d, p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, cr);<br>        tree[p] = tree[p * <span class="hljs-number">2</span>] + tree[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>];<br>    &#125;<br>&#125;<br><span class="hljs-function">ll <span class="hljs-title">query</span><span class="hljs-params">(ll l, ll r, ll p = <span class="hljs-number">1</span>, ll cl = <span class="hljs-number">1</span>, ll cr = n)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl &gt; r || cr &lt; l)<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cl &gt;= l &amp;&amp; cr &lt;= r)<br>        <span class="hljs-keyword">return</span> tree[p];<br>    <span class="hljs-keyword">else</span>&#123;<br>        ll mid = (cl + cr) / <span class="hljs-number">2</span>;<br>        <span class="hljs-built_in">push_down</span>(p, cr - cl + <span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">query</span>(l, r, p * <span class="hljs-number">2</span>, cl, mid) + <span class="hljs-built_in">query</span>(l, r, p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, cr);<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    n = <span class="hljs-built_in">read</span>();<br>    m = <span class="hljs-built_in">read</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++i)<br>        A[i] = <span class="hljs-built_in">read</span>();<br>    <span class="hljs-built_in">build</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m; ++i)&#123;<br>        ll opr = <span class="hljs-built_in">read</span>(), l = <span class="hljs-built_in">read</span>(), r = <span class="hljs-built_in">read</span>();<br>        <span class="hljs-keyword">if</span> (opr == <span class="hljs-number">1</span>)&#123;<br>            ll d = <span class="hljs-built_in">read</span>();<br>            <span class="hljs-built_in">update</span>(l, r, d);<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld\n&quot;</span>, <span class="hljs-built_in">query</span>(l, r));<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h3 id="贵族version"><a href="#贵族version" class="headerlink" title="贵族version"></a>贵族version</h3><blockquote>
 <p><del>豪华升级plus</del>，本来想加个乘除的发现板子不兼容，👴是懒狗</p>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">1e5</span> + <span class="hljs-number">5</span>;<br>ll tree[MAXN &lt;&lt; <span class="hljs-number">2</span>], mark[MAXN &lt;&lt; <span class="hljs-number">2</span>], n, m, A[MAXN];<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push_down</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p, <span class="hljs-keyword">int</span> len)</span></span>&#123;<br>    tree[p &lt;&lt; <span class="hljs-number">1</span>] += mark[p] * (len - len / <span class="hljs-number">2</span>);<br>    mark[p &lt;&lt; <span class="hljs-number">1</span>] += mark[p];<br>    tree[p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>] += mark[p] * (len / <span class="hljs-number">2</span>);<br>    mark[p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>] += mark[p];<br>    mark[p] = <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p = <span class="hljs-number">1</span>, <span class="hljs-keyword">int</span> cl = <span class="hljs-number">1</span>, <span class="hljs-keyword">int</span> cr = n)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl == cr) &#123; tree[p] = A[cl]; <span class="hljs-keyword">return</span>; &#125;<br>    <span class="hljs-keyword">int</span> mid = (cl + cr) &gt;&gt; <span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">build</span>(p &lt;&lt; <span class="hljs-number">1</span>, cl, mid);<br>    <span class="hljs-built_in">build</span>(p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, cr);<br>    tree[p] = tree[p &lt;&lt; <span class="hljs-number">1</span>] + tree[p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>];<br>&#125;<br><span class="hljs-function">ll <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> p = <span class="hljs-number">1</span>, <span class="hljs-keyword">int</span> cl = <span class="hljs-number">1</span>, <span class="hljs-keyword">int</span> cr = n)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl &gt;= l &amp;&amp; cr &lt;= r) <span class="hljs-keyword">return</span> tree[p];<br>    <span class="hljs-built_in">push_down</span>(p, cr - cl + <span class="hljs-number">1</span>);<br>    ll mid = (cl + cr) &gt;&gt; <span class="hljs-number">1</span>, ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span> (mid &gt;= l) ans += <span class="hljs-built_in">query</span>(l, r, p &lt;&lt; <span class="hljs-number">1</span>, cl, mid);<br>    <span class="hljs-keyword">if</span> (mid &lt; r) ans += <span class="hljs-built_in">query</span>(l, r, p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, cr);<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;   <br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> d, <span class="hljs-keyword">int</span> p = <span class="hljs-number">1</span>, <span class="hljs-keyword">int</span> cl = <span class="hljs-number">1</span>, <span class="hljs-keyword">int</span> cr = n)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl &gt;= l &amp;&amp; cr &lt;= r) &#123; tree[p] += d * (cr - cl + <span class="hljs-number">1</span>), mark[p] += d; <span class="hljs-keyword">return</span>; &#125;<br>    <span class="hljs-built_in">push_down</span>(p, cr - cl + <span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">int</span> mid = (cl + cr) &gt;&gt; <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (mid &gt;= l) <span class="hljs-built_in">update</span>(l, r, d, p &lt;&lt; <span class="hljs-number">1</span>, cl, mid);<br>    <span class="hljs-keyword">if</span> (mid &lt; r) <span class="hljs-built_in">update</span>(l, r, d, p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, cr);<br>    tree[p] = tree[p &lt;&lt; <span class="hljs-number">1</span>] + tree[p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>];<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">1e5</span> + <span class="hljs-number">5</span>;<br>ll tree[MAXN &lt;&lt; <span class="hljs-number">2</span>], mark[MAXN &lt;&lt; <span class="hljs-number">2</span>], n, m, A[MAXN];<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push_down</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p, <span class="hljs-keyword">int</span> len)</span></span>&#123;<br>    tree[p &lt;&lt; <span class="hljs-number">1</span>] += mark[p] * (len - len / <span class="hljs-number">2</span>);<br>    mark[p &lt;&lt; <span class="hljs-number">1</span>] += mark[p];<br>    tree[p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>] += mark[p] * (len / <span class="hljs-number">2</span>);<br>    mark[p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>] += mark[p];<br>    mark[p] = <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p = <span class="hljs-number">1</span>, <span class="hljs-keyword">int</span> cl = <span class="hljs-number">1</span>, <span class="hljs-keyword">int</span> cr = n)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl == cr) &#123; tree[p] = A[cl]; <span class="hljs-keyword">return</span>; &#125;<br>    <span class="hljs-keyword">int</span> mid = (cl + cr) &gt;&gt; <span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">build</span>(p &lt;&lt; <span class="hljs-number">1</span>, cl, mid);<br>    <span class="hljs-built_in">build</span>(p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, cr);<br>    tree[p] = tree[p &lt;&lt; <span class="hljs-number">1</span>] + tree[p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>];<br>&#125;<br><span class="hljs-function">ll <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> p = <span class="hljs-number">1</span>, <span class="hljs-keyword">int</span> cl = <span class="hljs-number">1</span>, <span class="hljs-keyword">int</span> cr = n)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl &gt;= l &amp;&amp; cr &lt;= r) <span class="hljs-keyword">return</span> tree[p];<br>    <span class="hljs-built_in">push_down</span>(p, cr - cl + <span class="hljs-number">1</span>);<br>    ll mid = (cl + cr) &gt;&gt; <span class="hljs-number">1</span>, ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span> (mid &gt;= l) ans += <span class="hljs-built_in">query</span>(l, r, p &lt;&lt; <span class="hljs-number">1</span>, cl, mid);<br>    <span class="hljs-keyword">if</span> (mid &lt; r) ans += <span class="hljs-built_in">query</span>(l, r, p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, cr);<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;   <br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> d, <span class="hljs-keyword">int</span> p = <span class="hljs-number">1</span>, <span class="hljs-keyword">int</span> cl = <span class="hljs-number">1</span>, <span class="hljs-keyword">int</span> cr = n)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (cl &gt;= l &amp;&amp; cr &lt;= r) &#123; tree[p] += d * (cr - cl + <span class="hljs-number">1</span>), mark[p] += d; <span class="hljs-keyword">return</span>; &#125;<br>    <span class="hljs-built_in">push_down</span>(p, cr - cl + <span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">int</span> mid = (cl + cr) &gt;&gt; <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (mid &gt;= l) <span class="hljs-built_in">update</span>(l, r, d, p &lt;&lt; <span class="hljs-number">1</span>, cl, mid);<br>    <span class="hljs-keyword">if</span> (mid &lt; r) <span class="hljs-built_in">update</span>(l, r, d, p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, cr);<br>    tree[p] = tree[p &lt;&lt; <span class="hljs-number">1</span>] + tree[p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>];<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h2 id="常见模型"><a href="#常见模型" class="headerlink" title="常见模型"></a>常见模型</h2><p>步骤：</p>
 <ol>
@@ -434,131 +377,208 @@
 </ul>
 <h2 id="扫描线"><a href="#扫描线" class="headerlink" title="扫描线"></a>扫描线</h2><p>👴前面都没整太明白，这个待续</p>
 
-    </div>
-</div>
-<style>
-    #noneimg img {
-        display: none;
-        z-index: 109;
-        width: 600px !important;
-        border-radius: 0px;
-        position: fixed;
-        box-shadow: 0 0 0px #c3c3c300 !important;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto !important;
-    }
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/ALGORITHMS/">ALGORITHMS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Algorithm/">Algorithm</a>
+                    
+                      <a class="hover-with-bg" href="/tags/note/">note</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ACM/">ACM</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/31/%E5%8D%9A%E5%BC%88%E8%AE%BA/">
+                        <span class="hidden-mobile">博弈论</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-    @media screen and (max-width:600px) {
-        #noneimg img {
-            width: 88%
-        }
-    }
-</style>
-<script>
-    $(function () { $('#article').click(function (e) { if (e.target.tagName == "IMG") { if ($('#nonediv').length == 0) { let MImg = `<div id='noneimg'><img src='${e.target.currentSrc}'></div>`; let MDiv = "<div id='nonediv' style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'></div>"; $('#article').append(MDiv); $('#article').append(MImg); $("#nonediv").fadeIn("slow"); $("#noneimg img").fadeIn("slow") } } else { if ($('#nonediv').length !== 0) { $("#noneimg ").fadeOut("slow"); $("#nonediv").fadeOut("slow"); setTimeout(function () { $('#nonediv').remove(); $('#noneimg').remove() }, 500) } } }); $('.article-content').addClass('content-move') });
-</script>
-<div class="Last-Next">
-    
-
-    
-    <a href="/2021/07/31/%E5%8D%9A%E5%BC%88%E8%AE%BA/">
-        <div class="next">
-            <span>下一篇</span>
-            <p>博弈论</p>
+            
+          </article>
         </div>
-    </a>
+      </div>
+    </div>
     
-</div>
-		
-<link rel="stylesheet" href="/css/food.css">
-
-<div class="footer">
-	<div class="Copyright">
-		©2021 By Maskros. 主题：<a
-			style="text-decoration: none;display: contents; color: #898F9F;"
-			target="_blank" rel="noopener" href="https://github.com/qiaobug/hexo-theme-quiet">Quiet</a>
-	</div>
-	<div class="contact">
-		
-		<a target="_blank" rel="noopener" href="https://github.com/qiaobug">
-			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
-		</a>
-		
-	</div>
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
-<script src="/js/jquery.min.js"></script>
-
-
-<script src="/js/gotop.js"></script>
-
-
-<style type="text/css">
-    @media screen and (min-width: 600px) {
-        .goTop>span {
-            display: block;
-            border-radius: 50%;
-            width: 66px;
-            height: 66px;
-            cursor: pointer;
-            opacity: 0.8;
-            background: rgba(18, 24, 58, 0.06);
-            text-align: center;
-            border: 1px solid rgba(18, 24, 58, 0.06);
-
-            transition: border .5s;
-            -moz-transition: border .5s;
-            /* Firefox 4 */
-            -webkit-transition: border .5s;
-            /* Safari 和 Chrome */
-            -o-transition: border .5s;
-            /* Opera */
-        }
-
-        .goTop>span:hover {
-            border: 1px solid #6680B3;
-        }
-
-
-        .goTop {
-            position: fixed;
-            right: 30px;
-            bottom: 80px;
-        }
-
-        .goTop>span>svg {
-            width: 30px;
-            height: 30px;
-            margin-top: 17.5px;
-            opacity: 0.7;
-        }
-
-    }
-
-    @media screen and (max-width: 600px) {
-        .goTop {
-            display: none;
-        }
-    }
-</style>
-<div class="goTop" id="js-go_top">
-    <span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <g>
-                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
-            </g>
-        </svg>
-    </span>
+      </div>
+    
+  </div>
 </div>
-<script>
-    $('#js-go_top').gotoTop({ offset: 500, speed: 300, animationShow: { 'transform': 'translate(0,0)', 'transition': 'transform .5s ease-in-out' }, animationHide: { 'transform': 'translate(100px,0)', 'transition': 'transform .5s ease-in-out' } });
-</script>
-<script>
-	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/QiaoBug/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
-</script>
-	</body>
 
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
 </html>
