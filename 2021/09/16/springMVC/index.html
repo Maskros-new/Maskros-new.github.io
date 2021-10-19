@@ -266,7 +266,7 @@
 <li>组件化：Spring 实现了使用简单的组件配置组合成一个复杂的应用。在 Spring 中可以使用XML和Java注解组合这些对象。</li>
 <li>一站式：在 IOC 和 AOP 的基础上可以整合各种企业应用的开源框架和优秀的第三方类库（实际上 Spring 自身也提供了表现层的 SpringMVC 和持久层的 Spring JDBC）</li>
 </ul>
-<h3 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h3><p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210902130742798.png" srcset="/img/loading.gif" lazyload alt="image-20210902130742798"></p>
+<h3 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h3><p><img src="https://images.weserv.nl/?url=https://i0.hdslb.com/bfs/album/c9159efce03899c144f5fd357785a4eba6956568.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h2 id="MVC职责分析"><a href="#MVC职责分析" class="headerlink" title="MVC职责分析"></a>MVC职责分析</h2><ul>
 <li><p>Controller：控制器</p>
 <ul>
@@ -339,11 +339,11 @@
 <h3 id="中心控制器"><a href="#中心控制器" class="headerlink" title="中心控制器"></a>中心控制器</h3><p>Spring MVC框架以请求为驱动 , 围绕一个中心Servlet分派请求及提供其他功能，DispatcherServlet是一个实际的Servlet (它继承自HttpServlet 基类)。</p>
 <p>SpringMVC的原理如下图所示：</p>
 <p>​    当发起请求时被前置的控制器拦截到请求，根据请求参数生成代理请求，找到请求对应的实际控制器，控制器处理请求，创建数据模型，访问数据库，将模型响应给中心控制器，控制器使用模型与视图渲染视图结果，将结果返回给中心控制器，再将结果返回给请求者。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7KwPOPWq00pMJiaK86lF6BjIaosVziclWLEJQkzobxHrpHcmtu2yTeVWPmEI4Yq5PaicS52VaJt8dYfQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://images.weserv.nl/?url=https://i0.hdslb.com/bfs/album/d3318d96dfdee2ee58b6bee91fde63570542aeb8.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h3 id="SpringMVC执行原理"><a href="#SpringMVC执行原理" class="headerlink" title="SpringMVC执行原理"></a>SpringMVC执行原理</h3><blockquote>
 <p>图为SpringMVC的一个较完整的流程图，实线表示SpringMVC框架提供的技术，不需要开发者实现，虚线表示需要开发者实现</p>
 </blockquote>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7KwPOPWq00pMJiaK86lF6BjIbmPOkY8TxF6qvGAGXxC7dArYcr8uJlWoVC4aF4bfxgCGCD8sHg8mgw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://images.weserv.nl/?url=https://i0.hdslb.com/bfs/album/825f31d6c644d7b4d5c7a270d3c5244f93282738.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <ol>
 <li><p>DispatcherServlet表示前置控制器，是整个SpringMVC的控制中心。用户发出请求，DispatcherServlet接收请求并拦截请求。</p>
 <blockquote>
