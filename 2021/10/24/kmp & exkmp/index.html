@@ -251,7 +251,7 @@
 <ul>
 <li><p><strong>What is <code>next[]</code> ?</strong></p>
 <p>针对模式串，<code>next[j]</code> 表示模式串下标 <code>j</code> <strong>之前</strong> 最长<strong>相同前后缀</strong>的长度，这不重要。</p>
-<p>你只需要记住：**<code>next[j]</code>表示当 <code>P[j]!=S[i]</code> 时，<code>j</code> 指针的下一步移动位置**。</p>
+<p>你只需要记住：<code>next[j]</code>表示当 <code>P[j]!=S[i]</code> 时，<code>j</code> 指针的<strong>下一步移动位置</strong>。</p>
 <p>偷个好图：</p>
 <p><img src="https://pic4.zhimg.com/v2-817073ca77f6c75d234392f207a3c81b_b.webp" srcset="/img/loading.gif" lazyload alt="img"></p>
 </li>
@@ -277,7 +277,7 @@
 </blockquote>
 <ul>
 <li><p><strong>What are they?</strong></p>
-<p>**next[i] **: 对模式串，表示 <code>P[i...m-1]</code> 与 <code>P[0...m-1]</code> 的最长公共前缀</p>
+<p><strong>next[i]</strong>: 对模式串，表示 <code>P[i...m-1]</code> 与 <code>P[0...m-1]</code> 的最长公共前缀</p>
 <p><strong>extend[i]</strong> : 对主串和模式串，表示 <code>S[i...n-1]</code>与 <code>P[0...m-1]</code> 的最长公共前缀</p>
 </li>
 <li><p><strong>How to build them?</strong></p>
