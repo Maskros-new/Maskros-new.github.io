@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      972 字
+      997 字
     </span>
   
 
@@ -290,7 +290,7 @@
 <blockquote>
 <p>此处变量设置会和🐎有所出入，主要是理解过程😅</p>
 </blockquote>
-<p>① 首先设置两个变量，<code>a</code> 和 <code>p</code>，<code>p</code> 代表以<code>a</code>为起始位置的字符匹配成功的最右边界，’p = 最后一个匹配成功位置+1’ ，即 <code>S[a...p) == P[0...p-a) </code>，假设下面基于<code>S[i]=P[i-a]</code> 的几种情况开始讨论：</p>
+<p>① 假设当前 <code>S</code> 串遍历到位置<code>i </code>, 即<code>extend[0...i-1]</code>的值均以求出；首先设置两个变量，<code>a</code> 和 <code>p</code>，<code>p</code> 代表以<code>a</code>为起始位置的字符匹配成功的最右边界，’p = 最后一个匹配成功位置+1’ ，即 <code>S[a...p) == P[0...p-a) </code>，假设下面基于<code>S[i]</code> 对应 <code>P[i-a]</code> 的几种情况开始讨论：</p>
 <p>② 如图所示，如果 <code>i+next[i-a] &lt; p</code> ，根据 <code>next[]</code>  数组的定义，易知 <code>extend[i] = next[i-a]</code></p>
 <p><img src="https://i.bmp.ovh/imgs/2021/10/b4e3168596aa7ae5.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>③ 如果 <code>i+next[i-a] == p</code> ，此时<code>S[p]!=P[p-a]</code> 且<code>P[p-i]!=P[p-a]</code>，但是<code>S[p]==P[p-i]</code>的可能仍然存在，所以直接从 <code>S[p]</code> 与 <code>P[p-i]</code> 开始向后匹配即可</p>
