@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="Crawler in THEOL">
+  <meta name="author" content="Maskros">
+  <meta name="keywords" content="">
+  
+  <title>进行一个毛概题库的爬 - Maskros&#39; Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"maskros.icu","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"a9682086becb148caa4f1270cab9fc97","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Maskros</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/wait.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="进行一个毛概题库的爬">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Maskros
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-10 22:43" pubdate>
+        2021年11月10日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">进行一个毛概题库的爬</h1>
+            
+            <div class="markdown-body">
+              <h1 id="进行一个毛概题库的爬"><a href="#进行一个毛概题库的爬" class="headerlink" title="进行一个毛概题库的爬"></a>进行一个毛概题库的爬</h1><blockquote>
+<p>前言：🐷b毛概题库要截止了，几个时间段的题库各自有截止日期😅，眼见着ddl就要到了可👴又不想去刷，所以萌生了借助python爬虫来进行偷懒的想法</p>
+</blockquote>
+<h2 id="办事流程"><a href="#办事流程" class="headerlink" title="办事流程"></a>办事流程</h2><blockquote>
+<p>由于之前👴说过：“python狗都不用”，“用python的都沙比” 的名言，所以一开始是拒绝的，但是迫于现状，所以简单突击了几天，学到了一些知识，实战用到的也就只有不到 1/5</p>
+</blockquote>
+<p>需求：</p>
+<p>题库共计165左右的题目，每次测试15道题，5单选5多选5判断，提交做题结果之后方可获得所有题的正确答案，所以我们的思路就是从所有测试尝试的反馈页面中爬取题目题面和正确答案并持久化存储，over</p>
+<p>**原先步骤(全自动)**：</p>
+<ol>
+<li><p>模拟登录</p>
+<p>由于这个b bb平台需要信息门户登录成功之后才能做那b题，所以需要模拟登陆之后才能请求到做题结果的页面，所以我们利用session会话对象在向登录页面发起请求后储存cookie，这样后面直接用session对象再对需求的页面进行get请求即可。</p>
+</li>
+<li><p>自动做题</p>
+<p>其实只需要点进去题库，选择开始新尝试，然后提交即可，要说模拟这个过程也可以，就是有点麻烦</p>
+</li>
+<li><p>开爬</p>
+<p>get到了页面之后，利用xpath进行数据解析，持久化存储即可</p>
+</li>
+</ol>
+<blockquote>
+<p>想法很好，后来出现了一些问题，所以以下是最终流程：</p>
+</blockquote>
+<hr>
+<p>**现实步骤(半自动)**：</p>
+<ol>
+<li><p>模拟登录(x) 手动登录(√)</p>
+<p>按照原先的想法模拟登陆，返回的消息也是登陆成功，但是请求所需页面是还是被拦截了，需要重新登录，由于才疏学浅，一时不知道如何是好，干脆直接手动登录后，利用浏览器F12，找到登录的cookie，<strong>手动复制</strong>到源码中的 headers 内，直接用 requests 进行post和get的请求即可获得所需页面</p>
+</li>
+<li><p>自动做题(x) 手动点击(√)</p>
+<p>这个也没实现，因为有点麻烦，不如自己点，反正也就两下🤓</p>
+</li>
+<li><p>自动开爬 ！(终于自动了)</p>
+<ol>
+<li><p>get到所有尝试的页面，利用xpath解析到对应每次做题结果的 <code>&lt;a&gt;</code> 标签的href地址存到 list 中，拼接成完整的url</p>
+</li>
+<li><p>对每个url 利用xpath解析到对应题目和答案的标签，根据题目类型分别存储，利用字典存储，题目名称为key，题目答案为value，为了防止存储重复题目，每次存储前先查询key是否存在，不存在再存入字典中，写入文件的同时计数器+1，方便统计爬取题目的个数</p>
+</li>
+<li><p>冻手冻手</p>
+</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>没啥技术含量，直接上🐴</p>
+</blockquote>
+<h2 id="🐴来"><a href="#🐴来" class="headerlink" title="🐴来"></a>🐴来</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    session = requests.Session()<br>    detail_url = <span class="hljs-string">&#x27;https://wlkc.ouc.edu.cn&#x27;</span><br>    <span class="hljs-comment"># 使用现成的cookie直接绕过登录页面</span><br>    headers = &#123;<br>        <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36&#x27;</span>,<br>        <span class="hljs-string">&#x27;Cookie&#x27;</span>: <span class="hljs-string">&#x27;JSESSIONID=D7F909CFC0867C34B637056F90EF6F82; LOGIN=3139303230303331303330; UM_distinctid=17bcb2f4e579ab-0e328a4e032f8-a7d193d-144000-17bcb2f4e58315; COMPANY_ID=10122; session_id=C5213DCE7771258BD6D197CB9F9EF42E; s_session_id=29620728AB303E7B331F423AC2F6311B; web_client_cache_guid=96d181ba-548a-4b74-8724-97e4c2772026; ID=444a594d59682f527a70303d; PASSWORD=5569576f51734a6670786b3d; SCREEN_NAME=4f566b646b73396b79642f396274486b665a503656773d3d&#x27;</span>,<br>    &#125;<br>    <span class="hljs-comment"># 总尝试页面</span><br>    total_url = <span class="hljs-string">&#x27;https://wlkc.ouc.edu.cn/webapps/gradebook/do/student/viewAttempts?method=list&amp;course_id=_13492_1&amp;outcome_definition_id=_94418_1&amp;outcome_id=_2037807_1&#x27;</span><br>    page_text_tot = session.get(url=total_url, headers=headers)<br>    tree_tot = etree.HTML(page_text_tot.text)<br>    attempt_list = tree_tot.xpath(<span class="hljs-string">&#x27;//div[@class=&quot; columnStep clearfix&quot;]//a/@href&#x27;</span>)<br>    <span class="hljs-comment"># print(attempt_list)</span><br><br>    <span class="hljs-comment"># 为了去重使用字典保存键值对</span><br>    danxuan = &#123;&#125;<br>    duoxuan = &#123;&#125;<br>    panduan = &#123;&#125;<br>    cnt1 = <span class="hljs-number">0</span><br>    cnt2 = <span class="hljs-number">0</span><br>    cnt3 = <span class="hljs-number">0</span><br><br>    fp1 = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./maogai/Round_1/单选.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    fp2 = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./maogai/Round_1/多选.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    fp3 = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./maogai/Round_1/判断.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br><br>    times = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> attempt <span class="hljs-keyword">in</span> attempt_list:<br>        times = times + <span class="hljs-number">1</span><br>        new_url = detail_url + attempt<br>        <span class="hljs-comment"># print(new_url)</span><br>        page_text = session.get(url=new_url, headers=headers)<br>        tree = etree.HTML(page_text.text)<br>        pro_list = tree.xpath(<span class="hljs-string">&#x27;//ul[@id=&quot;content_listContainer&quot;]/li&#x27;</span>)<br><br>        cnt = <span class="hljs-number">0</span><br>        <span class="hljs-comment"># 每次尝试的内容进行爬取</span><br>        <span class="hljs-keyword">for</span> li <span class="hljs-keyword">in</span> pro_list:<br>            cnt = cnt + <span class="hljs-number">1</span><br>            pro_name = li.xpath(<span class="hljs-string">&#x27;normalize-space(.//div[@class=&quot;vtbegenerated inlineVtbegenerated&quot;])&#x27;</span>)<br>            pro_answer_1 = li.xpath(<span class="hljs-string">&#x27;.//div[@class=&quot;vtbegenerated inlineVtbegenerated&quot;]//label/text()&#x27;</span>)<br>            pro_answer_1 = <span class="hljs-built_in">str</span>(pro_answer_1)<br>            pro_answer_2 = li.xpath(<span class="hljs-string">&#x27;normalize-space(.//span[@class=&quot;answerTextSpan&quot;])&#x27;</span>)<br>            <br>            <span class="hljs-keyword">if</span> cnt &lt;= <span class="hljs-number">5</span>:<br>                <span class="hljs-keyword">if</span> pro_name <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> danxuan:<br>                    cnt1 = cnt1 + <span class="hljs-number">1</span><br>                    danxuan[pro_name] = pro_answer_1<br>                    fp1.write(<span class="hljs-built_in">str</span>(cnt1) + <span class="hljs-string">&#x27;. &#x27;</span> + pro_name+<span class="hljs-string">&#x27;\n&#x27;</span>+pro_answer_1+<span class="hljs-string">&#x27;\n&#x27;</span>)<br>            <span class="hljs-keyword">elif</span> cnt &lt;= <span class="hljs-number">10</span>:<br>                <span class="hljs-keyword">if</span> pro_name <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> duoxuan:<br>                    cnt2 = cnt2 + <span class="hljs-number">1</span><br>                    duoxuan[pro_name] = pro_answer_1<br>                    fp2.write(<span class="hljs-built_in">str</span>(cnt2) + <span class="hljs-string">&#x27;. &#x27;</span> + pro_name + <span class="hljs-string">&#x27;\n&#x27;</span> +pro_answer_1+<span class="hljs-string">&#x27;\n&#x27;</span>)<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">if</span> pro_name <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> panduan:<br>                    cnt3 = cnt3 +<span class="hljs-number">1</span><br>                    panduan[pro_name] = pro_answer_2<br>                    fp3.write(<span class="hljs-built_in">str</span>(cnt3) + <span class="hljs-string">&#x27;. &#x27;</span> + pro_name + <span class="hljs-string">&#x27;\n&#x27;</span>+pro_answer_2+<span class="hljs-string">&#x27;\n&#x27;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;times: &#x27;</span> + <span class="hljs-built_in">str</span>(times) + <span class="hljs-string">&#x27; 单选: &#x27;</span> + <span class="hljs-built_in">str</span>(cnt1) + <span class="hljs-string">&#x27;,多选：&#x27;</span> + <span class="hljs-built_in">str</span>(cnt2) + <span class="hljs-string">&#x27;,判断: &#x27;</span> + <span class="hljs-built_in">str</span>(cnt3) )<br>   <br>    fp1.close()<br>    fp2.close()<br>    fp3.close()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;total: &#x27;</span> + <span class="hljs-built_in">str</span>(cnt1+cnt2+cnt3) + <span class="hljs-string">&#x27; problems have been downloaded.&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>一个小实战，效果还行，也就这样吧，全自动有点蠢😅，半自动也还行😅，以后会想办法修改自动登录的问题，可以提点意见</p>
+<p>github项目地址 <a target="_blank" rel="noopener" href="https://github.com/Maskros-new/THEOL-questions-crawler">link</a>  爬取的题库在文件夹里</p>
+<p>over大火</p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/PROJECT/">PROJECT</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Crawler/">Crawler</a>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/requests/">requests</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/10/crawler/">
+                        <span class="hidden-mobile">python爬虫杂记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"Nmc1pCkN608WUnjzl1OVUJwp-gzGzoHsz","appKey":"AgMMODlKtVQJ8D2ksYM7tqFv","placeholder":"leave your comment here...","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a9682086becb148caa4f1270cab9fc97";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
