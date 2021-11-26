@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="kmp training">
+  <meta name="author" content="Maskros">
+  <meta name="keywords" content="">
+  
+  <title>kmp专题训练 - Maskros&#39; Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"maskros.icu","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"a9682086becb148caa4f1270cab9fc97","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Maskros</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/wait.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="kmp专题训练">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Maskros
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-26 21:59" pubdate>
+        2021年11月26日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">kmp专题训练</h1>
+            
+            <div class="markdown-body">
+              <h1 id="kmp-ekmp-专题训练"><a href="#kmp-ekmp-专题训练" class="headerlink" title="kmp/ekmp 专题训练"></a>kmp/ekmp 专题训练</h1><blockquote>
+<p>🐴糙人蠢凑合看</p>
+</blockquote>
+<h2 id="0x01-剪花布条-HDU-2087"><a href="#0x01-剪花布条-HDU-2087" class="headerlink" title="0x01 剪花布条 HDU-2087"></a>0x01 剪花布条 HDU-2087</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://vjudge.net/problem/HDU-2087">link</a></p>
+<p>纯纯kmp裸题，不可重叠计数 </p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">kmp_pre</span><span class="hljs-params">(string p, <span class="hljs-keyword">int</span> next[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> i, j;<br>    j = next[<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>;<br>    i = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (i &lt; p.<span class="hljs-built_in">length</span>())<br>    &#123;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-number">-1</span> != j &amp;&amp; p[i] != p[j])<br>            j = next[j];<br>        next[++i] = ++j;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">kmp_Count</span><span class="hljs-params">(string x, string y, <span class="hljs-keyword">int</span> next[])</span></span><br><span class="hljs-function"></span>&#123; <br>    <span class="hljs-keyword">int</span> i, j;<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">kmp_pre</span>(x, next);<br>    i = j = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (i &lt; y.<span class="hljs-built_in">length</span>())<br>    &#123;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-number">-1</span> != j &amp;&amp; y[i] != x[j])<br>            j = next[j];<br>        i++;<br>        j++;<br>        <span class="hljs-keyword">if</span> (j &gt;= x.<span class="hljs-built_in">length</span>())<br>        &#123;<br>            ans++;<br>            j = <span class="hljs-number">0</span>;       <span class="hljs-comment">//不可重叠计数</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    string a,b;<br>    <span class="hljs-keyword">int</span> nxt[<span class="hljs-number">1005</span>];<br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)&#123;<br>        cin&gt;&gt;a;<br>        <span class="hljs-keyword">if</span>(a==<span class="hljs-string">&quot;#&quot;</span>) <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">else</span>&#123;<br>            cin&gt;&gt;b;<br>            <span class="hljs-built_in">memset</span>(nxt,<span class="hljs-number">0</span>,b.<span class="hljs-built_in">length</span>()+<span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">int</span> ans=<span class="hljs-built_in">kmp_Count</span>(b,a,nxt);<br>            cout&lt;&lt;ans&lt;&lt;endl;            <br>        &#125;<br>    &#125;    <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="0x02-Secret-HDU-6153"><a href="#0x02-Secret-HDU-6153" class="headerlink" title="0x02 Secret HDU-6153"></a>0x02 Secret HDU-6153</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://vjudge.net/problem/HDU-6153">link</a></p>
+<p>题意：</p>
+<p>给两个串s1,s2，求s2所有的后缀子串的长度乘在主串s1中出现的次数之和</p>
+<p>解法：</p>
+<p>挨个枚举后缀是🐷b做法，我们可以先把字符串<strong>翻转</strong>，这样后缀变前缀，就来到了我们熟悉的kmp匹配环节</p>
+<p>解法一：exkmp</p>
+<p>翻转后发现这不就正好利用extend[]数组的定义直接求解，做一遍ekmp，遍历extend[]数组，对每个值做 <code>(1+entend[i])*entend[i]&gt;&gt;1</code> 处理，全部加和即为答案</p>
+<p>解法二：kmp</p>
+<p>利用对next[]数组的理解，暂时鸽了，因为想了很久没想明白</p>
+</blockquote>
+<p>解法一： ekmp </p>
+<blockquote>
+<p>猛wa之后给了我深刻的教训：数组开 longlong😅😅</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> mod = <span class="hljs-number">1000000007</span>;<br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> maxn 1000005</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rep(i,x,y) for(int i=x;i&lt;y;i++)</span><br>ll nxt[maxn], extend[maxn];<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ekmp_pre</span><span class="hljs-params">(string x, ll next[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> m = x.<span class="hljs-built_in">length</span>();<br>    next[<span class="hljs-number">0</span>] = m;<br>    <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (j + <span class="hljs-number">1</span> &lt; m &amp;&amp; x[j] == x[j + <span class="hljs-number">1</span>])<br>        j++;<br>    next[<span class="hljs-number">1</span>] = j;<br>    <span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; m; i++)<br>    &#123;<br>        <span class="hljs-keyword">int</span> p = next[k] + k - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">int</span> L = next[i - k];<br>        <span class="hljs-keyword">if</span> (i + L &lt; p + <span class="hljs-number">1</span>)<br>            next[i] = L;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            j = <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, p - i + <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">while</span> (i + j &lt; m &amp;&amp; x[i + j] == x[j])<br>                j++;<br>            next[i] = j;<br>            k = i;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-function">ll <span class="hljs-title">ekmp</span><span class="hljs-params">(string x, string y, ll next[], ll extend[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">ekmp_pre</span>(x, next);<br>    <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;<br>    ll ret = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> m = x.<span class="hljs-built_in">length</span>(), n = y.<span class="hljs-built_in">length</span>();<br>    <span class="hljs-keyword">while</span> (j &lt; n &amp;&amp; j &lt; m &amp;&amp; x[j] == y[j])<br>        j++;<br>    extend[<span class="hljs-number">0</span>] = j;<br>    <span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++)<br>    &#123;<br>        <span class="hljs-keyword">int</span> p = extend[k] + k - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">int</span> L = next[i - k];<br>        <span class="hljs-keyword">if</span> (i + L &lt; p + <span class="hljs-number">1</span>)<br>            extend[i] = L;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            j = <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, p - i + <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">while</span> (i + j &lt; n &amp;&amp; j &lt; m &amp;&amp; y[i + j] == x[j])<br>                j++;<br>            extend[i] = j;<br>            k = i;<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">rep</span>(i, <span class="hljs-number">0</span>, n)<br>    &#123;<br>        ret = (ret % mod + (((<span class="hljs-number">1</span> + extend[i])* extend[i])&gt;&gt;<span class="hljs-number">1</span>) % mod) % mod;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> t;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    cin &gt;&gt; t;<br>    <span class="hljs-keyword">while</span> (t--)<br>    &#123;<br>        string s, p;<br>        cin &gt;&gt; s &gt;&gt; p;<br>        <span class="hljs-built_in">reverse</span>(s.<span class="hljs-built_in">begin</span>(), s.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-built_in">reverse</span>(p.<span class="hljs-built_in">begin</span>(), p.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-built_in">memset</span>(nxt, <span class="hljs-number">0</span>, p.<span class="hljs-built_in">length</span>() + <span class="hljs-number">1</span>);<br>        <span class="hljs-built_in">memset</span>(extend, <span class="hljs-number">0</span>, s.<span class="hljs-built_in">length</span>() + <span class="hljs-number">1</span>);<br>        ll ans;<br>        ans=<span class="hljs-built_in">ekmp</span>(p, s, nxt, extend);<br>        cout&lt;&lt;ans&lt;&lt;endl;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>解法二：kmp</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 寄</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="0x03-Cow-Patterns-POJ-3167"><a href="#0x03-Cow-Patterns-POJ-3167" class="headerlink" title="0x03 Cow Patterns POJ-3167"></a>0x03 Cow Patterns POJ-3167</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://vjudge.net/problem/POJ-3167">link</a> 牛题</p>
+<p>题意：</p>
+<p><strong>模式串可以浮动的模式匹配问题</strong></p>
+<p>给出模式串的相对大小顺序，需要找出在主串中模式串的匹配次数和起始位置</p>
+<p>样例：</p>
+<p>S: 5 6 2 10 10 7 3 2 9  </p>
+<p>P: 1 4 4 3 2 1</p>
+<p>故 2 10 10 7 3 2 符合要求，输出为 1 3</p>
+<p>解法： KMP+前缀和</p>
+<p>统计比当前数小，和于当前数相等的，然后进行kmp</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//POJ 3167</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">100005</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXM = <span class="hljs-number">25005</span>;<br><br><span class="hljs-keyword">int</span> a[MAXN];       <span class="hljs-comment">// 存放主串</span><br><span class="hljs-keyword">int</span> b[MAXM];       <span class="hljs-comment">// 存放模式串</span><br><span class="hljs-keyword">int</span> as[MAXN][<span class="hljs-number">30</span>];  <span class="hljs-comment">// as[i][j] = k表示0 - i位中有k个数字j</span><br><span class="hljs-keyword">int</span> bs[MAXM][<span class="hljs-number">30</span>];  <span class="hljs-comment">// bs[i][j] = k表示0 - i位中有k个数字j</span><br><span class="hljs-keyword">int</span> next[MAXM];    <span class="hljs-comment">// 存放模式串失配时的移动位数</span><br>vector&lt;<span class="hljs-keyword">int</span>&gt; ans;   <span class="hljs-comment">// 存放结果</span><br><span class="hljs-keyword">int</span> n, m, s;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Init</span><span class="hljs-params">()</span> </span>&#123;<br>    ans.<span class="hljs-built_in">clear</span>();<br>    <span class="hljs-built_in">memset</span>(as, <span class="hljs-number">0</span>, <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(as));<br>    <span class="hljs-built_in">memset</span>(bs, <span class="hljs-number">0</span>, <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(bs));<br>    as[<span class="hljs-number">1</span>][a[<span class="hljs-number">1</span>]] = <span class="hljs-number">1</span>;<br>    bs[<span class="hljs-number">1</span>][b[<span class="hljs-number">1</span>]] = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; ++i) &#123;<br>        <span class="hljs-built_in">memcpy</span>(as[i], as[i - <span class="hljs-number">1</span>], <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(as[<span class="hljs-number">0</span>]));<br>        ++as[i][a[i]];<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= m; ++i) &#123;<br>        <span class="hljs-built_in">memcpy</span>(bs[i], bs[i - <span class="hljs-number">1</span>], <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(bs[<span class="hljs-number">0</span>]));<br>        ++bs[i][b[i]];<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">GetNext</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-built_in">memset</span>(next, <span class="hljs-number">0</span>, <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(next));<br>    <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, j = <span class="hljs-number">0</span>, k = <span class="hljs-number">0</span>;<br>    next[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (i &lt;= m) &#123;<br>        <span class="hljs-keyword">int</span> si = <span class="hljs-number">0</span>, sj = <span class="hljs-number">0</span>, ei = <span class="hljs-number">0</span>, ej = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (k = <span class="hljs-number">1</span>; k &lt; b[i]; ++k)<br>            si += bs[i][k] - bs[i - j][k];<br>        ei = bs[i][k] - bs[i - j][k];<br>        <span class="hljs-keyword">for</span> (k = <span class="hljs-number">1</span>; k &lt; b[j]; ++k)<br>            sj += bs[j][k];<br>        ej = bs[j][k];<br>        <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> == j || (si == sj &amp;&amp; ei == ej))<br>            next[++i] = ++j;<br>        <span class="hljs-keyword">else</span><br>            j = next[j];<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Kmp</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, j = <span class="hljs-number">1</span>, k = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (i &lt;= n) &#123;<br>        <span class="hljs-keyword">int</span> si = <span class="hljs-number">0</span>, sj = <span class="hljs-number">0</span>, ei = <span class="hljs-number">0</span>, ej = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (k = <span class="hljs-number">1</span>; k &lt; a[i]; ++k)<br>            si += as[i][k] - as[i - j][k];<br>        ei = as[i][k] - as[i - j][k];<br>        <span class="hljs-keyword">for</span> (k = <span class="hljs-number">1</span>; k &lt; b[j]; ++k)<br>            sj += bs[j][k];<br>        ej = bs[j][k];<br>        <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> == j || (si == sj &amp;&amp; ei == ej))<br>            ++i, ++j;<br>        <span class="hljs-keyword">else</span><br>            j = next[j];<br>        <span class="hljs-keyword">if</span> (j == m + <span class="hljs-number">1</span>) &#123;<br>            ans.<span class="hljs-built_in">push_back</span>(i - m);<br>            j = next[j];<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>, &amp;n, &amp;m, &amp;s) == <span class="hljs-number">3</span>) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++i)<br>            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;a[i]);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++i)<br>            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;b[i]);<br>        <span class="hljs-built_in">Init</span>();<br>        <span class="hljs-built_in">GetNext</span>();<br>        <span class="hljs-built_in">Kmp</span>();<br>        <span class="hljs-keyword">size_t</span> len = ans.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, len);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; len; ++i)<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, ans[i]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/ALGORITHMS/">ALGORITHMS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/ACM/">ACM</a>
+                    
+                      <a class="hover-with-bg" href="/tags/algorithm/">algorithm</a>
+                    
+                      <a class="hover-with-bg" href="/tags/note/">note</a>
+                    
+                      <a class="hover-with-bg" href="/tags/string/">string</a>
+                    
+                      <a class="hover-with-bg" href="/tags/kmp/">kmp</a>
+                    
+                      <a class="hover-with-bg" href="/tags/dp/">dp</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">前缀和</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/25/2021ccpc_guangzhou/">
+                        <span class="hidden-mobile">2021CCPC广州站vp</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"Nmc1pCkN608WUnjzl1OVUJwp-gzGzoHsz","appKey":"AgMMODlKtVQJ8D2ksYM7tqFv","placeholder":"leave your comment here...","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a9682086becb148caa4f1270cab9fc97";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
