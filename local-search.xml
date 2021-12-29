@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>竞赛记录</title>
+    <link href="/2021/12/30/%E7%AB%9E%E8%B5%9B%E8%AE%B0%E5%BD%95/"/>
+    <url>/2021/12/30/%E7%AB%9E%E8%B5%9B%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="竞赛记录"><a href="#竞赛记录" class="headerlink" title="竞赛记录"></a>竞赛记录</h1><blockquote><p>= 打铁记录</p></blockquote><h2 id="2020-10-CCPC威海打铁"><a href="#2020-10-CCPC威海打铁" class="headerlink" title="2020.10 CCPC威海打铁"></a>2020.10 CCPC威海打铁</h2><h2 id="2020-10-17-蓝桥省二打铁"><a href="#2020-10-17-蓝桥省二打铁" class="headerlink" title="2020.10.17 蓝桥省二打铁"></a>2020.10.17 蓝桥省二打铁</h2><h2 id="2020-11-华为杯校赛三等"><a href="#2020-11-华为杯校赛三等" class="headerlink" title="2020.11 华为杯校赛三等"></a>2020.11 华为杯校赛三等</h2><h2 id="2020-12-ICPC南京线上赛打铁"><a href="#2020-12-ICPC南京线上赛打铁" class="headerlink" title="2020.12 ICPC南京线上赛打铁"></a>2020.12 ICPC南京线上赛打铁</h2><h2 id="2021-3-ICPC山东省赛打铁"><a href="#2021-3-ICPC山东省赛打铁" class="headerlink" title="2021.3 ICPC山东省赛打铁"></a>2021.3 ICPC山东省赛打铁</h2><blockquote><p>这也能铁？纯废物</p></blockquote><h2 id="2021-5-16-ICPC银川现场赛打铁"><a href="#2021-5-16-ICPC银川现场赛打铁" class="headerlink" title="2021.5.16 ICPC银川现场赛打铁"></a>2021.5.16 ICPC银川现场赛打铁</h2><blockquote><p>阅读签到WA32，卡行末空格AC+6，Trie当时没掌握</p></blockquote><h2 id="2021-4-18-蓝桥省二打铁"><a href="#2021-4-18-蓝桥省二打铁" class="headerlink" title="2021.4.18 蓝桥省二打铁"></a>2021.4.18 蓝桥省二打铁</h2><h2 id="2021-8-21-百度之星复赛打铁"><a href="#2021-8-21-百度之星复赛打铁" class="headerlink" title="2021.8.21 百度之星复赛打铁"></a>2021.8.21 百度之星复赛打铁</h2><h2 id="2021-8-CCPC网络预选赛打铁"><a href="#2021-8-CCPC网络预选赛打铁" class="headerlink" title="2021.8 CCPC网络预选赛打铁"></a>2021.8 CCPC网络预选赛打铁</h2><h2 id="2021-9-ICPC网络预选赛打铁"><a href="#2021-9-ICPC网络预选赛打铁" class="headerlink" title="2021.9 ICPC网络预选赛打铁"></a>2021.9 ICPC网络预选赛打铁</h2><h2 id="2021-10-CCPC网络赛重赛打铁"><a href="#2021-10-CCPC网络赛重赛打铁" class="headerlink" title="2021.10 CCPC网络赛重赛打铁"></a>2021.10 CCPC网络赛重赛打铁</h2><h2 id="2021-11-28-ICPC上海线上赛打铁"><a href="#2021-11-28-ICPC上海线上赛打铁" class="headerlink" title="2021.11.28 ICPC上海线上赛打铁"></a>2021.11.28 ICPC上海线上赛打铁</h2><blockquote><p>卡树上DP签到，DP变形</p></blockquote><h2 id="2021-12-CCSP分赛铜首华东rk71"><a href="#2021-12-CCSP分赛铜首华东rk71" class="headerlink" title="2021.12 CCSP分赛铜首华东rk71"></a>2021.12 CCSP分赛铜首华东rk71</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>LIFE</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ACM</tag>
+      
+      <tag>Life</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Notes on Kurose&#39;s Computer Networking：A TOP-DOWN APPROACH</title>
     <link href="/2021/12/10/ComputerNetwork_Note/"/>
     <url>/2021/12/10/ComputerNetwork_Note/</url>
@@ -49,9 +76,9 @@
       
       <tag>ACM</tag>
       
-      <tag>string</tag>
-      
       <tag>algorithm</tag>
+      
+      <tag>string</tag>
       
       <tag>dp</tag>
       
@@ -84,11 +111,11 @@
       
       <tag>ACM</tag>
       
-      <tag>string</tag>
-      
       <tag>note</tag>
       
       <tag>algorithm</tag>
+      
+      <tag>string</tag>
       
       <tag>Trie</tag>
       
@@ -117,9 +144,9 @@
       
       <tag>ACM</tag>
       
-      <tag>string</tag>
-      
       <tag>algorithm</tag>
+      
+      <tag>string</tag>
       
       <tag>kmp</tag>
       
@@ -449,11 +476,11 @@
       
       <tag>ACM</tag>
       
-      <tag>string</tag>
-      
       <tag>note</tag>
       
       <tag>algorithm</tag>
+      
+      <tag>string</tag>
       
     </tags>
     
