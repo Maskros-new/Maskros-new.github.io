@@ -544,6 +544,13 @@
   </url>
   
   <url>
+    <loc>https://maskros.top/tags/WeRoBot/</loc>
+    <lastmod>2022-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://maskros.top/tags/java/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -558,13 +565,6 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/WeRoBot/</loc>
-    <lastmod>2022-05-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://maskros.top/tags/%E5%B7%AE%E5%88%86/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -573,6 +573,13 @@
   
   <url>
     <loc>https://maskros.top/tags/%E5%8D%9A%E5%BC%88/</loc>
+    <lastmod>2022-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://maskros.top/tags/requests/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -622,13 +629,6 @@
   
   <url>
     <loc>https://maskros.top/tags/Dijkstra/</loc>
-    <lastmod>2022-05-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://maskros.top/tags/requests/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
