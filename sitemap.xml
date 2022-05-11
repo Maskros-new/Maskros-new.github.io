@@ -495,6 +495,13 @@
   </url>
   
   <url>
+    <loc>https://maskros.top/tags/dp/</loc>
+    <lastmod>2022-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://maskros.top/tags/bfs/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -509,7 +516,14 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/dp/</loc>
+    <loc>https://maskros.top/tags/Life/</loc>
+    <lastmod>2022-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://maskros.top/tags/Crawler/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -523,21 +537,7 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/WeRoBot/</loc>
-    <lastmod>2022-05-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://maskros.top/tags/python/</loc>
-    <lastmod>2022-05-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://maskros.top/tags/Crawler/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -558,7 +558,7 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/Life/</loc>
+    <loc>https://maskros.top/tags/WeRoBot/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -573,13 +573,6 @@
   
   <url>
     <loc>https://maskros.top/tags/%E5%8D%9A%E5%BC%88/</loc>
-    <lastmod>2022-05-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://maskros.top/tags/requests/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -635,21 +628,14 @@
   </url>
   
   <url>
+    <loc>https://maskros.top/tags/requests/</loc>
+    <lastmod>2022-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://maskros.top/tags/algorithm/</loc>
-    <lastmod>2022-05-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://maskros.top/tags/LCA/</loc>
-    <lastmod>2022-05-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://maskros.top/tags/Trie/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -670,7 +656,21 @@
   </url>
   
   <url>
+    <loc>https://maskros.top/tags/Trie/</loc>
+    <lastmod>2022-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://maskros.top/tags/dfs/</loc>
+    <lastmod>2022-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://maskros.top/tags/LCA/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -749,14 +749,14 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/categories/NOTE/</loc>
+    <loc>https://maskros.top/categories/LIFE/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://maskros.top/categories/LIFE/</loc>
+    <loc>https://maskros.top/categories/NOTE/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -770,14 +770,14 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/categories/ALGORITHMS/</loc>
+    <loc>https://maskros.top/categories/ALGORITHM-TRAINING/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://maskros.top/categories/ALGORITHM-TRAINING/</loc>
+    <loc>https://maskros.top/categories/ALGORITHMS/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
