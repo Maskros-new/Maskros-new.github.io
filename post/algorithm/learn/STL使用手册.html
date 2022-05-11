@@ -1,1 +1,841 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><link href="/static/css/chunk-libs.eebac533.css" rel="stylesheet"><link href="/static/css/app.0d31776f.css" rel="stylesheet"><!-- hexo injector head_end start --><script rel="prefetch" async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/components/prism-core.js" data-manual></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/plugins/toolbar/prism-toolbar.min.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/themes/prism.min.css"/><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/plugins/toolbar/prism-toolbar.min.css"/><link rel="stylesheet" href="https://fonts.loli.net/css?family=Rubik" /><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/valine/1.4.9/Valine.min.js"></script><script rel="preload" src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.10.0/dist/av-min.js"></script><link rel="stylesheet" href="//at.alicdn.com/t/font_3157444_egj9oxl5hzj.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body id="body-container"><noscript><strong>We're sorry but Aurora Blog doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script>(function(e){function t(t){for(var a,n,u=t[0],i=t[1],c=t[2],l=0,p=[];l<u.length;l++)n=u[l],Object.prototype.hasOwnProperty.call(o,n)&&o[n]&&p.push(o[n][0]),o[n]=0;for(a in i)Object.prototype.hasOwnProperty.call(i,a)&&(e[a]=i[a]);f&&f(t);while(p.length)p.shift()();return s.push.apply(s,c||[]),r()}function r(){for(var e,t=0;t<s.length;t++){for(var r=s[t],a=!0,n=1;n<r.length;n++){var u=r[n];0!==o[u]&&(a=!1)}a&&(s.splice(t--,1),e=i(i.s=r[0]))}return e}var a={},n={runtime:0},o={runtime:0},s=[];function u(e){return i.p+"static/js/"+({404:"404",about:"about",archives:"archives",categories:"categories",page:"page",post:"post",result:"result",tags:"tags"}[e]||e)+"."+{404:"00d640a8",about:"024aacd1",archives:"574ac664",categories:"90aa5475",page:"a02618ad",post:"cebfbaa4",result:"39470350",tags:"2ad613f5"}[e]+".js"}function i(t){if(a[t])return a[t].exports;var r=a[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,i),r.l=!0,r.exports}i.e=function(e){var t=[],r={404:1,about:1,archives:1,categories:1,page:1,post:1,result:1,tags:1};n[e]?t.push(n[e]):0!==n[e]&&r[e]&&t.push(n[e]=new Promise((function(t,r){for(var a="static/css/"+({404:"404",about:"about",archives:"archives",categories:"categories",page:"page",post:"post",result:"result",tags:"tags"}[e]||e)+"."+{404:"1a6cd5bd",about:"32dfa3b0",archives:"c0d49bd5",categories:"10e2be12",page:"749ad047",post:"9f951a60",result:"10e2be12",tags:"10e2be12"}[e]+".css",o=i.p+a,s=document.getElementsByTagName("link"),u=0;u<s.length;u++){var c=s[u],l=c.getAttribute("data-href")||c.getAttribute("href");if("stylesheet"===c.rel&&(l===a||l===o))return t()}var p=document.getElementsByTagName("style");for(u=0;u<p.length;u++){c=p[u],l=c.getAttribute("data-href");if(l===a||l===o)return t()}var f=document.createElement("link");f.rel="stylesheet",f.type="text/css",f.onload=t,f.onerror=function(t){var a=t&&t.target&&t.target.src||o,s=new Error("Loading CSS chunk "+e+" failed.\n("+a+")");s.code="CSS_CHUNK_LOAD_FAILED",s.request=a,delete n[e],f.parentNode.removeChild(f),r(s)},f.href=o;var d=document.getElementsByTagName("head")[0];d.appendChild(f)})).then((function(){n[e]=0})));var a=o[e];if(0!==a)if(a)t.push(a[2]);else{var s=new Promise((function(t,r){a=o[e]=[t,r]}));t.push(a[2]=s);var c,l=document.createElement("script");l.charset="utf-8",l.timeout=120,i.nc&&l.setAttribute("nonce",i.nc),l.src=u(e);var p=new Error;c=function(t){l.onerror=l.onload=null,clearTimeout(f);var r=o[e];if(0!==r){if(r){var a=t&&("load"===t.type?"missing":t.type),n=t&&t.target&&t.target.src;p.message="Loading chunk "+e+" failed.\n("+a+": "+n+")",p.name="ChunkLoadError",p.type=a,p.request=n,r[1](p)}o[e]=void 0}};var f=setTimeout((function(){c({type:"timeout",target:l})}),12e4);l.onerror=l.onload=c,document.head.appendChild(l)}return Promise.all(t)},i.m=e,i.c=a,i.d=function(e,t,r){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},i.r=function(e){"undefined"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.t=function(e,t){if(1&t&&(e=i(e)),8&t)return e;if(4&t&&"object"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(i.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var a in e)i.d(r,a,function(t){return e[t]}.bind(null,a));return r},i.n=function(e){var t=e&&e.__esModule?function(){return e["default"]}:function(){return e};return i.d(t,"a",t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p="/",i.oe=function(e){throw console.error(e),e};var c=window["webpackJsonp"]=window["webpackJsonp"]||[],l=c.push.bind(c);c.push=t,c=c.slice();for(var p=0;p<c.length;p++)t(c[p]);var f=l;r()})([]);</script><script src="/static/js/chunk-libs.dc6146cd.js"></script><script src="/static/js/app.6d2c358d.js"></script></body></html>
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>STL使用手册 | Hexo</title>
+  <meta name="description" content="Standard Template Library">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STL使用手册">
+<meta property="og:url" content="https://maskros.top/post/algorithm/learn/STL%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C.html">
+<meta property="og:site_name" content="Maskros&#39; Blog">
+<meta property="og:description" content="Standard Template Library">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-13T06:15:31.000Z">
+<meta property="article:modified_time" content="2022-03-24T06:40:35.653Z">
+<meta property="article:author" content="Maskros">
+<meta property="article:tag" content="ACM">
+<meta property="article:tag" content="note">
+<meta property="article:tag" content="algorithm">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://maskros.top/post/algorithm/learn/STL%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Maskros&#39; Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ALGORITHM-TRAINING/">ALGORITHM TRAINING</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ALGORITHMS/">ALGORITHMS</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LIFE/">LIFE</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NOTE/">NOTE</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PROJECT/">PROJECT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SOLUTIONS/">SOLUTIONS</a><span class="category-list-count">21</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CCPC/" rel="tag">CCPC</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dijkstra/" rel="tag">Dijkstra</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LCA/" rel="tag">LCA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/" rel="tag">Life</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/" rel="tag">STL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ST%E8%A1%A8/" rel="tag">ST表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Trie/" rel="tag">Trie</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WeRoBot/" rel="tag">WeRoBot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/" rel="tag">bfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codeforces/" rel="tag">codeforces</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/" rel="tag">dp</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/euler/" rel="tag">euler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcd/" rel="tag">gcd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kmp/" rel="tag">kmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/" rel="tag">note</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nowcoder/" rel="tag">nowcoder</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/requests/" rel="tag">requests</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solutions/" rel="tag">solutions</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springMVC/" rel="tag">springMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/" rel="tag">sql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/" rel="tag">string</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9E%9A%E4%B8%BE/" rel="tag">二进制枚举</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%BC%88/" rel="tag">博弈</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%AE%E5%88%86/" rel="tag">差分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag">思维</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E8%A1%A8/" rel="tag">打表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%84%E9%80%A0/" rel="tag">构造</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/" rel="tag">欧拉降幂</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag">线段树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A8%E8%AE%BA/" rel="tag">讨论</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%86%E5%85%83/" rel="tag">逆元</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/ACM/" style="font-size: 14px;">ACM</a> <a href="/tags/CCPC/" style="font-size: 13.2px;">CCPC</a> <a href="/tags/ComputerNetwork/" style="font-size: 13px;">ComputerNetwork</a> <a href="/tags/Crawler/" style="font-size: 13.1px;">Crawler</a> <a href="/tags/Dijkstra/" style="font-size: 13px;">Dijkstra</a> <a href="/tags/LCA/" style="font-size: 13px;">LCA</a> <a href="/tags/Life/" style="font-size: 13.1px;">Life</a> <a href="/tags/STL/" style="font-size: 13px;">STL</a> <a href="/tags/ST%E8%A1%A8/" style="font-size: 13px;">ST表</a> <a href="/tags/Trie/" style="font-size: 13.1px;">Trie</a> <a href="/tags/WeRoBot/" style="font-size: 13px;">WeRoBot</a> <a href="/tags/algorithm/" style="font-size: 13.6px;">algorithm</a> <a href="/tags/bfs/" style="font-size: 13px;">bfs</a> <a href="/tags/codeforces/" style="font-size: 13.7px;">codeforces</a> <a href="/tags/dfs/" style="font-size: 13.1px;">dfs</a> <a href="/tags/dp/" style="font-size: 13.5px;">dp</a> <a href="/tags/euler/" style="font-size: 13px;">euler</a> <a href="/tags/gcd/" style="font-size: 13px;">gcd</a> <a href="/tags/java/" style="font-size: 13.1px;">java</a> <a href="/tags/kmp/" style="font-size: 13px;">kmp</a> <a href="/tags/note/" style="font-size: 13.8px;">note</a> <a href="/tags/nowcoder/" style="font-size: 13.4px;">nowcoder</a> <a href="/tags/python/" style="font-size: 13.2px;">python</a> <a href="/tags/requests/" style="font-size: 13px;">requests</a> <a href="/tags/solutions/" style="font-size: 13.9px;">solutions</a> <a href="/tags/springMVC/" style="font-size: 13px;">springMVC</a> <a href="/tags/sql/" style="font-size: 13px;">sql</a> <a href="/tags/string/" style="font-size: 13.4px;">string</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 13.5px;">二分</a> <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9E%9A%E4%B8%BE/" style="font-size: 13px;">二进制枚举</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 13.2px;">位运算</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 13.3px;">前缀和</a> <a href="/tags/%E5%8D%9A%E5%BC%88/" style="font-size: 13.1px;">博弈</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 13.1px;">图论</a> <a href="/tags/%E5%B7%AE%E5%88%86/" style="font-size: 13px;">差分</a> <a href="/tags/%E6%80%9D%E7%BB%B4/" style="font-size: 13.8px;">思维</a> <a href="/tags/%E6%89%93%E8%A1%A8/" style="font-size: 13px;">打表</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 13.2px;">数学</a> <a href="/tags/%E6%9E%84%E9%80%A0/" style="font-size: 13.3px;">构造</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 13.2px;">模拟</a> <a href="/tags/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/" style="font-size: 13px;">欧拉降幂</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 13px;">线段树</a> <a href="/tags/%E8%AE%A8%E8%AE%BA/" style="font-size: 13px;">讨论</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 13px;">贪心</a> <a href="/tags/%E9%80%86%E5%85%83/" style="font-size: 13.1px;">逆元</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/NOTE/">NOTE</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/note/java%20syntax.html" class="title">Java Syntax in 算法竞赛</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-06T17:07:28.000Z" itemprop="datePublished">2022-04-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/NOTE/">NOTE</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/note/Eclipse.html" class="title">Use Eclipse as a Coding IDE</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-04T16:07:28.000Z" itemprop="datePublished">2022-04-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/ALGORITHM-TRAINING/">ALGORITHM TRAINING</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/algorithm/exercise/%E6%95%B0%E4%BD%8Ddp_problem.html" class="title">数位dp专题训练</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-03-23T12:30:00.000Z" itemprop="datePublished">2022-03-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/ALGORITHMS/">ALGORITHMS</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/algorithm/learn/%E6%95%B0%E4%BD%8Ddp.html" class="title">数位dp</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-03-17T15:00:00.000Z" itemprop="datePublished">2022-03-17</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/SOLUTIONS/">SOLUTIONS</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/nowcoder/2022winter/round5.html" class="title">2022牛客寒假算法基础集训营5</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-03-16T15:30:50.000Z" itemprop="datePublished">2022-03-16</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-algorithm/learn/STL使用手册" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      STL使用手册
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/algorithm/learn/STL%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C.html" class="article-date">
+	  <time datetime="2021-08-13T06:15:31.000Z" itemprop="datePublished">2021-08-13</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/ALGORITHMS/">ALGORITHMS</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/ACM/" rel="tag">ACM</a>, <a class="article-tag-link-link" href="/tags/algorithm/" rel="tag">algorithm</a>, <a class="article-tag-link-link" href="/tags/note/" rel="tag">note</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/algorithm/learn/STL%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C.html#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="stl使用手册">STL使用手册</span></h1><p>Standard Template Library</p>
+<blockquote>
+<p>又名《👴怕忘了先把他写下来》</p>
+</blockquote>
+<h2><span id="我-是-谁">我 是 谁 ?</span></h2><p>斯丹德儿的 坦普雷特 莱博瑞 即标准模板库</p>
+<ul>
+<li><p>重要特点：数据结构和算法的分离</p>
+</li>
+<li><p>重要特性：不是面向对象的</p>
+</li>
+<li><p>逻辑层次：体现了泛型化程序设计的思想</p>
+</li>
+<li><p>实现层次：以一种类型参数化的方式实现，基于模板(template)</p>
+</li>
+</ul>
+<p>六大组件：</p>
+<ul>
+<li>容器（Container），是一种数据结构，如list，vector，deques ，以模板类的方法提供 ;</li>
+<li>迭代器（Iterator），提供了访问容器中对象的方法。迭代器就如同一个指针。C++的指针也是一种迭代器。迭代器也可以是那些定义了operator*()以及其他类似于指针的操作符地方法的类对象；</li>
+<li>算法（Algorithm），是用来操作容器中的数据的模板函数。如sort()，find()，函数本身与他们操作的数据的结构和类型无关 ;</li>
+<li>仿函数（Functor）</li>
+<li>适配器（Adaptor）</li>
+<li>分配器（allocator）</li>
+</ul>
+<h2><span id="常用的">👴 常用的</span></h2><blockquote>
+<p>以下不按顺序，想到啥就写啥，有个🥚的顺序</p>
+</blockquote>
+<h3><span id="容器">容器</span></h3><h4><span id="string">string</span></h4><p>字符串</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;构造函数
+string s(str,index); &#x2F;&#x2F;将字符串str内“始于位置index”的部分当作字符串的初值
+string s(str,index,n); &#x2F;&#x2F;将字符串str内“始于index且长度顶多n”的部分作为字符串的初值
+string s(n,c); &#x2F;&#x2F;生成一个字符串，包含n个c字符(char)
+string s(str.begin(),str.end()); &#x2F;&#x2F;以区间begin():end() (不包含end())内的字符作为字符串s的初值
+
+&#x2F;&#x2F;操作函数
+s.erase(s.begin(),s.end()); &#x2F;&#x2F;删除
+s.replace(pos,len,str); &#x2F;&#x2F;替换，从pos开始长为len被替换为str
+s.find(str,pos&#x3D;0); &#x2F;&#x2F;从pos向右查找，返回str第一次出现的位置
+s.rfind(str,pos&#x3D;npos); &#x2F;&#x2F;从pos反向查找，返回找到位置
+s.find_first_of(str); &#x2F;&#x2F;查找第一个属于str中字符的位置
+s.find_first_not_of(str); &#x2F;&#x2F;查找第一个不属于str中字符位置
+s.find_last_of(str);
+s.find_last_not_of(str);
+s1.compare(s2); &#x2F;&#x2F;比较，相等0大于1小于-1
+s1.compare(pos,len,s2)&#x2F;&#x2F;从s1的pos开始长为len与s2比较<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4><span id="stringstream">stringstream</span></h4><p>自动且直接的类型转换</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">stringstream sstream;
+&#x2F;&#x2F;数据类型转换
+string str;
+int a&#x3D;123;
+sstream &lt;&lt; a;
+sstream &gt;&gt; str;
+cout&lt;&lt;str;
+cout&lt;&lt;sstream.str(); 
+&#x2F;&#x2F;多个字符串拼接
+sstream &lt;&lt; &quot;xxxx&quot; &lt;&lt; &quot; &quot; &lt;&lt; &quot;aaaaa&quot;;
+&#x2F;&#x2F;清空stringstream
+sstream.clear();
+sstream.str(&quot;&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4><span id="pair">pair</span></h4><p>便携结构体</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;访问通过first second
+&#x2F;&#x2F;可以通过一般运算符比较，先比较first再second
+pair&lt;string,int&gt; p (str,123);
+pair&lt;string,int&gt; p &#x3D; make_pair(str,123);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4><span id="vector">vector</span></h4><p>向量容器，动态存储</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">vector&lt;int&gt; v;
+v.front(); v.back();
+v.begin(); v.end();
+v.push_back();
+v.size();
+v.empty();
+v.clear();
+v.pop_back(); &#x2F;&#x2F;删除表尾元素
+v.insert(it,x); &#x2F;&#x2F;向迭代器it 指向的元素前插入新元素x
+v.insert(it,n,x); &#x2F;&#x2F;插入n个x
+v.insert(it, first, last); &#x2F;&#x2F;将由迭代器first和last 所指定的序列[first, last)插入到迭代器it指向的元素前面
+v.erase(it); &#x2F;&#x2F;删
+v.erase(first,last);
+v.reverse(n); &#x2F;&#x2F;预分配缓冲空间，使存储空间至少可容纳n个元素
+v.resize(n); &#x2F;&#x2F;改变序列长度，超出元素删除，若源空间小于n，则默认值填满空间
+v.resize(n,val); &#x2F;&#x2F;超出的用val填满<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4><span id="stack">stack</span></h4><p>栈</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">stack&lt;int&gt; s;
+s.push(x);
+s.pop();
+s.top();
+s.empty();
+s.size();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4><span id="queue">queue</span></h4><p>队列，优先队列，双端队列</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; queue
+queue&lt;int&gt; q;
+q.push(x);
+q.pop();
+q.front(); q.back();
+q.empty();
+q.size();
+
+&#x2F;&#x2F; priority_queue
+priority&lt;int&gt; q; &#x2F;&#x2F;默认大者优先
+priority&lt;int, vector&lt;int&gt;, greater&lt;int&gt; &gt; q; &#x2F;&#x2F;小的先出队 三个模板参数：元素类型，容器类型，比较算子
+&#x2F;&#x2F; 优先级设置：定义结构体
+struct Student&#123;
+    int num;
+    int grade;
+    friend bool operator &lt; (Student s1, Student s2)&#123;
+        return s1.grade&lt;s2.grade;
+        &#x2F;&#x2F;此处小于号还是小于的作用，故队列中以成绩高的学生优先，若反之变号即可
+    &#125;
+&#125;;
+priority_queue&lt;Student&gt; q;
+&#x2F;&#x2F;也可以把重载的函数写在结构体外面
+struct cmp&#123;
+    bool operator() (Student s1, Student s2)&#123;
+        return s1.grade&lt;s2.grade;
+    &#125;
+&#125;;&#x2F;&#x2F;tips:优先队列中的cmp和sort中的cmp效果相反
+priority_queue&lt;Student,vector&lt;Student&gt;,cmp&gt; q;
+&#x2F;&#x2F;如果结构体内数据庞大，像出现字符串或者数组，建议使用引用来提高效率。此时比较类的参数需要加上 const 和 &amp;
+friend bool operator &lt; (const Student &amp;s1, const Student &amp;s2)&#123;
+	return s1.grade&lt;s2.grade;
+&#125;
+
+&#x2F;&#x2F;deque
+deque&lt;int&gt; d;
+d.push_back(x); &#x2F;&#x2F;尾部插入
+d.push_front(x); &#x2F;&#x2F;首部插入元素
+d.insert(d.begin()+len,x); &#x2F;&#x2F;中间插入元素
+&#x2F;&#x2F;可以通过 d[0] d[1] 访问
+d.pop_front(); &#x2F;&#x2F;删除头部
+d.pop_back();
+d.erase(d.begin()+len); &#x2F;&#x2F;删除指定位置元素，可以写多个<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4><span id="map">map</span></h4><p>键值对，元素按关键字有序，内部红黑树</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; map空间占用率高
+map&lt;string,int&gt; m;
+m[key]&#x3D;value;
+m.insert(make_pair(key,value));
+m.erase(key);
+m.erase(it);
+m.clear();
+m.size();	
+map&lt;string,int&gt;::iterator it;
+for(it&#x3D;mp.begin();it!&#x3D;mp.end();++it)&#123;
+    cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;
+&#125;
+
+&#x2F;&#x2F; unordered_map 效率较高 内部哈希表
+&#x2F;&#x2F; 对于查找问题，unordered_map会更加高效一些，因此遇到查找问题，常会考虑一下用unordered_map<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4><span id="set">set</span></h4><p>无重复，按键值自动排序</p>
+<p>数据结构为红黑树。以节点形式保存（动态)，用迭代器访问</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">set&lt;int&gt; s;
+s.begin(); s.end();
+s.clear();
+s.empty();
+s.erase(x);
+s.find(x);
+s.insert(x);
+s.size();
+s.lower_bound(value); &#x2F;&#x2F;返回第一个大于等于value的定位器
+s.upper_bound(value); &#x2F;&#x2F;返回最后一个大于等于value的定位器
+set&lt;int&gt;::iterator it;
+for(it&#x3D;s.begin();it!&#x3D;s.end();it++)
+	cout&lt;&lt;*it&lt;&lt;&quot; &quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4><span id="list">list</span></h4><p>链表</p>
+<ul>
+<li>如果你需要高效的随即存取，而不在乎插入和删除的效率，使用vector </li>
+<li>如果你需要大量的插入和删除，而不关心随即存取，则应使用list </li>
+<li>如果你需要随即存取，而且关心两端数据的插入和删除，则应使用deque</li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">list&lt;int&gt; a(n);
+list&lt;int&gt; a&#123;1,2,3,4&#125;;
+a.push_back(x);
+a.push_front(x);
+a.empty();
+a.resize(n);
+a.clear();
+a.front(); a.back();
+a.reverse();
+a.merge(b); &#x2F;&#x2F;b变空，a尾插入b
+a.insert(pos,x);
+a.insert(pos,b.begin(),b.end());
+a.erase(a.begin(),a.end());
+a.remove(x);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4><span id="bitset">bitset</span></h4><p>存放二进制0/1的容器，可以声明非常大的二进制位而不限于64，用来优化</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">bitset&lt;N&gt; b; &#x2F;&#x2F;表示长为N的二进制串
+&#x2F;&#x2F; 通过b[pos]访问
+b.any(); &#x2F;&#x2F;存在为1的二进制位
+b.none(); &#x2F;&#x2F;不存在为1的二进制位
+b.count(); &#x2F;&#x2F;置1的二进制位的个数
+b.size();
+b.test(pos); &#x2F;&#x2F;在pos位处是否为1
+b.set(); &#x2F;&#x2F;所有位置1
+b.set(pos);
+b.reset(); &#x2F;&#x2F;所有位置0
+b.reset(pos);
+b.flip(); &#x2F;&#x2F;逐位取反
+b.flip(pos);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="functions">functions</span></h3><h4><span id="查找">查找</span></h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 对于sort(a, a + n) 升序排列
+lower_bound(a,a+n,x); &#x2F;&#x2F;二分查找第一个大于等于x的位置
+upper_bound(a,a+n,x); &#x2F;&#x2F;二分查找第一个大于x的位置
+&#x2F;&#x2F; 对于sort(a, a + n, greater&lt;int&gt;()) 降序排列
+lower_bound(a,a+n,x,greater&lt;int&gt;(); &#x2F;&#x2F;二分查找第一个小于等于x的位置
+upper_bound(a,a+n,x,greater&lt;int&gt;(); &#x2F;&#x2F;二分查找第一个小于x的位置
+            
+find();
+rfind();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4><span id="排序">排序</span></h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">sort(a,a+n,cmp); &#x2F;&#x2F;默认ASC<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4><span id="修改">修改</span></h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">swap(a,b); &#x2F;&#x2F;交换
+replace(pos,len,str); &#x2F;&#x2F;替换
+unique(a,a+n); &#x2F;&#x2F;去除相邻的重复元素,会把重复的藏到末尾，使用前需要先排序<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4><span id="排列">排列</span></h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">next_permutation(a,a+n); &#x2F;&#x2F;下一个全排列
+prev_permutation(a,a+n); &#x2F;&#x2F;上一个全排列
+&#x2F;&#x2F;函数返回bool值，一般配合while()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4><span id="其他">其他</span></h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">__builtin_popcount(n); &#x2F;&#x2F;返回n的二进制1的个数
+isalpha(char x); &#x2F;&#x2F;小写字母返回2，大写字母1，非字母0	
+tolower(char x); toupper(char x); &#x2F;&#x2F;返回小写，大写字母的ASCII值，非字母则相等
+&#x2F;&#x2F;海伦公式
+p&#x3D;(a+b+c)&#x2F;2;
+s&#x3D;sqrt(p*(p-a)*(p-b)*(p-c));
+abs(int x); &#x2F;&#x2F;只用于整数
+fabs(double x); &#x2F;&#x2F;精度更高<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<p>暂时就这些了，寄！</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://maskros.top/post/algorithm/learn/STL%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C.html" title="STL使用手册" target="_blank" rel="external">https://maskros.top/post/algorithm/learn/STL使用手册.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/cofess" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/cofess" target="_blank"><span class="text-dark">昵称</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/post/note/springMVC.html" title="SpringMVC学习杂记"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/post/algorithm/learn/%E7%BA%BF%E6%AE%B5%E6%A0%91.html" title="我确实不会线段树"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
