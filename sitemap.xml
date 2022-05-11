@@ -467,14 +467,14 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</loc>
+    <loc>https://maskros.top/tags/%E4%BA%8C%E5%88%86/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/%E4%BA%8C%E5%88%86/</loc>
+    <loc>https://maskros.top/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -510,6 +510,13 @@
   
   <url>
     <loc>https://maskros.top/tags/%E8%AE%A8%E8%AE%BA/</loc>
+    <lastmod>2022-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://maskros.top/tags/Life/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -552,13 +559,6 @@
   
   <url>
     <loc>https://maskros.top/tags/STL/</loc>
-    <lastmod>2022-05-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://maskros.top/tags/Life/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -656,13 +656,6 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/dfs/</loc>
-    <lastmod>2022-05-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://maskros.top/tags/kmp/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -671,6 +664,13 @@
   
   <url>
     <loc>https://maskros.top/tags/%E5%89%8D%E7%BC%80%E5%92%8C/</loc>
+    <lastmod>2022-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://maskros.top/tags/dfs/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -749,14 +749,14 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/categories/NOTE/</loc>
+    <loc>https://maskros.top/categories/LIFE/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://maskros.top/categories/LIFE/</loc>
+    <loc>https://maskros.top/categories/NOTE/</loc>
     <lastmod>2022-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
