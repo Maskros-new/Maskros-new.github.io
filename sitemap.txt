@@ -58,13 +58,13 @@ https://maskros.top/tags/gcd/
 https://maskros.top/tags/dp/
 https://maskros.top/tags/bfs/
 https://maskros.top/tags/%E8%AE%A8%E8%AE%BA/
-https://maskros.top/tags/Life/
 https://maskros.top/tags/Crawler/
 https://maskros.top/tags/note/
 https://maskros.top/tags/python/
 https://maskros.top/tags/WeRoBot/
 https://maskros.top/tags/java/
 https://maskros.top/tags/STL/
+https://maskros.top/tags/Life/
 https://maskros.top/tags/%E5%B7%AE%E5%88%86/
 https://maskros.top/tags/%E5%8D%9A%E5%BC%88/
 https://maskros.top/tags/requests/
@@ -91,8 +91,8 @@ https://maskros.top/tags/springMVC/
 https://maskros.top/tags/sql/
 https://maskros.top/tags/ComputerNetwork/
 https://maskros.top/categories/SOLUTIONS/
-https://maskros.top/categories/LIFE/
 https://maskros.top/categories/NOTE/
+https://maskros.top/categories/LIFE/
 https://maskros.top/categories/PROJECT/
 https://maskros.top/categories/ALGORITHM-TRAINING/
 https://maskros.top/categories/ALGORITHMS/
