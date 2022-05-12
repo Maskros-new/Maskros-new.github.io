@@ -516,6 +516,13 @@
   </url>
   
   <url>
+    <loc>https://maskros.top/tags/Life/</loc>
+    <lastmod>2022-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://maskros.top/tags/Crawler/</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -558,14 +565,7 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/Life/</loc>
-    <lastmod>2022-05-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://maskros.top/tags/%E5%B7%AE%E5%88%86/</loc>
+    <loc>https://maskros.top/tags/requests/</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -579,7 +579,7 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/requests/</loc>
+    <loc>https://maskros.top/tags/%E5%B7%AE%E5%88%86/</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -656,14 +656,14 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/Trie/</loc>
+    <loc>https://maskros.top/tags/dfs/</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/dfs/</loc>
+    <loc>https://maskros.top/tags/Trie/</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -749,14 +749,14 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/categories/NOTE/</loc>
+    <loc>https://maskros.top/categories/LIFE/</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://maskros.top/categories/LIFE/</loc>
+    <loc>https://maskros.top/categories/NOTE/</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
