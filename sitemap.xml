@@ -443,6 +443,20 @@
 
   
   <url>
+    <loc>https://maskros.top/tags/Life/</loc>
+    <lastmod>2022-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://maskros.top/tags/ACM/</loc>
+    <lastmod>2022-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://maskros.top/tags/solutions/</loc>
     <lastmod>2022-05-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -451,13 +465,6 @@
   
   <url>
     <loc>https://maskros.top/tags/codeforces/</loc>
-    <lastmod>2022-05-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://maskros.top/tags/ACM/</loc>
     <lastmod>2022-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -534,13 +541,6 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/Life/</loc>
-    <lastmod>2022-05-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://maskros.top/tags/Crawler/</loc>
     <lastmod>2022-05-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -597,6 +597,13 @@
   </url>
   
   <url>
+    <loc>https://maskros.top/tags/requests/</loc>
+    <lastmod>2022-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://maskros.top/tags/CCPC/</loc>
     <lastmod>2022-05-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -646,28 +653,7 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/requests/</loc>
-    <lastmod>2022-05-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://maskros.top/tags/algorithm/</loc>
-    <lastmod>2022-05-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://maskros.top/tags/Trie/</loc>
-    <lastmod>2022-05-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://maskros.top/tags/dfs/</loc>
     <lastmod>2022-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -682,6 +668,20 @@
   
   <url>
     <loc>https://maskros.top/tags/%E5%89%8D%E7%BC%80%E5%92%8C/</loc>
+    <lastmod>2022-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://maskros.top/tags/Trie/</loc>
+    <lastmod>2022-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://maskros.top/tags/dfs/</loc>
     <lastmod>2022-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -774,14 +774,14 @@
 
   
   <url>
-    <loc>https://maskros.top/categories/SOLUTIONS/</loc>
+    <loc>https://maskros.top/categories/LIFE/</loc>
     <lastmod>2022-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://maskros.top/categories/LIFE/</loc>
+    <loc>https://maskros.top/categories/SOLUTIONS/</loc>
     <lastmod>2022-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
