@@ -1,4 +1,453 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui"><meta name="renderer" content="webkit"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no,email=no,adress=no"><meta name="theme-color" content="#000000"><meta http-equiv="window-target" content="_top"><title>python爬虫杂记 | Maskros&#39; Blog</title><meta name="description" content="Crawler in python"><meta property="og:type" content="article"><meta property="og:title" content="python爬虫杂记"><meta property="og:url" content="https://maskros.top/post/note/Crawler.html"><meta property="og:site_name" content="Maskros&#39; Blog"><meta property="og:description" content="Crawler in python"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://i.bmp.ovh/imgs/2021/11/022868b8a1cd24f4.png"><meta property="article:published_time" content="2021-11-10T09:03:30.000Z"><meta property="article:modified_time" content="2022-01-22T09:37:42.226Z"><meta property="article:author" content="Maskros"><meta property="article:tag" content="note"><meta property="article:tag" content="Crawler"><meta property="article:tag" content="python"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://i.bmp.ovh/imgs/2021/11/022868b8a1cd24f4.png"><link rel="canonical" href="https://maskros.top/post/note/Crawler.html"><link rel="alternate" href="/atom.xml" title="Maskros&#39; Blog" type="application/atom+xml"><link rel="icon" href="/favicon.jpg" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css"><meta name="generator" content="Hexo 5.4.0"></head><body class="main-center" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="slimContent"><div class="navbar-header"><div class="profile-block text-center"><a id="avatar" href="https://github.com/Maskros-new" target="_blank"><img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200"></a><h2 id="name" class="hidden-xs hidden-sm">Maskros</h2><h3 id="title" class="hidden-xs hidden-sm hidden-md">NOT an ACMer</h3><small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Qingdao, China</small></div><div class="search" id="search-form-wrap"><form class="search-form sidebar-form"><div class="input-group"><input type="text" class="search-form-input form-control" placeholder="搜索"> <span class="input-group-btn"><button type="submit" class="search-form-submit btn btn-flat" onclick="return!1"><i class="icon icon-search"></i></button></span></div></form><div class="ins-search"><div class="ins-search-mask"></div><div class="ins-search-container"><div class="ins-input-wrapper"><input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech> <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="ins-section-wrapper"><div class="ins-section-container"></div></div></div></div></div><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button></div><nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation"><ul class="nav navbar-nav main-nav"><li class="menu-item menu-item-home"><a href="/."><i class="icon icon-home-fill"></i> <span class="menu-title">首页</span></a></li><li class="menu-item menu-item-archives"><a href="/archives"><i class="icon icon-archives-fill"></i> <span class="menu-title">归档</span></a></li><li class="menu-item menu-item-categories"><a href="/categories"><i class="icon icon-folder"></i> <span class="menu-title">分类</span></a></li><li class="menu-item menu-item-tags"><a href="/tags"><i class="icon icon-tags"></i> <span class="menu-title">标签</span></a></li><li class="menu-item menu-item-links"><a href="/links"><i class="icon icon-friendship"></i> <span class="menu-title">友链</span></a></li><li class="menu-item menu-item-about"><a href="/about"><i class="icon icon-cup-fill"></i> <span class="menu-title">关于</span></a></li></ul><ul class="social-links"><li><a href="https://github.com/Maskros-new" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li></ul></nav></div></header><aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar"><div class="slimContent"><div class="widget"><h3 class="widget-title">公告</h3><div class="widget-body"><div id="board"><div class="content"><p>nothing</p></div></div></div></div><div class="widget"><h3 class="widget-title">分类</h3><div class="widget-body"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ALGORITHM-TRAINING/">ALGORITHM TRAINING</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ALGORITHMS/">ALGORITHMS</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LIFE/">LIFE</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NOTE/">NOTE</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PROJECT/">PROJECT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SOLUTIONS/">SOLUTIONS</a><span class="category-list-count">21</span></li></ul></div></div><div class="widget"><h3 class="widget-title">标签</h3><div class="widget-body"><ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a><span class="tag-list-count">34</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CCPC/" rel="tag">CCPC</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dijkstra/" rel="tag">Dijkstra</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LCA/" rel="tag">LCA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/" rel="tag">Life</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/" rel="tag">STL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ST%E8%A1%A8/" rel="tag">ST表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Trie/" rel="tag">Trie</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WeRoBot/" rel="tag">WeRoBot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/" rel="tag">bfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codeforces/" rel="tag">codeforces</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/" rel="tag">dp</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/euler/" rel="tag">euler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcd/" rel="tag">gcd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash/" rel="tag">hash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kmp/" rel="tag">kmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/" rel="tag">note</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nowcoder/" rel="tag">nowcoder</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/requests/" rel="tag">requests</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solutions/" rel="tag">solutions</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springMVC/" rel="tag">springMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/" rel="tag">sql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/" rel="tag">string</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9E%9A%E4%B8%BE/" rel="tag">二进制枚举</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%BC%88/" rel="tag">博弈</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%AE%E5%88%86/" rel="tag">差分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag">思维</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E8%A1%A8/" rel="tag">打表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%84%E9%80%A0/" rel="tag">构造</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" rel="tag">树状数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/" rel="tag">欧拉降幂</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag">线段树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A8%E8%AE%BA/" rel="tag">讨论</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%86%E5%85%83/" rel="tag">逆元</a><span class="tag-list-count">2</span></li></ul></div></div><div class="widget"><h3 class="widget-title">标签云</h3><div class="widget-body tagcloud"><a href="/tags/ACM/" style="font-size:14px">ACM</a> <a href="/tags/CCPC/" style="font-size:13.15px">CCPC</a> <a href="/tags/ComputerNetwork/" style="font-size:13px">ComputerNetwork</a> <a href="/tags/Crawler/" style="font-size:13.08px">Crawler</a> <a href="/tags/Dijkstra/" style="font-size:13px">Dijkstra</a> <a href="/tags/LCA/" style="font-size:13px">LCA</a> <a href="/tags/Life/" style="font-size:13.08px">Life</a> <a href="/tags/STL/" style="font-size:13px">STL</a> <a href="/tags/ST%E8%A1%A8/" style="font-size:13px">ST表</a> <a href="/tags/Trie/" style="font-size:13.08px">Trie</a> <a href="/tags/WeRoBot/" style="font-size:13px">WeRoBot</a> <a href="/tags/algorithm/" style="font-size:13.69px">algorithm</a> <a href="/tags/bfs/" style="font-size:13px">bfs</a> <a href="/tags/codeforces/" style="font-size:13.62px">codeforces</a> <a href="/tags/dfs/" style="font-size:13.08px">dfs</a> <a href="/tags/dp/" style="font-size:13.46px">dp</a> <a href="/tags/euler/" style="font-size:13px">euler</a> <a href="/tags/gcd/" style="font-size:13px">gcd</a> <a href="/tags/hash/" style="font-size:13px">hash</a> <a href="/tags/java/" style="font-size:13.08px">java</a> <a href="/tags/kmp/" style="font-size:13px">kmp</a> <a href="/tags/note/" style="font-size:13.85px">note</a> <a href="/tags/nowcoder/" style="font-size:13.31px">nowcoder</a> <a href="/tags/python/" style="font-size:13.15px">python</a> <a href="/tags/requests/" style="font-size:13px">requests</a> <a href="/tags/solutions/" style="font-size:13.92px">solutions</a> <a href="/tags/springMVC/" style="font-size:13px">springMVC</a> <a href="/tags/sql/" style="font-size:13px">sql</a> <a href="/tags/string/" style="font-size:13.38px">string</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size:13.54px">二分</a> <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9E%9A%E4%B8%BE/" style="font-size:13px">二进制枚举</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size:13.15px">位运算</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size:13.23px">前缀和</a> <a href="/tags/%E5%8D%9A%E5%BC%88/" style="font-size:13.08px">博弈</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size:13.08px">图论</a> <a href="/tags/%E5%B7%AE%E5%88%86/" style="font-size:13px">差分</a> <a href="/tags/%E6%80%9D%E7%BB%B4/" style="font-size:13.77px">思维</a> <a href="/tags/%E6%89%93%E8%A1%A8/" style="font-size:13px">打表</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size:13.15px">数学</a> <a href="/tags/%E6%9E%84%E9%80%A0/" style="font-size:13.23px">构造</a> <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size:13px">树状数组</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size:13.15px">模拟</a> <a href="/tags/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/" style="font-size:13px">欧拉降幂</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size:13px">线段树</a> <a href="/tags/%E8%AE%A8%E8%AE%BA/" style="font-size:13px">讨论</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size:13px">贪心</a> <a href="/tags/%E9%80%86%E5%85%83/" style="font-size:13.08px">逆元</a></div></div><div class="widget"><h3 class="widget-title">归档</h3><div class="widget-body"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li></ul></div></div><div class="widget"><h3 class="widget-title">最新文章</h3><div class="widget-body"><ul class="recent-post-list list-unstyled no-thumbnail"><li><div class="item-inner"><p class="item-category"><a class="category-link" href="/categories/ALGORITHMS/">ALGORITHMS</a></p><p class="item-title"><a href="/post/algorithm/learn/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84.html" class="title">树状数组yyds</a></p><p class="item-date"><time datetime="2022-05-13T03:55:50.000Z" itemprop="datePublished">2022-05-13</time></p></div></li><li><div class="item-inner"><p class="item-category"><a class="category-link" href="/categories/ALGORITHMS/">ALGORITHMS</a></p><p class="item-title"><a href="/post/algorithm/learn/%E5%AD%97%E7%AC%A6%E4%B8%B2Hash.html" class="title">字符串Hash 给我狠狠的哈希！</a></p><p class="item-date"><time datetime="2022-04-13T10:55:00.000Z" itemprop="datePublished">2022-04-13</time></p></div></li><li><div class="item-inner"><p class="item-category"><a class="category-link" href="/categories/NOTE/">NOTE</a></p><p class="item-title"><a href="/post/note/java%20syntax.html" class="title">Java Syntax in 算法竞赛</a></p><p class="item-date"><time datetime="2022-04-06T17:07:28.000Z" itemprop="datePublished">2022-04-07</time></p></div></li><li><div class="item-inner"><p class="item-category"><a class="category-link" href="/categories/NOTE/">NOTE</a></p><p class="item-title"><a href="/post/note/Eclipse.html" class="title">Use Eclipse as a Coding IDE</a></p><p class="item-date"><time datetime="2022-04-04T16:07:28.000Z" itemprop="datePublished">2022-04-05</time></p></div></li><li><div class="item-inner"><p class="item-category"><a class="category-link" href="/categories/ALGORITHM-TRAINING/">ALGORITHM TRAINING</a></p><p class="item-title"><a href="/post/algorithm/exercise/%E6%95%B0%E4%BD%8Ddp_problem.html" class="title">数位dp专题训练</a></p><p class="item-date"><time datetime="2022-03-23T12:30:00.000Z" itemprop="datePublished">2022-03-23</time></p></div></li></ul></div></div></div></aside><main class="main" role="main"><div class="content"><article id="post-note/Crawler" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting"><div class="article-header"><h1 class="article-title" itemprop="name">python爬虫杂记</h1><div class="article-meta"><span class="article-date"><i class="icon icon-calendar-check"></i> <a href="/post/note/Crawler.html" class="article-date"><time datetime="2021-11-10T09:03:30.000Z" itemprop="datePublished">2021-11-10</time> </a></span><span class="article-category"><i class="icon icon-folder"></i> <a class="article-category-link" href="/categories/NOTE/">NOTE</a> </span><span class="article-tag"><i class="icon icon-tags"></i> <a class="article-tag-link-link" href="/tags/Crawler/" rel="tag">Crawler</a>, <a class="article-tag-link-link" href="/tags/note/" rel="tag">note</a>, <a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a> </span><span class="article-read hidden-xs"><i class="icon icon-eye-fill" aria-hidden="true"></i> <span id="/post/note/Crawler.html" class="leancloud_visitors" data-flag-title="python爬虫杂记"><span class="leancloud-visitors-count">0</span> </span></span><span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/note/Crawler.html#comments" class="article-comment-link">评论</a></span> <span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3k(字)</span> <span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 13(分)</span></div></div><div class="article-entry marked-body" itemprop="articleBody"><link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="python爬虫杂记">python爬虫杂记</span></h1><p>Crawler in python</p><blockquote><p>又名 《为了偷懒爬毛概题库的突击学习》</p></blockquote><h2><span id="一些知识">一些知识</span></h2><ul><li><p>爬虫在使用场景中的分类：</p><ul><li><p>通用爬虫：抓取系统重要促成部分，抓取的是一整张页面数据</p></li><li><p>聚焦爬虫：是建立在通用爬虫的基础上，抓取的是页面中特定的局部内容</p></li><li><p>增量式爬虫：检测网站中数据更新的情况，只会抓取网站中最新更新出来的数据</p></li></ul></li></ul><ul><li><p>robots.txt协议：君子协议，规定网站中哪些数据能爬哪些不能，约定俗成</p></li><li><p>http &amp; https 协议：</p><blockquote><p>http协议：服务器和客户端进行数据交互的一种形式</p><p>https协议：安全的超文本传输协议 证书秘钥加密</p></blockquote></li><li><p>常用请求头信息：</p><ul><li><p>User-Agent：请求载体的身份标识</p></li><li><p>Connection：请求完毕后，是断开连接还是保持连接</p></li></ul></li></ul><ul><li>常用响应头信息：<ul><li>Content-Type：服务器响应回客户端的数据类型</li></ul></li></ul><h2><span id="requests模块">requests模块</span></h2><blockquote><p>requests: python原生的基于网络请求的模块，模拟浏览器发请求</p><p>.text 字符串 .content 二进制 .json() 对象</p></blockquote><p>编码流程：</p><ul><li>指定url</li><li>发起请求</li><li>获取响应数据</li><li>持久化存储</li></ul><h3><span id="0x00-requests-一血">0x00 requests 一血</span></h3><blockquote><p><code>response.text</code></p></blockquote><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>python爬虫杂记 | Maskros&#39; Blog</title>
+  <meta name="description" content="Crawler in python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python爬虫杂记">
+<meta property="og:url" content="https://maskros.top/post/note/Crawler.html">
+<meta property="og:site_name" content="Maskros&#39; Blog">
+<meta property="og:description" content="Crawler in python">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/11/022868b8a1cd24f4.png">
+<meta property="article:published_time" content="2021-11-10T09:03:30.000Z">
+<meta property="article:modified_time" content="2022-01-22T09:37:42.226Z">
+<meta property="article:author" content="Maskros">
+<meta property="article:tag" content="Crawler">
+<meta property="article:tag" content="note">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.bmp.ovh/imgs/2021/11/022868b8a1cd24f4.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://maskros.top/post/note/Crawler.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Maskros&#39; Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.jpg" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/Maskros-new" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Maskros</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">NOT an ACMer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Qingdao, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Maskros-new" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>nothing</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ALGORITHM-TRAINING/">ALGORITHM TRAINING</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ALGORITHMS/">ALGORITHMS</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LIFE/">LIFE</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NOTE/">NOTE</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PROJECT/">PROJECT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SOLUTIONS/">SOLUTIONS</a><span class="category-list-count">21</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a><span class="tag-list-count">34</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CCPC/" rel="tag">CCPC</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dijkstra/" rel="tag">Dijkstra</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LCA/" rel="tag">LCA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/" rel="tag">Life</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/" rel="tag">STL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ST%E8%A1%A8/" rel="tag">ST表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Trie/" rel="tag">Trie</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WeRoBot/" rel="tag">WeRoBot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/" rel="tag">bfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codeforces/" rel="tag">codeforces</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/" rel="tag">dp</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/euler/" rel="tag">euler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcd/" rel="tag">gcd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash/" rel="tag">hash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kmp/" rel="tag">kmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/" rel="tag">note</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nowcoder/" rel="tag">nowcoder</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/requests/" rel="tag">requests</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solutions/" rel="tag">solutions</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springMVC/" rel="tag">springMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/" rel="tag">sql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/" rel="tag">string</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9E%9A%E4%B8%BE/" rel="tag">二进制枚举</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%BC%88/" rel="tag">博弈</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%AE%E5%88%86/" rel="tag">差分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag">思维</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E8%A1%A8/" rel="tag">打表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%84%E9%80%A0/" rel="tag">构造</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" rel="tag">树状数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/" rel="tag">欧拉降幂</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag">线段树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A8%E8%AE%BA/" rel="tag">讨论</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%86%E5%85%83/" rel="tag">逆元</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/ACM/" style="font-size: 14px;">ACM</a> <a href="/tags/CCPC/" style="font-size: 13.15px;">CCPC</a> <a href="/tags/ComputerNetwork/" style="font-size: 13px;">ComputerNetwork</a> <a href="/tags/Crawler/" style="font-size: 13.08px;">Crawler</a> <a href="/tags/Dijkstra/" style="font-size: 13px;">Dijkstra</a> <a href="/tags/LCA/" style="font-size: 13px;">LCA</a> <a href="/tags/Life/" style="font-size: 13.08px;">Life</a> <a href="/tags/STL/" style="font-size: 13px;">STL</a> <a href="/tags/ST%E8%A1%A8/" style="font-size: 13px;">ST表</a> <a href="/tags/Trie/" style="font-size: 13.08px;">Trie</a> <a href="/tags/WeRoBot/" style="font-size: 13px;">WeRoBot</a> <a href="/tags/algorithm/" style="font-size: 13.69px;">algorithm</a> <a href="/tags/bfs/" style="font-size: 13px;">bfs</a> <a href="/tags/codeforces/" style="font-size: 13.62px;">codeforces</a> <a href="/tags/dfs/" style="font-size: 13.08px;">dfs</a> <a href="/tags/dp/" style="font-size: 13.46px;">dp</a> <a href="/tags/euler/" style="font-size: 13px;">euler</a> <a href="/tags/gcd/" style="font-size: 13px;">gcd</a> <a href="/tags/hash/" style="font-size: 13px;">hash</a> <a href="/tags/java/" style="font-size: 13.08px;">java</a> <a href="/tags/kmp/" style="font-size: 13px;">kmp</a> <a href="/tags/note/" style="font-size: 13.85px;">note</a> <a href="/tags/nowcoder/" style="font-size: 13.31px;">nowcoder</a> <a href="/tags/python/" style="font-size: 13.15px;">python</a> <a href="/tags/requests/" style="font-size: 13px;">requests</a> <a href="/tags/solutions/" style="font-size: 13.92px;">solutions</a> <a href="/tags/springMVC/" style="font-size: 13px;">springMVC</a> <a href="/tags/sql/" style="font-size: 13px;">sql</a> <a href="/tags/string/" style="font-size: 13.38px;">string</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 13.54px;">二分</a> <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9E%9A%E4%B8%BE/" style="font-size: 13px;">二进制枚举</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 13.15px;">位运算</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 13.23px;">前缀和</a> <a href="/tags/%E5%8D%9A%E5%BC%88/" style="font-size: 13.08px;">博弈</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 13.08px;">图论</a> <a href="/tags/%E5%B7%AE%E5%88%86/" style="font-size: 13px;">差分</a> <a href="/tags/%E6%80%9D%E7%BB%B4/" style="font-size: 13.77px;">思维</a> <a href="/tags/%E6%89%93%E8%A1%A8/" style="font-size: 13px;">打表</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 13.15px;">数学</a> <a href="/tags/%E6%9E%84%E9%80%A0/" style="font-size: 13.23px;">构造</a> <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 13px;">树状数组</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 13.15px;">模拟</a> <a href="/tags/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/" style="font-size: 13px;">欧拉降幂</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 13px;">线段树</a> <a href="/tags/%E8%AE%A8%E8%AE%BA/" style="font-size: 13px;">讨论</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 13px;">贪心</a> <a href="/tags/%E9%80%86%E5%85%83/" style="font-size: 13.08px;">逆元</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/ALGORITHMS/">ALGORITHMS</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/algorithm/learn/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84.html" class="title">树状数组yyds</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-13T03:55:50.000Z" itemprop="datePublished">2022-05-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/ALGORITHMS/">ALGORITHMS</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/algorithm/learn/%E5%AD%97%E7%AC%A6%E4%B8%B2Hash.html" class="title">字符串Hash 给我狠狠的哈希！</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-13T10:55:00.000Z" itemprop="datePublished">2022-04-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/NOTE/">NOTE</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/note/java%20syntax.html" class="title">Java Syntax in 算法竞赛</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-06T17:07:28.000Z" itemprop="datePublished">2022-04-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/NOTE/">NOTE</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/note/Eclipse.html" class="title">Use Eclipse as a Coding IDE</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-04T16:07:28.000Z" itemprop="datePublished">2022-04-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/ALGORITHM-TRAINING/">ALGORITHM TRAINING</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/algorithm/exercise/%E6%95%B0%E4%BD%8Ddp_problem.html" class="title">数位dp专题训练</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-03-23T12:30:00.000Z" itemprop="datePublished">2022-03-23</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-note/Crawler" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python爬虫杂记
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/note/Crawler.html" class="article-date">
+	  <time datetime="2021-11-10T09:03:30.000Z" itemprop="datePublished">2021-11-10</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/NOTE/">NOTE</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Crawler/" rel="tag">Crawler</a>, <a class="article-tag-link-link" href="/tags/note/" rel="tag">note</a>, <a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>
+  </span>
+
+
+        
+
+	<span class="article-read hidden-xs">
+    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
+    	<span id="/post/note/Crawler.html" class="leancloud_visitors"  data-flag-title="python爬虫杂记">
+			<span class="leancloud-visitors-count">0</span>
+		</span>
+    </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/note/Crawler.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="python爬虫杂记"> python爬虫杂记</span></h1>
+<p>Crawler in python</p>
+<blockquote>
+<p>又名 《为了偷懒爬毛概题库的突击学习》</p>
+</blockquote>
+<h2><span id="一些知识"> 一些知识</span></h2>
+<ul>
+<li>
+<p>爬虫在使用场景中的分类：</p>
+<ul>
+<li>
+<p>通用爬虫：抓取系统重要促成部分，抓取的是一整张页面数据</p>
+</li>
+<li>
+<p>聚焦爬虫：是建立在通用爬虫的基础上，抓取的是页面中特定的局部内容</p>
+</li>
+<li>
+<p>增量式爬虫：检测网站中数据更新的情况，只会抓取网站中最新更新出来的数据</p>
+</li>
+</ul>
+</li>
+<li>
+<p>robots.txt协议：君子协议，规定网站中哪些数据能爬哪些不能，约定俗成</p>
+</li>
+<li>
+<p>http &amp; https 协议：</p>
+<blockquote>
+<p>http协议：服务器和客户端进行数据交互的一种形式</p>
+<p>https协议：安全的超文本传输协议 证书秘钥加密</p>
+</blockquote>
+</li>
+<li>
+<p>常用请求头信息：</p>
+<ul>
+<li>
+<p>User-Agent：请求载体的身份标识</p>
+</li>
+<li>
+<p>Connection：请求完毕后，是断开连接还是保持连接</p>
+</li>
+</ul>
+</li>
+<li>
+<p>常用响应头信息：</p>
+<ul>
+<li>Content-Type：服务器响应回客户端的数据类型</li>
+</ul>
+</li>
+</ul>
+<h2><span id="requests模块"> requests模块</span></h2>
+<blockquote>
+<p>requests: python原生的基于网络请求的模块，模拟浏览器发请求</p>
+<p>.text 字符串   .content 二进制   .json() 对象</p>
+</blockquote>
+<p>编码流程：</p>
+<ul>
+<li>指定url</li>
+<li>发起请求</li>
+<li>获取响应数据</li>
+<li>持久化存储</li>
+</ul>
+<h3><span id="0x00-requests-一血"> 0x00 requests 一血</span></h3>
+<blockquote>
+<p><code>response.text</code></p>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
 <span class="token comment"># 1.指定url</span>
 url<span class="token operator">=</span><span class="token string">'xxxx/xxx/xxx.xxx'</span>
 <span class="token comment"># 2.发起请求 get方法会返回一个响应对象</span>
@@ -9,7 +458,16 @@ page_text <span class="token operator">=</span> response<span class="token punct
 <span class="token comment"># 4.持久化存储</span>
 <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'./xxx.html'</span><span class="token punctuation">,</span><span class="token string">'w'</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> fp<span class="token punctuation">:</span>
     fp<span class="token punctuation">.</span>write<span class="token punctuation">(</span>page_text<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'over!'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3><span id="0x01-网页采集器">0x01 网页采集器</span></h3><ul><li>UA检测</li><li>UA伪装</li></ul><blockquote><p><code>requests.get(url, params, headers)</code></p></blockquote><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'over!'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="0x01-网页采集器"> 0x01 网页采集器</span></h3>
+<ul>
+<li>UA检测</li>
+<li>UA伪装</li>
+</ul>
+<blockquote>
+<p><code>requests.get(url, params, headers)</code></p>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
 
 <span class="token comment"># UA：User-Agent 请求载体的身份标识</span>
 <span class="token comment"># UA检测：门户网站的服务器会检测对应请求的载体身份标识，如果检测到的标识为基于某一款浏览器的，</span>
@@ -35,7 +493,18 @@ page_text <span class="token operator">=</span> response<span class="token punct
     <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>fileName<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> fp<span class="token punctuation">:</span>
         fp<span class="token punctuation">.</span>write<span class="token punctuation">(</span>page_text<span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>fileName<span class="token punctuation">,</span> <span class="token string">' is saved'</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3><span id="0x02-百度翻译">0x02 百度翻译</span></h3><ul><li>post请求 (携带了参数)</li><li>ajax</li><li>响应数据是一组json数据</li></ul><blockquote><p><code>requests.post(url, data, json, headers...)</code></p><p><code>response.json</code>()</p></blockquote><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="0x02-百度翻译"> 0x02 百度翻译</span></h3>
+<ul>
+<li>post请求 (携带了参数)</li>
+<li>ajax</li>
+<li>响应数据是一组json数据</li>
+</ul>
+<blockquote>
+<p><code>requests.post(url, data, json, headers...)</code></p>
+<p><code>response.json</code>()</p>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
 <span class="token keyword">import</span> json
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
     <span class="token comment"># 1.指定url</span>
@@ -60,7 +529,12 @@ page_text <span class="token operator">=</span> response<span class="token punct
     <span class="token comment"># 由于中文不能用ascii编码，所以令ensure_ascii=False</span>
     json<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>dic_obj<span class="token punctuation">,</span>fp<span class="token operator">=</span>fp<span class="token punctuation">,</span>ensure_ascii<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> 
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'over!'</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3><span id="0x03-豆瓣电影">0x03 豆瓣电影</span></h3><blockquote><p>request.get</p></blockquote><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="0x03-豆瓣电影"> 0x03 豆瓣电影</span></h3>
+<blockquote>
+<p>request.get</p>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
 <span class="token keyword">import</span> json
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
     url <span class="token operator">=</span> <span class="token string">'https://movie.douban.com/j/chart/top_list'</span>
@@ -81,7 +555,9 @@ page_text <span class="token operator">=</span> response<span class="token punct
     json<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>list_data<span class="token punctuation">,</span> fp<span class="token operator">=</span>fp<span class="token punctuation">,</span> ensure_ascii<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
 
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'over!'</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3><span id="0x04-综合案例-数据提取">0x04 综合案例-数据提取</span></h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="0x04-综合案例-数据提取"> 0x04 综合案例-数据提取</span></h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
 <span class="token keyword">import</span> json
 
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
@@ -123,7 +599,33 @@ page_text <span class="token operator">=</span> response<span class="token punct
     fp <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'./requests_test/test5/allData.json'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
     json<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>all_data_list<span class="token punctuation">,</span> fp<span class="token operator">=</span>fp<span class="token punctuation">,</span> ensure_ascii<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'over!'</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2><span id="数据解析">数据解析</span></h2><blockquote><p>聚焦爬虫：爬取页面中指定的页面内容</p></blockquote><p>编码流程：</p><ul><li>指定url</li><li>发起请求</li><li>获取响应数据</li><li><strong>数据解析</strong></li><li>持久化存储</li></ul><p>数据解析分类：正则，bs4，<strong>xpath</strong></p><p>数据解析原理概述：</p><blockquote><p>解析的局部的文本内容都会在标签之间或者标签对应的属性中进行存储</p></blockquote><ol><li>进行指定标签的定位</li><li>标签或者标签对应的属性中存储的数据值进行提取 (解析)</li></ol><h3><span id="0x00-图片">0x00 图片</span></h3><blockquote><p>.content 返回二进制</p></blockquote><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="数据解析"> 数据解析</span></h2>
+<blockquote>
+<p>聚焦爬虫：爬取页面中指定的页面内容</p>
+</blockquote>
+<p>编码流程：</p>
+<ul>
+<li>指定url</li>
+<li>发起请求</li>
+<li>获取响应数据</li>
+<li><strong>数据解析</strong></li>
+<li>持久化存储</li>
+</ul>
+<p>数据解析分类：正则，bs4，<strong>xpath</strong></p>
+<p>数据解析原理概述：</p>
+<blockquote>
+<p>解析的局部的文本内容都会在标签之间或者标签对应的属性中进行存储</p>
+</blockquote>
+<ol>
+<li>进行指定标签的定位</li>
+<li>标签或者标签对应的属性中存储的数据值进行提取 (解析)</li>
+</ol>
+<h3><span id="0x00-图片"> 0x00 图片</span></h3>
+<blockquote>
+<p>.content 返回二进制</p>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
 
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
     <span class="token comment"># 如何爬取图片数据</span>
@@ -133,13 +635,23 @@ page_text <span class="token operator">=</span> response<span class="token punct
 
     <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'./data_parse_test/test1/dsm.jpg'</span><span class="token punctuation">,</span><span class="token string">'wb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> fp<span class="token punctuation">:</span>
         fp<span class="token punctuation">.</span>write<span class="token punctuation">(</span>img_data<span class="token punctuation">)</span>    
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3><span id="0x01-正则解析">0x01 正则解析</span></h3><blockquote><p>需要导入re模块</p></blockquote><p>常用正则表达式</p><p><img src="https://i.bmp.ovh/imgs/2021/11/022868b8a1cd24f4.png" alt="img"></p><p>ex:</p><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>test<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="0x01-正则解析"> 0x01 正则解析</span></h3>
+<blockquote>
+<p>需要导入re模块</p>
+</blockquote>
+<p>常用正则表达式</p>
+<p><img src="https://i.bmp.ovh/imgs/2021/11/022868b8a1cd24f4.png" alt="img"></p>
+<p>ex:</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>test<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/dsadas/sdada<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>//sdadasd/dsadas/dasdas<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sdada<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 
-ex='<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>test<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>.*?&lt;img src="(.*?)" alt .*?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong>练习：图片分页爬取</strong></p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+ex='<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>test<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>.*?&lt;img src="(.*?)" alt .*?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>练习：图片分页爬取</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
 <span class="token keyword">import</span> re
 <span class="token keyword">import</span> os
 
@@ -175,7 +687,82 @@ ex='<span class="token tag"><span class="token tag"><span class="token punctuati
             <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>imgPath<span class="token punctuation">,</span><span class="token string">'wb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> fp<span class="token punctuation">:</span>
                 fp<span class="token punctuation">.</span>write<span class="token punctuation">(</span>img_data<span class="token punctuation">)</span>
                 <span class="token keyword">print</span><span class="token punctuation">(</span>img_name<span class="token punctuation">,</span><span class="token string">'下载成功！'</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3><span id="0x02-bs4解析">0x02 bs4解析</span></h3><blockquote><p>所需模块：bs4 lxml</p></blockquote><p>数据解析的原理：</p><ol><li>标签定位</li><li>提取标签、标签属性中存储的数据值</li></ol><p>bs4数据解析的原理：</p><ol><li>实例化一个BeautifulSoup对象，并且将页面源码数据加载到该对象中</li><li>通过调用BeautifulSoup对象中相关的属性或者方法进行标签定位和数据提取</li></ol><p>如何实例化Beautiful对象：</p><blockquote><p><code>from bs4 import BeautifulSoup</code></p></blockquote><ul><li><p>对象的实例化：将本地/互联网上获取的页面源码加载到该对象中</p><p><code>soup=BeautifulSoap(page_text.content,&#39;lxml&#39;)</code></p></li></ul><p>提供的用于数据解析的方法和属性：</p><ul><li><p><code>soup.tagName</code> 对应html标签 返回的是html中第一次出现的tagName标签</p></li><li><p><code>soup.find()</code> :</p><ul><li><code>soup.find(&#39;tagName&#39;)</code> 同 <code>soup.tagName</code></li><li>属性定位：<code>soup.find(&#39;tagName&#39;,class_=&#39;xxx&#39;)</code> (class要带下划线)</li><li><code>soup.find_all(&#39;tagName&#39;)</code> 返回所有的标签(列表)</li></ul></li><li><p><code>soup.select()</code></p><ul><li><p><code>soup.select(&#39;某种选择器(id,class,标签...)&#39;)</code>，返回的是一个<strong>列表</strong></p><blockquote><p><code>#id</code>, <code>tag</code>, <code>.class</code></p></blockquote></li><li><p>层级选择器：</p><ul><li><code>soup.select(&#39;.class1 &gt; ul &gt; li &gt; a&#39;)[2]</code> 表示 class1 下的 ul 标签下的 li 标签中的第二个 a 标签。 <code>&gt;</code> 表示一个层级关系</li><li><code>soup.select(&#39;.class1 &gt; ul a&#39;)[2]</code> 表示同上，空格表示的是多个层级关系</li></ul></li></ul></li><li><p>获取标签之间的文本数据</p><ul><li><code>soup.a.text/string/get_text()</code><ul><li><code>.text/.get_text()</code> 可以获得某一个标签中所有的文本内容</li><li><code>.string</code> 只可以获取改标签下面直系的文本内容</li></ul></li></ul></li><li>获取标签中属性值<ul><li><code>soup.a[&#39;href&#39;]</code></li></ul></li></ul><p><strong>练习：小说章节名和内容爬取</strong></p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="0x02-bs4解析"> 0x02 bs4解析</span></h3>
+<blockquote>
+<p>所需模块：bs4 lxml</p>
+</blockquote>
+<p>数据解析的原理：</p>
+<ol>
+<li>标签定位</li>
+<li>提取标签、标签属性中存储的数据值</li>
+</ol>
+<p>bs4数据解析的原理：</p>
+<ol>
+<li>实例化一个BeautifulSoup对象，并且将页面源码数据加载到该对象中</li>
+<li>通过调用BeautifulSoup对象中相关的属性或者方法进行标签定位和数据提取</li>
+</ol>
+<p>如何实例化Beautiful对象：</p>
+<blockquote>
+<p><code>from bs4 import BeautifulSoup</code></p>
+</blockquote>
+<ul>
+<li>
+<p>对象的实例化：将本地/互联网上获取的页面源码加载到该对象中</p>
+<p><code>soup=BeautifulSoap(page_text.content,'lxml')</code></p>
+</li>
+</ul>
+<p>提供的用于数据解析的方法和属性：</p>
+<ul>
+<li>
+<p><code>soup.tagName</code> 对应html标签 返回的是html中第一次出现的tagName标签</p>
+</li>
+<li>
+<p><code>soup.find()</code> :</p>
+<ul>
+<li><code>soup.find('tagName')</code> 同 <code>soup.tagName</code></li>
+<li>属性定位：<code>soup.find('tagName',class_='xxx')</code> (class要带下划线)</li>
+<li><code>soup.find_all('tagName')</code> 返回所有的标签(列表)</li>
+</ul>
+</li>
+<li>
+<p><code>soup.select()</code></p>
+<ul>
+<li>
+<p><code>soup.select('某种选择器(id,class,标签...)')</code>，返回的是一个<strong>列表</strong></p>
+<blockquote>
+<p><code>#id</code>, <code>tag</code>, <code>.class</code></p>
+</blockquote>
+</li>
+<li>
+<p>层级选择器：</p>
+<ul>
+<li><code>soup.select('.class1 &gt; ul &gt; li &gt; a')[2]</code>  表示 class1 下的 ul 标签下的 li 标签中的第二个 a 标签。 <code>&gt;</code> 表示一个层级关系</li>
+<li><code>soup.select('.class1 &gt; ul a')[2]</code> 表示同上，空格表示的是多个层级关系</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>获取标签之间的文本数据</p>
+<ul>
+<li><code>soup.a.text/string/get_text()</code>
+<ul>
+<li><code>.text/.get_text()</code> 可以获得某一个标签中所有的文本内容</li>
+<li><code>.string</code> 只可以获取改标签下面直系的文本内容</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>获取标签中属性值</p>
+<ul>
+<li><code>soup.a['href']</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>练习：小说章节名和内容爬取</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
 <span class="token keyword">import</span> lxml
 <span class="token keyword">from</span> bs4 <span class="token keyword">import</span> BeautifulSoup
 
@@ -210,4 +797,331 @@ ex='<span class="token tag"><span class="token tag"><span class="token punctuati
         <span class="token keyword">print</span><span class="token punctuation">(</span>title<span class="token operator">+</span><span class="token string">'downloaded successfully!'</span><span class="token punctuation">)</span>
 
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'over!'</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3><span id="0x03-xpath解析">0x03 xpath解析</span></h3><blockquote><p>是最常用且最便捷高效的爬取方式，通用性最强</p><p>所需模块：lxml</p></blockquote><p>xpath解析原理：</p><ol><li>实例化一个etree的对象，且需要将被解析的页面源码数据加载到该对象中</li><li>调用etree对象中的xpath方法结合着xpath表达式实现标签的定位和内容的捕获</li></ol><p>如何实例化etree对象：</p><blockquote><p><code>from lxml import etree</code></p></blockquote><ul><li><p>本地源码：<code>etree.parse(filePath)</code></p></li><li><p>互联网源码：<code>etree.HTML(&#39;page_text&#39;)</code></p></li><li><code>xpath(&#39;xpath表达式&#39;)</code></li></ul><p>xpath表达式：</p><blockquote><p>各表达式可以用 <code>|</code> 连接</p></blockquote><ul><li><code>/</code>：表示的是一个层级，从根节点开始定位</li><li>开头<code>./</code>：定位了层级后，当前层级下的层级</li><li><code>//</code>：表示的是多个层级，可以从任意位置开始定位</li><li><p>属性定位：<code>//div[@class=&quot;xxx&quot;]</code> 即 <code>tag[@attrName=&quot;attrValue&quot;]</code></p></li><li><p>索引定位：<code>//div[@class=&quot;xxx&quot;]/p[3]</code> 索引是从1开始的</p></li><li>取文本：<ul><li><code>/text()</code> 标签下直系的文本内容</li><li><code>//text()</code> 标签下所有的文本内容</li></ul></li><li><p>取属性：<code>/@attrName</code></p></li><li><p>通用处理中文乱码的解决方案</p><pre class="line-numbers language-python" data-language="python"><code class="language-python">name <span class="token operator">=</span> name<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'iso-8859-1'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'gbk'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li></ul><p><strong>练习略</strong></p><h2><span id="验证码识别">验证码识别</span></h2><p>反爬机制：验证码</p><p>识别验证码的操作：</p><ul><li>第三方自动识别：<a target="_blank" rel="noopener" href="http://www.yundama.com/demo.html">云打码</a></li></ul><p>to be added….</p><h2><span id="模拟登陆">模拟登陆</span></h2><p>需求：对校园网进行登陆 (无验证码)</p><ul><li>点击登陆按钮后会发起一个POST请求，POST请求中会携带登录信息(username,pwd)</li><li><code>print(response.status_code)</code> 打印响应状态码，如果打印200则证明模拟登陆成功</li></ul><p>需求：爬取当前用户的相关信息</p><p>http/https协议特性：无状态</p><p>没有请求到对应页面数据的原因：发起的第二次基于页面的请求时，服务器端不知道此次请求是基于登录状态下的请求</p><p>cookie：用来让服务端记录客户端的相关状态</p><ul><li>cookie值的来源是哪里：模拟登陆post请求后，有服务器端创建</li><li>session会话对象：<ul><li>可以进行请求的发送</li><li>如果请求过程中产生了cookie，则cookie会被自动存储/携带在该session对象中</li></ul></li></ul><p>步骤：</p><ol><li>创建一个session对象： <code>session = requests.Session()</code></li><li>使用session对象进行模拟登录post请求的发送 (cookie就会被存储在session中)</li><li>session对象再对登录后页面对应的get请求进行发送 (携带了cookie)</li></ol><h2><span id="selenium工具">selenium工具</span></h2><blockquote><p>解决requests无法执行javaScript代码的问题</p></blockquote><ul><li><p>用于web应用程序自动化测试的工具，直接运行在浏览器当中，支持chrome、firefox等主流浏览器。可以通过代码控制与页面上元素进行交互（点击、输入等），也可以获取指定元素的内容</p></li><li><p>缺点： 效率低，速度慢</p></li></ul><blockquote><p>to be added …</p></blockquote></div><div class="article-footer"><blockquote class="mt-2x"><ul class="post-copyright list-unstyled"><li class="post-copyright-link hidden-xs"><strong>本文链接：</strong> <a href="https://maskros.top/post/note/Crawler.html" title="python爬虫杂记" target="_blank" rel="external">https://maskros.top/post/note/Crawler.html</a></li><li class="post-copyright-license"><strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！</li></ul></blockquote><div class="panel panel-default panel-badger"><div class="panel-body"><figure class="media"><div class="media-left"><a href="https://github.com/Maskros-new" target="_blank" class="img-burn thumb-sm visible-lg"><img src="/images/avatar.jpg" class="img-rounded w-full" alt=""></a></div><div class="media-body"><h3 class="media-heading"><a href="https://github.com/Maskros-new" target="_blank"><span class="text-dark">Maskros</span><small class="ml-1x">NOT an ACMer</small></a></h3><div>Be Legendary within the hasty keys</div></div></figure></div></div></div></article><section id="comments"><div id="vcomments"></div></section></div><nav class="bar bar-footer clearfix" data-stick-bottom><div class="bar-inner"><ul class="pager pull-left"><li class="prev"><a href="/post/projects/maogai_crawler.html" title="进行一个毛概题库的爬"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a></li><li class="next"><a href="/post/xcpc/2021ccpc_girl.html" title="2021CCPC女生专场vp"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a></li></ul><button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button><div class="bar-right"><div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div></div></div></nav><div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content donate"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><div class="modal-body"><div class="donate-box"><div class="donate-head"><p>感谢您的支持，我会继续努力的!</p></div><div class="tab-content"><div role="tabpanel" class="tab-pane fade active in" id="alipay"><div class="donate-payimg"><img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫"></div><p class="text-muted mv">扫码打赏，你说多少就多少</p><p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p></div><div role="tabpanel" class="tab-pane fade" id="wechatpay"><div class="donate-payimg"><img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫"></div><p class="text-muted mv">扫码打赏，你说多少就多少</p><p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p></div></div><div class="donate-footer"><ul class="nav nav-tabs nav-justified" role="tablist"><li role="presentation" class="active"><a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a></li><li role="presentation"><a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a></li></ul></div></div></div></div></div></div></main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter"><ul class="social-links"><li><a href="https://github.com/Maskros-new" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li></ul><div class="copyright"><div class="publishby">Theme by <a href="https://github.com/cofess" target="_blank">cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.</div></div></footer><script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script><script>window.jQuery||document.write('<script src="js/jquery.min.js"><\/script>')</script><script src="/js/plugin.min.js"></script><script src="/js/application.js"></script><script>window.INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(未命名)"},ROOT_URL:"/",CONTENT_URL:"/content.json"}</script><script src="/js/insight.js"></script><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//cdn.jsdelivr.net/npm/valine"></script><script type="text/javascript">var GUEST=["nick","mail","link"],meta=(meta="nick,mail").split(",").filter(function(e){return-1<GUEST.indexOf(e)});new Valine({el:"#vcomments",verify:!1,notify:!1,appId:"Nmc1pCkN608WUnjzl1OVUJwp-gzGzoHsz",appKey:"AgMMODlKtVQJ8D2ksYM7tqFv",placeholder:"Leave your thoughts behind~",avatar:"mp",meta:meta,pageSize:"10",visitor:!0})</script></body></html>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="0x03-xpath解析"> 0x03 xpath解析</span></h3>
+<blockquote>
+<p>是最常用且最便捷高效的爬取方式，通用性最强</p>
+<p>所需模块：lxml</p>
+</blockquote>
+<p>xpath解析原理：</p>
+<ol>
+<li>实例化一个etree的对象，且需要将被解析的页面源码数据加载到该对象中</li>
+<li>调用etree对象中的xpath方法结合着xpath表达式实现标签的定位和内容的捕获</li>
+</ol>
+<p>如何实例化etree对象：</p>
+<blockquote>
+<p><code>from lxml import etree</code></p>
+</blockquote>
+<ul>
+<li>
+<p>本地源码：<code>etree.parse(filePath)</code></p>
+</li>
+<li>
+<p>互联网源码：<code>etree.HTML('page_text')</code></p>
+</li>
+<li>
+<p><code>xpath('xpath表达式')</code></p>
+</li>
+</ul>
+<p>xpath表达式：</p>
+<blockquote>
+<p>各表达式可以用 <code>|</code> 连接</p>
+</blockquote>
+<ul>
+<li>
+<p><code>/</code>：表示的是一个层级，从根节点开始定位</p>
+</li>
+<li>
+<p>开头<code>./</code>：定位了层级后，当前层级下的层级</p>
+</li>
+<li>
+<p><code>//</code>：表示的是多个层级，可以从任意位置开始定位</p>
+</li>
+<li>
+<p>属性定位：<code>//div[@class=&quot;xxx&quot;]</code> 即 <code>tag[@attrName=&quot;attrValue&quot;]</code></p>
+</li>
+<li>
+<p>索引定位：<code>//div[@class=&quot;xxx&quot;]/p[3]</code> 索引是从1开始的</p>
+</li>
+<li>
+<p>取文本：</p>
+<ul>
+<li><code>/text()</code> 标签下直系的文本内容</li>
+<li><code>//text()</code> 标签下所有的文本内容</li>
+</ul>
+</li>
+<li>
+<p>取属性：<code>/@attrName</code></p>
+</li>
+<li>
+<p>通用处理中文乱码的解决方案</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">name <span class="token operator">=</span> name<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'iso-8859-1'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'gbk'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+<p><strong>练习略</strong></p>
+<h2><span id="验证码识别"> 验证码识别</span></h2>
+<p>反爬机制：验证码</p>
+<p>识别验证码的操作：</p>
+<ul>
+<li>第三方自动识别：<a target="_blank" rel="noopener" href="http://www.yundama.com/demo.html">云打码</a></li>
+</ul>
+<p>to be added…</p>
+<h2><span id="模拟登陆"> 模拟登陆</span></h2>
+<p>需求：对校园网进行登陆 (无验证码)</p>
+<ul>
+<li>点击登陆按钮后会发起一个POST请求，POST请求中会携带登录信息(username,pwd)</li>
+<li><code>print(response.status_code)</code> 打印响应状态码，如果打印200则证明模拟登陆成功</li>
+</ul>
+<p>需求：爬取当前用户的相关信息</p>
+<p>http/https协议特性：无状态</p>
+<p>没有请求到对应页面数据的原因：发起的第二次基于页面的请求时，服务器端不知道此次请求是基于登录状态下的请求</p>
+<p>cookie：用来让服务端记录客户端的相关状态</p>
+<ul>
+<li>cookie值的来源是哪里：模拟登陆post请求后，有服务器端创建</li>
+<li>session会话对象：
+<ul>
+<li>可以进行请求的发送</li>
+<li>如果请求过程中产生了cookie，则cookie会被自动存储/携带在该session对象中</li>
+</ul>
+</li>
+</ul>
+<p>步骤：</p>
+<ol>
+<li>创建一个session对象： <code>session = requests.Session()</code></li>
+<li>使用session对象进行模拟登录post请求的发送 (cookie就会被存储在session中)</li>
+<li>session对象再对登录后页面对应的get请求进行发送 (携带了cookie)</li>
+</ol>
+<h2><span id="selenium工具"> selenium工具</span></h2>
+<blockquote>
+<p>解决requests无法执行javaScript代码的问题</p>
+</blockquote>
+<ul>
+<li>
+<p>用于web应用程序自动化测试的工具，直接运行在浏览器当中，支持chrome、firefox等主流浏览器。可以通过代码控制与页面上元素进行交互（点击、输入等），也可以获取指定元素的内容</p>
+</li>
+<li>
+<p>缺点： 效率低，速度慢</p>
+</li>
+</ul>
+<blockquote>
+<p>to be added …</p>
+</blockquote>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://maskros.top/post/note/Crawler.html" title="python爬虫杂记" target="_blank" rel="external">https://maskros.top/post/note/Crawler.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Maskros-new" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Maskros-new" target="_blank"><span class="text-dark">Maskros</span><small class="ml-1x">NOT an ACMer</small></a></h3>
+        <div>Be Legendary within the hasty keys</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/post/projects/maogai_crawler.html" title="进行一个毛概题库的爬"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/post/xcpc/2021ccpc_girl.html" title="2021CCPC女生专场vp"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Maskros-new" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Nmc1pCkN608WUnjzl1OVUJwp-gzGzoHsz',
+    appKey: 'AgMMODlKtVQJ8D2ksYM7tqFv',
+    placeholder: 'Leave your thoughts behind~',
+    avatar: 'mp',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: true
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
