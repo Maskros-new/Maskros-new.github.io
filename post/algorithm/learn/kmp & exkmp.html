@@ -192,7 +192,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <p>nothing</p>
+                <p>Nothing.</p>
             </div>
         </div>
     </div>
@@ -366,13 +366,6 @@
 
         
 
-	<span class="article-read hidden-xs">
-    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
-    	<span id="/post/algorithm/learn/kmp%20&%20exkmp.html" class="leancloud_visitors"  data-flag-title="kmp &amp; exkmp">
-			<span class="leancloud-visitors-count">0</span>
-		</span>
-    </span>
-
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/algorithm/learn/kmp%20&%20exkmp.html#comments" class="article-comment-link">评论</a></span>
         
 	
@@ -386,25 +379,23 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="kmp-amp-exkmp"> kmp &amp; exkmp</span></h1>
-<p>Knuth-Morris-Pratt &amp; entend kmp</p>
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="kmp-amp-exkmp">kmp &amp; exkmp</span></h1><p>Knuth-Morris-Pratt &amp; entend kmp </p>
 <p>字符串匹配</p>
-<h2><span id="kmp"> kmp</span></h2>
-<blockquote>
-<p><strong>Keywords</strong>：next[]</p>
+<h2><span id="kmp">kmp</span></h2><blockquote>
+<p><strong>Keywords</strong>：next[] </p>
 <p>由BF改进，O(m+n)，传世经典属于是😅</p>
-<p>以下均假设主串为 <code>S</code>，模式串为 <code>P</code></p>
+<p>以下均假设主串为 <code>S</code>，模式串为 <code>P</code> </p>
 </blockquote>
 <ul>
-<li>
-<p><strong>What is <code>next[]</code> ?</strong></p>
+<li><p><strong>What is <code>next[]</code> ?</strong></p>
 <p>针对模式串，<code>next[j]</code> 表示模式串下标 <code>j</code> <strong>之前</strong> 最长<strong>相同前后缀</strong>的长度，这不重要。</p>
 <p>你只需要记住：<code>next[j]</code>表示当 <code>P[j]!=S[i]</code> 时，<code>j</code> 指针的<strong>下一步移动位置</strong>。</p>
 <p>偷个好图：</p>
 <p><img src="https://pic4.zhimg.com/v2-817073ca77f6c75d234392f207a3c81b_b.webp" alt="img"></p>
 </li>
-<li>
-<p><strong>How to quickly build <code>next[]</code> ?</strong></p>
+</ul>
+<ul>
+<li><p><strong>How to quickly build <code>next[]</code> ?</strong></p>
 <blockquote>
 <p>话不多说，直接上🐎</p>
 </blockquote>
@@ -422,8 +413,7 @@
 <p>③ 如果 <code>P[next[m]]!=P[m]</code>，令 <code>t=m, t=next[t]</code>，比较 <code>P[next[t]]</code>和 <code>P[m]</code>：相同的话 <code>next[m]=next[t]+1</code> , 不同的令<code>t=next[t]</code> 继续比较，直到 <code>t==-1</code> 时，<code>next[m]=0</code></p>
 <hr>
 </li>
-<li>
-<p><strong>kmp计数模板</strong></p>
+<li><p><strong>kmp计数模板</strong></p>
 <p>模式串在主串中出现了几次 (可重叠、不可重叠)</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void kmp_pre(string p, int next[])&#123;
 	int i,j;
@@ -453,20 +443,17 @@ int kmp_Count(string x, string y, int next[])&#123; &#x2F;&#x2F;x是模式串，
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
-<h2><span id="exkmp"> exkmp</span></h2>
-<blockquote>
+<h2><span id="exkmp">exkmp</span></h2><blockquote>
 <p><strong>Keywords</strong>: extend[] next[]</p>
 <p>O(m+n)</p>
 <p><strong>e-kmp 可以找到主串中所有模式串的匹配</strong></p>
 </blockquote>
 <ul>
-<li>
-<p><strong>What are they?</strong></p>
+<li><p><strong>What are they?</strong></p>
 <p><strong>next[i]</strong>: 对模式串，表示 <code>P[i...m-1]</code> 与 <code>P[0...m-1]</code> 的最长公共前缀</p>
 <p><strong>extend[i]</strong> : 对主串和模式串，表示 <code>S[i...n-1]</code>与 <code>P[0...m-1]</code> 的最长公共前缀</p>
 </li>
-<li>
-<p><strong>How to build them?</strong></p>
+<li><p><strong>How to build them?</strong></p>
 <blockquote>
 <p>🐎来</p>
 </blockquote>
@@ -512,7 +499,7 @@ void ekmp(string x, string y, int next[], int extend[])&#123;
 <blockquote>
 <p>此处变量设置会和🐎有所出入，主要是理解过程😅</p>
 </blockquote>
-<p>① 假设当前 <code>S</code> 串遍历到位置<code>i</code>, 即<code>extend[0...i-1]</code>的值均以求出；首先设置两个变量，<code>a</code> 和 <code>p</code>，<code>p</code> 代表以<code>a</code>为起始位置的字符匹配成功的最右边界，‘p = 最后一个匹配成功位置+1’ ，即 <code>S[a...p) == P[0...p-a)</code>，假设下面基于<code>S[i]</code> 对应 <code>P[i-a]</code> 的几种情况开始讨论：</p>
+<p>① 假设当前 <code>S</code> 串遍历到位置<code>i</code>, 即<code>extend[0...i-1]</code>的值均以求出；首先设置两个变量，<code>a</code> 和 <code>p</code>，<code>p</code> 代表以<code>a</code>为起始位置的字符匹配成功的最右边界，’p = 最后一个匹配成功位置+1’ ，即 <code>S[a...p) == P[0...p-a)</code>，假设下面基于<code>S[i]</code> 对应 <code>P[i-a]</code> 的几种情况开始讨论：</p>
 <p>② 如图所示，如果 <code>i+next[i-a] &lt; p</code> ，根据 <code>next[]</code>  数组的定义，易知 <code>extend[i] = next[i-a]</code></p>
 <p><img src="https://i.bmp.ovh/imgs/2021/10/b4e3168596aa7ae5.png" alt="img"></p>
 <p>③ 如果 <code>i+next[i-a] == p</code> ，此时<code>S[p]!=P[p-a]</code> 且<code>P[p-i]!=P[p-a]</code>，但是<code>S[p]==P[p-i]</code>的可能仍然存在，所以直接从 <code>S[p]</code> 与 <code>P[p-i]</code> 开始向后匹配即可</p>
@@ -526,24 +513,17 @@ void ekmp(string x, string y, int next[], int extend[])&#123;
 <p>需要细品</p>
 </blockquote>
 <hr>
-<h2><span id="题单"> 题单</span></h2>
-<p><a target="_blank" rel="noopener" href="http://maskros.icu/2021/11/26/kmp_problem/">Solution</a></p>
+<h2><span id="题单">题单</span></h2><p><a target="_blank" rel="noopener" href="http://maskros.icu/2021/11/26/kmp_problem/">Solution</a></p>
 <ul>
-<li>
-<p>0x01 剪花布条 HDU-2087 <a target="_blank" rel="noopener" href="https://vjudge.net/problem/HDU-2087">link</a></p>
+<li><p>0x01 剪花布条 HDU-2087 <a target="_blank" rel="noopener" href="https://vjudge.net/problem/HDU-2087">link</a></p>
 </li>
-<li>
-<p>0x02 Secret HDU-6153 <a target="_blank" rel="noopener" href="https://vjudge.net/problem/HDU-6153">link</a></p>
+<li><p>0x02 Secret HDU-6153 <a target="_blank" rel="noopener" href="https://vjudge.net/problem/HDU-6153">link</a></p>
 </li>
-<li>
-<p>0x03 Cow Patterns POJ-3167 <a target="_blank" rel="noopener" href="https://vjudge.net/problem/POJ-3167">link</a></p>
-</li>
-<li>
-<p>… 待更</p>
-</li>
+<li>0x03 Cow Patterns POJ-3167 <a target="_blank" rel="noopener" href="https://vjudge.net/problem/POJ-3167">link</a></li>
+<li>… 待更</li>
 </ul>
 <blockquote>
-<p>kmp 和 exkmp 整的头晕…</p>
+<p>kmp 和 exkmp 整的头晕….</p>
 </blockquote>
 
       
@@ -746,11 +726,11 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     notify: false,
     appId: 'Nmc1pCkN608WUnjzl1OVUJwp-gzGzoHsz',
     appKey: 'AgMMODlKtVQJ8D2ksYM7tqFv',
-    placeholder: 'Leave your thoughts behind~',
-    avatar: 'mp',
+    placeholder: 'Leave sth plz',
+    avatar: 'mm',
     meta: meta,
     pageSize: '10' || 10,
-    visitor: true
+    visitor: false
   });
   </script>
 

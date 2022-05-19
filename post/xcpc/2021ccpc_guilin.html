@@ -28,8 +28,8 @@
 <meta property="article:published_time" content="2021-11-23T16:03:00.000Z">
 <meta property="article:modified_time" content="2022-01-25T07:52:52.927Z">
 <meta property="article:author" content="Maskros">
-<meta property="article:tag" content="ACM">
 <meta property="article:tag" content="solutions">
+<meta property="article:tag" content="ACM">
 <meta property="article:tag" content="思维">
 <meta property="article:tag" content="二分">
 <meta property="article:tag" content="CCPC">
@@ -191,7 +191,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <p>nothing</p>
+                <p>Nothing.</p>
             </div>
         </div>
     </div>
@@ -365,13 +365,6 @@
 
         
 
-	<span class="article-read hidden-xs">
-    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
-    	<span id="/post/xcpc/2021ccpc_guilin.html" class="leancloud_visitors"  data-flag-title="2021CCPC桂林站vp">
-			<span class="leancloud-visitors-count">0</span>
-		</span>
-    </span>
-
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/xcpc/2021ccpc_guilin.html#comments" class="article-comment-link">评论</a></span>
         
 	
@@ -385,12 +378,10 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="2021ccpc桂林站vp"> 2021CCPC桂林站vp</span></h1>
-<blockquote>
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="2021ccpc桂林站vp">2021CCPC桂林站vp</span></h1><blockquote>
 <p>”祭奠擦肩而过的桂林两日游“</p>
 </blockquote>
-<h2><span id="a_hero-named-magnus"> A_Hero Named Magnus</span></h2>
-<blockquote>
+<h2><span id="a_hero-named-magnus">A_Hero Named Magnus</span></h2><blockquote>
 <p>水题。为什么不ban猛犸？输出2n-1</p>
 </blockquote>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
@@ -424,19 +415,17 @@
         <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="d_assumption-is-all-you-need"> D_Assumption is All You Need</span></h2>
-<blockquote>
+<h2><span id="d_assumption-is-all-you-need">D_Assumption is All You Need</span></h2><blockquote>
 <p>构造题</p>
-<p>题意：给你两个序列A，B，对A可执行操作：若 i&lt;j 且 Ai&gt;Aj，可将Ai与Aj交换，问能否通过合法的操作将A变成B，并打印操作序列</p>
+<p>题意：给你两个序列A，B，对A可执行操作：若 i<j 且 ai>Aj，可将Ai与Aj交换，问能否通过合法的操作将A变成B，并打印操作序列  </j></p>
 <p>思路：从屁股往前扫一遍，如果Ai和Bi不一样，就从A[Bi_pos]往前扫，寻求最优解，瞎JB贪心，wa2待补</p>
 </blockquote>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2><span id="e_buy-and-delete-图论"> E_Buy and Delete (图论)</span></h2>
-<blockquote>
+<h2><span id="e_buy-and-delete-图论">E_Buy and Delete (图论)</span></h2><blockquote>
 <p>题意：给了你一些带权有向边，Alice可以用已有的c元钱购买一些边形成一张有向图；随后Bob进行删边，每次可以删除一个无环的子集，Alice想最大化删边次数，Bob想最小化，二者都采取最优操作，问Bob需要删除几次</p>
 <p>思路：答案只可能是0,1,2，0的情况是Alice一条边都买不起，1的情况是Alice买的无环图，2的情况是Alice买的带环图，无论有几个环，Bob都只需要删两次就够了，这个比较容易理解。</p>
 <p>解法：直接把所有边存到一个有向图里，做Dijkstra找从v-&gt;v 的最短路，判断买不买得起就可以了</p>
-<p>ps: 开始犯病用 n2 的Dij结果T了，换了 nlogn 的堆优化Dij就不T了；然后还在想改造一下Dij让起点为 i 的dist数组可以存 <code>dist[i]</code>，结果想了想直接Dij完了之后<code>dist[j] + mincost[j][i]</code> 不就是环的长度吗，wssb</p>
+<p>ps: 开始犯病用 n2 的Dij结果T了，换了 nlogn 的堆优化Dij就不T了；然后还在想改造一下Dij让起点为 i 的dist数组可以存 <code>dist[i]</code>，结果想了想直接Dij完了之后<code>dist[j] + mincost[j][i]</code> 不就是环的长度吗，wssb </p>
 </blockquote>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
 
@@ -522,8 +511,7 @@ vector<span class="token operator">&lt;</span>Edge<span class="token operator">>
     cout<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="g_occupy-the-cities"> G_Occupy the Cities</span></h2>
-<blockquote>
+<h2><span id="g_occupy-the-cities">G_Occupy the Cities</span></h2><blockquote>
 <p>二分答案/dp</p>
 <p>题意：一个01串，每次操作可以将串中所有的1的左边一位或右边一位也变成1，问变成全1串需要几次操作</p>
 <p>解法：二分答案，<code>check()</code> 中从串的左边到右边对每一位1嗯贪心，dp解法没看</p>
@@ -603,8 +591,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
         <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="i_ptsd"> I_PTSD</span></h2>
-<blockquote>
+<h2><span id="i_ptsd">I_PTSD</span></h2><blockquote>
 <p>沙比题，不想复盘了</p>
 </blockquote>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
@@ -860,11 +847,11 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     notify: false,
     appId: 'Nmc1pCkN608WUnjzl1OVUJwp-gzGzoHsz',
     appKey: 'AgMMODlKtVQJ8D2ksYM7tqFv',
-    placeholder: 'Leave your thoughts behind~',
-    avatar: 'mp',
+    placeholder: 'Leave sth plz',
+    avatar: 'mm',
     meta: meta,
     pageSize: '10' || 10,
-    visitor: true
+    visitor: false
   });
   </script>
 

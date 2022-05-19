@@ -190,7 +190,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <p>nothing</p>
+                <p>Nothing.</p>
             </div>
         </div>
     </div>
@@ -364,13 +364,6 @@
 
         
 
-	<span class="article-read hidden-xs">
-    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
-    	<span id="/post/algorithm/learn/trie.html" class="leancloud_visitors"  data-flag-title="Trie">
-			<span class="leancloud-visitors-count">0</span>
-		</span>
-    </span>
-
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/algorithm/learn/trie.html#comments" class="article-comment-link">评论</a></span>
         
 	
@@ -384,53 +377,41 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="trie"> Trie</span></h1>
-<p>字典树/前缀树</p>
-<h2><span id="什么是trie"> 什么是Trie</span></h2>
-<blockquote>
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="trie">Trie</span></h1><p>字典树/前缀树</p>
+<h2><span id="什么是trie">什么是Trie</span></h2><blockquote>
 <p>从根节点到每个单词结点的路径上所有字母连接成的字符串就是该结点对应的字符串</p>
 </blockquote>
 <ul>
 <li>多叉树，最大分支数由字典的字符集含有的字符数决定</li>
 </ul>
-<img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.it610.com%2Fimage%2Finfo10%2F79c48fdd65894af5beaf368abfb8f106.jpg&refer=http%3A%2F%2Fimg.it610.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1640527949&t=d07f070c79ac3a5b4b2cee80f1a87692" alt="img" style="zoom:50%;">
-<h2><span id="操作"> 操作</span></h2>
-<ul>
-<li>
-<p><strong>插入字符串 insert</strong></p>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.it610.com%2Fimage%2Finfo10%2F79c48fdd65894af5beaf368abfb8f106.jpg&refer=http%3A%2F%2Fimg.it610.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1640527949&t=d07f070c79ac3a5b4b2cee80f1a87692" alt="img" style="zoom:50%;"></p>
+<h2><span id="操作">操作</span></h2><ul>
+<li><p><strong>插入字符串 insert</strong> </p>
 <ol>
-<li>
-<p>初始化 <code>root = 0</code> , 遍历字符串, 对于其每一个字符, 计算其映射值 <code>id</code></p>
+<li><p>初始化 <code>root = 0</code> , 遍历字符串, 对于其每一个字符, 计算其映射值 <code>id</code></p>
 </li>
-<li>
-<p>检查<code>Trie[root][id] == 0</code> 是否成立：</p>
+<li><p>检查<code>Trie[root][id] == 0</code> 是否成立：</p>
 <p>若成立, 则进行插入,  <code>Trie[root][id] = ++cnt</code></p>
 <p>若不成立,说明该位置已经有该字符,直接找到下一个字符应插入的位置: <code>root = trie[root][id]</code>.</p>
 </li>
-<li>
-<p>重复上述步骤,直到字符串完全插入Trie树.</p>
+<li><p>重复上述步骤,直到字符串完全插入Trie树.</p>
 </li>
 </ol>
 </li>
-<li>
-<p><strong>匹配字符串 search</strong></p>
+<li><p><strong>匹配字符串 search</strong></p>
 <ol>
-<li>
-<p>初始化<code>root = 0</code>,遍历字符串,对于其每一个字符,计算其映射值<code>id</code></p>
+<li><p>初始化<code>root = 0</code>,遍历字符串,对于其每一个字符,计算其映射值<code>id</code></p>
 </li>
-<li>
-<p>检查<code>Trie[root][id] == 0</code>是否成立：</p>
+<li><p>检查<code>Trie[root][id] == 0</code>是否成立：</p>
 <p>若成立, 则说明Trie树当前路径不存在该字符,返回匹配失败</p>
 <p>若不成立,则说明当前路径存在该字符,找到下一个字符的位置: <code>root = trie[root][id]</code></p>
 </li>
-<li>
-<p>重复上述步骤，若顺利匹配完整个字符串,则应该检查字符串结束的位置在Trie树中是否是结束标志，<code>flag[root] == true</code>成立,表明是结束标志,则返回匹配成功,否则返回匹配失败</p>
+<li><p>重复上述步骤，若顺利匹配完整个字符串,则应该检查字符串结束的位置在Trie树中是否是结束标志，<code>flag[root] == true</code>成立,表明是结束标志,则返回匹配成功,否则返回匹配失败</p>
 </li>
 </ol>
 </li>
 </ul>
-<h2><span id="模板"> 模板</span></h2>
-<ul>
+<h2><span id="模板">模板</span></h2><ul>
 <li><strong>附：字符数组操作</strong></li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">char s1[maxn], s2[maxn];
@@ -528,8 +509,7 @@ struct Trie&#123;
     tot <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment">//RE有可能是这里的问题</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>
-<p><strong>优化trie树</strong></p>
+<li><p><strong>优化trie树</strong></p>
 <blockquote>
 <p>当结点比较多，sigma_size比较大的时候，采用左儿子-右兄弟建立trie</p>
 </blockquote>
@@ -568,17 +548,13 @@ struct Trie&#123;
         &#125;
     &#125;
 &#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="题单"> 题单</span></h2>
-<p><a target="_blank" rel="noopener" href="http://maskros.icu/2021/11/27/trie_problem/">solution</a></p>
+<h2><span id="题单">题单</span></h2><p><a target="_blank" rel="noopener" href="http://maskros.icu/2021/11/27/trie_problem/">solution</a></p>
 <ul>
-<li>
-<p>0x01 统计难题 HDU 1251 <a target="_blank" rel="noopener" href="https://acm.dingbacode.com/showproblem.php?pid=1251">link</a></p>
+<li><p>0x01 统计难题 HDU 1251 <a target="_blank" rel="noopener" href="https://acm.dingbacode.com/showproblem.php?pid=1251">link</a></p>
 </li>
-<li>
-<p>0x02 背单词 LA 3942 <a target="_blank" rel="noopener" href="https://vjudge.net/problem/UVALive-3942">link</a></p>
+<li><p>0x02 背单词 LA 3942 <a target="_blank" rel="noopener" href="https://vjudge.net/problem/UVALive-3942">link</a></p>
 </li>
-<li>
-<p>0x03 strcmp()函数 UVa 11732 <a target="_blank" rel="noopener" href="https://vjudge.net/problem/UVA-11732">link</a></p>
+<li><p>0x03 strcmp()函数 UVa 11732 <a target="_blank" rel="noopener" href="https://vjudge.net/problem/UVA-11732">link</a></p>
 </li>
 </ul>
 <blockquote>
@@ -785,11 +761,11 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     notify: false,
     appId: 'Nmc1pCkN608WUnjzl1OVUJwp-gzGzoHsz',
     appKey: 'AgMMODlKtVQJ8D2ksYM7tqFv',
-    placeholder: 'Leave your thoughts behind~',
-    avatar: 'mp',
+    placeholder: 'Leave sth plz',
+    avatar: 'mm',
     meta: meta,
     pageSize: '10' || 10,
-    visitor: true
+    visitor: false
   });
   </script>
 

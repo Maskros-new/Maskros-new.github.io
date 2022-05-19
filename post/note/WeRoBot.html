@@ -188,7 +188,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <p>nothing</p>
+                <p>Nothing.</p>
             </div>
         </div>
     </div>
@@ -362,13 +362,6 @@
 
         
 
-	<span class="article-read hidden-xs">
-    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
-    	<span id="/post/note/WeRoBot.html" class="leancloud_visitors"  data-flag-title="利用WeRoBot框架进行微信公众号开发">
-			<span class="leancloud-visitors-count">0</span>
-		</span>
-    </span>
-
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/note/WeRoBot.html#comments" class="article-comment-link">评论</a></span>
         
 	
@@ -382,23 +375,18 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="利用werobot框架进行微信公众号开发"> 利用WeRoBot框架进行微信公众号开发</span></h1>
-<blockquote>
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="利用werobot框架进行微信公众号开发">利用WeRoBot框架进行微信公众号开发</span></h1><blockquote>
 <p>寄网小实验，实现起来不难，记录一下以备不时之需，包括一些对Token的理解</p>
 </blockquote>
-<h2><span id="准备"> 准备</span></h2>
-<p>微信公众号、云服务器、Xftp&amp;Xshell (Replaceable)、WeRoBot 1.13.1</p>
-<h2><span id="总体流程"> 总体流程</span></h2>
-<p><strong>step1</strong> : 注册微信公众号</p>
+<h2><span id="准备">准备</span></h2><p>微信公众号、云服务器、Xftp&amp;Xshell (Replaceable)、WeRoBot 1.13.1</p>
+<h2><span id="总体流程">总体流程</span></h2><p><strong>step1</strong> : 注册微信公众号</p>
 <p><strong>step2</strong> : 通过验证Token将公众号与服务器绑定</p>
 <p><strong>step3</strong> : 在服务器代码里加入公众号实现的功能</p>
-<h2><span id="关于werobot"> 关于WeRoBot</span></h2>
-<blockquote>
+<h2><span id="关于werobot">关于WeRoBot</span></h2><blockquote>
 <p>WeRoBot官方文档: <a target="_blank" rel="noopener" href="https://werobot.readthedocs.io/zh_CN/latest/index.html">link</a></p>
 </blockquote>
 <p><strong>WeRoBot</strong> 是一个基于Python的微信机器人框架，采用MIT协议发布。可以将微信服务器发来的消息进行解析和转换，使用 Session 记录用户状态，包括开发自定义菜单等功能，对初学者来讲使用起来也比较简单。WeRoBot 可以作为独立服务运行，也可以集成在其他 Web 框架中一同运行。以下简单举例：</p>
-<h3><span id="0x01-hello-world"> 0x01 Hello World</span></h3>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 给收到的每一条信息回复 Hello World</span>
+<h3><span id="0x01-hello-world">0x01 Hello World</span></h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 给收到的每一条信息回复 Hello World</span>
 <span class="token keyword">import</span> werobot
 
 robot <span class="token operator">=</span> werobot<span class="token punctuation">.</span>WeRoBot<span class="token punctuation">(</span>token<span class="token operator">=</span><span class="token string">'tokenhere'</span><span class="token punctuation">)</span>
@@ -411,16 +399,14 @@ robot <span class="token operator">=</span> werobot<span class="token punctuatio
 robot<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'HOST'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'0.0.0.0'</span>
 robot<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'PORT'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">80</span>
 robot<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3><span id="0x02-消息处理"> 0x02 消息处理</span></h3>
-<blockquote>
+<h3><span id="0x02-消息处理">0x02 消息处理</span></h3><blockquote>
 <p>WeRoBot 会解析微信服务器发来的消息， 并将消息转换成成 <a target="_blank" rel="noopener" href="https://werobot.readthedocs.io/zh_CN/latest/messages.html#message">Message</a> 或者是 <a target="_blank" rel="noopener" href="https://werobot.readthedocs.io/zh_CN/latest/events.html#event">Event</a> 。 <a target="_blank" rel="noopener" href="https://werobot.readthedocs.io/zh_CN/latest/messages.html#message">Message</a> 表示用户发来的消息，如文本消息、图片消息； <a target="_blank" rel="noopener" href="https://werobot.readthedocs.io/zh_CN/latest/events.html#event">Event</a> 则表示用户触发的事件， 如关注事件、扫描二维码事件。 在消息解析、转换完成后， WeRoBot 会将消息转交给 <a target="_blank" rel="noopener" href="https://werobot.readthedocs.io/zh_CN/latest/handlers.html#handler">Handler</a> 进行处理，并将 <a target="_blank" rel="noopener" href="https://werobot.readthedocs.io/zh_CN/latest/handlers.html#handler">Handler</a> 的返回值返回给微信服务器</p>
 </blockquote>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token decorator annotation punctuation">@robot<span class="token punctuation">.</span>handler</span> <span class="token comment">#robot 会将所有接收到的消息转交给这个 Handler 来处理</span>
 <span class="token decorator annotation punctuation">@robot<span class="token punctuation">.</span>text</span>  <span class="token comment"># @robot.text 修饰的 Handler 只处理文本消息</span>
 <span class="token decorator annotation punctuation">@robot<span class="token punctuation">.</span>image</span>  <span class="token comment"># @robot.image 修饰的 Handler 只处理图片消息</span>
 <span class="token decorator annotation punctuation">@robot<span class="token punctuation">.</span>subscribe</span> <span class="token comment"># 用户关注后执行该操作</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3><span id="0x03-demo"> 0x03 demo</span></h3>
-<blockquote>
+<h3><span id="0x03-demo">0x03 demo</span></h3><blockquote>
 <p>实验课原味🐴, 简单完成了消息处理，调了个接口，调了个狗屁不通文本生成器， 糙的一，留做纪念</p>
 </blockquote>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> werobot
@@ -525,45 +511,36 @@ codelist <span class="token operator">=</span> <span class="token punctuation">[
 robot<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'HOST'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'0.0.0.0'</span>
 robot<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'PORT'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">80</span>
 robot<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="关于token"> 关于Token</span></h2>
-<blockquote>
-<p>有一篇很好的文章 : <a target="_blank" rel="noopener" href="https://blog.csdn.net/tc979907461/article/details/106288099?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164285971216780269811917%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=164285971216780269811917&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-3-106288099.first_rank_v2_pc_rank_v29&amp;utm_term=token&amp;spm=1018.2226.3001.4187">link</a>，以下内容部分借鉴</p>
+<h2><span id="关于token">关于Token</span></h2><blockquote>
+<p>有一篇很好的文章 : <a target="_blank" rel="noopener" href="https://blog.csdn.net/tc979907461/article/details/106288099?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164285971216780269811917%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=164285971216780269811917&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-3-106288099.first_rank_v2_pc_rank_v29&amp;utm_term=token&amp;spm=1018.2226.3001.4187">link</a>，以下内容部分借鉴 </p>
 </blockquote>
 <p>Token：身份认证中代指<strong>令牌</strong></p>
-<h3><span id="token验证过程"> Token验证过程</span></h3>
-<p>Step1 : 用户通过用户名和密码发送请求。</p>
+<h3><span id="token验证过程">Token验证过程</span></h3><p>Step1 : 用户通过用户名和密码发送请求。</p>
 <p>Step2 : 服务器端程序验证。</p>
 <p>Step3 : 服务器端程序返回一个<strong>带签名</strong>的<code>token</code> 给客户端。</p>
 <p>Step4 : 客户端储存<code>token</code>,并且每次访问<code>API</code>都携带<code>Token</code>到服务器端的。</p>
 <p>Step5 : 服务端验证<code>token</code>，校验成功则返回请求数据，校验失败则返回错误码。</p>
 <p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2018.cnblogs.com%2Fblog%2F918077%2F201809%2F918077-20180915075353669-515340818.png&amp;refer=http%3A%2F%2Fimg2018.cnblogs.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1645453080&amp;t=346a8756f4e12f8afb7416671f0e0c3e" alt="img"></p>
-<h3><span id="token的优势"> Token的优势</span></h3>
-<ul>
-<li>
-<p><strong>无状态，可扩展</strong></p>
+<h3><span id="token的优势">Token的优势</span></h3><ul>
+<li><p><strong>无状态，可扩展</strong></p>
 <p>在客户端存储的<code>Token</code>无状态、可扩展(能够创建与其它程序共享权限的程序)。基于这种无状态和不存储<code>Session</code>信息，负载负载均衡器能够将用户信息从一个服务传到其他服务器上。<code>tokens</code>自己携带了用户的验证信息。</p>
 </li>
-<li>
-<p><strong>安全性</strong>：<strong>防止CSRF</strong></p>
+<li><p><strong>安全性</strong>：<strong>防止CSRF</strong></p>
 <p>请求中发送<code>token</code>而非发送<code>cookie</code>能够防止<code>CSRF</code>(跨站请求伪造)。即使在客户端使用<code>cookie</code>存储<code>token</code>，<code>cookie</code>也仅仅是一个存储机制而不是用于认证。不将信息存储在<code>Session</code>中，让我们少了对<code>session</code>操作。</p>
 <p>ps：<code>token</code>是有时效的，一段时间之后用户需要重新验证。</p>
 </li>
-<li>
-<p><strong>多平台跨域</strong></p>
+<li><p><strong>多平台跨域</strong></p>
 <p>这里引入<code>CORS</code>(跨域资源共享)的概念：当我们需要让数据跨多台移动设备上使用时，跨域资源的共享会是一个让人头疼的问题。在使用<code>Ajax</code>抓取另一个域的资源，就可以会出现禁止请求的情况。</p>
 </li>
 </ul>
 <blockquote>
 <p>以上只是关于Token的粗略描述，关于其他身份认证机制挖坑待填😅</p>
 </blockquote>
-<h2><span id="附一些linux命令"> 附：一些Linux命令</span></h2>
-<ul>
-<li>
-<p>使用 <code>nohup</code> 命令使程序在服务器保持后台运行</p>
+<h2><span id="附一些linux命令">附：一些Linux命令</span></h2><ul>
+<li><p>使用 <code>nohup</code> 命令使程序在服务器保持后台运行</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo nohup python .&#x2F;webserver.py &amp;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
-<li>
-<p>杀掉 <code>nohup</code> 进程</p>
+<li><p>杀掉 <code>nohup</code> 进程</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ps -aux | grep python
 kill -9 pid	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
@@ -772,11 +749,11 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     notify: false,
     appId: 'Nmc1pCkN608WUnjzl1OVUJwp-gzGzoHsz',
     appKey: 'AgMMODlKtVQJ8D2ksYM7tqFv',
-    placeholder: 'Leave your thoughts behind~',
-    avatar: 'mp',
+    placeholder: 'Leave sth plz',
+    avatar: 'mm',
     meta: meta,
     pageSize: '10' || 10,
-    visitor: true
+    visitor: false
   });
   </script>
 

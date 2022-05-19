@@ -186,7 +186,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <p>nothing</p>
+                <p>Nothing.</p>
             </div>
         </div>
     </div>
@@ -360,13 +360,6 @@
 
         
 
-	<span class="article-read hidden-xs">
-    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
-    	<span id="/post/algorithm/learn/STL%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C.html" class="leancloud_visitors"  data-flag-title="STL使用手册">
-			<span class="leancloud-visitors-count">0</span>
-		</span>
-    </span>
-
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/algorithm/learn/STL%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C.html#comments" class="article-comment-link">评论</a></span>
         
 	
@@ -380,25 +373,19 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="stl使用手册"> STL使用手册</span></h1>
-<p>Standard Template Library</p>
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="stl使用手册">STL使用手册</span></h1><p>Standard Template Library</p>
 <blockquote>
 <p>又名《👴怕忘了先把他写下来》</p>
 </blockquote>
-<h2><span id="我-是-谁"> 我 是 谁 ?</span></h2>
-<p>斯丹德儿的 坦普雷特 莱博瑞 即标准模板库</p>
+<h2><span id="我-是-谁">我 是 谁 ?</span></h2><p>斯丹德儿的 坦普雷特 莱博瑞 即标准模板库</p>
 <ul>
-<li>
-<p>重要特点：数据结构和算法的分离</p>
+<li><p>重要特点：数据结构和算法的分离</p>
 </li>
-<li>
-<p>重要特性：不是面向对象的</p>
+<li><p>重要特性：不是面向对象的</p>
 </li>
-<li>
-<p>逻辑层次：体现了泛型化程序设计的思想</p>
+<li><p>逻辑层次：体现了泛型化程序设计的思想</p>
 </li>
-<li>
-<p>实现层次：以一种类型参数化的方式实现，基于模板(template)</p>
+<li><p>实现层次：以一种类型参数化的方式实现，基于模板(template)</p>
 </li>
 </ul>
 <p>六大组件：</p>
@@ -410,13 +397,10 @@
 <li>适配器（Adaptor）</li>
 <li>分配器（allocator）</li>
 </ul>
-<h2><span id="常用的"> 👴 常用的</span></h2>
-<blockquote>
+<h2><span id="常用的">👴 常用的</span></h2><blockquote>
 <p>以下不按顺序，想到啥就写啥，有个🥚的顺序</p>
 </blockquote>
-<h3><span id="容器"> 容器</span></h3>
-<h4><span id="string"> string</span></h4>
-<p>字符串</p>
+<h3><span id="容器">容器</span></h3><h4><span id="string">string</span></h4><p>字符串</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;构造函数
 string s(str,index); &#x2F;&#x2F;将字符串str内“始于位置index”的部分当作字符串的初值
 string s(str,index,n); &#x2F;&#x2F;将字符串str内“始于index且长度顶多n”的部分作为字符串的初值
@@ -434,8 +418,7 @@ s.find_last_of(str);
 s.find_last_not_of(str);
 s1.compare(s2); &#x2F;&#x2F;比较，相等0大于1小于-1
 s1.compare(pos,len,s2)&#x2F;&#x2F;从s1的pos开始长为len与s2比较<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4><span id="stringstream"> stringstream</span></h4>
-<p>自动且直接的类型转换</p>
+<h4><span id="stringstream">stringstream</span></h4><p>自动且直接的类型转换</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">stringstream sstream;
 &#x2F;&#x2F;数据类型转换
 string str;
@@ -449,14 +432,12 @@ sstream &lt;&lt; &quot;xxxx&quot; &lt;&lt; &quot; &quot; &lt;&lt; &quot;aaaaa&qu
 &#x2F;&#x2F;清空stringstream
 sstream.clear();
 sstream.str(&quot;&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4><span id="pair"> pair</span></h4>
-<p>便携结构体</p>
+<h4><span id="pair">pair</span></h4><p>便携结构体</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;访问通过first second
 &#x2F;&#x2F;可以通过一般运算符比较，先比较first再second
 pair&lt;string,int&gt; p (str,123);
 pair&lt;string,int&gt; p &#x3D; make_pair(str,123);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4><span id="vector"> vector</span></h4>
-<p>向量容器，动态存储</p>
+<h4><span id="vector">vector</span></h4><p>向量容器，动态存储</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">vector&lt;int&gt; v;
 v.front(); v.back();
 v.begin(); v.end();
@@ -473,16 +454,14 @@ v.erase(first,last);
 v.reverse(n); &#x2F;&#x2F;预分配缓冲空间，使存储空间至少可容纳n个元素
 v.resize(n); &#x2F;&#x2F;改变序列长度，超出元素删除，若源空间小于n，则默认值填满空间
 v.resize(n,val); &#x2F;&#x2F;超出的用val填满<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4><span id="stack"> stack</span></h4>
-<p>栈</p>
+<h4><span id="stack">stack</span></h4><p>栈</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">stack&lt;int&gt; s;
 s.push(x);
 s.pop();
 s.top();
 s.empty();
 s.size();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4><span id="queue"> queue</span></h4>
-<p>队列，优先队列，双端队列</p>
+<h4><span id="queue">queue</span></h4><p>队列，优先队列，双端队列</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; queue
 queue&lt;int&gt; q;
 q.push(x);
@@ -525,8 +504,7 @@ d.insert(d.begin()+len,x); &#x2F;&#x2F;中间插入元素
 d.pop_front(); &#x2F;&#x2F;删除头部
 d.pop_back();
 d.erase(d.begin()+len); &#x2F;&#x2F;删除指定位置元素，可以写多个<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4><span id="map"> map</span></h4>
-<p>键值对，元素按关键字有序，内部红黑树</p>
+<h4><span id="map">map</span></h4><p>键值对，元素按关键字有序，内部红黑树</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; map空间占用率高
 map&lt;string,int&gt; m;
 m[key]&#x3D;value;
@@ -542,8 +520,7 @@ for(it&#x3D;mp.begin();it!&#x3D;mp.end();++it)&#123;
 
 &#x2F;&#x2F; unordered_map 效率较高 内部哈希表
 &#x2F;&#x2F; 对于查找问题，unordered_map会更加高效一些，因此遇到查找问题，常会考虑一下用unordered_map<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4><span id="set"> set</span></h4>
-<p>无重复，按键值自动排序</p>
+<h4><span id="set">set</span></h4><p>无重复，按键值自动排序</p>
 <p>数据结构为红黑树。以节点形式保存（动态)，用迭代器访问</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">set&lt;int&gt; s;
 s.begin(); s.end();
@@ -558,11 +535,10 @@ s.upper_bound(value); &#x2F;&#x2F;返回最后一个大于等于value的定位�
 set&lt;int&gt;::iterator it;
 for(it&#x3D;s.begin();it!&#x3D;s.end();it++)
 	cout&lt;&lt;*it&lt;&lt;&quot; &quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4><span id="list"> list</span></h4>
-<p>链表</p>
+<h4><span id="list">list</span></h4><p>链表</p>
 <ul>
-<li>如果你需要高效的随即存取，而不在乎插入和删除的效率，使用vector</li>
-<li>如果你需要大量的插入和删除，而不关心随即存取，则应使用list</li>
+<li>如果你需要高效的随即存取，而不在乎插入和删除的效率，使用vector </li>
+<li>如果你需要大量的插入和删除，而不关心随即存取，则应使用list </li>
 <li>如果你需要随即存取，而且关心两端数据的插入和删除，则应使用deque</li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">list&lt;int&gt; a(n);
@@ -579,8 +555,7 @@ a.insert(pos,x);
 a.insert(pos,b.begin(),b.end());
 a.erase(a.begin(),a.end());
 a.remove(x);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4><span id="bitset"> bitset</span></h4>
-<p>存放二进制0/1的容器，可以声明非常大的二进制位而不限于64，用来优化</p>
+<h4><span id="bitset">bitset</span></h4><p>存放二进制0/1的容器，可以声明非常大的二进制位而不限于64，用来优化</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">bitset&lt;N&gt; b; &#x2F;&#x2F;表示长为N的二进制串
 &#x2F;&#x2F; 通过b[pos]访问
 b.any(); &#x2F;&#x2F;存在为1的二进制位
@@ -594,9 +569,7 @@ b.reset(); &#x2F;&#x2F;所有位置0
 b.reset(pos);
 b.flip(); &#x2F;&#x2F;逐位取反
 b.flip(pos);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3><span id="functions"> functions</span></h3>
-<h4><span id="查找"> 查找</span></h4>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 对于sort(a, a + n) 升序排列
+<h3><span id="functions">functions</span></h3><h4><span id="查找">查找</span></h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 对于sort(a, a + n) 升序排列
 lower_bound(a,a+n,x); &#x2F;&#x2F;二分查找第一个大于等于x的位置
 upper_bound(a,a+n,x); &#x2F;&#x2F;二分查找第一个大于x的位置
 &#x2F;&#x2F; 对于sort(a, a + n, greater&lt;int&gt;()) 降序排列
@@ -605,18 +578,14 @@ upper_bound(a,a+n,x,greater&lt;int&gt;(); &#x2F;&#x2F;二分查找第一个小�
             
 find();
 rfind();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4><span id="排序"> 排序</span></h4>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">sort(a,a+n,cmp); &#x2F;&#x2F;默认ASC<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4><span id="修改"> 修改</span></h4>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">swap(a,b); &#x2F;&#x2F;交换
+<h4><span id="排序">排序</span></h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">sort(a,a+n,cmp); &#x2F;&#x2F;默认ASC<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4><span id="修改">修改</span></h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">swap(a,b); &#x2F;&#x2F;交换
 replace(pos,len,str); &#x2F;&#x2F;替换
 unique(a,a+n); &#x2F;&#x2F;去除相邻的重复元素,会把重复的藏到末尾，使用前需要先排序<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4><span id="排列"> 排列</span></h4>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">next_permutation(a,a+n); &#x2F;&#x2F;下一个全排列
+<h4><span id="排列">排列</span></h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">next_permutation(a,a+n); &#x2F;&#x2F;下一个全排列
 prev_permutation(a,a+n); &#x2F;&#x2F;上一个全排列
 &#x2F;&#x2F;函数返回bool值，一般配合while()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4><span id="其他"> 其他</span></h4>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">__builtin_popcount(n); &#x2F;&#x2F;返回n的二进制1的个数
+<h4><span id="其他">其他</span></h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">__builtin_popcount(n); &#x2F;&#x2F;返回n的二进制1的个数
 isalpha(char x); &#x2F;&#x2F;小写字母返回2，大写字母1，非字母0	
 tolower(char x); toupper(char x); &#x2F;&#x2F;返回小写，大写字母的ASCII值，非字母则相等
 &#x2F;&#x2F;海伦公式
@@ -827,11 +796,11 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     notify: false,
     appId: 'Nmc1pCkN608WUnjzl1OVUJwp-gzGzoHsz',
     appKey: 'AgMMODlKtVQJ8D2ksYM7tqFv',
-    placeholder: 'Leave your thoughts behind~',
-    avatar: 'mp',
+    placeholder: 'Leave sth plz',
+    avatar: 'mm',
     meta: meta,
     pageSize: '10' || 10,
-    visitor: true
+    visitor: false
   });
   </script>
 
