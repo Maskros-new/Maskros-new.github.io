@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Deep Learning 基础杂记 纸上谈兵    Concepts Frameworks CNN VGG R-CNN YOLO SSD Reference   Concepts表示学习(representation learning)：机器学习旨在自动地学到从数据的表示（representation）到数据的标记（label）的映射。表示学习希望能从数据中自动地学到映射，太理想。 深度学习(d">
+  <meta name="description" content="Deep Learning 基础杂记 纸上谈兵">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Deep Learning 基础杂记">
 <meta property="og:url" content="https://maskros.top/post/note/DeepLearning.html">
 <meta property="og:site_name" content="Maskros&#39; Blog">
-<meta property="og:description" content="Deep Learning 基础杂记 纸上谈兵    Concepts Frameworks CNN VGG R-CNN YOLO SSD Reference   Concepts表示学习(representation learning)：机器学习旨在自动地学到从数据的表示（representation）到数据的标记（label）的映射。表示学习希望能从数据中自动地学到映射，太理想。 深度学习(d">
+<meta property="og:description" content="Deep Learning 基础杂记 纸上谈兵">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.bmp.ovh/imgs/2022/06/07/0cce8f096a9dab3c.png">
 <meta property="og:image" content="https://i.bmp.ovh/imgs/2022/06/06/ead5e3b2a8e21d33.png">
@@ -47,7 +47,7 @@
 <meta property="og:image" content="https://pic.rmb.bdstatic.com/bjh/9f7e6747a52db9c31acce665a24d5de8.jpeg">
 <meta property="og:image" content="https://pic.rmb.bdstatic.com/bjh/60984bfc5cb24a6f4a90919ee0fcfa45.jpeg">
 <meta property="article:published_time" content="2022-04-30T18:37:28.000Z">
-<meta property="article:modified_time" content="2022-07-13T08:10:21.351Z">
+<meta property="article:modified_time" content="2022-07-13T09:01:01.496Z">
 <meta property="article:author" content="Maskros">
 <meta property="article:tag" content="note">
 <meta property="article:tag" content="深度学习">
@@ -325,7 +325,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-13 16:10:21" itemprop="dateModified" datetime="2022-07-13T16:10:21+08:00">2022-07-13</time>
+                <time title="修改时间：2022-07-13 17:01:01" itemprop="dateModified" datetime="2022-07-13T17:01:01+08:00">2022-07-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -338,6 +338,20 @@ mjx-container[display="true"] + br {
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/note/DeepLearning.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/note/DeepLearning.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -351,18 +365,8 @@ mjx-container[display="true"] + br {
         <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="deep-learning-基础杂记">Deep Learning 基础杂记</span></h1><blockquote>
 <p>纸上谈兵</p>
 </blockquote>
-<!-- toc -->
-<ul>
-<li><a href="#concepts">Concepts</a></li>
-<li><a href="#frameworks">Frameworks</a></li>
-<li><a href="#cnn">CNN</a></li>
-<li><a href="#vgg">VGG</a></li>
-<li><a href="#r-cnn">R-CNN</a></li>
-<li><a href="#yolo">YOLO</a></li>
-<li><a href="#ssd">SSD</a></li>
-<li><a href="#reference">Reference</a></li>
-</ul>
-<!-- tocstop -->
+<!--toc-->
+<span id="more"></span>
 <h2><span id="concepts">Concepts</span></h2><p>表示学习(representation learning)：机器学习旨在自动地学到从数据的表示（representation）到数据的标记（label）的映射。表示学习希望能从数据中自动地学到映射，太理想。</p>
 <p>深度学习(deep learning, DL)：把表示学习的任务划分成几个小目标，先从数据的原始形式中先学习比较低级的表示，再从低级表示学得比较高级的表示。类似分治思想。</p>
 <p>深度神经网络(deep neural networks, DNN)：实现形式，很深。利用网络中逐层对特征进行加工的特性，逐渐从低级特征提取高级特征。三大因素：大数据，计算能力，算法创新。</p>
@@ -656,6 +660,7 @@ mjx-container[display="true"] + br {
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -734,6 +739,23 @@ mjx-container[display="true"] + br {
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Maskros-new" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Maskros-new" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:haohangjian2002@gmail.com" title="E-Mail → mailto:haohangjian2002@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/355516889" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;355516889" rel="noopener" target="_blank"><i class="fas fa-tv fa-fw"></i>Bilibili</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://codeforces.com/profile/1ronMaker" title="Codeforces1 → https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;1ronMaker" rel="noopener" target="_blank"><i class="far fa-chart-bar fa-fw"></i>Codeforces1</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://codeforces.com/profile/7hhnewbee" title="Codeforces2 → https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;7hhnewbee" rel="noopener" target="_blank"><i class="far fa-chart-bar fa-fw"></i>Codeforces2</a>
+      </span>
+  </div>
 
 
   <div class="links-of-blogroll motion-element">
@@ -828,6 +850,35 @@ mjx-container[display="true"] + br {
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Nmc1pCkN608WUnjzl1OVUJwp-gzGzoHsz',
+      appKey     : 'AgMMODlKtVQJ8D2ksYM7tqFv',
+      placeholder: "Leave your thoughts behind~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
 
 </body>
 </html>
