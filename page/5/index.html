@@ -584,7 +584,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-22 17:37:50" itemprop="dateModified" datetime="2022-01-22T17:37:50+08:00">2022-01-22</time>
+                <time title="修改时间：2022-07-13 17:03:32" itemprop="dateModified" datetime="2022-07-13T17:03:32+08:00">2022-07-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -621,7 +621,17 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-          Knuth-Morris-Pratt & E-kmp
+          <h1 id="kmp-amp-exkmp"><a href="#kmp-amp-exkmp" class="headerlink" title="kmp &amp; exkmp"></a>kmp &amp; exkmp</h1><p>Knuth-Morris-Pratt &amp; entend kmp </p>
+<p>字符串匹配</p>
+<h2 id="kmp"><a href="#kmp" class="headerlink" title="kmp"></a>kmp</h2><blockquote>
+<p><strong>Keywords</strong>：next[] </p>
+<p>由BF改进，O(m+n)，传世经典属于是😅</p>
+<p>以下均假设主串为 <code>S</code>，模式串为 <code>P</code> </p>
+</blockquote>
+<ul>
+<li><p><strong>What is <code>next[]</code> ?</strong></p>
+<p>针对模式串，<code>next[j]</code> 表示模式串下标 <code>j</code> <strong>之前</strong> 最长<strong>相同前后缀</strong>的长度，这不重要。</p>
+<p>你只需要记住：<code>next[j]</code>表示当 <code>P[j]!=S[i]</code> 时，<code>j</code> 指针的<strong>下一步移动位置</strong>。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/algorithm/learn/kmp%20&%20exkmp.html#more" rel="contents">
@@ -774,7 +784,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-24 14:40:35" itemprop="dateModified" datetime="2022-03-24T14:40:35+08:00">2022-03-24</time>
+                <time title="修改时间：2022-07-13 17:04:28" itemprop="dateModified" datetime="2022-07-13T17:04:28+08:00">2022-07-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -811,7 +821,30 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-          Standard Template Library
+          <h1 id="STL使用手册"><a href="#STL使用手册" class="headerlink" title="STL使用手册"></a>STL使用手册</h1><p>Standard Template Library</p>
+<blockquote>
+<p>又名《👴怕忘了先把他写下来》</p>
+</blockquote>
+<h2 id="我-是-谁"><a href="#我-是-谁" class="headerlink" title="我 是 谁 ?"></a>我 是 谁 ?</h2><p>斯丹德儿的 坦普雷特 莱博瑞 即标准模板库</p>
+<ul>
+<li><p>重要特点：数据结构和算法的分离</p>
+</li>
+<li><p>重要特性：不是面向对象的</p>
+</li>
+<li><p>逻辑层次：体现了泛型化程序设计的思想</p>
+</li>
+<li><p>实现层次：以一种类型参数化的方式实现，基于模板(template)</p>
+</li>
+</ul>
+<p>六大组件：</p>
+<ul>
+<li>容器（Container），是一种数据结构，如list，vector，deques ，以模板类的方法提供 ;</li>
+<li>迭代器（Iterator），提供了访问容器中对象的方法。迭代器就如同一个指针。C++的指针也是一种迭代器。迭代器也可以是那些定义了operator*()以及其他类似于指针的操作符地方法的类对象；</li>
+<li>算法（Algorithm），是用来操作容器中的数据的模板函数。如sort()，find()，函数本身与他们操作的数据的结构和类型无关 ;</li>
+<li>仿函数（Functor）</li>
+<li>适配器（Adaptor）</li>
+<li>分配器（allocator）</li>
+</ul>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/algorithm/learn/STL%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C.html#more" rel="contents">
@@ -869,7 +902,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-25 18:28:54" itemprop="dateModified" datetime="2022-01-25T18:28:54+08:00">2022-01-25</time>
+                <time title="修改时间：2022-07-13 17:05:32" itemprop="dateModified" datetime="2022-07-13T17:05:32+08:00">2022-07-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -906,7 +939,12 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-          Segment Tree
+          <h1 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h1><p>Segment Tree</p>
+<blockquote>
+<p>一个问题，只要能化成对一些连续点l的修改和统计问题，基本就可以用线段树来艹了</p>
+</blockquote>
+<hr>
+<p>原理：将[1,n]分解成若干特定的子区间(数量不超过4*n),然后，将每个区间[L,R]都分解为少量特定的子区间，通过对这些少量子区间的修改或者统计，来实现快速对[L,R]的修改或者统计。每一个非叶结点所表示的结点[a,b]，其左儿子表示的区间为[a,(a+b)/2]，右儿子表示的区间为[(a+b)/2,b]。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/algorithm/learn/%E7%BA%BF%E6%AE%B5%E6%A0%91.html#more" rel="contents">
@@ -964,7 +1002,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-04 23:44:39" itemprop="dateModified" datetime="2022-02-04T23:44:39+08:00">2022-02-04</time>
+                <time title="修改时间：2022-07-13 17:05:00" itemprop="dateModified" datetime="2022-07-13T17:05:00+08:00">2022-07-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1001,7 +1039,15 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-          Game Theory
+          <h1 id="博弈论"><a href="#博弈论" class="headerlink" title="博弈论"></a>博弈论</h1><p>Game Theory</p>
+<hr>
+<h2 id="Nim游戏"><a href="#Nim游戏" class="headerlink" title="Nim游戏"></a>Nim游戏</h2><p>属于 ICG (Impartial Combinatorial Games) 的一种，满足条件如下：</p>
+<ul>
+<li>两名选手交替移动，在有限的合法移动集合中任选一种进行移动</li>
+<li>对于任何一种局面，合法的移动集合只取决于局面本身</li>
+<li>到谁无法移动谁就输了</li>
+</ul>
+<p>以下给出 P/N 的定义：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/algorithm/learn/%E5%8D%9A%E5%BC%88%E8%AE%BA.html#more" rel="contents">

@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Knuth-Morris-Pratt &amp; E-kmp">
+  <meta name="description" content="kmp &amp; exkmpKnuth-Morris-Pratt &amp; entend kmp  字符串匹配 kmp Keywords：next[]  由BF改进，O(m+n)，传世经典属于是😅 以下均假设主串为 S，模式串为 P    What is next[] ? 针对模式串，next[j] 表示模式串下标 j 之前 最长相同前后缀的长度，这不重要。 你只需要记住：next[j]表示">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kmp &amp; exkmp">
 <meta property="og:url" content="https://maskros.top/post/algorithm/learn/kmp%20&%20exkmp.html">
 <meta property="og:site_name" content="Maskros&#39; Blog">
-<meta property="og:description" content="Knuth-Morris-Pratt &amp; E-kmp">
+<meta property="og:description" content="kmp &amp; exkmpKnuth-Morris-Pratt &amp; entend kmp  字符串匹配 kmp Keywords：next[]  由BF改进，O(m+n)，传世经典属于是😅 以下均假设主串为 S，模式串为 P    What is next[] ? 针对模式串，next[j] 表示模式串下标 j 之前 最长相同前后缀的长度，这不重要。 你只需要记住：next[j]表示">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic4.zhimg.com/v2-817073ca77f6c75d234392f207a3c81b_b.webp">
 <meta property="og:image" content="https://i.bmp.ovh/imgs/2021/10/b4e3168596aa7ae5.png">
 <meta property="og:image" content="https://i.bmp.ovh/imgs/2021/10/c93d09cbc00e9b72.png">
 <meta property="og:image" content="https://i.bmp.ovh/imgs/2021/10/2f76cdb08c9080ee.png">
 <meta property="article:published_time" content="2021-10-23T17:02:50.000Z">
-<meta property="article:modified_time" content="2022-01-22T09:37:50.261Z">
+<meta property="article:modified_time" content="2022-07-13T09:03:32.782Z">
 <meta property="article:author" content="Maskros">
 <meta property="article:tag" content="ACM">
 <meta property="article:tag" content="string">
@@ -200,7 +200,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-22 17:37:50" itemprop="dateModified" datetime="2022-01-22T17:37:50+08:00">2022-01-22</time>
+                <time title="修改时间：2022-07-13 17:03:32" itemprop="dateModified" datetime="2022-07-13T17:03:32+08:00">2022-07-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -248,6 +248,7 @@
 <li><p><strong>What is <code>next[]</code> ?</strong></p>
 <p>针对模式串，<code>next[j]</code> 表示模式串下标 <code>j</code> <strong>之前</strong> 最长<strong>相同前后缀</strong>的长度，这不重要。</p>
 <p>你只需要记住：<code>next[j]</code>表示当 <code>P[j]!=S[i]</code> 时，<code>j</code> 指针的<strong>下一步移动位置</strong>。</p>
+<span id="more"></span>
 <p>偷个好图：</p>
 <p><img src="https://pic4.zhimg.com/v2-817073ca77f6c75d234392f207a3c81b_b.webp" alt="img"></p>
 </li>
