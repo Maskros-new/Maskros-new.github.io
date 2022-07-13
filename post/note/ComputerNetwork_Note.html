@@ -17,15 +17,15 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="A brief summary about the Computer Networking">
+  <meta name="description" content="Notes on Kurose’s Computer NetworkingA TOP-DOWN APPROACH   Thanks to 我爹的博客，让我偷了不少😋  Chapter 1  Computer Networks and the Internet1.1 What is the Internet? 因特网：世界范围的计算机网络  Nuts-and-Bolts Description">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Notes on Kurose&#39;s Computer Networking：A TOP-DOWN APPROACH">
 <meta property="og:url" content="https://maskros.top/post/note/ComputerNetwork_Note.html">
 <meta property="og:site_name" content="Maskros&#39; Blog">
-<meta property="og:description" content="A brief summary about the Computer Networking">
+<meta property="og:description" content="Notes on Kurose’s Computer NetworkingA TOP-DOWN APPROACH   Thanks to 我爹的博客，让我偷了不少😋  Chapter 1  Computer Networks and the Internet1.1 What is the Internet? 因特网：世界范围的计算机网络  Nuts-and-Bolts Description">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.bmp.ovh/imgs/2021/12/aca8f1f7517ded6c.png">
 <meta property="og:image" content="https://i.bmp.ovh/imgs/2021/12/2182111ae9326099.png">
@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://s3.bmp.ovh/imgs/2021/12/6a6b65eb13d209b2.png">
 <meta property="og:image" content="https://s3.bmp.ovh/imgs/2021/12/bb4f115e281187d0.png">
 <meta property="article:published_time" content="2021-12-10T05:44:28.000Z">
-<meta property="article:modified_time" content="2021-12-25T07:11:55.191Z">
+<meta property="article:modified_time" content="2022-07-13T08:10:11.492Z">
 <meta property="article:author" content="Maskros">
 <meta property="article:tag" content="note">
 <meta property="article:tag" content="ComputerNetwork">
@@ -141,6 +141,16 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
   </ul>
 </nav>
 
@@ -172,7 +182,7 @@
     <link itemprop="mainEntityOfPage" href="https://maskros.top/post/note/ComputerNetwork_Note.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/img/logo_Maskros.jpg">
       <meta itemprop="name" content="Maskros">
       <meta itemprop="description" content="">
     </span>
@@ -199,7 +209,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-25 15:11:55" itemprop="dateModified" datetime="2021-12-25T15:11:55+08:00">2021-12-25</time>
+                <time title="修改时间：2022-07-13 16:10:11" itemprop="dateModified" datetime="2022-07-13T16:10:11+08:00">2022-07-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -863,9 +873,8 @@
 </ul>
 </li>
 <li><p><strong>快速恢复</strong>(Fast Recovery)</p>
-<ul>
-<li>对于引起TCP进入快速恢复状态的缺失报文段，对收到的每个冗余ACK，cwnd的值就加一个MSS，当对丢失报文段的一个ACK到达时，TCP降低cwnd后进入拥塞避免状态</li>
-</ul>
+</li>
+<li><p>对于引起TCP进入快速恢复状态的缺失报文段，对收到的每个冗余ACK，cwnd的值就加一个MSS，当对丢失报文段的一个ACK到达时，TCP降低cwnd后进入拥塞避免状态</p>
 </li>
 <li><p><strong>加性增、乘性减</strong>(AIMD, Additive-Increase, Multiplicative-Decrease) 拥塞控制方式</p>
 <p>假定丢包由3个冗余ACK而不是超时指示：每个RTT内cwnd线性(加性)增加1MSS，然后出现3个冗余ACK事件时cwnd减半(乘性减)</p>
@@ -1501,6 +1510,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Maskros"
+      src="/img/logo_Maskros.jpg">
   <p class="site-author-name" itemprop="name">Maskros</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -1515,6 +1526,7 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
+          
         <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
@@ -1526,6 +1538,19 @@
 </div>
 
 
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/lipoicyclic/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;lipoicyclic&#x2F;" rel="noopener" target="_blank">脂环</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://coinc1dens.me/" title="https:&#x2F;&#x2F;coinc1dens.me&#x2F;" rel="noopener" target="_blank">x1</a>
+        </li>
+    </ul>
+  </div>
 
       </div>
 
@@ -1552,7 +1577,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Maskros</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -1578,7 +1603,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>

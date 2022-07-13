@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://maskros.top//post/note/Canny.html</loc>
+    <loc>https://maskros.top//post/note/DeepLearning.html</loc>
     <lastmod>2022-07-13</lastmod>
   </url>
   <url>
-    <loc>https://maskros.top//post/note/DeepLearning.html</loc>
-    <lastmod>2022-07-07</lastmod>
+    <loc>https://maskros.top//post/note/ComputerNetwork_Note.html</loc>
+    <lastmod>2022-07-13</lastmod>
+  </url>
+  <url>
+    <loc>https://maskros.top//post/note/Canny.html</loc>
+    <lastmod>2022-07-13</lastmod>
   </url>
   <url>
     <loc>https://maskros.top//post/note/springboot.html</loc>
@@ -174,10 +178,6 @@
   </url>
   <url>
     <loc>https://maskros.top//post/projects/maogai_crawler.html</loc>
-    <lastmod>2021-12-25</lastmod>
-  </url>
-  <url>
-    <loc>https://maskros.top//post/note/ComputerNetwork_Note.html</loc>
     <lastmod>2021-12-25</lastmod>
   </url>
   <url>

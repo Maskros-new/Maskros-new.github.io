@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="CSP 202109-2 非零段划分 (差分) link 赛时没想明白，写了个暴力70分，一直惦记着这个题，故在此重做  题面A1,A2,⋯,An 是一个由 n 个自然数（非负整数）组成的数组。我们称其中 Ai,⋯,Aj 是一个非零段，当且仅当以下条件同时满足：  1≤i≤j≤n； 对于任意的整数 k，若 i≤k≤j，则 Ak&gt;0； i&#x3D;1 或 Ai−1&#x3D;0； j&#x3D;n 或 Aj+1&#x3D;0。">
@@ -237,6 +237,16 @@ mjx-container[display="true"] + br {
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
   </ul>
 </nav>
 
@@ -268,7 +278,7 @@ mjx-container[display="true"] + br {
     <link itemprop="mainEntityOfPage" href="https://maskros.top/post/probs/CSP%E9%9D%9E%E9%9B%B6%E6%AE%B5%E5%88%92%E5%88%86.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/img/logo_Maskros.jpg">
       <meta itemprop="name" content="Maskros">
       <meta itemprop="description" content="">
     </span>
@@ -444,6 +454,8 @@ void solve(){
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Maskros"
+      src="/img/logo_Maskros.jpg">
   <p class="site-author-name" itemprop="name">Maskros</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -458,6 +470,7 @@ void solve(){
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
+          
         <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
@@ -469,6 +482,19 @@ void solve(){
 </div>
 
 
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/lipoicyclic/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;lipoicyclic&#x2F;" rel="noopener" target="_blank">脂环</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://coinc1dens.me/" title="https:&#x2F;&#x2F;coinc1dens.me&#x2F;" rel="noopener" target="_blank">x1</a>
+        </li>
+    </ul>
+  </div>
 
       </div>
 
@@ -495,7 +521,7 @@ void solve(){
   </span>
   <span class="author" itemprop="copyrightHolder">Maskros</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -521,7 +547,7 @@ void solve(){
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>

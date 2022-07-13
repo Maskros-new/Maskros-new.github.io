@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="牛客2022年除夕AK场- E 春联(博弈) link  题面小红和紫准备玩一个游戏。她们拿到了一个只包含小写字母的字符串 。两人轮流将一个小写字母添加到一个新串  的结尾，必须保证t时刻都是  的一个子序列。谁先无法操作则输掉游戏。 初始是一个空串。小红先手添加，假设两人都足够聪明，请问谁最终能获得胜利？  子序列 Def‘：若一个字符串  删除部分字符（也可以不删）后得到字符串 ，那么称  是">
@@ -237,6 +237,16 @@ mjx-container[display="true"] + br {
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
   </ul>
 </nav>
 
@@ -268,7 +278,7 @@ mjx-container[display="true"] + br {
     <link itemprop="mainEntityOfPage" href="https://maskros.top/post/probs/%E6%98%A5%E8%81%94sg.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/img/logo_Maskros.jpg">
       <meta itemprop="name" content="Maskros">
       <meta itemprop="description" content="">
     </span>
@@ -432,6 +442,8 @@ mjx-container[display="true"] + br {
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Maskros"
+      src="/img/logo_Maskros.jpg">
   <p class="site-author-name" itemprop="name">Maskros</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -446,6 +458,7 @@ mjx-container[display="true"] + br {
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
+          
         <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
@@ -457,6 +470,19 @@ mjx-container[display="true"] + br {
 </div>
 
 
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/lipoicyclic/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;lipoicyclic&#x2F;" rel="noopener" target="_blank">脂环</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://coinc1dens.me/" title="https:&#x2F;&#x2F;coinc1dens.me&#x2F;" rel="noopener" target="_blank">x1</a>
+        </li>
+    </ul>
+  </div>
 
       </div>
 
@@ -483,7 +509,7 @@ mjx-container[display="true"] + br {
   </span>
   <span class="author" itemprop="copyrightHolder">Maskros</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -509,7 +535,7 @@ mjx-container[display="true"] + br {
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
