@@ -1,3 +1,4 @@
+https://maskros.top/post/note/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0_%E5%BA%94%E7%94%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80.html
 https://maskros.top/about/index.html
 https://maskros.top/post/note/java%20syntax.html
 https://maskros.top/post/note/springboot.html
@@ -101,6 +102,7 @@ https://maskros.top/tags/springBoot/
 https://maskros.top/tags/sql/
 https://maskros.top/tags/ComputerNetwork/
 https://maskros.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/
+https://maskros.top/tags/math/
 https://maskros.top/categories/SOLUTIONS/
 https://maskros.top/categories/LIFE/
 https://maskros.top/categories/NOTE/
