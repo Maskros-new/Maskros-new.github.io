@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://maskros.top/post/note/DeepLearning.html</loc>
+    
+    <lastmod>2022-07-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://maskros.top/post/life/%E7%AB%9E%E8%B5%9B%E8%AE%B0%E5%BD%95.html</loc>
+    
+    <lastmod>2022-07-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://maskros.top/post/note/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0_%E5%BA%94%E7%94%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80.html</loc>
     
     <lastmod>2022-07-16</lastmod>
@@ -128,15 +146,6 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/post/note/DeepLearning.html</loc>
-    
-    <lastmod>2022-07-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://maskros.top/post/note/Canny.html</loc>
     
     <lastmod>2022-07-13</lastmod>
@@ -149,15 +158,6 @@
     <loc>https://maskros.top/post/note/ComputerNetwork_Note.html</loc>
     
     <lastmod>2022-07-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://maskros.top/post/life/%E7%AB%9E%E8%B5%9B%E8%AE%B0%E5%BD%95.html</loc>
-    
-    <lastmod>2022-06-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -530,14 +530,14 @@
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/%E4%BA%8C%E5%88%86/</loc>
+    <loc>https://maskros.top/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</loc>
     <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://maskros.top/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</loc>
+    <loc>https://maskros.top/tags/%E4%BA%8C%E5%88%86/</loc>
     <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
