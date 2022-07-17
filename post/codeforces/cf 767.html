@@ -30,10 +30,10 @@
 <meta property="article:published_time" content="2022-01-23T05:15:00.000Z">
 <meta property="article:modified_time" content="2022-01-24T04:25:29.824Z">
 <meta property="article:author" content="Maskros">
-<meta property="article:tag" content="solutions">
-<meta property="article:tag" content="codeforces">
 <meta property="article:tag" content="ACM">
 <meta property="article:tag" content="思维">
+<meta property="article:tag" content="solutions">
+<meta property="article:tag" content="codeforces">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://maskros.top/post/codeforces/cf%20767.html">
@@ -232,10 +232,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="codeforces-round-767-div2">Codeforces Round #767 (Div.2)</span></h1><blockquote>
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="codeforces-round-767-div2">Codeforces Round #767 (Div.2)</h1>
+<blockquote>
 <p>荒废了期末考试月的康复训练第一场</p>
 </blockquote>
-<h2><span id="a_download-more-ram">A_Download More RAM</span></h2><blockquote>
+<h2 id="a_download-more-ram">A_Download More RAM</h2>
+<blockquote>
 <p>水题，排序即可</p>
 </blockquote>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span> pr<span class="token punctuation">[</span><span class="token number">105</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -265,7 +267,8 @@
         <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="b_gcd-arrays">B_GCD Arrays</span></h2><blockquote>
+<h2 id="b_gcd-arrays">B_GCD Arrays</h2>
+<blockquote>
 <p>题意：</p>
 <p>对一个 [l,r] 区间里的数，最多操作k次，每次取两个数，将他们的乘积替代其中一个数放入序列中，问能不能使序列的GCD不为1，能即YES，不能即NO</p>
 <p>思路：</p>
@@ -299,7 +302,8 @@
         <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="c_meximum-array">C_Meximum Array</span></h2><p><code>Mex</code>：一个序列中不存在的最小的非负整数</p>
+<h2 id="c_meximum-array">C_Meximum Array</h2>
+<p><code>Mex</code>：一个序列中不存在的最小的非负整数</p>
 <blockquote>
 <p>题意：</p>
 <p>给你一个长为n的序列a，每次从a数组的首地址开始选取一段，求mex后将值存入b，随后在a中删去该段。问最终求得的字典序最大的b序列是什么样子的</p>
@@ -355,7 +359,8 @@ set<span class="token operator">&lt;</span><span class="token keyword">int</span
         <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="d_peculiar-movie-preferences">D_Peculiar Movie Preferences</span></h2><blockquote>
+<h2 id="d_peculiar-movie-preferences">D_Peculiar Movie Preferences</h2>
+<blockquote>
 <p>题意：</p>
 <p>给你一堆长&lt;=3的字符串，问能不能通过删掉任意个数的字符串，剩下的字符串按顺序拼接起来为回文串</p>
 <p>思路：</p>
@@ -400,9 +405,12 @@ set<span class="token operator">&lt;</span><span class="token keyword">int</span
         <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="e_grid-xor">E_Grid Xor</span></h2><blockquote>
+<h2 id="e_grid-xor">E_Grid Xor</h2>
+<blockquote>
 <p>暂时鸽了，出去运动完回来补</p>
 <p>构造题</p>
+</blockquote>
+<blockquote>
 <p>反思：好久不打确实手生+脑残，寒假再接再厉✊</p>
 </blockquote>
 
@@ -414,10 +422,10 @@ set<span class="token operator">&lt;</span><span class="token keyword">int</span
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/solutions/" rel="tag"># solutions</a>
-              <a href="/tags/codeforces/" rel="tag"># codeforces</a>
               <a href="/tags/ACM/" rel="tag"># ACM</a>
               <a href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag"># 思维</a>
+              <a href="/tags/solutions/" rel="tag"># solutions</a>
+              <a href="/tags/codeforces/" rel="tag"># codeforces</a>
           </div>
 
         
@@ -492,7 +500,7 @@ set<span class="token operator">&lt;</span><span class="token keyword">int</span
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Codeforces Round #767 (Div.2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">A_Download More RAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">B_GCD Arrays</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">C_Meximum Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">D_Peculiar Movie Preferences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">E_Grid Xor</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#codeforces-round-767-div2"><span class="nav-text">Codeforces Round #767 (Div.2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#a_download-more-ram"><span class="nav-text">A_Download More RAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b_gcd-arrays"><span class="nav-text">B_GCD Arrays</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c_meximum-array"><span class="nav-text">C_Meximum Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#d_peculiar-movie-preferences"><span class="nav-text">D_Peculiar Movie Preferences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#e_grid-xor"><span class="nav-text">E_Grid Xor</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

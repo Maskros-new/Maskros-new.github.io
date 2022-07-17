@@ -811,15 +811,18 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="kmp-amp-exkmp"><a href="#kmp-amp-exkmp" class="headerlink" title="kmp &amp; exkmp"></a>kmp &amp; exkmp</h1><p>Knuth-Morris-Pratt &amp; entend kmp </p>
+          <h1>kmp &amp; exkmp</h1>
+<p>Knuth-Morris-Pratt &amp; entend kmp</p>
 <p>字符串匹配</p>
-<h2 id="kmp"><a href="#kmp" class="headerlink" title="kmp"></a>kmp</h2><blockquote>
-<p><strong>Keywords</strong>：next[] </p>
+<h2 id="kmp">kmp</h2>
+<blockquote>
+<p><strong>Keywords</strong>：next[]</p>
 <p>由BF改进，O(m+n)，传世经典属于是😅</p>
-<p>以下均假设主串为 <code>S</code>，模式串为 <code>P</code> </p>
+<p>以下均假设主串为 <code>S</code>，模式串为 <code>P</code></p>
 </blockquote>
 <ul>
-<li><p><strong>What is <code>next[]</code> ?</strong></p>
+<li>
+<p><strong>What is <code>next[]</code> ?</strong></p>
 <p>针对模式串，<code>next[j]</code> 表示模式串下标 <code>j</code> <strong>之前</strong> 最长<strong>相同前后缀</strong>的长度，这不重要。</p>
 <p>你只需要记住：<code>next[j]</code>表示当 <code>P[j]!=S[i]</code> 时，<code>j</code> 指针的<strong>下一步移动位置</strong>。</p>
           <!--noindex-->
@@ -1011,19 +1014,25 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="STL使用手册"><a href="#STL使用手册" class="headerlink" title="STL使用手册"></a>STL使用手册</h1><p>Standard Template Library</p>
+          <h1>STL使用手册</h1>
+<p>Standard Template Library</p>
 <blockquote>
 <p>又名《👴怕忘了先把他写下来》</p>
 </blockquote>
-<h2 id="我-是-谁"><a href="#我-是-谁" class="headerlink" title="我 是 谁 ?"></a>我 是 谁 ?</h2><p>斯丹德儿的 坦普雷特 莱博瑞 即标准模板库</p>
+<h2 id="我-是-谁">我 是 谁 ?</h2>
+<p>斯丹德儿的 坦普雷特 莱博瑞 即标准模板库</p>
 <ul>
-<li><p>重要特点：数据结构和算法的分离</p>
+<li>
+<p>重要特点：数据结构和算法的分离</p>
 </li>
-<li><p>重要特性：不是面向对象的</p>
+<li>
+<p>重要特性：不是面向对象的</p>
 </li>
-<li><p>逻辑层次：体现了泛型化程序设计的思想</p>
+<li>
+<p>逻辑层次：体现了泛型化程序设计的思想</p>
 </li>
-<li><p>实现层次：以一种类型参数化的方式实现，基于模板(template)</p>
+<li>
+<p>实现层次：以一种类型参数化的方式实现，基于模板(template)</p>
 </li>
 </ul>
 <p>六大组件：</p>
@@ -1129,7 +1138,8 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h1><p>Segment Tree</p>
+          <h1>线段树</h1>
+<p>Segment Tree</p>
 <blockquote>
 <p>一个问题，只要能化成对一些连续点l的修改和统计问题，基本就可以用线段树来艹了</p>
 </blockquote>

@@ -231,23 +231,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="进行一个毛概题库的爬">进行一个毛概题库的爬</span></h1><blockquote>
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="进行一个毛概题库的爬">进行一个毛概题库的爬</h1>
+<blockquote>
 <p>前言：🐷b毛概题库要截止了，几个时间段的题库各自有截止日期😅，眼见着ddl就要到了可👴又不想去刷，所以萌生了借助python爬虫来进行偷懒的想法</p>
 </blockquote>
-<h2><span id="办事流程">办事流程</span></h2><blockquote>
+<h2 id="办事流程">办事流程</h2>
+<blockquote>
 <p>由于之前👴说过：“python狗都不用”，“用python的都沙比” 的名言，所以一开始是拒绝的，但是迫于现状，所以简单突击了几天，学到了一些知识，实战用到的也就只有不到 1/5</p>
 </blockquote>
 <p>需求：</p>
 <p>题库共计一百多道题目，每次测试15道题，5单选5多选5判断，提交做题结果之后方可获得所有题的正确答案，所以我们的思路就是从所有测试尝试的反馈页面中爬取题目题面和正确答案并持久化存储，over</p>
 <p><strong>原先步骤(全自动)</strong></p>
 <ol>
-<li><p>模拟登录</p>
+<li>
+<p>模拟登录</p>
 <p>由于这个b bb平台需要信息门户登录成功之后才能做那b题，所以需要模拟登陆之后才能请求到做题结果的页面，所以我们利用session会话对象在向登录页面发起请求后储存cookie，这样后面直接用session对象再对需求的页面进行get请求即可。</p>
 </li>
-<li><p>自动做题</p>
+<li>
+<p>自动做题</p>
 <p>自动开始新尝试并且提交</p>
 </li>
-<li><p>开爬</p>
+<li>
+<p>开爬</p>
 <p>get到了页面之后，利用xpath进行数据解析，持久化存储即可</p>
 </li>
 </ol>
@@ -260,27 +265,34 @@
 <p>2021/11/13 更新了 v1.1 版本：①优化了存储方式：按字典序排序即按题目的章节进行分类；②实现了 v1.0 没实现的自动做题功能</p>
 </blockquote>
 <ol>
-<li><p>模拟登录(x) 手动登录(√)</p>
+<li>
+<p>模拟登录(x) 手动登录(√)</p>
 <p>按照原先的想法模拟登陆，返回的消息也是登陆成功，但是请求所需页面是还是被拦截了，需要重新登录，由于才疏学浅，一时不知道如何是好，干脆直接手动登录后，利用浏览器F12，找到登录的cookie，手动复制到源码中的 headers 内，直接用 requests 进行 post 和 get 的请求即可获得所需页面</p>
 </li>
-<li><p>自动做题(√)</p>
+<li>
+<p>自动做题(√)</p>
 <ul>
 <li>开始新尝试：发现开始新尝试的按钮中对应的 <code>&lt;a&gt;</code>标签的 url 中的参数有个有趣的地方 <code>new_attempt=1</code>，直接访问即可以开始一次新的尝试，直接get请求即可</li>
 <li>提交新尝试：点击提交按钮后进行抓包，发现有一个post请求对应的 url : <code>do/take/saveAttempt?saveSequence=1/...</code> ，观察数据包中传输的数据发现有这样几个有趣的地方：<code>data_submitted:true</code>, <code>save_and_submit:true</code>；我们猜测这就是对服务器进行的提交结果请求。之后对比两次不同的提交所得的数据包发现，所需修改的参数为<code>current_attempt_id</code> 和 <code>current_attempt_id_backup</code>，二者是一样的，于是观察哪里有这个id，发现和做题页面中的<code>&lt;div&gt;</code>标签的类名有着惊人的一致🤠。直接对做题页面进行xpath解析，解析到div标签的类名传输进post请求的数据中，再发送post请求即可完成自动提交新尝试😪</li>
 </ul>
 </li>
-<li><p>自动开爬 ！(√)</p>
+<li>
+<p>自动开爬 ！(√)</p>
 <ol>
-<li><p>get到所有尝试的页面，利用xpath解析到对应每次做题结果的 <code>&lt;a&gt;</code> 标签的href地址存到 list 中，拼接成完整的url</p>
+<li>
+<p>get到所有尝试的页面，利用xpath解析到对应每次做题结果的 <code>&lt;a&gt;</code> 标签的href地址存到 list 中，拼接成完整的url</p>
 </li>
-<li><p>对每个url 利用xpath解析到对应题目和答案的标签，根据题目类型分别存储，利用字典存储，题目名称为key，题目答案为value，为了防止存储重复题目，每次存储前先查询key是否存在，不存在再存入字典中，写入文件的同时计数器+1，方便统计爬取题目的个数</p>
+<li>
+<p>对每个url 利用xpath解析到对应题目和答案的标签，根据题目类型分别存储，利用字典存储，题目名称为key，题目答案为value，为了防止存储重复题目，每次存储前先查询key是否存在，不存在再存入字典中，写入文件的同时计数器+1，方便统计爬取题目的个数</p>
 </li>
-<li><p>冻手冻手</p>
+<li>
+<p>冻手冻手</p>
 </li>
 </ol>
 </li>
 </ol>
-<h2><span id="来">🐴来</span></h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<h2 id="来">🐴来</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
 <span class="token keyword">from</span> lxml <span class="token keyword">import</span> etree
 <span class="token keyword">import</span> os
 <span class="token keyword">import</span> time
@@ -502,7 +514,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">进行一个毛概题库的爬</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">办事流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">🐴来</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E8%A1%8C%E4%B8%80%E4%B8%AA%E6%AF%9B%E6%A6%82%E9%A2%98%E5%BA%93%E7%9A%84%E7%88%AC"><span class="nav-text">进行一个毛概题库的爬</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9E%E4%BA%8B%E6%B5%81%E7%A8%8B"><span class="nav-text">办事流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A5"><span class="nav-text">🐴来</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

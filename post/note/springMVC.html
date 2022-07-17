@@ -235,21 +235,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="springmvc学习杂记">SpringMVC学习杂记</span></h1><blockquote>
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="springmvc学习杂记">SpringMVC学习杂记</h1>
+<blockquote>
 <p>注：杂记即为看到啥记啥 毫无章法 乱jb记</p>
-<p>常见的服务器端MVC框架有：Struts、Spring MVC、ASP.NET MVC、Zend Framework、JSF；常见前端MVC框架：vue、angularjs、react、backbone；由MVC演化出了另外一些模式如：MVP、MVVM 等等</p>
 </blockquote>
-<h2><span id="spring">Spring</span></h2><p>Spring 是最受欢迎的企业级 Java 应用程序开发的轻量级框架</p>
+<blockquote>
+<p>常见的服务器端MVC框架有：Struts、Spring MVC、<a target="_blank" rel="noopener" href="http://ASP.NET">ASP.NET</a> MVC、Zend Framework、JSF；常见前端MVC框架：vue、angularjs、react、backbone；由MVC演化出了另外一些模式如：MVP、MVVM 等等</p>
+</blockquote>
+<h2 id="spring">Spring</h2>
+<p>Spring 是最受欢迎的企业级 Java 应用程序开发的轻量级框架</p>
 <p>Spring 框架的核心特性是可以用于开发任何 Java 应用程序，但是在 Java EE 平台上构建 web 应用程序是需要扩展的。 Spring 框架的目标是使 J2EE 开发变得更容易使用，通过启用基于 POJO 编程模型来促进良好的编程实践</p>
-<h3><span id="三层架构">三层架构</span></h3><ul>
-<li><p>表现层  web层  MVC是表现层的一个设计模型 </p>
+<h3 id="三层架构">三层架构</h3>
+<ul>
+<li>
+<p>表现层  web层  MVC是表现层的一个设计模型</p>
 </li>
-<li><p>业务层  service层</p>
+<li>
+<p>业务层  service层</p>
 </li>
-<li><p>持久层  dao层</p>
+<li>
+<p>持久层  dao层</p>
 </li>
 </ul>
-<h3><span id="优良特性">优良特性</span></h3><ul>
+<h3 id="优良特性">优良特性</h3>
+<ul>
 <li>非侵入式：基于Spring开发的应用中的对象可以不依赖于Spring的API</li>
 <li>控制反转：IOC——Inversion of Control，指的是将对象的创建权交给 Spring 去创建。使用 Spring 之前，对象的创建都是由我们自己在代码中new创建。而使用 Spring 之后。对象的创建都是给了 Spring 框架。</li>
 <li>依赖注入：DI——Dependency Injection，是指依赖的对象不需要手动调用 setXX 方法去设置，而是通过配置赋值。</li>
@@ -258,22 +267,27 @@
 <li>组件化：Spring 实现了使用简单的组件配置组合成一个复杂的应用。在 Spring 中可以使用XML和Java注解组合这些对象。</li>
 <li>一站式：在 IOC 和 AOP 的基础上可以整合各种企业应用的开源框架和优秀的第三方类库（实际上 Spring 自身也提供了表现层的 SpringMVC 和持久层的 Spring JDBC）</li>
 </ul>
-<h3><span id="体系结构">体系结构</span></h3><p><img src="https://images.weserv.nl/?url=https://i0.hdslb.com/bfs/album/c9159efce03899c144f5fd357785a4eba6956568.png" alt="img"></p>
-<h2><span id="mvc职责分析">MVC职责分析</span></h2><ul>
-<li><p>Controller：控制器</p>
+<h3 id="体系结构">体系结构</h3>
+<p><img src="https://images.weserv.nl/?url=https://i0.hdslb.com/bfs/album/c9159efce03899c144f5fd357785a4eba6956568.png" alt="img"></p>
+<h2 id="mvc职责分析">MVC职责分析</h2>
+<ul>
+<li>
+<p>Controller：控制器</p>
 <ul>
 <li>取得表单数据</li>
 <li>调用业务逻辑</li>
 <li>转向指定的页面</li>
 </ul>
 </li>
-<li><p>Model：模型</p>
+<li>
+<p>Model：模型</p>
 <ul>
 <li>业务逻辑</li>
 <li>保存数据的状态</li>
 </ul>
 </li>
-<li><p>View：视图</p>
+<li>
+<p>View：视图</p>
 <ul>
 <li>显示页面</li>
 </ul>
@@ -281,42 +295,54 @@
 </ul>
 <hr>
 <ul>
-<li><p>MVC框架需要做哪些事情：</p>
+<li>
+<p>MVC框架需要做哪些事情：</p>
 <ol>
-<li><p>将url映射到java类或java类的方法 .</p>
+<li>
+<p>将url映射到java类或java类的方法 .</p>
 </li>
-<li><p>封装用户提交的数据 .</p>
+<li>
+<p>封装用户提交的数据 .</p>
 </li>
-<li><p>处理请求—调用相关的业务处理—封装响应数据 .</p>
+<li>
+<p>处理请求–调用相关的业务处理–封装响应数据 .</p>
 </li>
-<li><p>将响应的数据进行渲染 . jsp / html 等表示层数据 .</p>
+<li>
+<p>将响应的数据进行渲染 . jsp / html 等表示层数据 .</p>
 </li>
 </ol>
 </li>
 </ul>
-<h2><span id="servlet">Servlet</span></h2><p>jsp：本质就是一个servlet</p>
+<h2 id="servlet">Servlet</h2>
+<p>jsp：本质就是一个servlet</p>
 <ol>
-<li><p>添加pom依赖</p>
+<li>
+<p>添加pom依赖</p>
 </li>
-<li><p>新建空Maven项目</p>
+<li>
+<p>新建空Maven项目</p>
 </li>
-<li><p>Add Framework Support 选择Web Application添加 变成web项目 </p>
+<li>
+<p>Add Framework Support 选择Web Application添加 变成web项目</p>
 </li>
-<li><p>导入servlet和jsp的依赖</p>
+<li>
+<p>导入servlet和jsp的依赖</p>
 </li>
-<li><p>编写一个Servlet类，用来处理用户的请求</p>
+<li>
+<p>编写一个Servlet类，用来处理用户的请求</p>
 </li>
 </ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloServlet</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol>
+<ol start="6">
 <li>在WEB-INF目录下新建一个jsp的文件夹，新建test.jsp</li>
 <li>在web.xml中注册Servlet</li>
 <li>配置Tomcat 并启动测试</li>
 </ol>
-<h2><span id="springmvc">SpringMVC</span></h2><blockquote>
+<h2 id="springmvc">SpringMVC</h2>
+<blockquote>
 <p>Spring MVC是Spring Framework的一部分，是基于Java实现MVC的轻量 级Web框架</p>
 </blockquote>
-<p> Spring MVC的特点：</p>
+<p>Spring MVC的特点：</p>
 <ol>
 <li>轻量级，简单易学</li>
 <li>高效 , 基于请求响应的MVC框架</li>
@@ -327,16 +353,19 @@
 </ol>
 <p>Spring的web框架围绕<strong>DispatcherServlet</strong> [ 调度Servlet ] 设计</p>
 <p>DispatcherServlet的作用是将请求分发到不同的处理器。从Spring 2.5开始，使用Java 5或者以上版本的用户可以采用基于注解形式进行开发，十分简洁</p>
-<h3><span id="中心控制器">中心控制器</span></h3><p>Spring MVC框架以请求为驱动 , 围绕一个中心Servlet分派请求及提供其他功能，DispatcherServlet是一个实际的Servlet (它继承自HttpServlet 基类)。</p>
+<h3 id="中心控制器">中心控制器</h3>
+<p>Spring MVC框架以请求为驱动 , 围绕一个中心Servlet分派请求及提供其他功能，DispatcherServlet是一个实际的Servlet (它继承自HttpServlet 基类)。</p>
 <p>SpringMVC的原理如下图所示：</p>
-<p>​    当发起请求时被前置的控制器拦截到请求，根据请求参数生成代理请求，找到请求对应的实际控制器，控制器处理请求，创建数据模型，访问数据库，将模型响应给中心控制器，控制器使用模型与视图渲染视图结果，将结果返回给中心控制器，再将结果返回给请求者。</p>
+<p>​	当发起请求时被前置的控制器拦截到请求，根据请求参数生成代理请求，找到请求对应的实际控制器，控制器处理请求，创建数据模型，访问数据库，将模型响应给中心控制器，控制器使用模型与视图渲染视图结果，将结果返回给中心控制器，再将结果返回给请求者。</p>
 <p><img src="https://images.weserv.nl/?url=https://i0.hdslb.com/bfs/album/d3318d96dfdee2ee58b6bee91fde63570542aeb8.png" alt="img"></p>
-<h3><span id="springmvc执行原理">SpringMVC执行原理</span></h3><blockquote>
+<h3 id="springmvc执行原理">SpringMVC执行原理</h3>
+<blockquote>
 <p>图为SpringMVC的一个较完整的流程图，实线表示SpringMVC框架提供的技术，不需要开发者实现，虚线表示需要开发者实现</p>
 </blockquote>
 <p><img src="https://images.weserv.nl/?url=https://i0.hdslb.com/bfs/album/825f31d6c644d7b4d5c7a270d3c5244f93282738.png" alt="img"></p>
 <ol>
-<li><p>DispatcherServlet表示前置控制器，是整个SpringMVC的控制中心。用户发出请求，DispatcherServlet接收请求并拦截请求。</p>
+<li>
+<p>DispatcherServlet表示前置控制器，是整个SpringMVC的控制中心。用户发出请求，DispatcherServlet接收请求并拦截请求。</p>
 <blockquote>
 <p>我们假设请求的url为 : <a target="_blank" rel="noopener" href="http://localhost:8080/SpringMVC/hello">http://localhost:8080/SpringMVC/hello</a></p>
 <p>如上url拆分成三部分：</p>
@@ -346,31 +375,44 @@
 <p>通过分析，如上url表示为：请求位于服务器localhost:8080上的SpringMVC站点的hello控制器。</p>
 </blockquote>
 </li>
-<li><p>HandlerMapping为处理器映射。DispatcherServlet调用HandlerMapping,HandlerMapping根据请求url查找Handler。</p>
+<li>
+<p>HandlerMapping为处理器映射。DispatcherServlet调用HandlerMapping,HandlerMapping根据请求url查找Handler。</p>
 </li>
-<li><p>HandlerExecution表示具体的Handler,其主要作用是根据url查找控制器，如上url被查找控制器为：hello。</p>
+<li>
+<p>HandlerExecution表示具体的Handler,其主要作用是根据url查找控制器，如上url被查找控制器为：hello。</p>
 </li>
-<li><p>HandlerExecution将解析后的信息传递给DispatcherServlet,如解析控制器映射等。</p>
+<li>
+<p>HandlerExecution将解析后的信息传递给DispatcherServlet,如解析控制器映射等。</p>
 </li>
-<li><p>HandlerAdapter表示处理器适配器，其按照特定的规则去执行Handler。</p>
+<li>
+<p>HandlerAdapter表示处理器适配器，其按照特定的规则去执行Handler。</p>
 </li>
-<li><p>Handler让具体的Controller执行。</p>
+<li>
+<p>Handler让具体的Controller执行。</p>
 </li>
-<li><p>Controller将具体的执行信息返回给HandlerAdapter,如ModelAndView。</p>
+<li>
+<p>Controller将具体的执行信息返回给HandlerAdapter,如ModelAndView。</p>
 </li>
-<li><p>HandlerAdapter将视图逻辑名或模型传递给DispatcherServlet。</p>
+<li>
+<p>HandlerAdapter将视图逻辑名或模型传递给DispatcherServlet。</p>
 </li>
-<li><p>DispatcherServlet调用视图解析器(ViewResolver)来解析HandlerAdapter传递的逻辑视图名。</p>
+<li>
+<p>DispatcherServlet调用视图解析器(ViewResolver)来解析HandlerAdapter传递的逻辑视图名。</p>
 </li>
-<li><p>视图解析器将解析的逻辑视图名传给DispatcherServlet。</p>
+<li>
+<p>视图解析器将解析的逻辑视图名传给DispatcherServlet。</p>
 </li>
-<li><p>DispatcherServlet根据视图解析器解析的视图结果，调用具体的视图。</p>
+<li>
+<p>DispatcherServlet根据视图解析器解析的视图结果，调用具体的视图。</p>
 </li>
-<li><p>最终视图呈现给用户。</p>
+<li>
+<p>最终视图呈现给用户。</p>
 </li>
 </ol>
-<h3><span id="配置版">配置版</span></h3><ol>
-<li><p>配置web.xml  ， 注册DispatcherServlet</p>
+<h3 id="配置版">配置版</h3>
+<ol>
+<li>
+<p>配置web.xml  ， 注册DispatcherServlet</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-app</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee<span class="token punctuation">"</span></span>
         <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
@@ -399,7 +441,8 @@
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-app</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>编写SpringMVC 的 配置文件！名称：springmvc-servlet.xml  : [servletname]-servlet.xml</p>
+<li>
+<p>编写SpringMVC 的 配置文件！名称：springmvc-servlet.xml  : [servletname]-servlet.xml</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans<span class="token punctuation">"</span></span>
       <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
@@ -408,13 +451,16 @@
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>beans</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>添加 处理映射器</p>
+<li>
+<p>添加 处理映射器</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
-<li><p>添加 处理器适配器</p>
+<li>
+<p>添加 处理器适配器</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
-<li><p>添加 视图解析器</p>
+<li>
+<p>添加 视图解析器</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!--视图解析器:DispatcherServlet给他的ModelAndView--></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.web.servlet.view.InternalResourceViewResolver<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>InternalResourceViewResolver<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
    <span class="token comment">&lt;!--前缀--></span>
@@ -423,7 +469,8 @@
    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>suffix<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>.jsp<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>编写我们要操作业务Controller ，要么实现Controller接口，要么增加注解；需要返回一个ModelAndView，装数据，封视图；</p>
+<li>
+<p>编写我们要操作业务Controller ，要么实现Controller接口，要么增加注解；需要返回一个ModelAndView，装数据，封视图；</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>maskros<span class="token punctuation">.</span>controller</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span><span class="token class-name">ModelAndView</span><span class="token punctuation">;</span>
@@ -448,11 +495,13 @@
    
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>将自己的类交给SpringIOC容器，注册bean</p>
+<li>
+<p>将自己的类交给SpringIOC容器，注册bean</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!--Handler--></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/hello<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.kuang.controller.HelloController<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
-<li><p>写要跳转的jsp页面，显示ModelandView存放的数据，以及我们的正常页面；</p>
+<li>
+<p>写要跳转的jsp页面，显示ModelandView存放的数据，以及我们的正常页面；</p>
 <pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page contentType&#x3D;&quot;text&#x2F;html;charset&#x3D;UTF-8&quot; language&#x3D;&quot;java&quot; %&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -463,7 +512,8 @@ $&#123;msg&#125;
 &lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>配置tomcat启动测试</p>
+<li>
+<p>配置tomcat启动测试</p>
 </li>
 </ol>
 <blockquote>
@@ -474,8 +524,10 @@ $&#123;msg&#125;
 </ol>
 </blockquote>
 <hr>
-<h3><span id="注解版">※注解版</span></h3><ol>
-<li><p>由于Maven可能存在资源过滤的问题，我们将配置完善</p>
+<h3 id="注解版">※注解版</h3>
+<ol>
+<li>
+<p>由于Maven可能存在资源过滤的问题，我们将配置完善</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">></span></span>
    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resources</span><span class="token punctuation">></span></span>
        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resource</span><span class="token punctuation">></span></span>
@@ -497,9 +549,11 @@ $&#123;msg&#125;
    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resources</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>在pom.xml文件引入相关的依赖：主要有Spring框架核心库、Spring MVC、servlet , JSTL等。我们在父依赖中已经引入</p>
+<li>
+<p>在pom.xml文件引入相关的依赖：主要有Spring框架核心库、Spring MVC、servlet , JSTL等。我们在父依赖中已经引入</p>
 </li>
-<li><p>配置 web.xml</p>
+<li>
+<p>配置 web.xml</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-app</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee<span class="token punctuation">"</span></span>
         <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
@@ -527,10 +581,11 @@ $&#123;msg&#125;
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-app</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
-<p><strong>/ 和 /* 的区别：</strong>&lt; url-pattern &gt; / &lt;/ url-pattern &gt; 不会匹配到.jsp， 只针对我们编写的请求；即：.jsp 不会进入spring的 DispatcherServlet类 。&lt; url-pattern &gt; /<em> &lt;/ url-pattern &gt; 会匹配 </em>.jsp，会出现返回 jsp视图 时再次进入spring的DispatcherServlet 类，导致找不到对应的controller所以报404错</p>
+<p><strong>/ 和 /* 的区别：</strong>&lt; url-pattern &gt; / &lt;/ url-pattern &gt; 不会匹配到.jsp， 只针对我们编写的请求；即：.jsp 不会进入spring的 DispatcherServlet类 。&lt; url-pattern &gt; /* &lt;/ url-pattern &gt; 会匹配 *.jsp，会出现返回 jsp视图 时再次进入spring的DispatcherServlet 类，导致找不到对应的controller所以报404错</p>
 </blockquote>
 </li>
-<li><p>添加 SpringMVC 配置文件</p>
+<li>
+<p>添加 SpringMVC 配置文件</p>
 <p>在resource目录下添加springmvc-servlet.xml配置文件，配置的形式与Spring容器配置基本类似，为了支持基于注解的IOC，设置了自动扫描包的功能，在视图解析器中我们把所有的视图都存放在/WEB-INF/目录下，这样可以保证视图安全，因为这个目录下的文件，客户端不能直接访问</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans<span class="token punctuation">"</span></span>
@@ -570,7 +625,8 @@ $&#123;msg&#125;
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>beans</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>创建 Contronller</p>
+<li>
+<p>创建 Contronller</p>
 <blockquote>
 <ul>
 <li>@Controller是为了让Spring IOC容器初始化时自动扫描到；</li>
@@ -600,7 +656,8 @@ $&#123;msg&#125;
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>创建视图层</p>
+<li>
+<p>创建视图层</p>
 <p>在WEB-INF/ jsp目录中创建hello.jsp ， 视图可以直接取出并展示从Controller带回的信息</p>
 <pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page contentType&#x3D;&quot;text&#x2F;html;charset&#x3D;UTF-8&quot; language&#x3D;&quot;java&quot; %&gt;
 &lt;html&gt;
@@ -612,23 +669,28 @@ $&#123;msg&#125;
 &lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>配置 Tomcat 运行</p>
+<li>
+<p>配置 Tomcat 运行</p>
 </li>
 </ol>
 <hr>
 <p>使用springMVC必须配置的三大件：</p>
 <p><strong>处理器映射器、处理器适配器、视图解析器</strong></p>
 <p>通常，我们只需要<strong>手动配置视图解析器</strong>，而<strong>处理器映射器</strong>和<strong>处理器适配器</strong>只需要开启<strong>注解驱动</strong>即可，而省去了大段的xml配置</p>
-<h3><span id="控制器和restful">控制器和RestFul</span></h3><blockquote>
+<h3 id="控制器和restful">控制器和RestFul</h3>
+<blockquote>
 <p>控制器复杂提供访问应用程序的行为，通常通过接口定义或注解定义两种方法实现。</p>
 <p>控制器负责解析用户的请求并将其转换为一个模型。</p>
 <p>在Spring MVC中一个控制器类可以包含多个方法</p>
 <p>在Spring MVC中，对于Controller的配置方式有很多种，一般<strong>使用注解@Controller</strong></p>
 </blockquote>
-<h4><span id="实现controller接口">实现Controller接口</span></h4><ul>
-<li><p>mvc的配置文件只留下 视图解析器</p>
+<h4 id="实现controller接口">实现Controller接口</h4>
+<ul>
+<li>
+<p>mvc的配置文件只留下 视图解析器</p>
 </li>
-<li><p>ControllerTest1</p>
+<li>
+<p>ControllerTest1</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//定义控制器</span>
 <span class="token comment">//注意点：不要导错包，实现Controller接口，重写方法；</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ControllerTest1</span> <span class="token keyword">implements</span> <span class="token class-name">Controller</span> <span class="token punctuation">&#123;</span>
@@ -642,10 +704,12 @@ $&#123;msg&#125;
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>编写完毕后，去Spring配置文件中注册请求的bean；name对应请求路径，class对应处理请求的类</p>
+<li>
+<p>编写完毕后，去Spring配置文件中注册请求的bean；name对应请求路径，class对应处理请求的类</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/t1<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.maskros.controller.ControllerTest1<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
-<li><p>编写前端test.jsp</p>
+<li>
+<p>编写前端test.jsp</p>
 <pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page contentType&#x3D;&quot;text&#x2F;html;charset&#x3D;UTF-8&quot; language&#x3D;&quot;java&quot; %&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -662,14 +726,18 @@ $&#123;msg&#125;
 <li>实现接口Controller定义控制器是较老的办法</li>
 <li>缺点是：一个控制器中只有一个方法，如果要多个方法则需要定义多个Controller；定义的方式比较麻烦；</li>
 </ul>
-<h4><span id="使用注解controller">使用注解@Controller</span></h4><ul>
-<li><p>@Controller注解类型用于声明Spring类的实例是一个控制器（在讲IOC时还提到了另外3个注解）；</p>
+<h4 id="使用注解controller">使用注解@Controller</h4>
+<ul>
+<li>
+<p>@Controller注解类型用于声明Spring类的实例是一个控制器（在讲IOC时还提到了另外3个注解）；</p>
 </li>
-<li><p>Spring可以使用扫描机制来找到应用程序中所有基于注解的控制器类，为了保证Spring能找到你的控制器，需要在配置文件中声明组件扫描。</p>
+<li>
+<p>Spring可以使用扫描机制来找到应用程序中所有基于注解的控制器类，为了保证Spring能找到你的控制器，需要在配置文件中声明组件扫描。</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!-- 自动扫描指定的包，下面所有注解类交给IOC容器管理 --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>component-scan</span> <span class="token attr-name">base-package</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.kuang.controller<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
-<li><p>增加一个ControllerTest2类，使用注解实现</p>
+<li>
+<p>增加一个ControllerTest2类，使用注解实现</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//@Controller注解的类会自动添加到Spring上下文中</span>
 <span class="token annotation punctuation">@Controller</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ControllerTest2</span><span class="token punctuation">&#123;</span>
@@ -688,7 +756,8 @@ $&#123;msg&#125;
 <blockquote>
 <p>可以发现，我们的两个请求都可以指向一个视图，但是页面结果的结果是不一样的，从这里可以看出视图是被复用的，而控制器与视图之间是弱偶合关系。</p>
 </blockquote>
-<h4><span id="requestmapping-使用">@RequestMapping 使用</span></h4><ul>
+<h4 id="requestmapping-使用">@RequestMapping 使用</h4>
+<ul>
 <li>@RequestMapping注解用于映射url到控制器类或一个特定的处理程序方法。可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径</li>
 </ul>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 只注解在方法上面</span>
@@ -710,7 +779,8 @@ $&#123;msg&#125;
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
 <span class="token comment">//访问路径：http://localhost:8080 / 项目名/ admin /h1 </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4><span id="restful风格">RestFul风格</span></h4><blockquote>
+<h4 id="restful风格">RestFul风格</h4>
+<blockquote>
 <p>Restful就是一个资源定位及资源操作的风格。不是标准也不是协议，只是一种风格。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。localhost:8080/a/b/c/d/……</p>
 </blockquote>
 <p>在Spring MVC中可以使用  @PathVariable 注解，让方法参数的值对应绑定到一个URI模板变量上</p>
@@ -732,7 +802,8 @@ $&#123;msg&#125;
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>使用路径变量的好处？</p>
 <ol>
-<li><ul>
+<li>
+<ul>
 <li>使路径变得更加简洁；</li>
 <li>获得参数更加方便，框架会自动进行类型转换。</li>
 <li>通过路径变量的类型可以约束访问参数，如果类型不一样，则访问不到对应的请求方法，如这里访问是的路径是/commit/1/a，则路径与方法不匹配，而不会是参数转换失败。</li>
@@ -767,10 +838,12 @@ $&#123;msg&#125;
 <span class="token annotation punctuation">@DeleteMapping</span>
 <span class="token annotation punctuation">@PatchMapping</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>@GetMapping</strong> 是一个组合注解，平时使用的会比较多, 它所扮演的是 @RequestMapping(method =RequestMethod.GET) 的一个快捷方式</p>
-<h3><span id="数据处理和跳转">数据处理和跳转</span></h3><p>转发 重定向</p>
+<h3 id="数据处理和跳转">数据处理和跳转</h3>
+<p>转发 重定向</p>
 <p>接受请求参数以及数据回显</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"xxx"</span><span class="token punctuation">)</span>  <span class="token comment">//必须要求传这个参数</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3><span id="json">Json</span></h3><blockquote>
+<h3 id="json">Json</h3>
+<blockquote>
 <p>JavaScript Object Notation, JS 对象标记 是一种轻量级的数据交换格式，目前使用特别广泛，采用完全独立于编程语言的<strong>文本格式</strong>来存储和表示数据</p>
 </blockquote>
 <ul>
@@ -791,13 +864,17 @@ $&#123;msg&#125;
 <p>Json 和 JavaScript 对象互转：</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">//从JSON字符串转换为JavaScript 对象</span>
 <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//从JavaScript 对象转换为JSON字符串</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3><span id="controller返回json数据">Controller返回Json数据</span></h3><h4><span id="jackson使用">Jackson使用</span></h4><p>导入它的jar包 配置SpringMVC</p>
+<h3 id="controller返回json数据">Controller返回Json数据</h3>
+<h4 id="jackson使用">Jackson使用</h4>
+<p>导入它的jar包 配置SpringMVC</p>
 <p>编写Controller时需要运用到两个新东西：@ResponseBody，ObjectMapper对象</p>
 <p>乱码处理</p>
-<h4><span id="fastjson使用">FastJson使用</span></h4><blockquote>
-<p> 阿里开发 方便的实现json对象与JavaBean对象的转换，实现JavaBean对象与json字符串的转换，实现json对象与json字符串的转换</p>
+<h4 id="fastjson使用">FastJson使用</h4>
+<blockquote>
+<p>阿里开发 方便的实现json对象与JavaBean对象的转换，实现JavaBean对象与json字符串的转换，实现json对象与json字符串的转换</p>
 </blockquote>
-<h4><span id="乱码问题">乱码问题</span></h4><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!-- Json乱码问题配置 --></span>
+<h4 id="乱码问题">乱码问题</h4>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!-- Json乱码问题配置 --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>annotation-driven</span><span class="token punctuation">></span></span>
    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>message-converters</span> <span class="token attr-name">register-defaults</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.http.converter.StringHttpMessageConverter<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -812,21 +889,24 @@ $&#123;msg&#125;
        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">></span></span>
    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">mvc:</span>message-converters</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">mvc:</span>annotation-driven</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="ajax">Ajax</span></h2><blockquote>
+<h2 id="ajax">Ajax</h2>
+<blockquote>
 <p>Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）</p>
 <p>Ajax 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术</p>
 </blockquote>
 <ul>
 <li>可以通过 iframe 标签来伪造一个Ajax</li>
-<li><strong>利用AJAX可以做：</strong><ul>
+<li><strong>利用AJAX可以做：</strong>
+<ul>
 <li>注册时，输入用户名自动检测用户是否已经存在。</li>
 <li>登陆时，提示用户名密码错误</li>
 <li>删除数据行时，将行ID发送到后台，后台在数据库中删除，数据库删除成功后，在页面DOM中将数据行也删除。</li>
-<li>….</li>
+<li>…</li>
 </ul>
 </li>
 </ul>
-<h3><span id="jqueryajax">jQuery.ajax</span></h3><blockquote>
+<h3 id="jqueryajax">jQuery.ajax</h3>
+<blockquote>
 <p>Ajax的核心是XMLHttpRequest对象(XHR)。XHR为向服务器发送请求和解析服务器响应提供了接口。能够以异步方式从服务器获取新数据</p>
 <p>jQuery是一个库，提供大量的JavaScript函数</p>
 </blockquote>
@@ -851,7 +931,8 @@ $&#123;msg&#125;
         "script": 尝试将返回值当作JavaScript去执行，然后再将服务器端返回的内容转换成普通文本格式
           "json": 将服务器端返回的内容转换成相应的JavaScript对象
         "jsonp": JSONP 格式使用 JSONP 形式调用函数时，如 "myurl?callback=?" jQuery 将自动替换 ? 为正确的函数名，以执行回调函数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3><span id="ajax异步加载数据">Ajax异步加载数据</span></h3><p>实现了数据回显</p>
+<h3 id="ajax异步加载数据">Ajax异步加载数据</h3>
+<p>实现了数据回显</p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
    <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#btn"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -870,7 +951,8 @@ $&#123;msg&#125;
       <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
   <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="拦截器interceptor">拦截器Interceptor</span></h2><blockquote>
+<h2 id="拦截器interceptor">拦截器Interceptor</h2>
+<blockquote>
 <p>SpringMVC的处理器拦截器类似于Servlet开发中的过滤器Filter,用于对处理器进行预处理和后处理。开发者可以自己定义一些拦截器来实现特定的功能。可用于验证用户是否登录 (认证用户)</p>
 </blockquote>
 <p>过滤器和拦截器的区别：</p>
@@ -900,14 +982,15 @@ $&#123;msg&#125;
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">mvc:</span>interceptors</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>每写一个拦截器要到xml中配置这个拦截器</p>
 <p>exp：未登录时点击主页按钮会被拦截器重定向到登录页面</p>
-<h2><span id="杂记">杂记</span></h2><p>SpringMVC + Vue + SpringBoot + SpringCloud + Linux</p>
+<h2 id="杂记">杂记</h2>
+<p>SpringMVC + Vue + SpringBoot + SpringCloud + Linux</p>
 <p>Spring：IOC 和 AOP</p>
 <p>SpringMVC：SpringMVC的执行流程，SSM框架整合</p>
 <p>SSM =  javaweb做项目</p>
 <p>MVC：模型 (dao, service) , 视图 (jsp) , 控制器 (servlet)</p>
 <p>servlet: 转发 重定向</p>
 <p>前端 数据传输 实体类</p>
-<p>实体类：用户名 密码  生日 ….. n个</p>
+<p>实体类：用户名 密码  生日 … n个</p>
 <p>前端：用户名 密码</p>
 <p>pojo: User</p>
 <p>vo: UserVo</p>
@@ -925,12 +1008,14 @@ $&#123;msg&#125;
 <p>js:</p>
 <ul>
 <li>函数：闭包() ()</li>
-<li>Dom<ul>
+<li>Dom
+<ul>
 <li>id, name, tag</li>
 <li>create, remove</li>
 </ul>
 </li>
-<li>Bom<ul>
+<li>Bom
+<ul>
 <li>window</li>
 <li>document</li>
 </ul>
@@ -1027,7 +1112,7 @@ $&#123;msg&#125;
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">SpringMVC学习杂记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">三层架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">优良特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">体系结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">MVC职责分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">Servlet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">SpringMVC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">中心控制器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">SpringMVC执行原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">配置版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">※注解版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">控制器和RestFul</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-text">实现Controller接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-text">使用注解@Controller</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-text">@RequestMapping 使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-text">RestFul风格</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">数据处理和跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">Json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">Controller返回Json数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-text">Jackson使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-text">FastJson使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-text">乱码问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">Ajax</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">jQuery.ajax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">Ajax异步加载数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">拦截器Interceptor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">杂记</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#springmvc%E5%AD%A6%E4%B9%A0%E6%9D%82%E8%AE%B0"><span class="nav-text">SpringMVC学习杂记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#spring"><span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="nav-text">三层架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E8%89%AF%E7%89%B9%E6%80%A7"><span class="nav-text">优良特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-text">体系结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mvc%E8%81%8C%E8%B4%A3%E5%88%86%E6%9E%90"><span class="nav-text">MVC职责分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#servlet"><span class="nav-text">Servlet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springmvc"><span class="nav-text">SpringMVC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E5%BF%83%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-text">中心控制器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springmvc%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="nav-text">SpringMVC执行原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%89%88"><span class="nav-text">配置版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E8%A7%A3%E7%89%88"><span class="nav-text">※注解版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%99%A8%E5%92%8Crestful"><span class="nav-text">控制器和RestFul</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0controller%E6%8E%A5%E5%8F%A3"><span class="nav-text">实现Controller接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3controller"><span class="nav-text">使用注解@Controller</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#requestmapping-%E4%BD%BF%E7%94%A8"><span class="nav-text">@RequestMapping 使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#restful%E9%A3%8E%E6%A0%BC"><span class="nav-text">RestFul风格</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%92%8C%E8%B7%B3%E8%BD%AC"><span class="nav-text">数据处理和跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#json"><span class="nav-text">Json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#controller%E8%BF%94%E5%9B%9Ejson%E6%95%B0%E6%8D%AE"><span class="nav-text">Controller返回Json数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jackson%E4%BD%BF%E7%94%A8"><span class="nav-text">Jackson使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fastjson%E4%BD%BF%E7%94%A8"><span class="nav-text">FastJson使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98"><span class="nav-text">乱码问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax"><span class="nav-text">Ajax</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jqueryajax"><span class="nav-text">jQuery.ajax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajax%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE"><span class="nav-text">Ajax异步加载数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%A6%E6%88%AA%E5%99%A8interceptor"><span class="nav-text">拦截器Interceptor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%82%E8%AE%B0"><span class="nav-text">杂记</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

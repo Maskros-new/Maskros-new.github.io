@@ -20,18 +20,18 @@
     var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="CSP 202109-2 非零段划分 (差分) link 赛时没想明白，写了个暴力70分，一直惦记着这个题，故在此重做  题面A1,A2,⋯,An 是一个由 n 个自然数（非负整数）组成的数组。我们称其中 Ai,⋯,Aj 是一个非零段，当且仅当以下条件同时满足：  1≤i≤j≤n； 对于任意的整数 k，若 i≤k≤j，则 Ak&gt;0； i&#x3D;1 或 Ai−1&#x3D;0； j&#x3D;n 或 Aj+1&#x3D;0。">
+  <meta name="description" content="CSP 202109-2 非零段划分 (差分)  link 赛时没想明白，写了个暴力70分，一直惦记着这个题，故在此重做  题面 A1,A2,⋯,An 是一个由 n 个自然数（非负整数）组成的数组。我们称其中 Ai,⋯,Aj 是一个非零段，当且仅当以下条件同时满足：  1≤i≤j≤n； 对于任意的整数 k，若 i≤k≤j，则 Ak&gt;0； i&#x3D;1 或 Ai−1&#x3D;0； j&#x3D;n 或 Aj+1&#x3D;0。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSP202109-2 非零段划分">
 <meta property="og:url" content="https://maskros.top/post/probs/CSP%E9%9D%9E%E9%9B%B6%E6%AE%B5%E5%88%92%E5%88%86.html">
 <meta property="og:site_name" content="Maskros&#39; Blog">
-<meta property="og:description" content="CSP 202109-2 非零段划分 (差分) link 赛时没想明白，写了个暴力70分，一直惦记着这个题，故在此重做  题面A1,A2,⋯,An 是一个由 n 个自然数（非负整数）组成的数组。我们称其中 Ai,⋯,Aj 是一个非零段，当且仅当以下条件同时满足：  1≤i≤j≤n； 对于任意的整数 k，若 i≤k≤j，则 Ak&gt;0； i&#x3D;1 或 Ai−1&#x3D;0； j&#x3D;n 或 Aj+1&#x3D;0。">
+<meta property="og:description" content="CSP 202109-2 非零段划分 (差分)  link 赛时没想明白，写了个暴力70分，一直惦记着这个题，故在此重做  题面 A1,A2,⋯,An 是一个由 n 个自然数（非负整数）组成的数组。我们称其中 Ai,⋯,Aj 是一个非零段，当且仅当以下条件同时满足：  1≤i≤j≤n； 对于任意的整数 k，若 i≤k≤j，则 Ak&gt;0； i&#x3D;1 或 Ai−1&#x3D;0； j&#x3D;n 或 Aj+1&#x3D;0。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-01T14:30:50.000Z">
 <meta property="article:modified_time" content="2022-03-01T15:41:17.264Z">
 <meta property="article:author" content="Maskros">
-<meta property="article:tag" content="思维">
 <meta property="article:tag" content="差分">
+<meta property="article:tag" content="思维">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://maskros.top/post/probs/CSP%E9%9D%9E%E9%9B%B6%E6%AE%B5%E5%88%92%E5%88%86.html">
@@ -336,11 +336,13 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1><span id="csp-202109-2-非零段划分-差分">CSP 202109-2 非零段划分 (差分)</span></h1><blockquote>
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="csp-202109-2-非零段划分-差分">CSP 202109-2 非零段划分 (差分)</h1>
+<blockquote>
 <p><a target="_blank" rel="noopener" href="http://118.190.20.162/view.page?gpid=T130">link</a></p>
 <p>赛时没想明白，写了个暴力70分，一直惦记着这个题，故在此重做</p>
 </blockquote>
-<h2><span id="题面">题面</span></h2><p>A1,A2,⋯,An 是一个由 n 个自然数（非负整数）组成的数组。我们称其中 Ai,⋯,Aj 是一个非零段，当且仅当以下条件同时满足：</p>
+<h2 id="题面">题面</h2>
+<p>A1,A2,⋯,An 是一个由 n 个自然数（非负整数）组成的数组。我们称其中 Ai,⋯,Aj 是一个非零段，当且仅当以下条件同时满足：</p>
 <ul>
 <li>1≤i≤j≤n；</li>
 <li>对于任意的整数 k，若 i≤k≤j，则 Ak&gt;0；</li>
@@ -355,8 +357,13 @@ mjx-container[display="true"] + br {
 </ul>
 <p>现在我们可以对数组 A 进行如下操作：任选一个正整数 p，然后将 A 中所有小于 p 的数都变为 0。试选取一个合适的 p，使得数组 A 中的非零段个数达到最大。若输入的 A 所含非零段数已达最大值，可取 p=1，即不对 A 做任何修改。</p>
 <p>规定： 全部的测试数据满足 n≤5e5，且数组 A 中的每一个数均不超过 1e4</p>
-<h2><span id="题解">题解</span></h2><p>非零段可以理解为孤立的岛屿，不同的岛屿之间用 0 分隔开。<br>选择一个正整数 p ，将所有小于 p 的数都变为 0 ，可以理解为海平面上涨到 p 的位置，p  以下的部分都被淹没，求孤立岛屿数最大是多少。<br>可以先考虑 p = 10001 的情况：所有数字都被海水淹没了，显然只有 0 00 个岛屿。然后海平面逐渐下降，观察岛屿数量的变化。可以看出：每当一个凸峰出现，岛屿数就多了一个；而每当一个凹谷出现，原本相邻的两个岛屿就被这个凹谷连接在了一起，岛屿数减少一个。<br>凸峰点和凹谷点的判断需要注意平面（如 1 2 2 1 ）的存在：若连续一段数字相同，可以把他们合并成一个点（1 2 1），这样对答案不会产生影响，可以使用 std::unique() 函数来去掉相邻重复元素。</p>
-<h2><span id>🐴</span></h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">vector&lt;int&gt; v;
+<h2 id="题解">题解</h2>
+<p>非零段可以理解为孤立的岛屿，不同的岛屿之间用 0 分隔开。<br>
+选择一个正整数 p ，将所有小于 p 的数都变为 0 ，可以理解为海平面上涨到 p 的位置，p  以下的部分都被淹没，求孤立岛屿数最大是多少。<br>
+可以先考虑 p = 10001 的情况：所有数字都被海水淹没了，显然只有 0 00 个岛屿。然后海平面逐渐下降，观察岛屿数量的变化。可以看出：每当一个凸峰出现，岛屿数就多了一个；而每当一个凹谷出现，原本相邻的两个岛屿就被这个凹谷连接在了一起，岛屿数减少一个。<br>
+凸峰点和凹谷点的判断需要注意平面（如 1 2 2 1 ）的存在：若连续一段数字相同，可以把他们合并成一个点（1 2 1），这样对答案不会产生影响，可以使用 std::unique() 函数来去掉相邻重复元素。</p>
+<h2 id>🐴</h2>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">vector&lt;int&gt; v;
 int high[100005], low[100005], cnt[100005];
 void solve(){
     int n; cin &gt;&gt; n;
@@ -387,8 +394,8 @@ void solve(){
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag"># 思维</a>
               <a href="/tags/%E5%B7%AE%E5%88%86/" rel="tag"># 差分</a>
+              <a href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag"># 思维</a>
           </div>
 
         
@@ -463,7 +470,7 @@ void solve(){
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">CSP 202109-2 非零段划分 (差分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">题面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">🐴</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#csp-202109-2-%E9%9D%9E%E9%9B%B6%E6%AE%B5%E5%88%92%E5%88%86-%E5%B7%AE%E5%88%86"><span class="nav-text">CSP 202109-2 非零段划分 (差分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E9%9D%A2"><span class="nav-text">题面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">🐴</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
