@@ -230,37 +230,46 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="sql"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><p>结构化查询语言-Structured Query Language</p>
-<p><strong><em>@author：Maskros</em></strong></p>
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="sql">SQL</h1>
+<p>结构化查询语言-Structured Query Language</p>
+<p><em><strong>@author：Maskros</strong></em></p>
 <hr>
-<h2 id="type"><a href="#Type" class="headerlink" title="Type"></a>Type</h2><p>类型</p>
+<h2 id="type">Type</h2>
+<p>类型</p>
 <ul>
-<li>字符型<ul>
+<li>字符型
+<ul>
 <li>VARCHAR型和CHAR型</li>
 </ul>
 </li>
-<li>文本型<ul>
+<li>文本型
+<ul>
 <li>TEXT</li>
 </ul>
 </li>
-<li>数值型<ul>
+<li>数值型
+<ul>
 <li>整数INT 、小数NUMERIC、钱数MONEY)</li>
 </ul>
 </li>
-<li>逻辑型<ul>
+<li>逻辑型
+<ul>
 <li>BIT</li>
 </ul>
 </li>
-<li>日期型<ul>
-<li>DATETIME </li>
+<li>日期型
+<ul>
+<li>DATETIME</li>
 </ul>
 </li>
 </ul>
 <hr>
-<h2 id="operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><p>操作</p>
+<h2 id="operation">Operation</h2>
+<p>操作</p>
 <p>增删改查 CURD</p>
 <p>tips : 不区分大小写，列名表名前``可以省略</p>
-<h3 id="selectfrom"><a href="#SELECT-FROM" class="headerlink" title="SELECT(FROM)"></a>SELECT(FROM)</h3><ul>
+<h3 id="selectfrom">SELECT(FROM)</h3>
+<ul>
 <li>SELECT COLUMN 查询单个列</li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token punctuation">`</span>column_name<span class="token punctuation">`</span>
@@ -279,14 +288,15 @@
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> <span class="token punctuation">`</span>column_name<span class="token punctuation">`</span>
 <span class="token keyword">FROM</span> <span class="token punctuation">`</span>table_name<span class="token punctuation">`</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>​    希望查询的值都是唯一不重复的</p>
+<p>​	希望查询的值都是唯一不重复的</p>
 <ul>
 <li>SELECT WHERE 对行进行筛选过滤</li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token punctuation">`</span>column_name1<span class="token punctuation">`</span><span class="token punctuation">,</span><span class="token punctuation">`</span>column_name2<span class="token punctuation">`</span>…
 <span class="token keyword">FROM</span> <span class="token punctuation">`</span>table_name<span class="token punctuation">`</span>
 <span class="token keyword">WHERE</span> <span class="token punctuation">`</span>column_name<span class="token punctuation">`</span> operator <span class="token punctuation">`</span><span class="token keyword">value</span><span class="token punctuation">`</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="insertinto"><a href="#INSERT-INTO" class="headerlink" title="INSERT(INTO)"></a>INSERT(INTO)</h3><ul>
+<h3 id="insertinto">INSERT(INTO)</h3>
+<ul>
 <li>INSERT INTO 在不指定列的情况下插入数据</li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token punctuation">`</span>table_name<span class="token punctuation">`</span>
@@ -298,14 +308,16 @@
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token punctuation">`</span>table_name<span class="token punctuation">`</span>
 <span class="token punctuation">(</span><span class="token punctuation">`</span>column1<span class="token punctuation">`</span><span class="token punctuation">,</span> <span class="token punctuation">`</span>column2<span class="token punctuation">`</span><span class="token punctuation">,</span> <span class="token punctuation">`</span>column3<span class="token punctuation">`</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span>value1<span class="token punctuation">,</span> value2<span class="token punctuation">,</span> value3<span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="updateset"><a href="#UPDATE-SET" class="headerlink" title="UPDATE(SET)"></a>UPDATE(SET)</h3><ul>
+<h3 id="updateset">UPDATE(SET)</h3>
+<ul>
 <li>UPDATE 更新数据</li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">UPDATE</span> <span class="token punctuation">`</span>table_name<span class="token punctuation">`</span>
 <span class="token keyword">SET</span> <span class="token punctuation">`</span>column1<span class="token punctuation">`</span><span class="token operator">=</span>value1<span class="token punctuation">,</span><span class="token punctuation">`</span>column2<span class="token punctuation">`</span><span class="token operator">=</span>value2<span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token keyword">WHERE</span> <span class="token punctuation">`</span>some_column<span class="token punctuation">`</span><span class="token operator">=</span>some_value<span class="token punctuation">;</span>
 <span class="token comment"># WHERE 可以省略</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="deletefrom"><a href="#DELETE-FROM" class="headerlink" title="DELETE(FROM)"></a>DELETE(FROM)</h3><ul>
+<h3 id="deletefrom">DELETE(FROM)</h3>
+<ul>
 <li>DELETE 删除数据</li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DELETE</span> <span class="token keyword">FROM</span> <span class="token punctuation">`</span>table_name<span class="token punctuation">`</span>
@@ -314,23 +326,31 @@
 <li>TRUNCATE TABLE 清空表</li>
 </ul>
 <hr>
-<h2 id="condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h2><p>条件</p>
-<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">WHERE</span> A OPERATOR B<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="condition">Condition</h2>
+<p>条件</p>
+<h3 id="比较运算符">比较运算符</h3>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">WHERE</span> A OPERATOR B<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>tips:  <code>&lt;&gt;</code> , <code>!=</code> 均为不等于，但用法不同</li>
 </ul>
-<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><ul>
-<li>AND 连接多条件</li>
-<li><p>OR 连接多条件</p>
+<h3 id="逻辑运算符">逻辑运算符</h3>
+<ul>
+<li>
+<p>AND 连接多条件</p>
 </li>
-<li><p>NOT 过滤不满足条件的数据</p>
+<li>
+<p>OR 连接多条件</p>
+</li>
+<li>
+<p>NOT 过滤不满足条件的数据</p>
 </li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token punctuation">`</span>column_name<span class="token punctuation">`</span> 
 <span class="token keyword">FROM</span> <span class="token punctuation">`</span>table_name<span class="token punctuation">`</span> 
 <span class="token keyword">WHERE</span> <span class="token operator">NOT</span> <span class="token punctuation">`</span>condition<span class="token punctuation">`</span><span class="token punctuation">;</span>
 <span class="token comment"># (condition1 operator condition2)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="特殊条件"><a href="#特殊条件" class="headerlink" title="特殊条件"></a>特殊条件</h3><ul>
+<h3 id="特殊条件">特殊条件</h3>
+<ul>
 <li>IN 查询多条件</li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">Where</span> <span class="token punctuation">`</span>column_name1<span class="token punctuation">`</span> <span class="token operator">IN</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span>
@@ -358,8 +378,10 @@
 <span class="token keyword">WHERE</span> <span class="token punctuation">`</span>column_name<span class="token punctuation">`</span> <span class="token operator">LIKE</span> <span class="token punctuation">`</span><span class="token keyword">value</span><span class="token punctuation">`</span><span class="token punctuation">;</span>
 <span class="token comment"># LIKE `D%`</span>
 <span class="token comment"># 'D%' 表示以D开头的所有单词，% 表示为通配符，可以替代0~n个字符</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="order-by-amp-limit"><a href="#ORDER-BY-amp-LIMIT" class="headerlink" title="ORDER BY &amp; LIMIT"></a>ORDER BY &amp; LIMIT</h3><ul>
-<li><p>ORDER BY 对数据进行排序（一列/多列(多列按SELECT顺序)）</p>
+<h3 id="order-by-amp-limit">ORDER BY &amp; LIMIT</h3>
+<ul>
+<li>
+<p>ORDER BY 对数据进行排序（一列/多列(多列按SELECT顺序)）</p>
 <p>ASC (ascend)升序(默认)  |  DESC(descend) 降序</p>
 </li>
 </ul>
@@ -368,7 +390,8 @@ FROM &#96;table_name&#96;
 # WHERE XXXX
 ORDER BY &#96;column_name&#96;, &#96;column_name&#96; ASC|DESC; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><p>使用 LIMIT 限制输出行数</p>
+<li>
+<p>使用 LIMIT 限制输出行数</p>
 <p>offset ：是返回集的初始标注，起始点是0</p>
 <p>count ：制定返回的数量</p>
 </li>
@@ -378,20 +401,26 @@ ORDER BY &#96;column_name&#96;, &#96;column_name&#96; ASC|DESC; <span aria-hidde
 <span class="token comment"># ORDER BY XXXX</span>
 <span class="token keyword">LIMIT</span> <span class="token punctuation">`</span><span class="token keyword">offset</span><span class="token punctuation">`</span> <span class="token punctuation">,</span> <span class="token punctuation">`</span>count<span class="token punctuation">`</span><span class="token punctuation">;</span>
 <span class="token comment"># offset和count通常只用一个count：LIMIT (0,)1 </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><p>函数</p>
-<h3 id="算数函数"><a href="#算数函数" class="headerlink" title="算数函数"></a>算数函数</h3><ul>
+<h2 id="function">Function</h2>
+<p>函数</p>
+<h3 id="算数函数">算数函数</h3>
+<ul>
 <li>AVG() 函数求数值列的平均值</li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">AVG</span><span class="token punctuation">(</span><span class="token punctuation">`</span>column_name<span class="token punctuation">`</span><span class="token punctuation">)</span> <span class="token comment"># AS `column2_name`</span>
 <span class="token keyword">FROM</span> <span class="token punctuation">`</span>table_name<span class="token punctuation">`</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
-<li><p>MAX() 函数返回指定列中的最大值</p>
+<li>
+<p>MAX() 函数返回指定列中的最大值</p>
 </li>
-<li><p>MIN() 函数返回指定列中的最小值</p>
+<li>
+<p>MIN() 函数返回指定列中的最小值</p>
 </li>
-<li><p>SUM() 函数统计数值列的总数</p>
+<li>
+<p>SUM() 函数统计数值列的总数</p>
 </li>
-<li><p>ROUND() 函数将数值四舍五入</p>
+<li>
+<p>ROUND() 函数将数值四舍五入</p>
 <ul>
 <li>ROUND() 返回值数据类型会被变换为一个BIGINT 。</li>
 <li>当 decimals 为正数时，column_name 四舍五入为 decimals 所指定的小数位数。省略decimals自动保留四舍五入后的整数。当 decimals 为负数时，column_name 则按 decimals 所指定的在小数点的左边四舍五入。</li>
@@ -400,21 +429,25 @@ ORDER BY &#96;column_name&#96;, &#96;column_name&#96; ASC|DESC; <span aria-hidde
 <span class="token keyword">FROM</span> <span class="token punctuation">`</span>table_name<span class="token punctuation">`</span><span class="token punctuation">;</span>
 <span class="token comment">#decimals 规定要返回的小数位数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>NULL() 函数判断空值</p>
+<li>
+<p>NULL() 函数判断空值</p>
 <ul>
-<li><p>ISNULL()</p>
+<li>
+<p>ISNULL()</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> ISNULL<span class="token punctuation">(</span><span class="token punctuation">`</span>column_name<span class="token punctuation">`</span><span class="token punctuation">)</span>
 <span class="token keyword">FROM</span> <span class="token punctuation">`</span>table_name<span class="token punctuation">`</span><span class="token punctuation">;</span>
 <span class="token comment"># 返回 0 或 1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>IFNULL()</p>
+<li>
+<p>IFNULL()</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> IFNULL<span class="token punctuation">(</span><span class="token punctuation">`</span>column_name<span class="token punctuation">`</span><span class="token punctuation">,</span> <span class="token punctuation">`</span><span class="token keyword">value</span><span class="token punctuation">`</span><span class="token punctuation">)</span>
 <span class="token keyword">FROM</span> <span class="token punctuation">`</span>table_name<span class="token punctuation">`</span><span class="token punctuation">;</span>
 <span class="token comment"># 是 NULL 则返回 value 值，不是则返回对应内容</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
 </li>
-<li><p>COUNT() 函数计数</p>
+<li>
+<p>COUNT() 函数计数</p>
 </li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># COUNT(column_name) 对列具有的行数进行计数 除去值为 NULL 的行</span>
@@ -428,8 +461,10 @@ ORDER BY &#96;column_name&#96;, &#96;column_name&#96; ASC|DESC; <span aria-hidde
 <span class="token comment"># COUNT(DISTINCT column_name) 函数返回指定列的不同值的数目</span>
 <span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> <span class="token punctuation">`</span>column_name<span class="token punctuation">`</span><span class="token punctuation">)</span> 
 <span class="token keyword">FROM</span> <span class="token punctuation">`</span>table_name<span class="token punctuation">`</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="时间函数"><a href="#时间函数" class="headerlink" title="时间函数"></a>时间函数</h3><ul>
-<li><p>NOW()，CURDATE()、CURTIME() 获取当前时间</p>
+<h3 id="时间函数">时间函数</h3>
+<ul>
+<li>
+<p>NOW()，CURDATE()、CURTIME() 获取当前时间</p>
 <ul>
 <li><code>NOW()</code> 返回当前日期和时间  YYYY-MM-DD hh:mm:ss</li>
 <li><code>CURDATE()</code> 返回当前日期  YYYY-MM-DD</li>
@@ -437,29 +472,36 @@ ORDER BY &#96;column_name&#96;, &#96;column_name&#96; ASC|DESC; <span aria-hidde
 <li>要精确的秒以后的时间的话，可以在 () 中加数字，加多少，就表示精确到秒后多少位</li>
 </ul>
 </li>
-<li><p>DATE()、TIME() 函数提取日期和时间</p>
+<li>
+<p>DATE()、TIME() 函数提取日期和时间</p>
 </li>
-<li><p>EXTRACT() 函数提取指定的时间信息</p>
+<li>
+<p>EXTRACT() 函数提取指定的时间信息</p>
 <ul>
-<li><p>FROM</p>
+<li>
+<p>FROM</p>
 </li>
-<li><p>返回日期/时间的单独部分</p>
+<li>
+<p>返回日期/时间的单独部分</p>
 </li>
-<li><p>unit :  <code>YEAR</code> (年)、<code>MONTH</code> (月)、<code>DAY</code> (日)、<code>HOUR</code> (小时)、<code>MINUTE</code> (分钟)、 <code>SECOND</code> (秒)</p>
+<li>
+<p>unit :  <code>YEAR</code> (年)、<code>MONTH</code> (月)、<code>DAY</code> (日)、<code>HOUR</code> (小时)、<code>MINUTE</code> (分钟)、 <code>SECOND</code> (秒)</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> EXTRACT<span class="token punctuation">(</span>unit <span class="token keyword">FROM</span> <span class="token keyword">date</span><span class="token punctuation">)</span> <span class="token comment"># unit 为单独部分名</span>
 <span class="token keyword">FROM</span> <span class="token punctuation">`</span><span class="token keyword">table</span><span class="token punctuation">`</span>
 <span class="token comment"># date - 合法column</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
 </li>
-<li><p>DATE_FORMAT() 格式化输出日期</p>
+<li>
+<p>DATE_FORMAT() 格式化输出日期</p>
 <ul>
 <li>%Y 年份 %m 月份 %d 日期 %w 星期 %H 小时  %i 分钟 %s 秒</li>
 <li>小写y 表示年份后两位，小写h表示12小时计的小时</li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> DATE_FORMAT<span class="token punctuation">(</span><span class="token keyword">date</span><span class="token punctuation">,</span><span class="token string">'format'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
-<li><p>DATE_ADD() 增加时间</p>
+<li>
+<p>DATE_ADD() 增加时间</p>
 <ul>
 <li>INTERVAL</li>
 <li>向日期添加指定的时间间隔</li>
@@ -469,16 +511,19 @@ ORDER BY &#96;column_name&#96;, &#96;column_name&#96; ASC|DESC; <span aria-hidde
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> DATE_ADD<span class="token punctuation">(</span><span class="token keyword">date</span><span class="token punctuation">,</span> <span class="token keyword">INTERVAL</span> expr <span class="token keyword">type</span><span class="token punctuation">)</span>
 <span class="token keyword">FROM</span> table_name<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
-<li><p>DATE_SUB() 减少时间</p>
+<li>
+<p>DATE_SUB() 减少时间</p>
 </li>
-<li><p>DATEDIFF() 和 TIMESTAMPDIFF() 计算日期差</p>
+<li>
+<p>DATEDIFF() 和 TIMESTAMPDIFF() 计算日期差</p>
 <ul>
 <li>时间1-时间2</li>
 <li>DATEDIFF() 默认只能计算天数差</li>
 </ul>
 <pre class="line-numbers language-SQL" data-language="SQL"><code class="language-SQL">SELECT DATEDIFF(时间1,时间2) AS date_diff FROM courses;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
-<li>TIMESTAMPDIFF() 计算相差年月周日时<ul>
+<li>TIMESTAMPDIFF() 计算相差年月周日时
+<ul>
 <li>类型YEAR,MONTH,WEEK,DAY,HOUR</li>
 </ul>
 </li>
@@ -487,8 +532,10 @@ ORDER BY &#96;column_name&#96;, &#96;column_name&#96; ASC|DESC; <span aria-hidde
 </li>
 </ul>
 <hr>
-<h2 id="constraints"><a href="#Constraints" class="headerlink" title="Constraints"></a>Constraints</h2><p>约束</p>
-<h3 id="not-null"><a href="#NOT-NULL" class="headerlink" title="NOT NULL"></a>NOT NULL</h3><p>非空约束</p>
+<h2 id="constraints">Constraints</h2>
+<p>约束</p>
+<h3 id="not-null">NOT NULL</h3>
+<p>非空约束</p>
 <ul>
 <li>强制列不接受 NULL 值</li>
 </ul>
@@ -503,7 +550,8 @@ MODIFY &#96;Age&#96; int NOT NULL;
 # 撤销
 ALTER TABLE &#96;Persons&#96;
 MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="unique"><a href="#UNIQUE" class="headerlink" title="UNIQUE"></a>UNIQUE</h3><p>唯一约束</p>
+<h3 id="unique">UNIQUE</h3>
+<p>唯一约束</p>
 <ul>
 <li>不希望出现重复记录</li>
 <li>CONSTRAINT 命名</li>
@@ -540,9 +588,10 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
 <span class="token comment">## SQL Server / Oracle / MS Access</span>
 <span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token punctuation">`</span>Persons<span class="token punctuation">`</span>
 <span class="token keyword">DROP</span> <span class="token keyword">CONSTRAINT</span> uc_PersonID<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="primary-key"><a href="#PRIMARY-KEY" class="headerlink" title="PRIMARY KEY"></a>PRIMARY KEY</h3><p>主键约束</p>
+<h3 id="primary-key">PRIMARY KEY</h3>
+<p>主键约束</p>
 <ul>
-<li>简单的说，PRIMARY KEY = UNIQUE + NOT NULL </li>
+<li>简单的说，PRIMARY KEY = UNIQUE + NOT NULL</li>
 <li>NOT NULL UNIQUE 可以将表的一列或多列定义为唯一性属性，而 PRIMARY KEY 设为多列时，仅能保证多列之和是唯一的，具体到某一列可能会重复。</li>
 <li>PRIMARY KEY 可以与外键配合，从而形成主从表的关系</li>
 <li>PRIMARY KEY 一般在逻辑设计中用作记录标识，这也是设置 PRIMARY KEY 的本来用意，而 UNIQUE 只是为了保证域/域组的唯一性</li>
@@ -574,9 +623,10 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
 <span class="token comment">## SQL Server / Oracle / MS Access</span>
 <span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token punctuation">`</span>Persons<span class="token punctuation">`</span>
 <span class="token keyword">DROP</span> <span class="token keyword">CONSTRAINT</span> pk_PersonID<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="foreign-key"><a href="#FOREIGN-KEY" class="headerlink" title="FOREIGN KEY"></a>FOREIGN KEY</h3><p>外键约束 </p>
+<h3 id="foreign-key">FOREIGN KEY</h3>
+<p>外键约束</p>
 <ul>
-<li>一个表中的 FOREIGN KEY 指向另一个表中的 UNIQUE KEY </li>
+<li>一个表中的 FOREIGN KEY 指向另一个表中的 UNIQUE KEY</li>
 <li>保证数据的完整性和一致性</li>
 <li>在两个表之间建立关系，需要指定引用主表的哪一列，REFERENCES 表示引用一个表</li>
 </ul>
@@ -611,7 +661,8 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
 <span class="token comment">## SQL Server / Oracle / MS Access</span>
 <span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token punctuation">`</span>Orders<span class="token punctuation">`</span>
 <span class="token keyword">DROP</span> <span class="token keyword">CONSTRAINT</span> fk_PerOrders<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="check"><a href="#CHECK" class="headerlink" title="CHECK"></a>CHECK</h3><p>检查约束 </p>
+<h3 id="check">CHECK</h3>
+<p>检查约束</p>
 <ul>
 <li>限制列中的值的范围，评估插入或修改后的值。满足条件插入，否不插</li>
 <li>可以为同一列指定多个 CHECK 约束</li>
@@ -636,7 +687,8 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
 <span class="token comment">## SQL Server / Oracle / MS Access</span>
 <span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token punctuation">`</span>courses<span class="token punctuation">`</span> 
 <span class="token keyword">DROP</span> <span class="token keyword">CONSTRAINT</span> chk_courses<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="default"><a href="#DEFAULT" class="headerlink" title="DEFAULT"></a>DEFAULT</h3><p>默认约束</p>
+<h3 id="default">DEFAULT</h3>
+<p>默认约束</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token punctuation">`</span>City<span class="token punctuation">`</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token keyword">DEFAULT</span> <span class="token string">'Sandnes'</span>
 <span class="token punctuation">`</span>OrderDate<span class="token punctuation">`</span> <span class="token keyword">date</span> <span class="token keyword">DEFAULT</span> GETDATE<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 可以用函数</span>
 
@@ -646,20 +698,28 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
 
 <span class="token keyword">ALTER</span> <span class="token punctuation">`</span>City<span class="token punctuation">`</span> <span class="token keyword">DROP</span> <span class="token keyword">DEFAULT</span>
 <span class="token keyword">ALTER</span> <span class="token keyword">COLUMN</span> <span class="token punctuation">`</span>City<span class="token punctuation">`</span> <span class="token keyword">DROP</span> <span class="token keyword">DEFAULT</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="join"><a href="#Join" class="headerlink" title="Join"></a>Join</h2><p>多表联结</p>
-<h3 id="联结"><a href="#联结" class="headerlink" title="联结"></a>联结</h3><ul>
-<li>在一条 SELECT 语句中关联多个表，返回一组输出</li>
-<li><p>两大主角 : 主键 (PRIMARY KEY) 和外键 (FOREIGN KEY)</p>
+<h2 id="join">Join</h2>
+<p>多表联结</p>
+<h3 id="联结">联结</h3>
+<ul>
+<li>
+<p>在一条 SELECT 语句中关联多个表，返回一组输出</p>
 </li>
-<li><p>使用完全限定列名（用一个点分隔表名和列名）</p>
+<li>
+<p>两大主角 : 主键 (PRIMARY KEY) 和外键 (FOREIGN KEY)</p>
+</li>
+<li>
+<p>使用完全限定列名（用一个点分隔表名和列名）</p>
 </li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># condition</span>
 <span class="token punctuation">`</span>table1<span class="token punctuation">`</span><span class="token punctuation">.</span><span class="token punctuation">`</span>common_field<span class="token punctuation">`</span> <span class="token operator">=</span> <span class="token punctuation">`</span>table2<span class="token punctuation">`</span><span class="token punctuation">.</span><span class="token punctuation">`</span>common_field<span class="token punctuation">`</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
-<li>JOIN 连接子句<ul>
+<li>JOIN 连接子句
+<ul>
 <li><strong>INNER JOIN</strong> 内连接：如果表中有至少一个匹配，则返回行</li>
-<li><strong>OUTER JOIN</strong> 外连接<ul>
+<li><strong>OUTER JOIN</strong> 外连接
+<ul>
 <li><strong>LEFT JOIN</strong>：即使右表中没有匹配，也从左表返回所有的行</li>
 <li><strong>RIGHT JOIN</strong>：即使左表中没有匹配，也从右表返回所有的行</li>
 </ul>
@@ -669,7 +729,8 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
 </ul>
 </li>
 </ul>
-<h3 id="inner-join"><a href="#INNER-JOIN" class="headerlink" title="INNER JOIN"></a>INNER JOIN</h3><p>内连接 又称为EQUIJOIN 等值连接</p>
+<h3 id="inner-join">INNER JOIN</h3>
+<p>内连接 又称为EQUIJOIN 等值连接</p>
 <ul>
 <li>内连接就是取两个表的交集，返回的结果就是连接的两张表中都满足条件的部分</li>
 </ul>
@@ -685,7 +746,8 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
 <ul>
 <li><code>courses</code> <code>c</code> 等同于 <code>courses</code> AS <code>c</code> ，给<code>courses</code> 表取别名为 <code>c</code></li>
 </ul>
-<h3 id="outer-join"><a href="#OUTER-JOIN" class="headerlink" title="OUTER JOIN"></a>OUTER JOIN</h3><p>外连接 分为左外连接 右外连接 全外连接</p>
+<h3 id="outer-join">OUTER JOIN</h3>
+<p>外连接 分为左外连接 右外连接 全外连接</p>
 <ul>
 <li>外连接可以将某个表格中，在另外一张表格中无对应关系，但是也能将数据匹配出来</li>
 </ul>
@@ -702,9 +764,10 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
 <p>tips :  MySQL 数据库不支持全连接，想要实现全连接可以使用 UNION ALL 来将左连接和右连接结果组合在一起实现全连接</p>
 </blockquote>
 <ul>
-<li>UNION :  联合，把两次或多次查询结果合并起来<ul>
+<li>UNION :  联合，把两次或多次查询结果合并起来
+<ul>
 <li>要求：两次查询的列数必须一致，同时，每条 SELECT 语句中的列的顺序必须相同</li>
-<li>UNION 会去掉重复的行。 如果不想去掉重复的行，可以使用 UNION ALL </li>
+<li>UNION 会去掉重复的行。 如果不想去掉重复的行，可以使用 UNION ALL</li>
 <li>如果子句中有 order by , limit，需用括号()包起来。推荐放到所有子句之后，即对最终合并的结果来排序或筛选</li>
 </ul>
 </li>
@@ -716,7 +779,8 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
 <span class="token keyword">SELECT</span> column_name <span class="token number">1</span><span class="token punctuation">,</span>column_name <span class="token number">2</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> column_name n
     <span class="token keyword">FROM</span> table1
         <span class="token keyword">RIGHT</span> <span class="token keyword">JOIN</span> table2 <span class="token keyword">ON</span> CONDITION <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="cross-join"><a href="#CROSS-JOIN" class="headerlink" title="CROSS JOIN"></a>CROSS JOIN</h3><p>交叉连接 结果也称作笛卡尔积</p>
+<h3 id="cross-join">CROSS JOIN</h3>
+<p>交叉连接 结果也称作笛卡尔积</p>
 <ul>
 <li>返回左表中的所有行，左表中的每一行与右表中的所有行组合。即将两个表的数据一一对应，其查询结果的行数为左表中的行数乘以右表中的行数。</li>
 </ul>
@@ -731,8 +795,11 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
 <li>通过增加联结条件，使用 WHERE 子句帮助筛选过滤无效的数据</li>
 </ul>
 <hr>
-<h2 id="advanced-select"><a href="#Advanced-Select" class="headerlink" title="Advanced Select"></a>Advanced Select</h2><h3 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h3><ul>
-<li><p>GROUP BY 子句</p>
+<h2 id="advanced-select">Advanced Select</h2>
+<h3 id="分组查询">分组查询</h3>
+<ul>
+<li>
+<p>GROUP BY 子句</p>
 <ul>
 <li>对同类的数据进行分类</li>
 </ul>
@@ -741,7 +808,8 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
 <span class="token keyword">WHERE</span> <span class="token punctuation">`</span>column_name<span class="token punctuation">`</span> operator <span class="token keyword">value</span>
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> <span class="token punctuation">`</span>column_name<span class="token punctuation">`</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>HAVING 子句</p>
+<li>
+<p>HAVING 子句</p>
 <ul>
 <li>使用 WHERE 条件子句时不能与聚合函数联合使用</li>
 <li>HAVING 子句经常与 GROUP BY 联合使用，HAVING 子句就是对分组统计函数进行过滤的子句</li>
@@ -762,7 +830,8 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
             <span class="token keyword">HAVING</span> <span class="token function">AVG</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> <span class="token function">AVG</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">FROM</span> teachers<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
-<h3 id="子查询base"><a href="#子查询-Base" class="headerlink" title="子查询(Base)"></a>子查询(Base)</h3><ul>
+<h3 id="子查询base">子查询(Base)</h3>
+<ul>
 <li>SELECT 语句中的子查询</li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token punctuation">`</span>column_name<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">`</span>
@@ -795,8 +864,10 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
    <span class="token punctuation">(</span><span class="token keyword">SELECT</span> <span class="token punctuation">`</span>column_name<span class="token punctuation">`</span>
    <span class="token keyword">FROM</span> <span class="token punctuation">`</span>table_name<span class="token punctuation">`</span>  
    <span class="token punctuation">[</span><span class="token keyword">WHERE</span><span class="token punctuation">]</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="子查询adv"><a href="#子查询-Adv" class="headerlink" title="子查询(Adv.)"></a>子查询(Adv.)</h3><ul>
-<li><p>内联视图子查询</p>
+<h3 id="子查询adv">子查询(Adv.)</h3>
+<ul>
+<li>
+<p>内联视图子查询</p>
 <ul>
 <li>将查询的结果集作为一个查询表，继续进行查询操作</li>
 </ul>
@@ -808,9 +879,11 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
 	<span class="token keyword">SELECT</span> xxxx
 <span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>IN 操作符的多行子查询 / NOT IN </p>
+<li>
+<p>IN 操作符的多行子查询 / NOT IN</p>
 </li>
-<li><p>ANY 操作符的多行子查询</p>
+<li>
+<p>ANY 操作符的多行子查询</p>
 <ul>
 <li>在子查询中使用 ANY ，表示与子查询返回的任何值比较为真，则返回真</li>
 </ul>
@@ -820,14 +893,17 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
    <span class="token keyword">ANY</span><span class="token punctuation">(</span><span class="token keyword">SELECT</span> column_name
    <span class="token keyword">FROM</span> table_name<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>ALL 操作符的多行子查询</p>
+<li>
+<p>ALL 操作符的多行子查询</p>
 <ul>
 <li>在子查询中使用 ALL ，表示与子查询返回的所有值比较为真，则返回真</li>
 </ul>
 </li>
-<li><p>多列子查询</p>
+<li>
+<p>多列子查询</p>
 </li>
-<li><p>HAVING 子句中的子查询</p>
+<li>
+<p>HAVING 子句中的子查询</p>
 </li>
 </ul>
 
@@ -931,7 +1007,7 @@ MODIFY &#96;Age&#96; int NULL;<span aria-hidden="true" class="line-numbers-rows"
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

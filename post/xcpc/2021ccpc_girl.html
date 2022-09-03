@@ -30,10 +30,10 @@
 <meta property="article:published_time" content="2021-11-08T14:25:00.000Z">
 <meta property="article:modified_time" content="2022-01-22T09:35:29.311Z">
 <meta property="article:author" content="Maskros">
-<meta property="article:tag" content="ACM">
 <meta property="article:tag" content="solutions">
-<meta property="article:tag" content="CCPC">
+<meta property="article:tag" content="ACM">
 <meta property="article:tag" content="思维">
+<meta property="article:tag" content="CCPC">
 <meta property="article:tag" content="模拟">
 <meta name="twitter:card" content="summary">
 
@@ -233,10 +233,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="2021ccpc女生专场"><a href="#2021CCPC女生专场" class="headerlink" title="2021CCPC女生专场"></a>2021CCPC女生专场</h1><blockquote>
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="2021ccpc女生专场">2021CCPC女生专场</h1>
+<blockquote>
 <p>“假如我是女生”</p>
 </blockquote>
-<h2 id="a_公交线路"><a href="#A-公交线路" class="headerlink" title="A_公交线路"></a>A_公交线路</h2><blockquote>
+<h2 id="a_公交线路">A_公交线路</h2>
+<blockquote>
 <p>水题</p>
 </blockquote>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
@@ -286,7 +288,8 @@
         <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="d_修建道路"><a href="#D-修建道路" class="headerlink" title="D_修建道路"></a>D_修建道路</h2><blockquote>
+<h2 id="d_修建道路">D_修建道路</h2>
+<blockquote>
 <p>沙比题，两两取最大值即可，脂环王写了一发线段树优化递归我不是很认可</p>
 </blockquote>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
@@ -326,7 +329,8 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="g_3g网络"><a href="#G-3G网络" class="headerlink" title="G_3G网络"></a>G_3G网络</h2><blockquote>
+<h2 id="g_3g网络">G_3G网络</h2>
+<blockquote>
 <p>输出1/n即可 我搞错了double 结果wa在精度上了 最后手写了个除法</p>
 <p>结果发现 printf(“%.16lf”,ans) 即可，少写个小数点😅</p>
 </blockquote>
@@ -381,7 +385,8 @@
 
 <span class="token comment">// ans=1.0/n</span>
 <span class="token comment">// printf("%.16lf",ans);</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="i_驾驶卡丁车"><a href="#I-驾驶卡丁车" class="headerlink" title="I_驾驶卡丁车"></a>I_驾驶卡丁车</h2><blockquote>
+<h2 id="i_驾驶卡丁车">I_驾驶卡丁车</h2>
+<blockquote>
 <p>楞模拟就行，八个方向 <code>dis[8][2]</code> 直接做掉啊做掉</p>
 </blockquote>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
@@ -486,7 +491,8 @@
         <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="k_音乐游戏"><a href="#K-音乐游戏" class="headerlink" title="K_音乐游戏"></a>K_音乐游戏</h2><blockquote>
+<h2 id="k_音乐游戏">K_音乐游戏</h2>
+<blockquote>
 <p>沙比题</p>
 </blockquote>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
@@ -540,10 +546,10 @@ int main() &#123;
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/ACM/" rel="tag"># ACM</a>
               <a href="/tags/solutions/" rel="tag"># solutions</a>
-              <a href="/tags/CCPC/" rel="tag"># CCPC</a>
+              <a href="/tags/ACM/" rel="tag"># ACM</a>
               <a href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag"># 思维</a>
+              <a href="/tags/CCPC/" rel="tag"># CCPC</a>
               <a href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag"># 模拟</a>
           </div>
 
@@ -635,7 +641,7 @@ int main() &#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
