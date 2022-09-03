@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Sans SC:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
@@ -984,18 +984,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1>kmp &amp; exkmp</h1>
-<p>Knuth-Morris-Pratt &amp; entend kmp</p>
+          <h1 id="kmp-amp-exkmp"><a href="#kmp-amp-exkmp" class="headerlink" title="kmp &amp; exkmp"></a>kmp &amp; exkmp</h1><p>Knuth-Morris-Pratt &amp; entend kmp </p>
 <p>字符串匹配</p>
-<h2 id="kmp">kmp</h2>
-<blockquote>
-<p><strong>Keywords</strong>：next[]</p>
+<h2 id="kmp"><a href="#kmp" class="headerlink" title="kmp"></a>kmp</h2><blockquote>
+<p><strong>Keywords</strong>：next[] </p>
 <p>由BF改进，O(m+n)，传世经典属于是😅</p>
-<p>以下均假设主串为 <code>S</code>，模式串为 <code>P</code></p>
+<p>以下均假设主串为 <code>S</code>，模式串为 <code>P</code> </p>
 </blockquote>
 <ul>
-<li>
-<p><strong>What is <code>next[]</code> ?</strong></p>
+<li><p><strong>What is <code>next[]</code> ?</strong></p>
 <p>针对模式串，<code>next[j]</code> 表示模式串下标 <code>j</code> <strong>之前</strong> 最长<strong>相同前后缀</strong>的长度，这不重要。</p>
 <p>你只需要记住：<code>next[j]</code>表示当 <code>P[j]!=S[i]</code> 时，<code>j</code> 指针的<strong>下一步移动位置</strong>。</p>
           <!--noindex-->

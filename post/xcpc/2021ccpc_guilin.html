@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Sans SC:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
@@ -33,9 +33,9 @@
 <meta property="article:tag" content="ACM">
 <meta property="article:tag" content="solutions">
 <meta property="article:tag" content="CCPC">
+<meta property="article:tag" content="二分">
 <meta property="article:tag" content="思维">
 <meta property="article:tag" content="模拟">
-<meta property="article:tag" content="二分">
 <meta property="article:tag" content="图论">
 <meta property="article:tag" content="Dijkstra">
 <meta name="twitter:card" content="summary">
@@ -236,12 +236,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="2021ccpc桂林站vp">2021CCPC桂林站vp</h1>
-<blockquote>
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="2021ccpc桂林站vp"><a href="#2021CCPC桂林站vp" class="headerlink" title="2021CCPC桂林站vp"></a>2021CCPC桂林站vp</h1><blockquote>
 <p>”祭奠擦肩而过的桂林两日游“</p>
 </blockquote>
-<h2 id="a_hero-named-magnus">A_Hero Named Magnus</h2>
-<blockquote>
+<h2 id="a_hero-named-magnus"><a href="#A-Hero-Named-Magnus" class="headerlink" title="A_Hero Named Magnus"></a>A_Hero Named Magnus</h2><blockquote>
 <p>水题。为什么不ban猛犸？输出2n-1</p>
 </blockquote>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
@@ -275,19 +273,17 @@
         <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="d_assumption-is-all-you-need">D_Assumption is All You Need</h2>
-<blockquote>
+<h2 id="d_assumption-is-all-you-need"><a href="#D-Assumption-is-All-You-Need" class="headerlink" title="D_Assumption is All You Need"></a>D_Assumption is All You Need</h2><blockquote>
 <p>构造题</p>
-<p>题意：给你两个序列A，B，对A可执行操作：若 i&lt;j 且 Ai&gt;Aj，可将Ai与Aj交换，问能否通过合法的操作将A变成B，并打印操作序列</p>
+<p>题意：给你两个序列A，B，对A可执行操作：若 i<j 且 ai>Aj，可将Ai与Aj交换，问能否通过合法的操作将A变成B，并打印操作序列  </j></p>
 <p>思路：从屁股往前扫一遍，如果Ai和Bi不一样，就从A[Bi_pos]往前扫，寻求最优解，瞎JB贪心，wa2待补</p>
 </blockquote>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="e_buy-and-delete-图论">E_Buy and Delete (图论)</h2>
-<blockquote>
+<h2 id="e_buy-and-delete-图论"><a href="#E-Buy-and-Delete-图论" class="headerlink" title="E_Buy and Delete (图论)"></a>E_Buy and Delete (图论)</h2><blockquote>
 <p>题意：给了你一些带权有向边，Alice可以用已有的c元钱购买一些边形成一张有向图；随后Bob进行删边，每次可以删除一个无环的子集，Alice想最大化删边次数，Bob想最小化，二者都采取最优操作，问Bob需要删除几次</p>
 <p>思路：答案只可能是0,1,2，0的情况是Alice一条边都买不起，1的情况是Alice买的无环图，2的情况是Alice买的带环图，无论有几个环，Bob都只需要删两次就够了，这个比较容易理解。</p>
 <p>解法：直接把所有边存到一个有向图里，做Dijkstra找从v-&gt;v 的最短路，判断买不买得起就可以了</p>
-<p>ps: 开始犯病用 n2 的Dij结果T了，换了 nlogn 的堆优化Dij就不T了；然后还在想改造一下Dij让起点为 i 的dist数组可以存 <code>dist[i]</code>，结果想了想直接Dij完了之后<code>dist[j] + mincost[j][i]</code> 不就是环的长度吗，wssb</p>
+<p>ps: 开始犯病用 n2 的Dij结果T了，换了 nlogn 的堆优化Dij就不T了；然后还在想改造一下Dij让起点为 i 的dist数组可以存 <code>dist[i]</code>，结果想了想直接Dij完了之后<code>dist[j] + mincost[j][i]</code> 不就是环的长度吗，wssb </p>
 </blockquote>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
 
@@ -373,8 +369,7 @@ vector<span class="token operator">&lt;</span>Edge<span class="token operator">>
     cout<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="g_occupy-the-cities">G_Occupy the Cities</h2>
-<blockquote>
+<h2 id="g_occupy-the-cities"><a href="#G-Occupy-the-Cities" class="headerlink" title="G_Occupy the Cities"></a>G_Occupy the Cities</h2><blockquote>
 <p>二分答案/dp</p>
 <p>题意：一个01串，每次操作可以将串中所有的1的左边一位或右边一位也变成1，问变成全1串需要几次操作</p>
 <p>解法：二分答案，<code>check()</code> 中从串的左边到右边对每一位1嗯贪心，dp解法没看</p>
@@ -454,8 +449,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
         <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="i_ptsd">I_PTSD</h2>
-<blockquote>
+<h2 id="i_ptsd"><a href="#I-PTSD" class="headerlink" title="I_PTSD"></a>I_PTSD</h2><blockquote>
 <p>沙比题，不想复盘了</p>
 </blockquote>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
@@ -522,9 +516,9 @@ int main() &#123;
               <a href="/tags/ACM/" rel="tag"># ACM</a>
               <a href="/tags/solutions/" rel="tag"># solutions</a>
               <a href="/tags/CCPC/" rel="tag"># CCPC</a>
+              <a href="/tags/%E4%BA%8C%E5%88%86/" rel="tag"># 二分</a>
               <a href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag"># 思维</a>
               <a href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag"># 模拟</a>
-              <a href="/tags/%E4%BA%8C%E5%88%86/" rel="tag"># 二分</a>
               <a href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag"># 图论</a>
               <a href="/tags/Dijkstra/" rel="tag"># Dijkstra</a>
           </div>
