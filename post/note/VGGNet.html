@@ -20,21 +20,29 @@
     var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="CSP 202109-2 非零段划分 (差分)  link 赛时没想明白，写了个暴力70分，一直惦记着这个题，故在此重做  题面 A1,A2,⋯,An 是一个由 n 个自然数（非负整数）组成的数组。我们称其中 Ai,⋯,Aj 是一个非零段，当且仅当以下条件同时满足：  1≤i≤j≤n； 对于任意的整数 k，若 i≤k≤j，则 Ak&gt;0； i&#x3D;1 或 Ai−1&#x3D;0； j&#x3D;n 或 Aj+1&#x3D;0。">
+  <meta name="description" content="2014年，牛津大学计算机视觉组 (Visual Geometry Group) 和Google DeepMind公司一起研发了新的卷积神经网络，并命名为VGGNet。VGGNet是比AlexNet更深的深度卷积神经网络，结构简洁，创新性地使用小尺寸的卷积核(3×3)提高网络深度。  原论文：Very Deep Convolutional Networks for Large-Scale Imag">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSP202109-2 非零段划分">
-<meta property="og:url" content="https://maskros.top/post/probs/CSP%E9%9D%9E%E9%9B%B6%E6%AE%B5%E5%88%92%E5%88%86.html">
+<meta property="og:title" content="CNN经典网络：VGGNet">
+<meta property="og:url" content="https://maskros.top/post/note/VGGNet.html">
 <meta property="og:site_name" content="Maskros&#39; Blog">
-<meta property="og:description" content="CSP 202109-2 非零段划分 (差分)  link 赛时没想明白，写了个暴力70分，一直惦记着这个题，故在此重做  题面 A1,A2,⋯,An 是一个由 n 个自然数（非负整数）组成的数组。我们称其中 Ai,⋯,Aj 是一个非零段，当且仅当以下条件同时满足：  1≤i≤j≤n； 对于任意的整数 k，若 i≤k≤j，则 Ak&gt;0； i&#x3D;1 或 Ai−1&#x3D;0； j&#x3D;n 或 Aj+1&#x3D;0。">
+<meta property="og:description" content="2014年，牛津大学计算机视觉组 (Visual Geometry Group) 和Google DeepMind公司一起研发了新的卷积神经网络，并命名为VGGNet。VGGNet是比AlexNet更深的深度卷积神经网络，结构简洁，创新性地使用小尺寸的卷积核(3×3)提高网络深度。  原论文：Very Deep Convolutional Networks for Large-Scale Imag">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-01T14:30:50.000Z">
-<meta property="article:modified_time" content="2022-03-01T15:41:17.264Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209191317440.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209191332231.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209191614203.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209191417310.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209191650711.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209191652098.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209211559783.png">
+<meta property="article:published_time" content="2022-09-19T08:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-21T08:08:31.777Z">
 <meta property="article:author" content="Maskros">
-<meta property="article:tag" content="思维">
-<meta property="article:tag" content="差分">
+<meta property="article:tag" content="note">
+<meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209191317440.png">
 
-<link rel="canonical" href="https://maskros.top/post/probs/CSP%E9%9D%9E%E9%9B%B6%E6%AE%B5%E5%88%92%E5%88%86.html">
+<link rel="canonical" href="https://maskros.top/post/note/VGGNet.html">
 
 
 <script id="page-configurations">
@@ -47,7 +55,7 @@
   };
 </script>
 
-  <title>CSP202109-2 非零段划分 | Maskros' Blog</title>
+  <title>CNN经典网络：VGGNet | Maskros' Blog</title>
   
 
 
@@ -275,7 +283,7 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/probs/CSP%E9%9D%9E%E9%9B%B6%E6%AE%B5%E5%88%92%E5%88%86.html">
+    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/note/VGGNet.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/img/logo_Maskros.jpg">
@@ -288,7 +296,7 @@ mjx-container[display="true"] + br {
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          CSP202109-2 非零段划分
+          CNN经典网络：VGGNet
         </h1>
 
         <div class="post-meta">
@@ -297,17 +305,23 @@ mjx-container[display="true"] + br {
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-03-01 22:30:50 / 修改时间：23:41:17" itemprop="dateCreated datePublished" datetime="2022-03-01T22:30:50+08:00">2022-03-01</time>
+              <time title="创建时间：2022-09-19 16:00:00" itemprop="dateCreated datePublished" datetime="2022-09-19T16:00:00+08:00">2022-09-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-21 16:08:31" itemprop="dateModified" datetime="2022-09-21T16:08:31+08:00">2022-09-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SOLUTIONS/" itemprop="url" rel="index"><span itemprop="name">SOLUTIONS</span></a>
+                  <a href="/categories/NOTE/" itemprop="url" rel="index"><span itemprop="name">NOTE</span></a>
                 </span>
             </span>
 
@@ -320,8 +334,8 @@ mjx-container[display="true"] + br {
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/post/probs/CSP%E9%9D%9E%E9%9B%B6%E6%AE%B5%E5%88%92%E5%88%86.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/probs/CSP%E9%9D%9E%E9%9B%B6%E6%AE%B5%E5%88%92%E5%88%86.html" itemprop="commentCount"></span>
+    <a title="valine" href="/post/note/VGGNet.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/note/VGGNet.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -336,55 +350,69 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="csp-202109-2-非零段划分-差分">CSP 202109-2 非零段划分 (差分)</h1>
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><p>2014年，牛津大学计算机视觉组 (Visual Geometry Group) 和Google DeepMind公司一起研发了新的卷积神经网络，并命名为VGGNet。VGGNet是比AlexNet更深的深度卷积神经网络，结构简洁，创新性地使用小尺寸的卷积核(3×3)提高网络深度。</p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="http://118.190.20.162/view.page?gpid=T130">link</a></p>
-<p>赛时没想明白，写了个暴力70分，一直惦记着这个题，故在此重做</p>
+<p>原论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.1556.pdf">Very Deep Convolutional Networks for Large-Scale Image Recognition</a>，2014年ILSVRC竞赛第二名，第一名是GoogleNet</p>
 </blockquote>
-<h2 id="题面">题面</h2>
-<p>A1,A2,⋯,An 是一个由 n 个自然数（非负整数）组成的数组。我们称其中 Ai,⋯,Aj 是一个非零段，当且仅当以下条件同时满足：</p>
-<ul>
-<li>1≤i≤j≤n；</li>
-<li>对于任意的整数 k，若 i≤k≤j，则 Ak&gt;0；</li>
-<li>i=1 或 Ai−1=0；</li>
-<li>j=n 或 Aj+1=0。</li>
-</ul>
-<p>下面展示了几个简单的例子：</p>
-<ul>
-<li>A=[3,1,2,0,0,2,0,4,5,0,2] 中的 4 个非零段依次为 [3,1,2]、[2]、[4,5] 和 [2]；</li>
-<li>A=[2,3,1,4,5] 仅有 1 个非零段；</li>
-<li>A=[0,0,0] 则不含非零段（即非零段个数为 0）。</li>
-</ul>
-<p>现在我们可以对数组 A 进行如下操作：任选一个正整数 p，然后将 A 中所有小于 p 的数都变为 0。试选取一个合适的 p，使得数组 A 中的非零段个数达到最大。若输入的 A 所含非零段数已达最大值，可取 p=1，即不对 A 做任何修改。</p>
-<p>规定： 全部的测试数据满足 n≤5e5，且数组 A 中的每一个数均不超过 1e4</p>
-<h2 id="题解">题解</h2>
-<p>非零段可以理解为孤立的岛屿，不同的岛屿之间用 0 分隔开。<br>
-选择一个正整数 p ，将所有小于 p 的数都变为 0 ，可以理解为海平面上涨到 p 的位置，p  以下的部分都被淹没，求孤立岛屿数最大是多少。<br>
-可以先考虑 p = 10001 的情况：所有数字都被海水淹没了，显然只有 0 00 个岛屿。然后海平面逐渐下降，观察岛屿数量的变化。可以看出：每当一个凸峰出现，岛屿数就多了一个；而每当一个凹谷出现，原本相邻的两个岛屿就被这个凹谷连接在了一起，岛屿数减少一个。<br>
-凸峰点和凹谷点的判断需要注意平面（如 1 2 2 1 ）的存在：若连续一段数字相同，可以把他们合并成一个点（1 2 1），这样对答案不会产生影响，可以使用 std::unique() 函数来去掉相邻重复元素。</p>
-<h2 id>🐴</h2>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">vector&lt;int&gt; v;
-int high[100005], low[100005], cnt[100005];
-void solve(){
-    int n; cin &gt;&gt; n;
-    v.pb(0);
-    rep(i, 0, n) {
-        int t; cin &gt;&gt; t;
-        if(i &amp;&amp; t != v[v.size() - 1] || i == 0) v.pb(t); 
-    }
-    v.pb(0);
-    rep(i, 1, v.size() - 1) {
-        if(v[i] &gt; v[i - 1] &amp;&amp; v[i] &gt; v[i + 1]) high[v[i]]++;
-        if(v[i] &lt; v[i - 1] &amp;&amp; v[i] &lt; v[i + 1]) low[v[i]]++;
-    }
-    cnt[100001] = 0;
-    int ans = 0;
-    red(i, 100001, 0) {
-        cnt[i] = cnt[i + 1] + high[i] - low[i];
-        ans = max(ans, cnt[i]);
-    }
-    cout &lt;&lt; ans &lt;&lt; '\n';
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span id="more"></span>
+<h2 id="网络结构">网络结构</h2>
+<p>VGG由5层卷积层、3层全连接层、1层softmax输出层构成，层间使用maxpool分开，所有隐藏层激活单元均采用ReLU，论文中根据卷积层不同的子层数量，设计了A、A-LRN、B、C、D、E这6种网络结构。</p>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209191317440.png" alt="img" style="zoom:80%;">
+<p>从A到E总的网络深度从11层到19层，表格中的卷积层参数为"感受野大小-通道数"，conv3-64表示使用3×3的卷积核，通道数为64。D表示VGG16，E为VGG19，以下以VGG16为例。</p>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209191332231.png" alt="img" style="zoom: 50%;">
+<p>VGG16共有16个子层，第1层CONV由2个conv3-64组成，第2层CONV由2个conv3-128组成，第3层CONV由3个conv3-256组成，第4层CONV由3个conv3-512组成，第5层conv由3个conv3-512组成，然后2个FC4096，1个FC1000，最后一个softmax。</p>
+<p><strong>input layer</strong>：输入224×224×3</p>
+<p><strong>CONV1</strong>(conv3-64 2×)：CONV -&gt; ReLU -&gt; CONV -&gt; ReLU -&gt; maxpool</p>
+<p>CONV：①输入224×224×3, 64个3×3卷积核，padding=1, stride=1, 输出224×224×64；②输入224×224×64，输出224×224×64</p>
+<p>maxpool：池化单元2×2, stride=2, 输出112×112×64</p>
+<p><strong>CONV2</strong>(conv3-128 2×)：CONV -&gt; ReLU -&gt; CONV -&gt; ReLU -&gt; maxpool</p>
+<p>CONV：①输入112×112×64, 128个3×3卷积核，padding=1, stride=1, 输出112×112×128；②同理，输出112×112×128</p>
+<p>maxpool：输出56×56×128</p>
+<p><strong>CONV3</strong>(conv3-256 3×)：CONV -&gt; ReLU -&gt; CONV -&gt; ReLU -&gt; CONV -&gt; ReLU -&gt; maxpool</p>
+<p>CONV：①输入56×56×128, 256个3×3卷积核, padding=1, stride=1, 输出56×56×256；②③同理，输出56×56×256</p>
+<p>maxpool：输出28×28×256</p>
+<p><strong>CONV4</strong>(conv3-512 3×)：CONV -&gt; ReLU -&gt; CONV -&gt; ReLU -&gt; CONV -&gt; ReLU -&gt; maxpool</p>
+<p>CONV：①输入28×28×256, 512个3×3卷积核，输出28×28×512；②③同理，输出28×28×512</p>
+<p>maxpool：输出14×14×512</p>
+<p><strong>CONV5</strong>(conv3-512 3×)：CONV -&gt; ReLU -&gt; CONV -&gt; ReLU -&gt; CONV -&gt; ReLU -&gt; maxpool</p>
+<p>CONV：①②③输入输出均为14×14×512</p>
+<p>maxpool：输出7×7×512</p>
+<p><strong>FC6</strong>：FC -&gt; ReLU -&gt; Dropout</p>
+<p>FC：输入7×7×512，展开为7×7×512的一维向量，即7×7×512个神经元，输出为4096个神经元</p>
+<p><strong>FC7</strong>：FC -&gt; ReLU -&gt; Dropout</p>
+<p>FC：4096 -&gt; 4096</p>
+<p><strong>FC8</strong>：FC</p>
+<p>FC：4096 -&gt; 1000</p>
+<p><strong>Softmax</strong>：通过Softmax函数输出1000个类别对应的预测概率值</p>
+<h2 id="测试阶段">测试阶段</h2>
+<p>VGG16在训练的时候使用的是全连接网络(fully-connected)，而在测试验证阶段，作者将全连接替换为<strong>全卷积</strong>网络(fully-convolutional)，让网络模型不受全连接的限制，可以接受任意大小尺寸的输入。</p>
+<p><strong><s>FC6</s> CONV6</strong>：输入7×7×512，使用4096个7×7×512的卷积核进行卷积，得到输出1×1×4096，相当于4096个神经元，但属于卷积层。</p>
+<p><strong><s>FC7</s> CONV7</strong>：输入1×1×4096，4096个1×1×4096的卷积核，输出1×1×4096。</p>
+<p><strong><s>FC8</s> CONV8</strong>：输入1×1×4096，1000个1×1×4096的卷积核，输出1×1×1000。</p>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209191614203.png" alt="image-20220919161416125" style="zoom:67%;">
+<p>网络输入图片的尺寸是224x224x3。如果后面三个层都是全连接，遇到宽高不符的图片就需要进行剪裁、缩放或其它处理，才能符合全连接层的输入要求，但我们不能保证将图片中的核心保留下来，会影响模型精度。全连接层换成卷积层后，利用1x1的卷积可以实现将不同大小的特征转化为相同大小的特征。可以认为是深度压缩。</p>
+<h2 id="网络参数">网络参数</h2>
+<p>VGG参数较多，主要集中在全连接层，相对其他方法参数空间更大，最终model有500M，而AlexNet只有200M，GoogLeNet更少。训练模型花费时间更长。</p>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209191417310.png" alt="image-20220919141727268" style="zoom: 80%;">
+<h2 id="模型表现">模型表现</h2>
+<p>单尺度评价：越深越好；增加1×1卷积，提升模型非线性，有助于性能提升；3×3卷积替换为5×5卷积，性能下降；训练时加入尺度扰动(scale jittering)，有助于性能提升</p>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209191650711.png" alt="image-20220919165007655" style="zoom:67%;">
+<p>多尺度评价：测试时使用scale jittering有助于性能提升</p>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209191652098.png" alt="image-20220919165204055" style="zoom:67%;">
+<h2 id="tricks">Tricks</h2>
+<h3 id="小卷积核">小卷积核</h3>
+<p>通过降低卷积核的大小(3×3)，增加卷积子层数来代替大卷积核。感受野即与输出有关的输入图片的局部大小，两个3x3的卷积堆叠获得的感受野大小，相当一个5x5的卷积，三个则相当于7×7的卷积。</p>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209211559783.png" alt="image-20220921155931552" style="zoom:50%;">
+<p>这样做大幅度减少了模型参数数量，小卷积核选取小的stride可以防止较大的stride导致细节信息的丢失。多层卷积层同时可以增加非线性，提升模型性能。</p>
+<h3 id="小池化核">小池化核</h3>
+<p>相比AlexNet3×3的池化核，VGG全部为2×2的。</p>
+<p>卷积核专注于扩大通道数、池化核专注于缩小宽和高，使得模型架构上更深更宽的同时，计算量的增加放缓，使网络有更大感受野的同时能降低网络参数，同时多次使用ReLu激活函数有更多的线性变换，学习能力更强。</p>
+<h3 id="multi-scale">Multi-Scale</h3>
+<p>在训练时和预测时，使用Multi-Scale做数据增强。训练时将同一张图片缩放到不同的尺寸，再随机剪裁到224*224的大小，增加数据量。预测时将同一张图片缩放到不同尺寸做预测，最后取平均值。</p>
+<h3 id="全连接全卷积">全连接→全卷积</h3>
+<p>网络测试时，全连接替换成全卷积，可以接受任意大小尺寸的输入。</p>
+<h2 id="代码实现">代码实现</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
     </div>
 
@@ -394,8 +422,8 @@ void solve(){
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag"># 思维</a>
-              <a href="/tags/%E5%B7%AE%E5%88%86/" rel="tag"># 差分</a>
+              <a href="/tags/note/" rel="tag"># note</a>
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
           </div>
 
         
@@ -404,13 +432,10 @@ void solve(){
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/post/codeforces/cf%20773.html" rel="prev" title="Codeforces Round 773 (Div.2)">
-      <i class="fa fa-chevron-left"></i> Codeforces Round 773 (Div.2)
+    <a href="/post/note/AlexNet.html" rel="prev" title="CNN经典网络：AlexNet">
+      <i class="fa fa-chevron-left"></i> CNN经典网络：AlexNet
     </a></div>
-      <div class="post-nav-item">
-    <a href="/post/codeforces/cf%20Edu%20124%20&%20777%20D.html" rel="next" title="Codeforce Edu 124 & Round 777 Problem D">
-      Codeforce Edu 124 & Round 777 Problem D <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -470,7 +495,7 @@ void solve(){
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#csp-202109-2-%E9%9D%9E%E9%9B%B6%E6%AE%B5%E5%88%92%E5%88%86-%E5%B7%AE%E5%88%86"><span class="nav-text">CSP 202109-2 非零段划分 (差分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E9%9D%A2"><span class="nav-text">题面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">🐴</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-text">网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E9%98%B6%E6%AE%B5"><span class="nav-text">测试阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0"><span class="nav-text">网络参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%8E%B0"><span class="nav-text">模型表现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tricks"><span class="nav-text">Tricks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E5%8D%B7%E7%A7%AF%E6%A0%B8"><span class="nav-text">小卷积核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E6%B1%A0%E5%8C%96%E6%A0%B8"><span class="nav-text">小池化核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multi-scale"><span class="nav-text">Multi-Scale</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%85%A8%E5%8D%B7%E7%A7%AF"><span class="nav-text">全连接→全卷积</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">代码实现</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="AlexNet是用于图像识别的CNN，比LeNet-5更复杂，参数更多。在ILSVRC比赛中，AlexNet所用的数据集是ImageNet，总共识别1000个类。模型包括了5个卷积层和3个全连接层，使用了GPU进行加快训练。文章主要提出了Relu激活函数、DropOut正则化这些创新。  原论文：ImageNet Classification with Deep Convolutional Neu">
+  <meta name="description" content="AlexNet是用于图像识别的CNN，比LeNet-5更复杂，参数更多。在ILSVRC比赛中，AlexNet使用ImageNet数据集，总共识别1000个类。模型包括了5个卷积层和3个全连接层，使用了GPU加快训练。文章主要提出了Relu激活函数、DropOut正则化等创新。  原论文：ImageNet Classification with Deep Convolutional Neural N">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CNN经典网络：AlexNet">
 <meta property="og:url" content="https://maskros.top/post/note/AlexNet.html">
 <meta property="og:site_name" content="Maskros&#39; Blog">
-<meta property="og:description" content="AlexNet是用于图像识别的CNN，比LeNet-5更复杂，参数更多。在ILSVRC比赛中，AlexNet所用的数据集是ImageNet，总共识别1000个类。模型包括了5个卷积层和3个全连接层，使用了GPU进行加快训练。文章主要提出了Relu激活函数、DropOut正则化这些创新。  原论文：ImageNet Classification with Deep Convolutional Neu">
+<meta property="og:description" content="AlexNet是用于图像识别的CNN，比LeNet-5更复杂，参数更多。在ILSVRC比赛中，AlexNet使用ImageNet数据集，总共识别1000个类。模型包括了5个卷积层和3个全连接层，使用了GPU加快训练。文章主要提出了Relu激活函数、DropOut正则化等创新。  原论文：ImageNet Classification with Deep Convolutional Neural N">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209161738668.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209161837641.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209172106140.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209172111361.png">
 <meta property="article:published_time" content="2022-09-14T08:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-17T16:18:03.315Z">
+<meta property="article:modified_time" content="2022-09-19T08:42:51.156Z">
 <meta property="article:author" content="Maskros">
 <meta property="article:tag" content="note">
 <meta property="article:tag" content="深度学习">
@@ -310,7 +310,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-18 00:18:03" itemprop="dateModified" datetime="2022-09-18T00:18:03+08:00">2022-09-18</time>
+                <time title="修改时间：2022-09-19 16:42:51" itemprop="dateModified" datetime="2022-09-19T16:42:51+08:00">2022-09-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -347,7 +347,7 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><p>AlexNet是用于图像识别的CNN，比LeNet-5更复杂，参数更多。在ILSVRC比赛中，AlexNet所用的数据集是ImageNet，总共识别1000个类。模型包括了5个卷积层和3个全连接层，使用了GPU进行加快训练。文章主要提出了Relu激活函数、DropOut正则化这些创新。</p>
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><p>AlexNet是用于图像识别的CNN，比LeNet-5更复杂，参数更多。在ILSVRC比赛中，AlexNet使用ImageNet数据集，总共识别1000个类。模型包括了5个卷积层和3个全连接层，使用了GPU加快训练。文章主要提出了Relu激活函数、DropOut正则化等创新。</p>
 <blockquote>
 <p>原论文：<a target="_blank" rel="noopener" href="http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf">ImageNet Classification with Deep Convolutional Neural Networks</a>，2012年发表在NIPS</p>
 </blockquote>
@@ -382,7 +382,7 @@ mjx-container[display="true"] + br {
 <p>FC：输入4096个，输出1000个，对应1000个检测类别</p>
 <p>Softmax：这1000个神经元的运算结果通过Softmax函数中，输出1000个类别对应的预测概率值</p>
 <h2 id="网络参数">网络参数</h2>
-<h3 id="1-神经元">1. 神经元</h3>
+<h3 id="神经元">神经元</h3>
 <table>
 <thead>
 <tr>
@@ -426,7 +426,7 @@ mjx-container[display="true"] + br {
 </tbody>
 </table>
 <p>​	总计约65w神经元</p>
-<h3 id="2-参数">2. 参数</h3>
+<h3 id="参数">参数</h3>
 <table>
 <thead>
 <tr>
@@ -470,7 +470,7 @@ mjx-container[display="true"] + br {
 </tbody>
 </table>
 <p>​	总计约6千万参数，设定每个参数32位float，每个float4字节，占用约等232Mb空间。</p>
-<h3 id="3-flops">3. FLOPS</h3>
+<h3 id="flops">FLOPS</h3>
 <p>FLOPS (floating-point operations per second)：每秒所执行的浮点运算次数。</p>
 <p>1MFLOPS = 1e6次/s</p>
 <p>1GFLOPS = 1e9/s</p>
@@ -528,7 +528,7 @@ mjx-container[display="true"] + br {
 Top-5 Error ：假设模型预测某个对象的类别，模型输出5个预测结果，只要其中一个能判断正确类别，这个概率就是Top-5正确率，反之，预测输出的五个结果都错误的概率就是Top-5错误率。<br>
 一般来说，Top-1 Error和Top-5 Error越低，模型的性能也就越好。且Top-5 Error 往往小于Top-1 Error。</p>
 <h2 id="tricks">Tricks</h2>
-<h3 id="1-数据增强">1. 数据增强</h3>
+<h3 id="数据增强">数据增强</h3>
 <p>Data Augmentation：在本文中，作者采用了两种数据增强方法：</p>
 <ul>
 <li>镜像反射和随机剪裁</li>
@@ -536,17 +536,17 @@ Top-5 Error ：假设模型预测某个对象的类别，模型输出5个预测�
 </ul>
 <p>镜像反射和随机剪裁：先对图像做镜像反射，在原图和镜像反射的图(256×256)中随机裁剪227×227的区域，测试的时候，对左上、右上、左下、右下、中间分别做了5次裁剪，然后翻转，共10个裁剪，之后对结果求平均。</p>
 <p>改变训练样本RGB通道的强度值：对RGB空间做PCA(主成分分析)，然后对主成分做一个 (0, 0.1) 的高斯扰动，也就是对颜色、光照作变换，结果使错误率又下降了1%。</p>
-<h3 id="2-relu">2. ReLU</h3>
+<h3 id="relu">ReLU</h3>
 <p>取代了tanh()。ReLU使一部分神经元的输出为0，造成了网络的稀疏性，并且减少了参数的相互依存关系，缓解了过拟合问题的发生。能缓解梯度消失的情况，梯度求解非常容易。</p>
-<h3 id="3-lrn">3. LRN</h3>
+<h3 id="lrn">LRN</h3>
 <p>局部响应归一化(LRN)对局部神经元的活动创建竞争机制，使得其中响应比较大的值变得相对更大，并抑制其他反馈较小的神经元，将数据分布调整到合理的范围内，便于计算处理，从而提高泛化能力。</p>
 <p>如今批量归一化(BN)更常用。</p>
-<h3 id="4-dropout">4. Dropout</h3>
+<h3 id="dropout">Dropout</h3>
 <p>抑制过拟合，每次迭代中对于某一层的神经元，通过定义的概率将神经元置为0，这个神经元就不参与前向和后向传播，同时保持输入层与输出层神经元的个数不变，然后按照神经网络的学习方法进行参数更新。</p>
-<h3 id="5-重叠池化">5. 重叠池化</h3>
+<h3 id="重叠池化">重叠池化</h3>
 <p>步长比池化的核的尺寸小，这样池化层的输出之间有重叠，提升了特征的丰富性。重叠池化贡献了0.3%的Top-5错误率，一定程度上可以减缓过拟合。</p>
-<h3 id="6-双gpu训练">6. 双GPU训练</h3>
-<h3 id="7-end-to-end">7. end-to-end</h3>
+<h3 id="双gpu训练">双GPU训练</h3>
+<h3 id="end-to-end">end-to-end</h3>
 <p>CNN的输入直接是一张图片，而当时比较多的做法是先使用特征提取算法对RGB图片进行特征提取。AlexNet使用了端对端网络，除了将每个像素中减去训练集的像素均值之外，没有以任何其他方式对图像进行预处理，直接使用像素的RGB值训练网络。</p>
 <h2 id="代码实现">代码实现</h2>
 <p>整个网络在SGD下，以Batch size为128，learning rate为0.01递减，weight decay 为 0.0005，momentum为0.9，90个epoch，120万张图，以0均值，0.01方差高斯分布初始化权重，第二、四、五层偏置初始化为1，其他层设置为0。</p>
@@ -573,7 +573,10 @@ Top-5 Error ：假设模型预测某个对象的类别，模型输出5个预测�
     <a href="/post/note/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0_%E5%9F%BA%E6%9C%AC%E7%90%86%E8%AE%BA.html" rel="prev" title="深度学习：基本理论">
       <i class="fa fa-chevron-left"></i> 深度学习：基本理论
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/post/note/VGGNet.html" rel="next" title="CNN经典网络：VGGNet">
+      CNN经典网络：VGGNet <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -633,7 +636,7 @@ Top-5 Error ：假设模型预测某个对象的类别，模型输出5个预测�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-text">网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0"><span class="nav-text">网络参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A5%9E%E7%BB%8F%E5%85%83"><span class="nav-text">1. 神经元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8F%82%E6%95%B0"><span class="nav-text">2. 参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-flops"><span class="nav-text">3. FLOPS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%8E%B0"><span class="nav-text">模型表现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tricks"><span class="nav-text">Tricks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="nav-text">1. 数据增强</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-relu"><span class="nav-text">2. ReLU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-lrn"><span class="nav-text">3. LRN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-dropout"><span class="nav-text">4. Dropout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E9%87%8D%E5%8F%A0%E6%B1%A0%E5%8C%96"><span class="nav-text">5. 重叠池化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%8F%8Cgpu%E8%AE%AD%E7%BB%83"><span class="nav-text">6. 双GPU训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-end-to-end"><span class="nav-text">7. end-to-end</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">代码实现</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-text">网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0"><span class="nav-text">网络参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E5%85%83"><span class="nav-text">神经元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flops"><span class="nav-text">FLOPS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%8E%B0"><span class="nav-text">模型表现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tricks"><span class="nav-text">Tricks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="nav-text">数据增强</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#relu"><span class="nav-text">ReLU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lrn"><span class="nav-text">LRN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dropout"><span class="nav-text">Dropout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%8F%A0%E6%B1%A0%E5%8C%96"><span class="nav-text">重叠池化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8Cgpu%E8%AE%AD%E7%BB%83"><span class="nav-text">双GPU训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#end-to-end"><span class="nav-text">end-to-end</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">代码实现</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -649,7 +652,7 @@ Top-5 Error ：假设模型预测某个对象的类别，模型输出5个预测�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
