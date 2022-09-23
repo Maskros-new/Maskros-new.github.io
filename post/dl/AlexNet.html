@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Sans SC:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="AlexNet是用于图像识别的CNN，比LeNet-5更复杂，参数更多。在ILSVRC比赛中，AlexNet使用ImageNet数据集，总共识别1000个类。模型包括了5个卷积层和3个全连接层，使用了GPU加快训练。文章主要提出了Relu激活函数、DropOut正则化等创新。  原论文：ImageNet Classification with Deep Convolutional Neural N">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CNN经典网络：AlexNet">
+<meta property="og:url" content="https://maskros.top/post/dl/AlexNet.html">
+<meta property="og:site_name" content="Maskros&#39; Blog">
+<meta property="og:description" content="AlexNet是用于图像识别的CNN，比LeNet-5更复杂，参数更多。在ILSVRC比赛中，AlexNet使用ImageNet数据集，总共识别1000个类。模型包括了5个卷积层和3个全连接层，使用了GPU加快训练。文章主要提出了Relu激活函数、DropOut正则化等创新。  原论文：ImageNet Classification with Deep Convolutional Neural N">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209161738668.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209161837641.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209172106140.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209172111361.png">
+<meta property="article:published_time" content="2022-09-14T08:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-23T11:00:33.407Z">
+<meta property="article:author" content="Maskros">
+<meta property="article:tag" content="note">
+<meta property="article:tag" content="深度学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209161738668.png">
+
+<link rel="canonical" href="https://maskros.top/post/dl/AlexNet.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CNN经典网络：AlexNet | Maskros' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><link rel="alternate" href="/atom.xml" title="Maskros' Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Maskros' Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/dl/AlexNet.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/logo_Maskros.jpg">
+      <meta itemprop="name" content="Maskros">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maskros' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CNN经典网络：AlexNet
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-09-14 16:00:00" itemprop="dateCreated datePublished" datetime="2022-09-14T16:00:00+08:00">2022-09-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-23 19:00:33" itemprop="dateModified" datetime="2022-09-23T19:00:33+08:00">2022-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NOTE/" itemprop="url" rel="index"><span itemprop="name">NOTE</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/dl/AlexNet.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/dl/AlexNet.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><p>AlexNet是用于图像识别的CNN，比LeNet-5更复杂，参数更多。在ILSVRC比赛中，AlexNet使用ImageNet数据集，总共识别1000个类。模型包括了5个卷积层和3个全连接层，使用了GPU加快训练。文章主要提出了Relu激活函数、DropOut正则化等创新。</p>
+<blockquote>
+<p>原论文：<a target="_blank" rel="noopener" href="http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf">ImageNet Classification with Deep Convolutional Neural Networks</a>，2012年发表在NIPS</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="网络结构">网络结构</h2>
+<p>整体网络结构：1个输入层(input layer)、5个卷积层 (C1, C2, C3, C4, C5)、2个全连接层(FC6, FC7) 和 1个输出层(output layer)</p>
+<p><img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209161738668.png" alt="image-20220916173837581"></p>
+<p>AlexNet采用<strong>两路GPU并行</strong>训练，故把原先的卷积层评分两部分featuremap分别在两块GPU上训练，图中上下对称。其中，卷积层C2, C4, C5的卷积核只和位于同一GPU的上一层的FeatureMap相连，C3的卷积核与两个GPU的上一层的FeautureMap都连接。</p>
+<p><strong>input layer</strong>：输入：224×224×3</p>
+<p><strong>C1</strong>：CONV -&gt; ReLU -&gt; LRN -&gt; max pooling</p>
+<p>CONV：输入尺寸<s>224×224×3</s> 227×227×3，96个11×11×3卷积核, padding=0, stride=4，输出为55×55×96</p>
+<p>LRN(Local Response Normalization, 局部响应归一化)：对局部神经元的活动创建竞争机制，使得其中响应比较大的值变得相对更大，并抑制其他反馈较小的神经元，增强了模型的泛化能力。公式如下：<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209161837641.png" alt="image-20220916183746354" style="zoom:67%;"></p>
+<p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.023ex" xmlns="http://www.w3.org/2000/svg" width="1.197ex" height="1.02ex" role="img" focusable="false" viewbox="0 -441 529 451"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"/></g></g></g></svg></mjx-container>, <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="0.971ex" height="1.595ex" role="img" focusable="false" viewbox="0 -694 429 705"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"/></g></g></g></svg></mjx-container> 为归一化前/后的神经元，N为卷积核个数，即featuremap的个数；k, α, β, n为超参数，论文中 k=2, n=5, α=0.0001, β=0.75​，输出尺寸依旧为55×55×96，分成两组分别位于单个GPU上，尺寸55×55×48</p>
+<p>max pooling：池化单元3×3, stride=2。这里使用的是重叠池化(Overlapping Pooling)，即stride小于池化单元的边长，输出为27×27×48</p>
+<p><strong>C2</strong>：CONV -&gt; ReLU -&gt; LRN -&gt; max pooling</p>
+<p>CONV：两组输入27×27×48，每组分别使用128个5×5×48卷积核, padding=2, stride=1，输出为27×27×128</p>
+<p>max pooling：3×3, stride=2, 输出13×13×128</p>
+<p><strong>C3</strong>：CONV -&gt; ReLU</p>
+<p>CONV：输入13×13×256，384个3×3×256卷积核，padding=1, stride=1, 输出13×13×384</p>
+<p>ReLU：ReLU后，将输出其分成两组，每组featuremap大小13x13x192，分别位于单个GPU上</p>
+<p><strong>C4</strong>：CONV -&gt; ReLU</p>
+<p>CONV：两组输入13x13x192，各组192个3x3x192的卷积核，padding=1, stride=1, 输出13x13x192</p>
+<p><strong>C5</strong>：CONV -&gt; ReLU -&gt; max pooling</p>
+<p>CONV：两组输入13x13x192，各组128个3x3x192的卷积核，padding=1, stride=1, 输出13x13x128</p>
+<p>max pooling：3x3, stride=2的池化单元，输出6x6x128</p>
+<p><strong>FC6</strong>：FC -&gt; ReLU -&gt; Dropout</p>
+<p>FC：输入6x6x128，使用4096个6x6x256的卷积核，由于卷积核尺寸与输入的尺寸完全相同，即卷积核中的每个系数只与输入尺寸的一个像素值相乘一一对应，输出1x1x4096</p>
+<p>Dropout：随机的断开全连接层某些神经元的连接，通过不激活某些神经元的方式防止过拟合。4096个神经元也被均分到两块GPU上进行运算。</p>
+<p><strong>FC7</strong>：FC -&gt; ReLU -&gt; Dropout</p>
+<p>FC：输入和输出均为4096个神经元，均分到两块GPU上</p>
+<p><strong>Output layer</strong>：FC -&gt; Softmax</p>
+<p>FC：输入4096个，输出1000个，对应1000个检测类别</p>
+<p>Softmax：这1000个神经元的运算结果通过Softmax函数中，输出1000个类别对应的预测概率值</p>
+<h2 id="网络参数">网络参数</h2>
+<h3 id="神经元">神经元</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>num</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>55x55x48x2=290400</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>27x27x128x2=186624</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>13x13x192x2=64896</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>13x13x192x2=64896</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>13x13x128x2=43264</td>
+</tr>
+<tr>
+<td>FC6</td>
+<td>4096</td>
+</tr>
+<tr>
+<td>FC7</td>
+<td>4096</td>
+</tr>
+<tr>
+<td>Output layer</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<p>​	总计约65w神经元</p>
+<h3 id="参数">参数</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>num</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>(11x11x3+1)x96=34944</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>(5x5x48+1)x128x2=307456</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>(3x3x256+1)x384=885120</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>(3x3x192+1)x192x2=663936</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>(3x3x192+1)x128x2=442624</td>
+</tr>
+<tr>
+<td>FC6</td>
+<td>(6x6x256+1)x4096=37752832</td>
+</tr>
+<tr>
+<td>FC7</td>
+<td>(4096+1)x4096=16781312</td>
+</tr>
+<tr>
+<td>Output layer</td>
+<td>1000x4096=4096000</td>
+</tr>
+</tbody>
+</table>
+<p>​	总计约6千万参数，设定每个参数32位float，每个float4字节，占用约等232Mb空间。</p>
+<h3 id="flops">FLOPS</h3>
+<p>FLOPS (floating-point operations per second)：每秒所执行的浮点运算次数。</p>
+<p>1MFLOPS = 1e6次/s</p>
+<p>1GFLOPS = 1e9/s</p>
+<p>1TFLOPS = 1e12/s</p>
+<p>1PFLOPS = 1e15/s</p>
+<p>1EFLOPS = 1e18/s</p>
+<p>在AlexNet网络中，对于卷积层，FLOPS=num_params×(H×W)。其中num_params为参数数量，H×W为卷积层的高和宽。对于全连接层，FLOPS=num_params。</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>num</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>34944x55x55=105705600</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>307456x27x27=224135424</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>885120x13x13=149585280</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>663936x13x13=112205184</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>442624x13x13=74803456</td>
+</tr>
+<tr>
+<td>FC6</td>
+<td>37752832</td>
+</tr>
+<tr>
+<td>FC7</td>
+<td>16781312</td>
+</tr>
+<tr>
+<td>Output layer</td>
+<td>4096000</td>
+</tr>
+</tbody>
+</table>
+<p>​	<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209172106140.png" alt="image-20220917210629947" style="zoom: 67%;"></p>
+<h2 id="模型表现">模型表现</h2>
+<p>下图为ImageNet图像数据集竞赛上，ALexNet模型的表现。从图中可以看出top1和top5错误率均大大降低，效果非常好(其他两种模型均是传统手工提取特征的模型)。</p>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202209172111361.png" alt="image-20220917211154305" style="zoom: 67%;">
+<p>Top-1 Error：假设模型预测某个对象的类别，模型输出1个预测结果，那么这一个结果能判断正确的概率就是Top-1正确率。判断错误的概率就是Top-1错误率。简言之就是模型判错的概率。<br>
+Top-5 Error ：假设模型预测某个对象的类别，模型输出5个预测结果，只要其中一个能判断正确类别，这个概率就是Top-5正确率，反之，预测输出的五个结果都错误的概率就是Top-5错误率。<br>
+一般来说，Top-1 Error和Top-5 Error越低，模型的性能也就越好。且Top-5 Error 往往小于Top-1 Error。</p>
+<h2 id="tricks">Tricks</h2>
+<h3 id="数据增强">数据增强</h3>
+<p>Data Augmentation：在本文中，作者采用了两种数据增强方法：</p>
+<ul>
+<li>镜像反射和随机剪裁</li>
+<li>改变训练样本RGB通道的强度值</li>
+</ul>
+<p>镜像反射和随机剪裁：先对图像做镜像反射，在原图和镜像反射的图(256×256)中随机裁剪227×227的区域，测试的时候，对左上、右上、左下、右下、中间分别做了5次裁剪，然后翻转，共10个裁剪，之后对结果求平均。</p>
+<p>改变训练样本RGB通道的强度值：对RGB空间做PCA(主成分分析)，然后对主成分做一个 (0, 0.1) 的高斯扰动，也就是对颜色、光照作变换，结果使错误率又下降了1%。</p>
+<h3 id="relu">ReLU</h3>
+<p>取代了tanh()。ReLU使一部分神经元的输出为0，造成了网络的稀疏性，并且减少了参数的相互依存关系，缓解了过拟合问题的发生。能缓解梯度消失的情况，梯度求解非常容易。</p>
+<h3 id="lrn">LRN</h3>
+<p>局部响应归一化(LRN)对局部神经元的活动创建竞争机制，使得其中响应比较大的值变得相对更大，并抑制其他反馈较小的神经元，将数据分布调整到合理的范围内，便于计算处理，从而提高泛化能力。</p>
+<p>如今批量归一化(BN)更常用。</p>
+<h3 id="dropout">Dropout</h3>
+<p>抑制过拟合，每次迭代中对于某一层的神经元，通过定义的概率将神经元置为0，这个神经元就不参与前向和后向传播，同时保持输入层与输出层神经元的个数不变，然后按照神经网络的学习方法进行参数更新。</p>
+<h3 id="重叠池化">重叠池化</h3>
+<p>步长比池化的核的尺寸小，这样池化层的输出之间有重叠，提升了特征的丰富性。重叠池化贡献了0.3%的Top-5错误率，一定程度上可以减缓过拟合。</p>
+<h3 id="双gpu训练">双GPU训练</h3>
+<h3 id="end-to-end">end-to-end</h3>
+<p>CNN的输入直接是一张图片，而当时比较多的做法是先使用特征提取算法对RGB图片进行特征提取。AlexNet使用了端对端网络，除了将每个像素中减去训练集的像素均值之外，没有以任何其他方式对图像进行预处理，直接使用像素的RGB值训练网络。</p>
+<h2 id="代码实现">代码实现</h2>
+<p>整个网络在SGD下，以Batch size为128，learning rate为0.01递减，weight decay 为 0.0005，momentum为0.9，90个epoch，120万张图，以0均值，0.01方差高斯分布初始化权重，第二、四、五层偏置初始化为1，其他层设置为0。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn
+<span class="token keyword">from</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">import</span> functional <span class="token keyword">as</span> F
+<span class="token keyword">from</span> torch<span class="token punctuation">.</span>autograd <span class="token keyword">import</span> Variable<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>定义LRN：这个网络后续被其它正则化手段代替，如dropout、bn等。目前该网络基本上很少使用了，这里为了原生的AlexNet而实现</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">LRN</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> local_size<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">,</span> beta<span class="token operator">=</span><span class="token number">0.75</span><span class="token punctuation">,</span> ACROSS_CHANNELS<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>LRN<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>ACROSS_CHANNELS <span class="token operator">=</span> ACROSS_CHANNELS
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>ACROSS_CHANNELS<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>average<span class="token operator">=</span>nn<span class="token punctuation">.</span>AvgPool3d<span class="token punctuation">(</span>kernel_size<span class="token operator">=</span><span class="token punctuation">(</span>local_size<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">#0.2.0_4会报错，需要在最新的分支上AvgPool3d才有padding参数</span>
+                    stride<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>
+                    padding<span class="token operator">=</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span><span class="token punctuation">(</span>local_size<span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>average<span class="token operator">=</span>nn<span class="token punctuation">.</span>AvgPool2d<span class="token punctuation">(</span>kernel_size<span class="token operator">=</span>local_size<span class="token punctuation">,</span>
+                    stride<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>
+                    padding<span class="token operator">=</span><span class="token builtin">int</span><span class="token punctuation">(</span><span class="token punctuation">(</span>local_size<span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>alpha <span class="token operator">=</span> alpha
+        self<span class="token punctuation">.</span>beta <span class="token operator">=</span> beta
+    
+    
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>ACROSS_CHANNELS<span class="token punctuation">:</span>
+            div <span class="token operator">=</span> x<span class="token punctuation">.</span><span class="token builtin">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+            div <span class="token operator">=</span> self<span class="token punctuation">.</span>average<span class="token punctuation">(</span>div<span class="token punctuation">)</span><span class="token punctuation">.</span>squeeze<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+            div <span class="token operator">=</span> div<span class="token punctuation">.</span>mul<span class="token punctuation">(</span>self<span class="token punctuation">.</span>alpha<span class="token punctuation">)</span><span class="token punctuation">.</span>add<span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">pow</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>beta<span class="token punctuation">)</span><span class="token comment">#这里的1.0即为bias</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            div <span class="token operator">=</span> x<span class="token punctuation">.</span><span class="token builtin">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+            div <span class="token operator">=</span> self<span class="token punctuation">.</span>average<span class="token punctuation">(</span>div<span class="token punctuation">)</span>
+            div <span class="token operator">=</span> div<span class="token punctuation">.</span>mul<span class="token punctuation">(</span>self<span class="token punctuation">.</span>alpha<span class="token punctuation">)</span><span class="token punctuation">.</span>add<span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">pow</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>beta<span class="token punctuation">)</span>
+        x <span class="token operator">=</span> x<span class="token punctuation">.</span>div<span class="token punctuation">(</span>div<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> x<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>网络结构</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
+<span class="token keyword">class</span> <span class="token class-name">AlexNet</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> num_classes <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment">#imagenet数量</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>layer1 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>
+            nn<span class="token punctuation">.</span>Conv2d<span class="token punctuation">(</span>in_channels<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> out_channels<span class="token operator">=</span><span class="token number">96</span><span class="token punctuation">,</span> kernel_size<span class="token operator">=</span><span class="token number">11</span><span class="token punctuation">,</span> stride<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span>inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>MaxPool2d<span class="token punctuation">(</span>kernel_size<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> stride<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            LRN<span class="token punctuation">(</span>local_size<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span> beta<span class="token operator">=</span><span class="token number">0.75</span><span class="token punctuation">,</span> ACROSS_CHANNELS<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+        
+        self<span class="token punctuation">.</span>layer2 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>
+            nn<span class="token punctuation">.</span>Conv2d<span class="token punctuation">(</span>in_channels<span class="token operator">=</span><span class="token number">96</span><span class="token punctuation">,</span> out_channels<span class="token operator">=</span><span class="token number">256</span><span class="token punctuation">,</span> kernel_size<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> groups<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> padding<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span>inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>MaxPool2d<span class="token punctuation">(</span>kernel_size<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> stride<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            LRN<span class="token punctuation">(</span>local_size<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span> beta<span class="token operator">=</span><span class="token number">0.75</span><span class="token punctuation">,</span> ACROSS_CHANNELS<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+        
+        self<span class="token punctuation">.</span>layer3 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>
+            nn<span class="token punctuation">.</span>Conv2d<span class="token punctuation">(</span>in_channels<span class="token operator">=</span><span class="token number">256</span><span class="token punctuation">,</span> out_channels<span class="token operator">=</span><span class="token number">384</span><span class="token punctuation">,</span> padding<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> kernel_size<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span>inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>layer4 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>
+            nn<span class="token punctuation">.</span>Conv2d<span class="token punctuation">(</span>in_channels<span class="token operator">=</span><span class="token number">384</span><span class="token punctuation">,</span> out_channels<span class="token operator">=</span><span class="token number">384</span><span class="token punctuation">,</span> kernel_size<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> padding<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span>inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+        
+        self<span class="token punctuation">.</span>layer5 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>
+            nn<span class="token punctuation">.</span>Conv2d<span class="token punctuation">(</span>in_channels<span class="token operator">=</span><span class="token number">384</span><span class="token punctuation">,</span> out_channels<span class="token operator">=</span><span class="token number">256</span><span class="token punctuation">,</span> kernel_size<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> padding<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span>inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>MaxPool2d<span class="token punctuation">(</span>kernel_size<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> stride<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+        
+         <span class="token comment">#需要针对上一层改变view</span>
+        self<span class="token punctuation">.</span>layer6 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>
+            nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>in_features<span class="token operator">=</span><span class="token number">6</span><span class="token operator">*</span><span class="token number">6</span><span class="token operator">*</span><span class="token number">256</span><span class="token punctuation">,</span> out_features<span class="token operator">=</span><span class="token number">4096</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span>inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>Dropout<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>layer7 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>
+            nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>in_features<span class="token operator">=</span><span class="token number">4096</span><span class="token punctuation">,</span> out_features<span class="token operator">=</span><span class="token number">4096</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span>inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>Dropout<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+        
+        self<span class="token punctuation">.</span>layer8 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>in_features<span class="token operator">=</span><span class="token number">4096</span><span class="token punctuation">,</span> out_features<span class="token operator">=</span>num_classes<span class="token punctuation">)</span>
+        
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>layer5<span class="token punctuation">(</span>self<span class="token punctuation">.</span>layer4<span class="token punctuation">(</span>self<span class="token punctuation">.</span>layer3<span class="token punctuation">(</span>self<span class="token punctuation">.</span>layer2<span class="token punctuation">(</span>self<span class="token punctuation">.</span>layer1<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        x <span class="token operator">=</span> x<span class="token punctuation">.</span>view<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token operator">*</span><span class="token number">6</span><span class="token operator">*</span><span class="token number">256</span><span class="token punctuation">)</span> <span class="token comment"># 相当于reshape，-1是未知维度自动计算</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>layer8<span class="token punctuation">(</span>self<span class="token punctuation">.</span>layer7<span class="token punctuation">(</span>self<span class="token punctuation">.</span>layer6<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        
+        <span class="token keyword">return</span> x
+    
+model <span class="token operator">=</span> AlexNet<span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span>
+model<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>加载数据</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data
+<span class="token keyword">import</span> torchvision<span class="token punctuation">.</span>transforms <span class="token keyword">as</span> transforms
+<span class="token keyword">import</span> torchvision<span class="token punctuation">.</span>datasets <span class="token keyword">as</span> datasets
+
+<span class="token comment">#用于不均匀样本抽样的权重计算,在本次imagenet中其实未使用到</span>
+<span class="token keyword">def</span> <span class="token function">make_weights_for_balanced_classes</span><span class="token punctuation">(</span>images<span class="token punctuation">,</span> nclasses<span class="token punctuation">)</span><span class="token punctuation">:</span>                        
+    count <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> nclasses                                                      
+    <span class="token keyword">for</span> item <span class="token keyword">in</span> images<span class="token punctuation">:</span>                                                         
+        count<span class="token punctuation">[</span>item<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>                                                     
+    weight_per_class <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">.</span><span class="token punctuation">]</span> <span class="token operator">*</span> nclasses                                      
+    N <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token builtin">sum</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">)</span>                                                   
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>nclasses<span class="token punctuation">)</span><span class="token punctuation">:</span>                                                   
+        weight_per_class<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> N<span class="token operator">/</span><span class="token builtin">float</span><span class="token punctuation">(</span>count<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>                                 
+    weight <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>images<span class="token punctuation">)</span>                                              
+    <span class="token keyword">for</span> idx<span class="token punctuation">,</span> val <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>images<span class="token punctuation">)</span><span class="token punctuation">:</span>                                          
+        weight<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token operator">=</span> weight_per_class<span class="token punctuation">[</span>val<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>                                  
+    <span class="token keyword">return</span> weight
+
+normalize <span class="token operator">=</span> transforms<span class="token punctuation">.</span>Normalize<span class="token punctuation">(</span>mean<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0.485</span><span class="token punctuation">,</span> <span class="token number">0.456</span><span class="token punctuation">,</span> <span class="token number">0.406</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                                     std<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0.229</span><span class="token punctuation">,</span> <span class="token number">0.224</span><span class="token punctuation">,</span> <span class="token number">0.225</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+train_dataset <span class="token operator">=</span> datasets<span class="token punctuation">.</span>ImageFolder<span class="token punctuation">(</span><span class="token string">'./data/ILSVRC/Data/CLS-LOC/train/'</span><span class="token punctuation">,</span> 
+        transforms<span class="token punctuation">.</span>Compose<span class="token punctuation">(</span><span class="token punctuation">[</span>
+                transforms<span class="token punctuation">.</span>RandomResizedCrop<span class="token punctuation">(</span><span class="token number">227</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">#AlexNet输入</span>
+                transforms<span class="token punctuation">.</span>RandomHorizontalFlip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                transforms<span class="token punctuation">.</span>ToTensor<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                normalize
+        <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+weights <span class="token operator">=</span> make_weights_for_balanced_classes<span class="token punctuation">(</span>train_dataset<span class="token punctuation">.</span>imgs<span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>train_dataset<span class="token punctuation">.</span>classes<span class="token punctuation">)</span><span class="token punctuation">)</span>
+weights <span class="token operator">=</span> torch<span class="token punctuation">.</span>DoubleTensor<span class="token punctuation">(</span>weights<span class="token punctuation">)</span>
+sampler <span class="token operator">=</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data<span class="token punctuation">.</span>sampler<span class="token punctuation">.</span>WeightedRandomSampler<span class="token punctuation">(</span>weights<span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>weights<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+batch_size <span class="token operator">=</span> <span class="token number">256</span>
+train_loader <span class="token operator">=</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data<span class="token punctuation">.</span>DataLoader<span class="token punctuation">(</span>train_dataset<span class="token punctuation">,</span>
+                                           batch_size<span class="token operator">=</span>batch_size<span class="token punctuation">,</span> 
+                                           num_workers<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> 
+                                           pin_memory<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> 
+                                           sampler<span class="token operator">=</span>sampler
+                                          <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+<span class="token keyword">import</span> sys
+im <span class="token operator">=</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span>train_dataset<span class="token punctuation">.</span>imgs<span class="token punctuation">[</span><span class="token number">20000</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token operator">%</span>matplotlib inline
+plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>im<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>训练</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">weight_init</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token comment"># 使用isinstance来判断m属于什么类型</span>
+    <span class="token keyword">if</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> nn<span class="token punctuation">.</span>Conv2d<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">import</span> math
+        n <span class="token operator">=</span> m<span class="token punctuation">.</span>kernel_size<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> m<span class="token punctuation">.</span>kernel_size<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> m<span class="token punctuation">.</span>out_channels
+        m<span class="token punctuation">.</span>weight<span class="token punctuation">.</span>data<span class="token punctuation">.</span>normal_<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> math<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">.</span> <span class="token operator">/</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">elif</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> nn<span class="token punctuation">.</span>BatchNorm2d<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token comment"># m中的weight，bias其实都是Variable，为了能学习参数以及后向传播</span>
+        m<span class="token punctuation">.</span>weight<span class="token punctuation">.</span>data<span class="token punctuation">.</span>fill_<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        m<span class="token punctuation">.</span>bias<span class="token punctuation">.</span>data<span class="token punctuation">.</span>zero_<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+model <span class="token operator">=</span> AlexNet<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>train_dataset<span class="token punctuation">.</span>classes<span class="token punctuation">)</span><span class="token punctuation">)</span>
+model<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>weight_init<span class="token punctuation">)</span>
+use_gpu <span class="token operator">=</span> torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>is_available<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> use_gpu<span class="token punctuation">:</span>
+    model <span class="token operator">=</span> model<span class="token punctuation">.</span>cuda<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'USE GPU'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'USE CPU'</span><span class="token punctuation">)</span>
+
+criterion <span class="token operator">=</span> nn<span class="token punctuation">.</span>CrossEntropyLoss<span class="token punctuation">(</span>size_average<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+<span class="token comment"># optimizer = torch.optim.SGD(model.parameters(), lr=0.001)</span>
+optimizer <span class="token operator">=</span> torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>Adam<span class="token punctuation">(</span>model<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lr<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span> betas<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0.9</span><span class="token punctuation">,</span> <span class="token number">0.99</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">train</span><span class="token punctuation">(</span>epoch<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    model<span class="token punctuation">.</span>train<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> batch_idx<span class="token punctuation">,</span> <span class="token punctuation">(</span>data<span class="token punctuation">,</span> target<span class="token punctuation">)</span> <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>train_loader<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> use_gpu<span class="token punctuation">:</span>
+            data<span class="token punctuation">,</span> target <span class="token operator">=</span> data<span class="token punctuation">.</span>cuda<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> target<span class="token punctuation">.</span>cuda<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        data<span class="token punctuation">,</span> target <span class="token operator">=</span> Variable<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">,</span> Variable<span class="token punctuation">(</span>target<span class="token punctuation">)</span>
+        optimizer<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        output <span class="token operator">=</span> model<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+        loss <span class="token operator">=</span> criterion<span class="token punctuation">(</span>output<span class="token punctuation">,</span> target<span class="token punctuation">)</span>
+        loss<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> batch_idx <span class="token operator">%</span> <span class="token number">100</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>
+                epoch<span class="token punctuation">,</span> batch_idx <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>train_loader<span class="token punctuation">.</span>dataset<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token number">100</span><span class="token punctuation">.</span> <span class="token operator">*</span> batch_idx <span class="token operator">/</span> <span class="token builtin">len</span><span class="token punctuation">(</span>train_loader<span class="token punctuation">)</span><span class="token punctuation">,</span> loss<span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            
+
+<span class="token keyword">for</span> epoch <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    train<span class="token punctuation">(</span>epoch<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/note/" rel="tag"># note</a>
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/post/dl/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0_%E5%9F%BA%E6%9C%AC%E7%90%86%E8%AE%BA.html" rel="prev" title="深度学习：基本理论">
+      <i class="fa fa-chevron-left"></i> 深度学习：基本理论
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/post/dl/VGGNet.html" rel="next" title="CNN经典网络：VGGNet">
+      CNN经典网络：VGGNet <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-text">网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0"><span class="nav-text">网络参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E5%85%83"><span class="nav-text">神经元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flops"><span class="nav-text">FLOPS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%8E%B0"><span class="nav-text">模型表现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tricks"><span class="nav-text">Tricks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="nav-text">数据增强</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#relu"><span class="nav-text">ReLU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lrn"><span class="nav-text">LRN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dropout"><span class="nav-text">Dropout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%8F%A0%E6%B1%A0%E5%8C%96"><span class="nav-text">重叠池化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8Cgpu%E8%AE%AD%E7%BB%83"><span class="nav-text">双GPU训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#end-to-end"><span class="nav-text">end-to-end</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">代码实现</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Maskros"
+      src="/img/logo_Maskros.jpg">
+  <p class="site-author-name" itemprop="name">Maskros</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Maskros-new" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Maskros-new" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:haohangjian2002@gmail.com" title="E-Mail → mailto:haohangjian2002@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/355516889" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;355516889" rel="noopener" target="_blank"><i class="fas fa-tv fa-fw"></i>Bilibili</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://codeforces.com/profile/1ronMaker" title="Codeforces1 → https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;1ronMaker" rel="noopener" target="_blank"><i class="far fa-chart-bar fa-fw"></i>Codeforces1</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://codeforces.com/profile/7hhnewbee" title="Codeforces2 → https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;7hhnewbee" rel="noopener" target="_blank"><i class="far fa-chart-bar fa-fw"></i>Codeforces2</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/lipoicyclic/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;lipoicyclic&#x2F;" rel="noopener" target="_blank">脂环</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://coinc1dens.me/" title="https:&#x2F;&#x2F;coinc1dens.me&#x2F;" rel="noopener" target="_blank">x1</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://nerdzzh.me/" title="https:&#x2F;&#x2F;nerdzzh.me&#x2F;" rel="noopener" target="_blank">edicius</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://zwh-sdu.github.io/" title="https:&#x2F;&#x2F;zwh-sdu.github.io&#x2F;" rel="noopener" target="_blank">zwh</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maskros</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Nmc1pCkN608WUnjzl1OVUJwp-gzGzoHsz',
+      appKey     : 'AgMMODlKtVQJ8D2ksYM7tqFv',
+      placeholder: "Leave your thoughts behind~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
