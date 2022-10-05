@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Sans SC:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="GoogLeNet第一次提出了 Inception 结构，没有如同 VGGNet 那样大量使用fc，参数量非常小。Inception 的目的是设计一种具有优良局部拓扑结构的网络，即对输入图像并行地执行多个卷积运算或池化操作，并将所有输出结果拼接为一个非常深的特征图。通过 1×1 、3×3 或 5×5 等不同的卷积运算与池化操作可以获得输入图像的不同信息，并行处理这些运算并结合所有结果将获得更好的图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CNN经典网络：Inception系列">
+<meta property="og:url" content="https://maskros.top/post/dl/Inception.html">
+<meta property="og:site_name" content="Maskros&#39; Blog">
+<meta property="og:description" content="GoogLeNet第一次提出了 Inception 结构，没有如同 VGGNet 那样大量使用fc，参数量非常小。Inception 的目的是设计一种具有优良局部拓扑结构的网络，即对输入图像并行地执行多个卷积运算或池化操作，并将所有输出结果拼接为一个非常深的特征图。通过 1×1 、3×3 或 5×5 等不同的卷积运算与池化操作可以获得输入图像的不同信息，并行处理这些运算并结合所有结果将获得更好的图">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210011708716.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210041230876.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210042333084.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210042333968.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210042333400.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210042335215.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210051556708.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210051559118.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1456303/201906/1456303-20190602152722433-1671060023.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210052345931.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210052345308.png">
+<meta property="article:published_time" content="2022-10-02T08:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-05T15:46:14.090Z">
+<meta property="article:author" content="Maskros">
+<meta property="article:tag" content="note">
+<meta property="article:tag" content="深度学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210011708716.png">
+
+<link rel="canonical" href="https://maskros.top/post/dl/Inception.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CNN经典网络：Inception系列 | Maskros' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><link rel="alternate" href="/atom.xml" title="Maskros' Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Maskros' Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/dl/Inception.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/logo_Maskros.jpg">
+      <meta itemprop="name" content="Maskros">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maskros' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CNN经典网络：Inception系列
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-02 16:00:00" itemprop="dateCreated datePublished" datetime="2022-10-02T16:00:00+08:00">2022-10-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-05 23:46:14" itemprop="dateModified" datetime="2022-10-05T23:46:14+08:00">2022-10-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NOTE/" itemprop="url" rel="index"><span itemprop="name">NOTE</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/dl/Inception.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/dl/Inception.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><p>GoogLeNet第一次提出了 Inception 结构，没有如同 VGGNet 那样大量使用fc，参数量非常小。Inception 的目的是设计一种具有优良局部拓扑结构的网络，即对输入图像并行地执行多个卷积运算或池化操作，并将所有输出结果拼接为一个非常深的特征图。通过 1×1 、3×3 或 5×5 等不同的卷积运算与池化操作可以获得输入图像的不同信息，并行处理这些运算并结合所有结果将获得更好的图像表征。常见版本有 Inception v1-v4 和 Inception-ResNet。</p>
+<blockquote>
+<p>GoogLeNet(Inception v1)：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.4842.pdf">Going deeper with convolutions</a>，Inception-v2 BN: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1502.03167">Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift</a>，Inception-v2, v3：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1512.00567">Rethinking the Inception Architecture for Computer Vision</a>, Inception v4, ResNet v1, v2: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1602.07261v1">Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning</a></p>
+</blockquote>
+<span id="more"></span>
+<h2 id="inception-v1">Inception v1</h2>
+<p>在 Inception 出现之前，大部分流行 CNN 仅仅是把卷积层堆叠得越来越多，使网络越来越深，以此希望能够得到更好的性能，但也面临着参数量过多、过拟合、计算量加大等问题。解决上述不足的方法是引入稀疏特性和将全连接层转换成稀疏连接，但现在的计算框架对非均匀的稀疏数据进行计算是非常低效的，主要是因为查找和缓存的开销。有大量文献指出，将稀疏矩阵聚类成相对密集的子矩阵，能提高计算性能。根据此想法，作者提出了Inception结构，使用一个密集成分来近似或者代替最优的局部稀疏结构。</p>
+<p>GoogLeNet就率先提出了卷积核的并行合并(也称Bottleneck Layer)。意图在同一层就使用不同尺寸的卷积核来提取不同(稀疏/不稀疏)的特征。</p>
+<p><img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210011708716.png" alt="image-20221001170806647"></p>
+<p>其中一层block就包含1x1卷积，3x3卷积，5x5卷积，3x3池化。这样，网络中每一层都能学习到稀疏(3x3、5x5)或“不稀疏”（1x1）的特征，既增加了网络的宽度，也增加了网络对尺度的适应性。最终通过deep concat在每个block后合成特征，获得非线性属性。</p>
+<p>按照这样的结构来增加网络的深度，虽然可以提升性能，但是还面临参数多、计算量大的问题。为改善这种现象，GoogLeNet借鉴Network-in-Network的思想，使用1x1的卷积核实现降维操作(也间接增加了网络的深度)，以此来减小网络的参数量，其中3×3和5×5的卷积之前先用1×1降维，而最大池化时1×1的卷积在之后。</p>
+<p>最后实现的inception v1网络是上图结构的顺序连接，其中不同inception模块之间使用2x2的最大池化进行下采样。</p>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210041230876.png" alt="image-20221004123005702" style="zoom: 50%;">
+<p>网络仍有一层全连接层，该层的设置是为了<strong>迁移学习</strong>finetune	的实现。</p>
+<p>在之前的网络中，最后都有全连接层，可能会带来以下三点不便：网络输入需要固定、参数量多、易发生过拟合。实验证明，将其替换为平均池化层(或者1x1卷积层)不仅不影响精度，还可以减少参数量。此外，实验表明，如果是小目标检测，网络的最后还是需要几层全连接层的，猜想可能是用池化的话会损失太多信息，毕竟是小目标。</p>
+<h2 id="inception-v2">Inception v2</h2>
+<blockquote>
+<p>Inception v2 和 v3 的改进，主要是基于 v3 论文中提到的四个通用原则/优化思想：</p>
+<ol>
+<li>避免<strong>表示瓶颈</strong>(当卷积不会大幅度改变输入维度时，神经网络可能会执行地更好。过多地减少维度可能会造成信息的损失)，尤其是在网络的前面。一般来说，特征图从输入到输出应该缓慢减小。</li>
+<li>高维度特征在网络局部处理更加容易。考虑到更多的耦合特征，在卷积网络中增加非线性。可以让网络训练更快。</li>
+<li>空间聚合可以以低维度嵌入进行，这样不会影响特征的表达能力。如，在进行大尺度卷积之前，先对输入进行降维。</li>
+<li>平衡网络的宽度和深度。增加宽度和深度都会带来性能上的提升，两者同时增加带来了并行提升，但是要考虑计算资源的合理分配。</li>
+</ol>
+</blockquote>
+<p>v2 在 v1 的基础上主要做了以下改进：</p>
+<ol>
+<li>
+<p>使用BN层，将每一层的输出都规范化到一个<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="7.038ex" height="2.262ex" role="img" focusable="false" viewbox="0 -750 3110.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"/></g><g data-mml-node="mo" transform="translate(888,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/></g><g data-mml-node="mn" transform="translate(1277,0)"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/></g><g data-mml-node="mo" transform="translate(1777,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"/></g><g data-mml-node="mn" transform="translate(2221.7,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/></g><g data-mml-node="mo" transform="translate(2721.7,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/></g></g></g></svg></mjx-container>的正态分布，这将有助于训练，因为下一层不必学习输入数据中的偏移，并且可以专注与如何更好地组合特征。</p>
+</li>
+<li>
+<p>(inception A) 在梯度35×35时使用2个3x3的卷积代替5x5的卷积，这样可以获得相同的感受野、更少的参数，还间接增加了网络的深度。(基于原则3)</p>
+</li>
+</ol>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210042333084.png" alt="image-20221004233353035" style="zoom:50%;">
+<ol start="3">
+<li>(inception B) 在17x17的梯度中使用1×n和n×1这种非对称的卷积来代替n×n的对称卷积，既降低网络的参数，又增加了网络的深度(实验证明，该结构放于网络中部，取n=7，准确率更高)。(基于原则3)</li>
+</ol>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210042333968.png" alt="image-20221004233333922" style="zoom:50%;">
+<ol start="4">
+<li>(inception C) 在梯度为8x8时使用可以增加滤波器输出的模块，以此来产生高维的稀疏特征。(基于原则2)</li>
+</ol>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210042333400.png" alt="image-20221004233320328" style="zoom:50%;">
+<ol start="5">
+<li>输入从224×224变为229×229。</li>
+</ol>
+<p>最终结构：figure 5, 6, 7 对应以上三张图的结构</p>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210042335215.png" alt="image-20221004233533164" style="zoom:67%;">
+<p>inception v2相比inception v1在imagenet的数据集上，识别误差率由29%降为23.4%。</p>
+<h2 id="inception-v3">Inception v3</h2>
+<p>Inception v3 主要引入了因子分解的思想。</p>
+<p>inception模块之间特征图的缩小，主要有下面两种方式：</p>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210051556708.png" alt="image-20221005155602646" style="zoom: 67%;">
+<p>右图是先进行inception操作，再进行池化来下采样，但是这样参数量明显多于左图(比较方式同前文的降维后inception模块)，因此v2采用的是左图的方式，即在不同的inception之间（35/17/8的梯度）采用池化来进行下采样。</p>
+<p>但是，左图这种操作会造成表达瓶颈问题，也就是说特征图的大小不应该出现急剧的衰减(只经过一层就骤降)。如果出现急剧缩减，将会丢失大量的信息，对模型的训练造成困难。因此，v3 结构借鉴inception的结构设计了采用一种并行的降维结构(reduction)：</p>
+<img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210051559118.png" alt="image-20221005155934070" style="zoom:67%;">
+<p>利用平行的池化与卷积，来进行特征图尺寸缩小，不仅能较少计算量，又能防止特征瓶颈。</p>
+<h2 id="inception-v4">Inception v4</h2>
+<p>v4主要提出了新的更加统一的Inception结构，并且结合ResNet网络提出了Inception-ResNet-v1和Inception-ResNet-v2。</p>
+<p>将原来卷积、池化的顺次连接(网络的前几层)替换为stem模块，来获得更深的网络结构。</p>
+<p>stem之后同 v3 一样，是inception和reduction模块。</p>
+<p><img src="https://img2018.cnblogs.com/blog/1456303/201906/1456303-20190602152722433-1671060023.png" alt="img"></p>
+<h2 id="inception-resnet-v1-v2">Inception-ResNet-v1, v2</h2>
+<p>ResNet结构既可以加速训练，还可以提升性能；Inception模块可以在同一层上获得稀疏或非稀疏的特征。将两个模块的优势进行了结合，设计出了Inception-ResNet网络。inception-resnet有v1和v2两个版本，v2表现更好且更复杂。</p>
+<p><img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210052345931.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210052345308.png" alt="img"></p>
+<h2 id="总结">总结</h2>
+<p>inception是通过增加网络的宽度来提高网络性能，在每个inception模块中，使用了不同大小的卷积核，可以理解成不同的感受野，然后将其concentrate起来，丰富了每层的信息。之后，使用了BN算法(conv之后，relu之前)，来加速网络的收敛速度。在V3版本中，还使用了卷积因子分解的思想，将大卷积核分解成小卷积，节省了参数，降低了模型大小。在V4版本中，使用了更加统一的inception模块，并结合了resnet的残差思想，能将网络做得更深。</p>
+<p>ref：</p>
+<p>[1] <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30756181">https://zhuanlan.zhihu.com/p/30756181</a></p>
+<p>[2] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/dengshunge/p/10808191.html">https://www.cnblogs.com/dengshunge/p/10808191.html</a></p>
+<p>[3] <a target="_blank" rel="noopener" href="https://blog.csdn.net/l641208111/article/details/112484987">https://blog.csdn.net/l641208111/article/details/112484987</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/note/" rel="tag"># note</a>
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/post/life/%E4%BF%9D%E7%A0%94%E7%BB%8F%E9%AA%8C%E8%B4%B4.html" rel="prev" title="2022年(23届)计算机末9低rk保研经历-躺平青年翻盘路">
+      <i class="fa fa-chevron-left"></i> 2022年(23届)计算机末9低rk保研经历-躺平青年翻盘路
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#inception-v1"><span class="nav-text">Inception v1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inception-v2"><span class="nav-text">Inception v2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inception-v3"><span class="nav-text">Inception v3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inception-v4"><span class="nav-text">Inception v4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inception-resnet-v1-v2"><span class="nav-text">Inception-ResNet-v1, v2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Maskros"
+      src="/img/logo_Maskros.jpg">
+  <p class="site-author-name" itemprop="name">Maskros</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Maskros-new" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Maskros-new" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:haohangjian2002@gmail.com" title="E-Mail → mailto:haohangjian2002@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/355516889" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;355516889" rel="noopener" target="_blank"><i class="fas fa-tv fa-fw"></i>Bilibili</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://codeforces.com/profile/1ronMaker" title="Codeforces1 → https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;1ronMaker" rel="noopener" target="_blank"><i class="far fa-chart-bar fa-fw"></i>Codeforces1</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://codeforces.com/profile/7hhnewbee" title="Codeforces2 → https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;7hhnewbee" rel="noopener" target="_blank"><i class="far fa-chart-bar fa-fw"></i>Codeforces2</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/lipoicyclic/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;lipoicyclic&#x2F;" rel="noopener" target="_blank">脂环</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://coinc1dens.me/" title="https:&#x2F;&#x2F;coinc1dens.me&#x2F;" rel="noopener" target="_blank">x1</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://nerdzzh.me/" title="https:&#x2F;&#x2F;nerdzzh.me&#x2F;" rel="noopener" target="_blank">edicius</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://zwh-sdu.github.io/" title="https:&#x2F;&#x2F;zwh-sdu.github.io&#x2F;" rel="noopener" target="_blank">zwh</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maskros</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Nmc1pCkN608WUnjzl1OVUJwp-gzGzoHsz',
+      appKey     : 'AgMMODlKtVQJ8D2ksYM7tqFv',
+      placeholder: "Leave your thoughts behind~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
