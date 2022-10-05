@@ -180,9 +180,9 @@
     
     <category term="note" scheme="https://maskros.top/tags/note/"/>
     
-    <category term="python" scheme="https://maskros.top/tags/python/"/>
-    
     <category term="深度学习" scheme="https://maskros.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="python" scheme="https://maskros.top/tags/python/"/>
     
   </entry>
   
@@ -330,9 +330,9 @@
     <category term="ALGORITHMS" scheme="https://maskros.top/categories/ALGORITHMS/"/>
     
     
-    <category term="note" scheme="https://maskros.top/tags/note/"/>
-    
     <category term="ACM" scheme="https://maskros.top/tags/ACM/"/>
+    
+    <category term="note" scheme="https://maskros.top/tags/note/"/>
     
     <category term="数学" scheme="https://maskros.top/tags/%E6%95%B0%E5%AD%A6/"/>
     
@@ -370,9 +370,9 @@
     
     <category term="note" scheme="https://maskros.top/tags/note/"/>
     
-    <category term="数学" scheme="https://maskros.top/tags/%E6%95%B0%E5%AD%A6/"/>
-    
     <category term="深度学习" scheme="https://maskros.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="数学" scheme="https://maskros.top/tags/%E6%95%B0%E5%AD%A6/"/>
     
   </entry>
   
@@ -481,9 +481,9 @@
     <category term="ALGORITHMS" scheme="https://maskros.top/categories/ALGORITHMS/"/>
     
     
-    <category term="note" scheme="https://maskros.top/tags/note/"/>
-    
     <category term="ACM" scheme="https://maskros.top/tags/ACM/"/>
+    
+    <category term="note" scheme="https://maskros.top/tags/note/"/>
     
     <category term="algorithm" scheme="https://maskros.top/tags/algorithm/"/>
     
@@ -593,13 +593,13 @@
     <category term="ALGORITHMS" scheme="https://maskros.top/categories/ALGORITHMS/"/>
     
     
-    <category term="note" scheme="https://maskros.top/tags/note/"/>
-    
     <category term="ACM" scheme="https://maskros.top/tags/ACM/"/>
+    
+    <category term="string" scheme="https://maskros.top/tags/string/"/>
     
     <category term="二分" scheme="https://maskros.top/tags/%E4%BA%8C%E5%88%86/"/>
     
-    <category term="string" scheme="https://maskros.top/tags/string/"/>
+    <category term="note" scheme="https://maskros.top/tags/note/"/>
     
     <category term="algorithm" scheme="https://maskros.top/tags/algorithm/"/>
     
@@ -666,11 +666,11 @@ out&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=
     <category term="NOTE" scheme="https://maskros.top/categories/NOTE/"/>
     
     
+    <category term="ACM" scheme="https://maskros.top/tags/ACM/"/>
+    
     <category term="note" scheme="https://maskros.top/tags/note/"/>
     
     <category term="java" scheme="https://maskros.top/tags/java/"/>
-    
-    <category term="ACM" scheme="https://maskros.top/tags/ACM/"/>
     
     <category term="STL" scheme="https://maskros.top/tags/STL/"/>
     
