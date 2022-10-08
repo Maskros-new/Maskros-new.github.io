@@ -35,11 +35,11 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210042335215.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210051556708.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210051559118.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1456303/201906/1456303-20190602152722433-1671060023.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210081723916.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210052345931.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210052345308.png">
 <meta property="article:published_time" content="2022-10-02T08:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-05T15:46:14.090Z">
+<meta property="article:modified_time" content="2022-10-08T09:24:05.896Z">
 <meta property="article:author" content="Maskros">
 <meta property="article:tag" content="note">
 <meta property="article:tag" content="深度学习">
@@ -317,7 +317,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-05 23:46:14" itemprop="dateModified" datetime="2022-10-05T23:46:14+08:00">2022-10-05</time>
+                <time title="修改时间：2022-10-08 17:24:05" itemprop="dateModified" datetime="2022-10-08T17:24:05+08:00">2022-10-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -367,7 +367,7 @@ mjx-container[display="true"] + br {
 <p>按照这样的结构来增加网络的深度，虽然可以提升性能，但是还面临参数多、计算量大的问题。为改善这种现象，GoogLeNet借鉴Network-in-Network的思想，使用1x1的卷积核实现降维操作(也间接增加了网络的深度)，以此来减小网络的参数量，其中3×3和5×5的卷积之前先用1×1降维，而最大池化时1×1的卷积在之后。</p>
 <p>最后实现的inception v1网络是上图结构的顺序连接，其中不同inception模块之间使用2x2的最大池化进行下采样。</p>
 <img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210041230876.png" alt="image-20221004123005702" style="zoom: 50%;">
-<p>网络仍有一层全连接层，该层的设置是为了<strong>迁移学习</strong>finetune	的实现。</p>
+<p>网络仍有一层全连接层，该层的设置是为了<strong>迁移学习</strong>finetune的实现。</p>
 <p>在之前的网络中，最后都有全连接层，可能会带来以下三点不便：网络输入需要固定、参数量多、易发生过拟合。实验证明，将其替换为平均池化层(或者1x1卷积层)不仅不影响精度，还可以减少参数量。此外，实验表明，如果是小目标检测，网络的最后还是需要几层全连接层的，猜想可能是用池化的话会损失太多信息，毕竟是小目标。</p>
 <h2 id="inception-v2">Inception v2</h2>
 <blockquote>
@@ -415,13 +415,14 @@ mjx-container[display="true"] + br {
 <p>v4主要提出了新的更加统一的Inception结构，并且结合ResNet网络提出了Inception-ResNet-v1和Inception-ResNet-v2。</p>
 <p>将原来卷积、池化的顺次连接(网络的前几层)替换为stem模块，来获得更深的网络结构。</p>
 <p>stem之后同 v3 一样，是inception和reduction模块。</p>
-<p><img src="https://img2018.cnblogs.com/blog/1456303/201906/1456303-20190602152722433-1671060023.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210081723916.png" alt="image-20221008172354784"></p>
 <h2 id="inception-resnet-v1-v2">Inception-ResNet-v1, v2</h2>
 <p>ResNet结构既可以加速训练，还可以提升性能；Inception模块可以在同一层上获得稀疏或非稀疏的特征。将两个模块的优势进行了结合，设计出了Inception-ResNet网络。inception-resnet有v1和v2两个版本，v2表现更好且更复杂。</p>
 <p><img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210052345931.png" alt="img"></p>
 <p><img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210052345308.png" alt="img"></p>
 <h2 id="总结">总结</h2>
 <p>inception是通过增加网络的宽度来提高网络性能，在每个inception模块中，使用了不同大小的卷积核，可以理解成不同的感受野，然后将其concentrate起来，丰富了每层的信息。之后，使用了BN算法(conv之后，relu之前)，来加速网络的收敛速度。在V3版本中，还使用了卷积因子分解的思想，将大卷积核分解成小卷积，节省了参数，降低了模型大小。在V4版本中，使用了更加统一的inception模块，并结合了resnet的残差思想，能将网络做得更深。</p>
+<hr>
 <p>ref：</p>
 <p>[1] <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30756181">https://zhuanlan.zhihu.com/p/30756181</a></p>
 <p>[2] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/dengshunge/p/10808191.html">https://www.cnblogs.com/dengshunge/p/10808191.html</a></p>
@@ -448,7 +449,10 @@ mjx-container[display="true"] + br {
     <a href="/post/life/%E4%BF%9D%E7%A0%94%E7%BB%8F%E9%AA%8C%E8%B4%B4.html" rel="prev" title="2022年(23届)计算机末9低rk保研经历-躺平青年翻盘路">
       <i class="fa fa-chevron-left"></i> 2022年(23届)计算机末9低rk保研经历-躺平青年翻盘路
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/post/dl/cifar10%20CNN.html" rel="next" title="CNN代码复现(PyTorch-CIFAR10)">
+      CNN代码复现(PyTorch-CIFAR10) <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -524,7 +528,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
