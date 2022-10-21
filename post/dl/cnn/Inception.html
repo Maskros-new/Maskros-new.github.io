@@ -23,7 +23,7 @@
   <meta name="description" content="GoogLeNet第一次提出了 Inception 结构，没有如同 VGGNet 那样大量使用fc，参数量非常小。Inception 的目的是设计一种具有优良局部拓扑结构的网络，即对输入图像并行地执行多个卷积运算或池化操作，并将所有输出结果拼接为一个非常深的特征图。通过 1×1 、3×3 或 5×5 等不同的卷积运算与池化操作可以获得输入图像的不同信息，并行处理这些运算并结合所有结果将获得更好的图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CNN经典网络：Inception系列">
-<meta property="og:url" content="https://maskros.top/post/dl/Inception.html">
+<meta property="og:url" content="https://maskros.top/post/dl/cnn/Inception.html">
 <meta property="og:site_name" content="Maskros&#39; Blog">
 <meta property="og:description" content="GoogLeNet第一次提出了 Inception 结构，没有如同 VGGNet 那样大量使用fc，参数量非常小。Inception 的目的是设计一种具有优良局部拓扑结构的网络，即对输入图像并行地执行多个卷积运算或池化操作，并将所有输出结果拼接为一个非常深的特征图。通过 1×1 、3×3 或 5×5 等不同的卷积运算与池化操作可以获得输入图像的不同信息，并行处理这些运算并结合所有结果将获得更好的图">
 <meta property="og:locale" content="zh_CN">
@@ -46,7 +46,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210011708716.png">
 
-<link rel="canonical" href="https://maskros.top/post/dl/Inception.html">
+<link rel="canonical" href="https://maskros.top/post/dl/cnn/Inception.html">
 
 
 <script id="page-configurations">
@@ -287,7 +287,7 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/dl/Inception.html">
+    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/dl/cnn/Inception.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/img/logo_Maskros.jpg">
@@ -338,8 +338,8 @@ mjx-container[display="true"] + br {
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/post/dl/Inception.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/dl/Inception.html" itemprop="commentCount"></span>
+    <a title="valine" href="/post/dl/cnn/Inception.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/dl/cnn/Inception.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -450,7 +450,7 @@ mjx-container[display="true"] + br {
       <i class="fa fa-chevron-left"></i> 2022年(23届)计算机末9低rk保研经历-躺平青年翻盘路
     </a></div>
       <div class="post-nav-item">
-    <a href="/post/dl/cifar10%20CNN.html" rel="next" title="CNN代码复现(PyTorch-CIFAR10)">
+    <a href="/post/dl/cnn/cifar10%20CNN.html" rel="next" title="CNN代码复现(PyTorch-CIFAR10)">
       CNN代码复现(PyTorch-CIFAR10) <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -528,7 +528,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -539,7 +539,7 @@ mjx-container[display="true"] + br {
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -573,6 +573,9 @@ mjx-container[display="true"] + br {
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://coinc1dens.me/" title="https:&#x2F;&#x2F;coinc1dens.me&#x2F;" rel="noopener" target="_blank">x1</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://rayjinx.com/" title="https:&#x2F;&#x2F;rayjinx.com&#x2F;" rel="noopener" target="_blank">栗悟饭</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://nerdzzh.me/" title="https:&#x2F;&#x2F;nerdzzh.me&#x2F;" rel="noopener" target="_blank">edicius</a>

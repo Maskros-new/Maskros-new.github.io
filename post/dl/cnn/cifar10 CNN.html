@@ -23,7 +23,7 @@
   <meta name="description" content="CIFAR-10 数据集包含 5w 张训练样本和 1w 张测试样本，图像为3通道32×32，一共包含10个类别。  下面基于PyTorch框架进行实现，模板部分包括数据集准备、优化、训练和测试过程，只需更换中间网络即可对不同模型进行测试。 网络部分为AlexNet, VGG, ResNet, Inception(GoogLeNet, v3)。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CNN代码复现(PyTorch-CIFAR10)">
-<meta property="og:url" content="https://maskros.top/post/dl/cifar10%20CNN.html">
+<meta property="og:url" content="https://maskros.top/post/dl/cnn/cifar10%20CNN.html">
 <meta property="og:site_name" content="Maskros&#39; Blog">
 <meta property="og:description" content="CIFAR-10 数据集包含 5w 张训练样本和 1w 张测试样本，图像为3通道32×32，一共包含10个类别。  下面基于PyTorch框架进行实现，模板部分包括数据集准备、优化、训练和测试过程，只需更换中间网络即可对不同模型进行测试。 网络部分为AlexNet, VGG, ResNet, Inception(GoogLeNet, v3)。">
 <meta property="og:locale" content="zh_CN">
@@ -43,7 +43,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202210081135970.png">
 
-<link rel="canonical" href="https://maskros.top/post/dl/cifar10%20CNN.html">
+<link rel="canonical" href="https://maskros.top/post/dl/cnn/cifar10%20CNN.html">
 
 
 <script id="page-configurations">
@@ -284,7 +284,7 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/dl/cifar10%20CNN.html">
+    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/dl/cnn/cifar10%20CNN.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/img/logo_Maskros.jpg">
@@ -329,8 +329,8 @@ mjx-container[display="true"] + br {
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/post/dl/cifar10%20CNN.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/dl/cifar10%20CNN.html" itemprop="commentCount"></span>
+    <a title="valine" href="/post/dl/cnn/cifar10%20CNN.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/dl/cnn/cifar10%20CNN.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1227,10 +1227,13 @@ cfg <span class="token operator">=</span> <span class="token punctuation">{</spa
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/post/dl/Inception.html" rel="prev" title="CNN经典网络：Inception系列">
+    <a href="/post/dl/cnn/Inception.html" rel="prev" title="CNN经典网络：Inception系列">
       <i class="fa fa-chevron-left"></i> CNN经典网络：Inception系列
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/post/dl/obj-detect/RCNNs.html" rel="next" title="Object-Detection：RCNN系列">
+      Object-Detection：RCNN系列 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -1306,7 +1309,7 @@ cfg <span class="token operator">=</span> <span class="token punctuation">{</spa
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1317,7 +1320,7 @@ cfg <span class="token operator">=</span> <span class="token punctuation">{</spa
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -1351,6 +1354,9 @@ cfg <span class="token operator">=</span> <span class="token punctuation">{</spa
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://coinc1dens.me/" title="https:&#x2F;&#x2F;coinc1dens.me&#x2F;" rel="noopener" target="_blank">x1</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://rayjinx.com/" title="https:&#x2F;&#x2F;rayjinx.com&#x2F;" rel="noopener" target="_blank">栗悟饭</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://nerdzzh.me/" title="https:&#x2F;&#x2F;nerdzzh.me&#x2F;" rel="noopener" target="_blank">edicius</a>
