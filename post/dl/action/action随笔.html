@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Sans SC:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="随便记记 action方向学习杂记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="action随笔">
+<meta property="og:url" content="https://maskros.top/post/dl/action/action%E9%9A%8F%E7%AC%94.html">
+<meta property="og:site_name" content="Maskros&#39; Blog">
+<meta property="og:description" content="随便记记 action方向学习杂记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202301101640306.png">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202301130155072.png">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202301130156137.png">
+<meta property="article:published_time" content="2023-01-13T08:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-13T08:09:20.128Z">
+<meta property="article:author" content="Maskros">
+<meta property="article:tag" content="note">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="action">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202301101640306.png">
+
+<link rel="canonical" href="https://maskros.top/post/dl/action/action%E9%9A%8F%E7%AC%94.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>action随笔 | Maskros' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><link rel="alternate" href="/atom.xml" title="Maskros' Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Maskros' Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/dl/action/action%E9%9A%8F%E7%AC%94.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/logo_Maskros.jpg">
+      <meta itemprop="name" content="Maskros">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maskros' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          action随笔
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-01-13 16:00:00 / 修改时间：16:09:20" itemprop="dateCreated datePublished" datetime="2023-01-13T16:00:00+08:00">2023-01-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NOTE/" itemprop="url" rel="index"><span itemprop="name">NOTE</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/dl/action/action%E9%9A%8F%E7%AC%94.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/dl/action/action%E9%9A%8F%E7%AC%94.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><p>随便记记</p>
+<p>action方向学习杂记</p>
+<span id="more"></span>
+<h2 id="模型动画">模型动画</h2>
+<ul>
+<li>
+<p>顶点(vertex)：动画模型可以看成多个小三角形（四边形）组成，每个小三角形就可以看成一个顶点。顶点越多，动画模型越精细。</p>
+</li>
+<li>
+<p>骨骼点：人体的一些关节点，类似于人体姿态估计的关键点。每个骨骼点都由一个三元组作为参数去控制</p>
+</li>
+<li>
+<p>骨骼蒙皮(Rig)：建立骨骼点和顶点的关联关系。每个骨骼点会关联许多顶点，并且每一个顶点权重不一样。通过这种关联关系，就可以通过控制骨骼点的旋转向量来控制整个人运动。</p>
+</li>
+<li>
+<p>纹理贴图：动画人体模型的表面纹理，即衣服裤子这些</p>
+</li>
+<li>
+<p>BlendShape：控制动画角色运动有两种，一种是上面说的利用Rig，还有一种是利用BlendShape。比如：生成一种笑脸和正常脸，那么通过BlendShape就可以自动生成二者过渡的动画。这种方式相比于利用Rig，可以不定义骨骼点，比较方便。</p>
+</li>
+<li>
+<p>蒙皮：将模型从一个姿态转变为另一个姿态，使用的转换矩阵叫做蒙皮矩阵。(Linear Blend Skinning算法)</p>
+</li>
+<li>
+<p>顶点权重(vertex weights)：用于变形网格mesh</p>
+</li>
+<li>
+<p>uv map：将3D多边形网格展开到2D平面得到UV图像</p>
+</li>
+<li>
+<p>texture map：将3D多边形网格表面的纹理展开到2D平面，得到纹理图像</p>
+</li>
+<li>
+<p>拓扑(topology)：重新拓扑是将高分辨率模型转换为可用于动画的较小模型的过程。两个mesh拓扑结构相同是指两个mesh上面任一个三角面片的三个顶点的ID是一样的（如某一个三角面片三个顶点是2,5,8；另一个mesh上也必有一个2,5,8组成的三角面片）</p>
+</li>
+</ul>
+<p>3D模型动画：基本原理是让模型中各顶点的位置随时间变化。主要种类有Morph动画，关节动画和骨骼蒙皮动画(Skinned Mesh)。从动画数据的角度来说，三者一般都采用关键帧技术，只给出关键帧的数据，其他帧的数据使用插值得到。由于三种技术不同，关键帧的数据不一样。</p>
+<ul>
+<li>
+<p>Morph（渐变，变形）动画：直接指定动画每一帧的顶点位置，其动画关键中存储的是Mesh所有顶点在关键帧对应时刻的位置。</p>
+</li>
+<li>
+<p>关节动画：模型不是一个整体的Mesh，而是分成很多部分，通过父子层次结构组织在一起，父Mesh带动子Mesh运动，各Mesh中的顶点坐标定义在自己的坐标系中，各个Mesh作为一个整体参与运动。动画帧中设置各子Mesh相对于其父Mesh的变换(旋转/移动/缩放），通过子到父一级级变换累加（技术上如果是矩阵操作是累乘）得到该Mesh在整个动画模型所在的坐标空间中的变换，从而确定每个Mesh在世界坐标系中的位置和方向，然后以Mesh为单位渲染即可。存在的问题：各Mesh中的顶点是固定在其Mesh坐标系中的，这样在两个Mesh结合处可能产生裂缝。</p>
+</li>
+<li>
+<p><strong>骨骼蒙皮动画(Skinned Mesh)</strong>：它的出现解决了关节动画的裂缝问题，基本原理可概括为：在骨骼控制下，通过顶点混合动态计算蒙皮网格的顶点，而骨骼的运动相对于其父骨骼，并由动画关键帧数据驱动。一个骨骼动画通常包括骨骼层次结构数据，网格(Mesh)数据，网格蒙皮数据(skin info)和骨骼的动画(关键帧)数据。下面将具体分析。</p>
+</li>
+</ul>
+<h2 id="skinned-mesh">Skinned Mesh</h2>
+<p>骨骼蒙皮动画包含<strong>骨骼</strong>(Bone)和<strong>蒙皮</strong>(Skinned Mesh)两个部分，Bone的层次结构和关节动画类似，Mesh则和关节动画不同：关节动画中是使用多个分散的Mesh, 而Skinned Mesh中Mesh是一个整体，只有一个Mesh。实际上如果没有骨骼让Mesh运动变形，Mesh就和静态模型一样了。</p>
+<p>Skinned Mesh技术的精华在于蒙皮，所谓的皮是Mesh本身，蒙皮是指将Mesh中的顶点附着绑定在骨骼之上，而且每个顶点可以被多个骨骼所控制，这样在关节处的顶点由于同时受到父子骨骼的拉扯而改变位置就消除了裂缝。而为了有皮肤功能，Mesh还需要蒙皮信息即Skin数据，Skin数据决定顶点如何绑定到骨骼上。顶点的Skin数据包括顶点受哪些骨骼影响以及这些骨骼影响该顶点时的权重(weight)，另外对于每块骨骼还需要骨骼偏移矩阵(BoneOffsetMatrix)用来将顶点从Mesh空间变换到骨骼空间。</p>
+<p>以下提到骨骼动画中的Mesh特指皮肤Mesh，提到模型是指骨骼动画模型整体。骨骼控制蒙皮运动，而骨骼本身的运动是动画数据。每个关键帧中包含时间和骨骼运动信息，运动信息可以用一个矩阵直接表示骨骼新的变换，也可用四元组表示骨骼的旋转。除了使用编辑设定好的动画帧数据，也可以使用物理计算对骨骼进行实时控制。</p>
+<p>下面分别具体分析骨骼蒙皮动画中的结构部件。</p>
+<h3 id="骨骼和骨骼层次结构bone-hierarchy">骨骼和骨骼层次结构(Bone Hierarchy)</h3>
+<p>骨骼决定了模型整体在世界坐标系中的位置和朝向。</p>
+<p>对于静态模型：静态模型没有骨骼，我们在世界坐标系中放置静态模型时，只要指定模型自身坐标系在世界坐标系中的位置和朝向。</p>
+<p>对于骨骼动画：Mesh只作为依附于骨骼的Skin使用，<strong>骨骼</strong>真正决定模型在世界坐标系中的位置和朝向。在渲染静态模型时，因为模型的顶点都是定义在模型坐标系中，所以各顶点只要经过模型坐标系到世界坐标系的变换后就可进行渲染。对于骨骼动画，我们设置模型的位置和朝向实际是在设置根骨骼的位置和朝向，然后根据骨骼层次结构中父子骨骼之间的变换关系计算出各个骨骼的位置和朝向，然后根据骨骼对Mesh中顶点的绑定计算出顶点在世界坐标系中的坐标，从而对顶点进行渲染。</p>
+<p>骨骼可理解为一个<strong>坐标空间</strong>，关节理解为谷歌坐标空间的原点。关节的位置由它在父骨骼坐标空间中的位置描述。关节既决定了骨骼空间的位置，又是骨骼空间的旋转和缩放中心。为什么用一个4X4矩阵就可以表达一个骨骼，因为4X4矩阵中含有的平移分量决定了关节的位置，旋转和缩放分量决定了骨骼空间的旋转和缩放。</p>
+<p>骨骼就是坐标空间，骨骼层次就是嵌套的坐标空间。关节只是描述骨骼的位置即骨骼自己的坐标空间原点在其父空间中的位置，绕关节旋转是指骨骼坐标空间（包括所有子空间）自身的旋转，如此理解足矣。但还有两个可能的疑问，一是骨骼的长度问题，由于骨骼是坐标空间，没有所谓的长度和宽度的限制，我们看到的长度一方面是蒙皮后的结果，另一方面子骨骼的原点（也就是关节）的位置往往决定了视觉上父骨骼的长度。</p>
+<p>将骨骼组织成层次结构，就可以通过父骨骼控制子骨骼的运动，改变某骨骼时并不需要设置其下子骨骼的位置，子骨骼的位置会通过计算自动得到。子骨骼在父骨骼的坐标系中也可以做平移/旋转/缩放变换来改变自己在其父骨骼坐标系中的位置和朝向等，由于4X4矩阵可以同时表示上述三种变换, 所以一般描述骨骼在其父骨骼坐标系中的变换时使用一个<strong>矩阵</strong>，也就是DirectX SkinnedMesh中的FrameTransformMatrix。这不是唯一的方法，但应该是公认的方法，矩阵不光可以同时表示多种变换还可以方便的通过连乘进行变换的组合，这在层次结构中非常方便。</p>
+<blockquote>
+<p>demo展示 | <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/796e4674ba7e">src</a></p>
+<p>此demo中骨骼只能平移，没有使用矩阵，仅做举例理解用</p>
+</blockquote>
+<p>骨骼更新：由于动画的作用，某个骨骼的变换（TransformMatrix）变了，这时就要根据新的变换来计算，所以这个过程一般称作UpdateBoneMatrix。因为骨骼的变换都是相对父的，要变换顶点必须使用世界变换矩阵，所以这个过程是根据更新了的某些骨骼的骨骼变换矩阵（TransformMatrix）计算出所有骨骼的世界变换矩阵（也即CombinedMatrix）。</p>
+<h3 id="蒙皮信息和蒙皮过程">蒙皮信息和蒙皮过程</h3>
+<ol>
+<li>Skin info</li>
+</ol>
+<p>Skinned Mesh中Mesh是作为皮肤使用，蒙在骨骼之上的。为了让普通的Mesh具有蒙皮的功能，必须添加蒙皮信息，即Skin info。Mesh是由顶点构成的，建模时顶点是定义在模型自身坐标系的，即相对于Mesh原点的，而骨骼动画中决定模型顶点最终世界坐标的是骨骼，所以要让骨骼决定顶点的世界坐标，这就要通过Skin info将顶点和骨骼联系起来。</p>
+<p>顶点的Skin info包含影响该顶点的骨骼数目，指向这些骨骼的指针，这些骨骼作用于该顶点的权重(Skin weight)。Skin info的作用是使用各个骨骼的变换矩阵对顶点进行变换并乘以权重，这样某块骨骼只能对该顶点产生部分影响。各骨骼权重之和应该为1。在使用Skin info前我们必须要使用Bone Offset Matrix对顶点进行变换。</p>
+<ol start="2">
+<li>Bone Offset Matrix</li>
+</ol>
+<p>顶点受一块骨骼的作用时的坐标变换过程: <code>mesh vertex(defined in mesh space)---&lt;BoneOffsetMatrix&gt; ---&gt; Bone space ---&lt;BoneCombinedTransformMatrix&gt; ---&gt; World</code></p>
+<p>首先将模型顶点从模型空间变换到某块骨骼自身的骨骼空间，然后才能利用骨骼的世界变换计算顶点的世界坐标。Bone Offset Matrix的作用正是将模型从顶点空间变换到骨骼空间。通过将mesh space和world space重合可以得到Offset Matrix。</p>
+<ol start="3">
+<li>vertex blending 顶点混合</li>
+</ol>
+<p>有了Skin info，有了Bone offset，即可做顶点混合了，这是骨骼动画的精髓所在，正是这个技术消除了关节处的裂缝。顶点混合后得到了顶点新的世界坐标，对所有的顶点执行vertex blending后，从Mesh的角度看，Mesh deform(变形)了，变成动画需要的形状了。</p>
+<p>单块骨骼对顶点进行作用：将顶点从Mesh坐标系变换到世界坐标系，其中使用了骨骼的Bone Offset Matrix和Combined Transform Matrix。对于多块骨骼，对每块骨骼执行这个过程并将结果根据权重混合(即vertex blending)就得到顶点最终的世界坐标。</p>
+<h3 id="动画数据和播放动画">动画数据和播放动画</h3>
+<p>骨骼的位置随时间变化，顶点位置随骨骼变化。所以动画数据中必然包含的是骨骼的运动信息。可以在动画帧中包含某时刻骨骼的Transform Matrix，但骨骼一般只是做旋转，所以也可以用一个四元数表示。但有时候骨骼层次整体会在动画中进行平移，所以可能需要在动画帧中包含根骨骼的位置信息。播放动画时，给出当前播放的时间值，对于每块需要动画的骨骼，根据这个值找出该骨骼前后两个关键帧，根据时间差进行插值，对于四元数要使用四元数球面线性插值。然后将插值得到的四元数转换成Transform Matrix,再调用UpdateBoneMatrix更新计算整个骨骼层次的CombinedMatrix。</p>
+<p>整个过程：</p>
+<p>载入阶段：载入并建立骨骼层次结构，计算或载入Bone Offset Matrix，载入Mesh数据和Skin info（具体的实现不同的引擎中可能都不一样）。运行阶段：根据时间从动画数据中获取骨骼当前时刻的Transform Matrix，调用UpdateBoneMatrix计算出各骨骼的CombinedMatrix，对于每个顶点根据Skin info进行Vertex Blending计算出顶点的世界坐标，最终进行模型的渲染。</p>
+<h2 id="人体动作捕捉motion-capture">人体动作捕捉(motion capture)</h2>
+<p>通过传感器（可以是RGB摄像头，深度摄像头或者光学标记，3D扫描仪）对人体的一段时间的某个动作进行捕捉，从而可以实现三维的人物建模。在具体的表现形式上可以有以下若干种形式:</p>
+<ol>
+<li>通过人体关节点表示，如Fig 1的第二张图所示。</li>
+<li>通过人体铰链结构表示，如Fig 1的第三张图所示。 （其中1和2我们都称之为人体姿态估计问题，其问题的关键在于对人体关节点的位置的预测，这里的位置可以是图片上的2D像素位置，也可能是3D空间位置）</li>
+<li>通过人体3D mesh表示，但是这个mesh并不包括人体的细节，比如表情，手势，脚踝的转动等，如Fig 1第四张图所示。(SMPL)</li>
+<li>通过人体细节3D mesh表示，这个mesh包含着人体的脸部表情，手势和脚踝转动等细节，如Fig 1第五张图所示。(SMPL-X)（3和4的方法考虑了人体的形态特征，比如胖瘦，高矮等，因此表征能力更加丰富。）</li>
+</ol>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202301101640306.png" alt="image-20230110164010234"></p>
+<h2 id="单目图像重建monocular-image-reconstruction">单目图像重建(Monocular Image Reconstruction)</h2>
+<p>基于单目视觉的三维重建算法综述：</p>
+<p>任务：从单目图像中恢复三维人体网格</p>
+<p>三维重建包含三个方面，基于SFM的运动恢复结构，基于Deep learning的深度估计和结构重建，以及基于RGB-D深度摄像头的三维重建。</p>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202301130155072.png" alt="image-20230113015544004"></p>
+<p>SfM（Structure From Motion），主要基于多视觉几何原理，用于从运动中实现3D重建，也就是从无时间序列的2D图像中推算三维信息，是计算机视觉学科的重要分支。</p>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202301130156137.png" alt="image-20230113015604076"></p>
+<p>传统的深度估计在单目深度估计上效果并不好，故涌现很多基于CNN的depth map。</p>
+<p>Deeplearning与三维重建：</p>
+<p>常规的3D shape representation(表现形式)主要有四种： 深度图(depth), 点云(point cloud), 体素(voxel), 网格(mesh)：</p>
+<ul>
+<li>
+<p>深度图：Depth map是一张2D图片，每个像素都记录了从视点（viewpoint）到遮挡物表面（遮挡物就是阴影生成物体）的距离，这些像素对应的顶点对于观察者而言是“可见的”。</p>
+</li>
+<li>
+<p>体素：体素或立体像素(voxel)，是体积像素(volume pixel)的简称。体素是3D空间中具有一定体积的点，相当于3D空间中的像素，体素本身<strong>不含有</strong>位置信息，只谈论与其他体素的相对距离。</p>
+</li>
+<li>
+<p>网格：<strong>多边形网格</strong>（Polygon mesh）是三维计算机图形学中表示多面体形状的顶点与多边形的集合，它也叫作非结构网格。</p>
+<p>网格可以是多边形，而三角网格就是全部由三角形组成的多边形网格。任意多边形网格都能转换成三角网格。三角网格存储三类信息：①顶点：每个三角形都有三个顶点，各顶点都有可能和其他三角形共享。②边：连接两个顶点的边，每个三角形有三条边。③面：每个三角形对应一个面，我们可以用顶点或边列表表示面。</p>
+</li>
+<li>
+<p>点云：点云模型往往通过3D激光扫描仪直接获得，故包含了最大量的原始信息。一般来说，点云包括有3D坐标信息，还可以带有色彩信息（RGB）或反射面强度信息。强度信息与物体的材质，粗糙度，反射率等有关，也与发射激光有关。</p>
+</li>
+</ul>
+<p>由深度图可以得到点云，进而得到网格。</p>
+<hr>
+<p>ref：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/256358005">https://zhuanlan.zhihu.com/p/256358005</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158700893">https://zhuanlan.zhihu.com/p/158700893</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/796e4674ba7e">https://www.jianshu.com/p/796e4674ba7e</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/note/" rel="tag"># note</a>
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+              <a href="/tags/action/" rel="tag"># action</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/post/dl/Transformer.html" rel="prev" title="Transformer in CV：ViT, DETR, Deformable DETR">
+      <i class="fa fa-chevron-left"></i> Transformer in CV：ViT, DETR, Deformable DETR
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%8A%A8%E7%94%BB"><span class="nav-text">模型动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skinned-mesh"><span class="nav-text">Skinned Mesh</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%A8%E9%AA%BC%E5%92%8C%E9%AA%A8%E9%AA%BC%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84bone-hierarchy"><span class="nav-text">骨骼和骨骼层次结构(Bone Hierarchy)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%92%99%E7%9A%AE%E4%BF%A1%E6%81%AF%E5%92%8C%E8%92%99%E7%9A%AE%E8%BF%87%E7%A8%8B"><span class="nav-text">蒙皮信息和蒙皮过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E6%95%B0%E6%8D%AE%E5%92%8C%E6%92%AD%E6%94%BE%E5%8A%A8%E7%94%BB"><span class="nav-text">动画数据和播放动画</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%BA%E4%BD%93%E5%8A%A8%E4%BD%9C%E6%8D%95%E6%8D%89motion-capture"><span class="nav-text">人体动作捕捉(motion capture)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E7%9B%AE%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BAmonocular-image-reconstruction"><span class="nav-text">单目图像重建(Monocular Image Reconstruction)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Maskros"
+      src="/img/logo_Maskros.jpg">
+  <p class="site-author-name" itemprop="name">Maskros</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Maskros-new" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Maskros-new" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:haohangjian2002@gmail.com" title="E-Mail → mailto:haohangjian2002@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/355516889" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;355516889" rel="noopener" target="_blank"><i class="fas fa-tv fa-fw"></i>Bilibili</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://codeforces.com/profile/1ronMaker" title="Codeforces1 → https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;1ronMaker" rel="noopener" target="_blank"><i class="far fa-chart-bar fa-fw"></i>Codeforces1</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://codeforces.com/profile/7hhnewbee" title="Codeforces2 → https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;7hhnewbee" rel="noopener" target="_blank"><i class="far fa-chart-bar fa-fw"></i>Codeforces2</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/lipoicyclic/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;lipoicyclic&#x2F;" rel="noopener" target="_blank">脂环</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://coinc1dens.me/" title="https:&#x2F;&#x2F;coinc1dens.me&#x2F;" rel="noopener" target="_blank">x1</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://rayjinx.com/" title="https:&#x2F;&#x2F;rayjinx.com&#x2F;" rel="noopener" target="_blank">栗悟饭</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://nerdzzh.me/" title="https:&#x2F;&#x2F;nerdzzh.me&#x2F;" rel="noopener" target="_blank">edicius</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://zwh-sdu.github.io/" title="https:&#x2F;&#x2F;zwh-sdu.github.io&#x2F;" rel="noopener" target="_blank">zwh</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maskros</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Nmc1pCkN608WUnjzl1OVUJwp-gzGzoHsz',
+      appKey     : 'AgMMODlKtVQJ8D2ksYM7tqFv',
+      placeholder: "Leave your thoughts behind~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

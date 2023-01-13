@@ -268,6 +268,108 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/note/Canny.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/logo_Maskros.jpg">
+      <meta itemprop="name" content="Maskros">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maskros' Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/post/note/Canny.html" class="post-title-link" itemprop="url">Canny边缘检测：数字图像处理典中典</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-24 16:30:00" itemprop="dateCreated datePublished" datetime="2022-05-24T16:30:00+08:00">2022-05-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-13 16:59:59" itemprop="dateModified" datetime="2022-07-13T16:59:59+08:00">2022-07-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NOTE/" itemprop="url" rel="index"><span itemprop="name">NOTE</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/note/Canny.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/note/Canny.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>Canny边缘检测：数字图像处理典中典</h1>
+<blockquote>
+<p>《算法设计与分析》 汇报报告</p>
+</blockquote>
+<h2 id="引言">引言</h2>
+<p>提取图片的边缘信息是底层数字图像处理的基本任务之一。</p>
+<p>图像边缘信息主要集中在高频段，通常说图像锐化或检测边缘，实质就是高频滤波。何为边缘？图象局部区域亮度变化显著的部分，对于灰度图像来说，也就是灰度值有一个明显变化，既从一个灰度值在很小的缓冲区域内急剧变化到另一个灰度相差较大的灰度值。在提高对景物边缘的敏感性的同时，可以抑制噪声的方法才是好的边缘提取方法。</p>
+<p><strong>Canny边缘检测算法</strong>是澳洲计算机科学家<a href="https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/w/index.php%3Ftitle%3D%E7%B4%84%E7%BF%B0%C2%B7%E5%9D%8E%E5%B0%BC%26action%3Dedit%26redlink%3D1">约翰·坎尼</a>（John F. Canny）于1986年开发出来的一个多级边缘检测算法，其目标是找到一个最优的边缘，在传统的边缘检测算法中较为出色，截止2014年8月, Canny发表的该篇论文，已被引用19000余次。随着时代的发展，神经网络所具有的自学习、自适应和很强的信息综合能力，使它成为了更有效的边缘检测算法，可以完成普通的边缘算子难以完成的边缘检测。但是Canny算子、包括其改进版仍旧在很多领域有广泛的应用。在这里我将致敬经典，探寻一下它的底层实现。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/note/Canny.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://maskros.top/post/algorithm/learn/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1559,262 +1661,10 @@ signed main() {
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/nowcoder/2022winter/round5.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/logo_Maskros.jpg">
-      <meta itemprop="name" content="Maskros">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Maskros' Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/post/nowcoder/2022winter/round5.html" class="post-title-link" itemprop="url">2022牛客寒假算法基础集训营5</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-16 23:30:50" itemprop="dateCreated datePublished" datetime="2022-03-16T23:30:50+08:00">2022-03-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-24 14:42:24" itemprop="dateModified" datetime="2022-03-24T14:42:24+08:00">2022-03-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SOLUTIONS/" itemprop="url" rel="index"><span itemprop="name">SOLUTIONS</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/nowcoder/2022winter/round5.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/nowcoder/2022winter/round5.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="2022牛客寒假算法基础集训营5">2022牛客寒假算法基础集训营5</h1>
-<blockquote>
-<p>补一下打的最烂的一场</p>
-</blockquote>
-<h2 id="a-疫苗小孩-二分">A 疫苗小孩 (二分)</h2>
-<blockquote>
-<p>题意：</p>
-<p>给定长为 n 的01串，0表示可以打疫苗，最多可以打三针，每两针相差k天时可以贡献w，每多相差x天或者少相差x天，贡献都会减少为 w-q*x，问最大贡献是多少</p>
-<p>思路：</p>
-<p>可以发现1针和0针的贡献都为0，所以直接考虑2针及以上的情况<br>
-枚举第二针所在的位置pos，二分找到离 pos+k 和 pos-k 最近的两个点计算最大贡献即可</p>
-<p>使用 <code>lower_bound</code> 函数， 复杂度 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="10.04ex" height="2.262ex" role="img" focusable="false" viewbox="0 -750 4437.6 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"/></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="mi" transform="translate(1752,0)"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"/></g><g data-mml-node="mi" transform="translate(2050,0)"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"/></g><g data-mml-node="msub" transform="translate(2535,0)"><g data-mml-node="mi"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"/></g><g data-mml-node="mn" transform="translate(510,-150) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></g></g><g data-mml-node="mi" transform="translate(3448.6,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="mo" transform="translate(4048.6,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/></g></g></g></svg></mjx-container></p>
-</blockquote>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#define int ll
-int a[maxn];
-void solve() {
-	int n; cin &gt;&gt; n;
-	int cnt = 0;
-	rep(i, 1, n + 1) {
-		char t; cin &gt;&gt; t;
-		if(t == '0') a[++cnt] = i;
-	} 	
-	int k, w, q; cin &gt;&gt; k &gt;&gt; w &gt;&gt; q;
-	int ans = 0;
-	rep(i, 2, cnt + 1) {
-		// first &gt;=
-		int pos1 = lower_bound(a + 1, a + cnt + 1, a[i] - k) - a;
-		int pos2 = lower_bound(a + 1, a + cnt + 1, a[i] + k) - a;
-		int mn1 = min(abs(a[i] - k - a[pos1]), abs(a[i] - k - a[max(1ll, pos1 - 1)]));
-		int mn2 = min(abs(a[i] + k - a[pos2]), abs(a[i] + k - a[max(1ll, pos2 - 1)]));
-		int tmp1 = max(0ll, w - q * mn1), tmp2 = max(0ll, w - q * mn2);
-		if(i == cnt) tmp2 = 0;
-		ans = max(ans, tmp1 + tmp2);
-	}
-	cout &lt;&lt; ans;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="c-战旗小孩-二进制枚举">*C 战旗小孩 (二进制枚举)</h2>
-<blockquote>
-<p>题意：</p>
-<p>n, k, s 表示游戏局数，可以获得额外机会的次数和起始分数，随后一行 n 个数 pi 为每一局结束后的一个特定分数，如果该局结束后分数大于等于该特定分数，就高兴一次，pi 顺序不能改变。接下来 n 行为每局结束后分数的变化delta和如果是用额外机会分数的变化delta。可以变换 n 局游戏的顺序，问最多能高兴几次。 0= &lt; k &lt; n &lt;= 20</p>
-<p>思路：</p>
-<p>由于 n 很小，采用二进制枚举，1的个数为使用额外机会的次数，处理一下每局可能获得的最大值，每次选择最大值计算即可。</p>
-<p><code>__builtin_popcount(n)</code> 表示 n 内二进制位为1的个数</p>
-</blockquote>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int n, k, s;
-int p[maxn], v[maxn], w[maxn];
-int h[maxn];
-int cal(int x) {
-	rep(i, 0, n) {
-		if((x &gt;&gt; i) &amp; 1) h[i + 1] = w[i + 1];
-		else h[i + 1] = v[i + 1];
-	}
-	sort(h + 1, h + n + 1, greater&lt;int&gt;() );
-	int tmp = s;
-	int ret = 0;
-	rep(i, 1, n + 1) {
-		tmp += h[i];
-		if(tmp &gt;= p[i]) ret++;
-	}
-	return ret;
-}
-void solve() {
-	cin &gt;&gt; n &gt;&gt; k &gt;&gt; s;
-	int ans = 0;
-	rep(i, 1, n + 1) cin &gt;&gt; p[i];
-	rep(i, 1, n + 1) {
-		int a, b, c, d; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
-		v[i] = max(a, b);
-		w[i] = max({v[i], c, d});
-	}
-	int mx = 1 &lt;&lt; n;
-	rep(i, 0, mx) {
-		if (__builtin_popcount(i) == k) ans = max(ans, cal(i));
-	}
-	cout &lt;&lt; ans;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="d-数位小孩-数位dp">D 数位小孩 (数位dp)</h2>
-<blockquote>
-<p>题意：</p>
-<p>给定区间，统计区间中有多少个数同时满足：每相邻两个数位和为素数，其中至少一个数位为1，且没有前导0</p>
-<p>思路：</p>
-<p>套数位dp板子即可</p>
-</blockquote>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int a[20], len;
-ll l, r;
-bool prime[25];
-ll dp[20][20];
-ll dfs(int pos, int pre, bool one, int lead, int limit) //记搜
-{
-    if (pos &gt; len) if (one) return 1; else return 0; //剪枝
-    if ((dp[pos][pre] != -1 &amp;&amp; (!limit) &amp;&amp; (!lead) &amp;&amp; one)) return dp[pos][pre]; //记录当前值
-    ll ret = 0; //暂时记录当前方案数
-    int res = limit ? a[len - pos + 1] : 9; //res当前位能取到的最大值
-    for (int i = 0; i &lt;= res; i++) {
-        bool nextone = one;
-        if (i == 1 || pre == 1) nextone = 1;
-        //有前导0并且当前位也是前导0
-        if ((!i) &amp;&amp; lead) ret += dfs(pos + 1, 0, 0, 1, i == res &amp;&amp; limit);
-        //有前导0但当前位不是前导0，当前位就是最高位
-        if (i &amp;&amp; lead) ret += dfs(pos + 1, i, nextone, 0, i == res &amp;&amp; limit);
-        // else
-        else {
-            if (!prime[i + pre]) continue;
-            ret += dfs(pos + 1, i, nextone, 0, i == res &amp;&amp; limit);
-        }
-    }
-    if (!limit &amp;&amp; !lead &amp;&amp; one) dp[pos][pre] = ret; //当前状态方案数记录
-    return ret;
-}
-//把数按位拆分
-ll part(ll x) {
-    len = 0;
-    while (x) a[++len] = x % 10, x /= 10;
-    memset(dp, -1, sizeof dp); //初始化-1（因为有可能某些情况下的方案数是0）
-    return dfs(1, 0, 0, 1, 1); //进入记搜
-}
-void pr(int x) { prime[x] = 1; }
-void init() {
-    pr(2), pr(3), pr(5), pr(7), pr(11), pr(13), pr(17), pr(19);
-}
-int main() {
-    init();
-    cin &gt;&gt; l &gt;&gt; r;
-    cout &lt;&lt; part(r) - part(max(0ll, l - 1)) &lt;&lt; '\n';
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="g-163小孩">G 163小孩</h2>
-<blockquote>
-<p>排列组合</p>
-</blockquote>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int ans = C(13, 2) * 2 + C(13, 3) * 3 + C(13, 2) + C(13, 3) * 6
-	 + C(13, 4) * 4 + C(13, 3) + C(13, 4) * C(4, 2) +
-	  C(13, 5) * 5 + C(13, 6);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="i-兔崽小孩-前缀和二分">I 兔崽小孩 (前缀和/二分)</h2>
-<blockquote>
-<p>题意：</p>
-<p>n条说说，q次询问，每条说说有固定的发送时间t，每次询问k, p;  k表示入睡时间，p表示要求的总睡眠时间，如果最后总睡眠时间小于p则输出NO， 否则YES</p>
-<p>思路：</p>
-<p>对时间差值排序，维护前缀和，对每次询问二分查找到大于k的下标，利用前缀和数组区间求和进行计算即可。</p>
-</blockquote>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int t[maxn];
-int a[maxn], pre[maxn];
-void solve() {
-    int n, q;
-    cin &gt;&gt; n &gt;&gt; q;
-    int len = 0;
-    rep(i, 0, n) {
-        cin &gt;&gt; t[i];
-        if (i)
-            a[++len] = t[i] - t[i - 1];
-    }
-    sort(a + 1, a + len + 1, greater&lt;int&gt;());
-    pre[1] = a[1];
-    rep(i, 2, len + 1) {
-        pre[i] = pre[i - 1] + a[i];
-    }
-    rep(i, 0, q) {
-        int k, p;
-        cin &gt;&gt; k &gt;&gt; p;
-        int idx = lower_bound(a + 1, a + 1 + len, k, greater&lt;int&gt;()) - a;
-        int tmp = pre[idx - 1] - (idx - 1) * k;
-        tmp &gt;= p ? puts("Yes") : puts("No");
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="j-三国小孩">J 三国小孩</h2>
-<p>沙比题，略了</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1882,7 +1732,7 @@ void solve() {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1893,7 +1743,7 @@ void solve() {
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
