@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://maskros.top//post/algorithm/exercise/kmp_problem.html</loc>
+    <lastmod>2023-01-26</lastmod>
+  </url>
+  <url>
+    <loc>https://maskros.top//post/algorithm/exercise/trie_problem.html</loc>
+    <lastmod>2023-01-26</lastmod>
+  </url>
+  <url>
+    <loc>https://maskros.top//post/algorithm/exercise/%E6%95%B0%E4%BD%8Ddp_problem.html</loc>
+    <lastmod>2023-01-26</lastmod>
+  </url>
+  <url>
     <loc>https://maskros.top//post/dl/action/hand/MANO.html</loc>
     <lastmod>2023-01-26</lastmod>
   </url>
@@ -149,10 +161,6 @@
     <lastmod>2022-03-24</lastmod>
   </url>
   <url>
-    <loc>https://maskros.top//post/algorithm/exercise/%E6%95%B0%E4%BD%8Ddp_problem.html</loc>
-    <lastmod>2022-03-24</lastmod>
-  </url>
-  <url>
     <loc>https://maskros.top//post/codeforces/cf%20Edu%20124%20&%20777%20D.html</loc>
     <lastmod>2022-03-14</lastmod>
   </url>
@@ -241,10 +249,6 @@
     <lastmod>2022-01-22</lastmod>
   </url>
   <url>
-    <loc>https://maskros.top//post/algorithm/exercise/trie_problem.html</loc>
-    <lastmod>2022-01-22</lastmod>
-  </url>
-  <url>
     <loc>https://maskros.top//post/note/sql.html</loc>
     <lastmod>2022-01-22</lastmod>
   </url>
@@ -259,9 +263,5 @@
   <url>
     <loc>https://maskros.top//post/projects/maogai_crawler.html</loc>
     <lastmod>2021-12-25</lastmod>
-  </url>
-  <url>
-    <loc>https://maskros.top//post/algorithm/exercise/kmp_problem.html</loc>
-    <lastmod>2021-11-27</lastmod>
   </url>
 </urlset> 
