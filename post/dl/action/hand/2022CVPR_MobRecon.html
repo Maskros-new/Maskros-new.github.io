@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303152142208.png">
 <meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303160019846.jpeg">
 <meta property="article:published_time" content="2023-03-15T08:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-15T16:24:03.140Z">
+<meta property="article:modified_time" content="2023-03-16T07:26:27.981Z">
 <meta property="article:author" content="Maskros">
 <meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="action">
@@ -316,7 +316,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-16 00:24:03" itemprop="dateModified" datetime="2023-03-16T00:24:03+08:00">2023-03-16</time>
+                <time title="修改时间：2023-03-16 15:26:27" itemprop="dateModified" datetime="2023-03-16T15:26:27+08:00">2023-03-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -363,13 +363,13 @@ mjx-container[display="true"] + br {
 <h2 id="方法">方法</h2>
 <p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303152133022.png" alt="image-20230223232924324"></p>
 <p>2D encoding负责图像特征编码，Feature lifting负责2D特征向3D空间映射，3D decoding负责3D特征向3D坐标解码。</p>
-<h3 id="1-2d-encoding">(1) 2D encoding</h3>
+<h3 id="2d-encoding">2D encoding</h3>
 <p>设计了两种Hourglass结构来表达图像，称为DenseStack和GhostStack，计算量和参数量较ResNet18-Stack减少许多，效果没有相差很多。</p>
 <p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303152135112.png" alt="image-20230315212044171"></p>
 <p>参数量具体对比。在大幅优化计算量与参数量的情况下保持了不错的重建精度，在FreiHAND数据集基础上加入了我们设计的虚拟数据后精度进一步得到提升。</p>
 <p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303152137230.png" alt="image-20230315213719188"></p>
 <p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303152139359.png" alt="image-20230315213950325"></p>
-<h3 id="2-feature-lifting">(2) Feature lifting</h3>
+<h3 id="feature-lifting">Feature lifting</h3>
 <p>将图像特征从2D空间映射到3D空间。传统方法没有显式阶段，只使用fc将图像全局特征映射成一个很长的特征向量再重组为3D点特征。我们将这个阶段分为：2D关键点估计、关键点特征提取、特征映射。</p>
 <p><strong>[1] MapReg估计2D关键点</strong></p>
 <p>已有的2D关键点工作表达方式有：(a)heatmap (b)heatmap+soft-argmax ©regression。</p>
@@ -476,7 +476,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2d-encoding"><span class="nav-text">(1) 2D encoding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-feature-lifting"><span class="nav-text">(2) Feature lifting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3d-decoding"><span class="nav-text">3D decoding</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2d-encoding"><span class="nav-text">2D encoding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#feature-lifting"><span class="nav-text">Feature lifting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3d-decoding"><span class="nav-text">3D decoding</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
