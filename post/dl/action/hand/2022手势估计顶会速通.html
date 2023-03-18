@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Sans SC:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"maskros.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="CVPR x ECCV 略选几篇 偏手物   CVPR2022 - HandOccNet: Occlusion-Robust 3D Hand Mesh Estimation Network - Keypoint Transformer: Solving Joint Identification in Challenging Hands and Object Interactions for Acc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手势估计2022顶会论文速通笔记">
+<meta property="og:url" content="https://maskros.top/post/dl/action/hand/2022%E6%89%8B%E5%8A%BF%E4%BC%B0%E8%AE%A1%E9%A1%B6%E4%BC%9A%E9%80%9F%E9%80%9A.html">
+<meta property="og:site_name" content="Maskros&#39; Blog">
+<meta property="og:description" content="CVPR x ECCV 略选几篇 偏手物   CVPR2022 - HandOccNet: Occlusion-Robust 3D Hand Mesh Estimation Network - Keypoint Transformer: Solving Joint Identification in Challenging Hands and Object Interactions for Acc">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202302231132359.png">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202302231132121.png">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202302251434572.png">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303051631726.png">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202302232329290.png">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202302232329401.png">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303180026258.png">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303180027595.png">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303181426813.png">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303181428348.png">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202302241923752.png">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303162321002.png">
+<meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303162325853.png">
+<meta property="article:published_time" content="2023-03-18T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-18T06:36:18.315Z">
+<meta property="article:author" content="Maskros">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="pose">
+<meta property="article:tag" content="hand">
+<meta property="article:tag" content="三维重建">
+<meta property="article:tag" content="H-O">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202302231132359.png">
+
+<link rel="canonical" href="https://maskros.top/post/dl/action/hand/2022%E6%89%8B%E5%8A%BF%E4%BC%B0%E8%AE%A1%E9%A1%B6%E4%BC%9A%E9%80%9F%E9%80%9A.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>手势估计2022顶会论文速通笔记 | Maskros' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><link rel="alternate" href="/atom.xml" title="Maskros' Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Maskros' Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/dl/action/hand/2022%E6%89%8B%E5%8A%BF%E4%BC%B0%E8%AE%A1%E9%A1%B6%E4%BC%9A%E9%80%9F%E9%80%9A.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/logo_Maskros.jpg">
+      <meta itemprop="name" content="Maskros">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maskros' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          手势估计2022顶会论文速通笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-18 12:00:00 / 修改时间：14:36:18" itemprop="dateCreated datePublished" datetime="2023-03-18T12:00:00+08:00">2023-03-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NOTE/" itemprop="url" rel="index"><span itemprop="name">NOTE</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/dl/action/hand/2022%E6%89%8B%E5%8A%BF%E4%BC%B0%E8%AE%A1%E9%A1%B6%E4%BC%9A%E9%80%9F%E9%80%9A.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/dl/action/hand/2022%E6%89%8B%E5%8A%BF%E4%BC%B0%E8%AE%A1%E9%A1%B6%E4%BC%9A%E9%80%9F%E9%80%9A.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><p>CVPR x ECCV 略选几篇 偏手物</p>
+<!-- toc -->
+<ul>
+<li><a href="#cvpr2022">CVPR2022</a><br>
+- <a href="#handoccnet-occlusion-robust-3d-hand-mesh-estimation-network">HandOccNet: Occlusion-Robust 3D Hand Mesh Estimation Network</a><br>
+- <a href="#keypoint-transformer-solving-joint-identification-in-challenging-hands-and-object-interactions-for-accurate-3d-pose-estimation">Keypoint Transformer: Solving Joint Identification in Challenging Hands and Object Interactions for Accurate 3D Pose Estimation</a><br>
+- <a href="#collaborative-learning-for-hand-and-object-reconstruction-with-attention-guided-graph-convolution">Collaborative Learning for Hand and Object Reconstruction with Attention-guided Graph Convolution</a><br>
+- <a href="#mobrecon-mobile-friendly-hand-mesh-reconstruction-from-monocular-image">MobRecon: Mobile-Friendly Hand Mesh Reconstruction from Monocular Image</a></li>
+<li><a href="#2022eccv">2022ECCV</a><br>
+- <a href="#alignsdf-pose-aligned-signed-distance-fields-for-hand-object-reconstruction">AlignSDF: Pose-Aligned Signed Distance Fields for Hand-Object Reconstruction</a><br>
+- <a href="#s2contact-graph-based-network-for-3d-hand-object-contact-estimation-with-semi-supervised-learning">S2Contact: Graph-based Network for 3D Hand-Object Contact Estimation with Semi-Supervised Learning</a><br>
+- <a href="#3d-interacting-hand-pose-estimation-by-hand-de-occlusion-and-removal">3D Interacting Hand Pose Estimation by Hand De-occlusion and Removal</a><br>
+- <a href="#cross-attention-of-disentangled-modalities-for-3d-human-mesh-recovery-with-transformers">Cross-Attention of Disentangled Modalities for 3D Human Mesh Recovery with Transformers</a></li>
+</ul>
+<!-- tocstop -->
+<span id="more"></span>
+<h2 id="cvpr2022">CVPR2022</h2>
+<h5 id="handoccnet-occlusion-robust-3d-hand-mesh-estimation-network">HandOccNet: Occlusion-Robust 3D Hand Mesh Estimation Network</h5>
+<p>HandOccNet: 遮挡鲁棒的三维人手网格估计网络</p>
+<blockquote>
+<p><em>JoonKyu Park, Yeonguk Oh, Gyeongsik Moon, et al.</em> | <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2203.14564">PDF</a> | <a target="_blank" rel="noopener" href="https://github.com/namepllet/HandOccNet">Code</a></p>
+</blockquote>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202302231132359.png" alt="image-20230223113223288"></p>
+<p><strong>Abstract</strong>: 手经常被物体严重遮挡，作者认为遮挡区域与手有很强的相关性，提出HandOccNet，充分利用被遮挡区域的信息作为辅助以增强图像特征，使特征图具有鲁棒性。设计了两个基于Transformer的模块：特征注入FIT和自增强SET。</p>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202302231132121.png" alt="image-20230223113235061"></p>
+<p><strong>Method</strong>：通过transformer来建模特征间的相关性，特征注入FIT将主要特征注入到次要区域中，以次要特征作为Query，主特征作为K-V对来输出单特征图。SET利用标准的自注意力机制来提炼FIT的输出。最后通过回归器回归MANO参数。FIT和标准Transformer有两处不同，体现在两类attention模块(基于sigmoid/softmax)和去除Query和输出间的残差连接上。</p>
+<hr>
+<h5 id="keypoint-transformer-solving-joint-identification-in-challenging-hands-and-object-interactions-for-accurate-3d-pose-estimation">Keypoint Transformer: Solving Joint Identification in Challenging Hands and Object Interactions for Accurate 3D Pose Estimation</h5>
+<p>关键点Transformer:解决具有挑战性的手-物交互中的关节识别，以实现精确的3D姿态估计</p>
+<blockquote>
+<p><em>Shreyas Hampali, Sayan Deb Sarkar, Mahdi Rad, Vincent Lepetit</em> | <a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2022/papers/Hampali_Keypoint_Transformer_Solving_Joint_Identification_in_Challenging_Hands_and_Object_CVPR_2022_paper.pdf">PDF</a></p>
+</blockquote>
+<p><strong>Abstract</strong>：我们提出一种鲁棒且准确的方法Keypoint Transformer，用于从单目图像估计近距离交互的两只手的3D姿态。需要同时解决两个问题：定位和识别关节，我们提出通过CNN来分离这些任务，首先将关节定位为二维关键点，在这些关键点上的CNN特征间进行自注意，将它们与相应的手部关节相关联。除此外还提出一个新的双手-物体交互数据集H2O-3D。</p>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202302251434572.png" alt="image-20230225143424484"></p>
+<p><strong>Method</strong>：首先检测出可能对应于手部关节二维位置的关键点，并使用CNN图像特征和空间嵌入将其编码为Keypoint-Joint Association阶段的输入。Keypoint Transformer中的自注意层消除了关键点的歧义，并将他们与不同的关节类型和一个背景类关联起来。随后，(单)交叉注意层选择这些"identity-aware keypoints"来预测两只手的根关节相关姿态参数，以及额外的参数，如双手间的平移和手型参数。</p>
+<hr>
+<h5 id="collaborative-learning-for-hand-and-object-reconstruction-with-attention-guided-graph-convolution">Collaborative Learning for Hand and Object Reconstruction with Attention-guided Graph Convolution</h5>
+<p>基于注意引导图卷积的手与物体重建协同学习</p>
+<blockquote>
+<p><em>Tze Ho Elden Tse, Kwang In Kim, Ales Leonardis, et al.</em> | <a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2022/papers/Tse_Collaborative_Learning_for_Hand_and_Object_Reconstruction_With_Attention-Guided_Graph_CVPR_2022_paper.pdf">PDF</a> | <a target="_blank" rel="noopener" href="https://eldentse.github.io/collab-hand-object/">Project</a></p>
+</blockquote>
+<p><strong>Abstract</strong>：针对单目RGB手-物交互的重建问题，我们提出双分支网络分别估计手和物体，用注意力引导的图卷积在两个分支之间传递网格信息进行协同学习，以识别和关注相互遮挡的部分，用无监督的关联损失在不同视角下对齐手和物体的网格，以增强网络的泛化能力。</p>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303051631726.png" alt="image-20230305163057569"></p>
+<p><strong>Pipeline</strong>：首先通过两个分支分别得到手物特征<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex" xmlns="http://www.w3.org/2000/svg" width="4.768ex" height="1.357ex" role="img" focusable="false" viewbox="0 -442 2107.3 599.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="TeXAtom" transform="translate(484,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"/></g><g data-mml-node="mi" transform="translate(576,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"/></g><g data-mml-node="mi" transform="translate(1105,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="mi" transform="translate(1705,0)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"/></g></g></g></g></g></svg></mjx-container>和<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.666ex" xmlns="http://www.w3.org/2000/svg" width="3.329ex" height="1.666ex" role="img" focusable="false" viewbox="0 -442 1471.6 736.2"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="TeXAtom" transform="translate(484,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"/></g><g data-mml-node="mi" transform="translate(485,0)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"/></g><g data-mml-node="mi" transform="translate(914,0)"><path data-c="1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"/></g></g></g></g></g></svg></mjx-container>，手网格估计器取<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex" xmlns="http://www.w3.org/2000/svg" width="4.768ex" height="1.357ex" role="img" focusable="false" viewbox="0 -442 2107.3 599.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="TeXAtom" transform="translate(484,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"/></g><g data-mml-node="mi" transform="translate(576,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"/></g><g data-mml-node="mi" transform="translate(1105,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="mi" transform="translate(1705,0)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"/></g></g></g></g></g></svg></mjx-container>输出手网格<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex" xmlns="http://www.w3.org/2000/svg" width="5.734ex" height="1.357ex" role="img" focusable="false" viewbox="0 -442 2534.3 599.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="TeXAtom" transform="translate(911,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"/></g><g data-mml-node="mi" transform="translate(576,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"/></g><g data-mml-node="mi" transform="translate(1105,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="mi" transform="translate(1705,0)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"/></g></g></g></g></g></svg></mjx-container>,然后传递到图卷积模块输出<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex" xmlns="http://www.w3.org/2000/svg" width="5.381ex" height="1.902ex" role="img" focusable="false" viewbox="0 -683 2378.3 840.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="3A6" d="M312 622Q310 623 307 625T303 629T297 631T286 634T270 635T246 636T211 637H184V683H196Q220 680 361 680T526 683H538V637H511Q468 637 447 635T422 631T411 622V533L425 531Q525 519 595 466T665 342Q665 301 642 267T583 209T506 172T425 152L411 150V61Q417 55 421 53T447 48T511 46H538V0H526Q502 3 361 3T196 0H184V46H211Q231 46 245 46T270 47T286 48T297 51T303 54T307 57T312 61V150H310Q309 151 289 153T232 166T160 195Q149 201 136 210T103 238T69 284T56 342Q56 414 128 467T294 530Q309 532 310 533H312V622ZM170 342Q170 207 307 188H312V495H309Q301 495 282 491T231 469T186 423Q170 389 170 342ZM415 188Q487 199 519 236T551 342Q551 384 539 414T507 459T470 481T434 491T415 495H410V188H415Z"/></g><g data-mml-node="TeXAtom" transform="translate(755,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"/></g><g data-mml-node="mi" transform="translate(576,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"/></g><g data-mml-node="mi" transform="translate(1105,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="mi" transform="translate(1705,0)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"/></g></g></g></g></g></svg></mjx-container>。对象网格估计器使用<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.666ex" xmlns="http://www.w3.org/2000/svg" width="3.329ex" height="1.666ex" role="img" focusable="false" viewbox="0 -442 1471.6 736.2"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="TeXAtom" transform="translate(484,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"/></g><g data-mml-node="mi" transform="translate(485,0)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"/></g><g data-mml-node="mi" transform="translate(914,0)"><path data-c="1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"/></g></g></g></g></g></svg></mjx-container>和<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex" xmlns="http://www.w3.org/2000/svg" width="5.381ex" height="1.902ex" role="img" focusable="false" viewbox="0 -683 2378.3 840.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="3A6" d="M312 622Q310 623 307 625T303 629T297 631T286 634T270 635T246 636T211 637H184V683H196Q220 680 361 680T526 683H538V637H511Q468 637 447 635T422 631T411 622V533L425 531Q525 519 595 466T665 342Q665 301 642 267T583 209T506 172T425 152L411 150V61Q417 55 421 53T447 48T511 46H538V0H526Q502 3 361 3T196 0H184V46H211Q231 46 245 46T270 47T286 48T297 51T303 54T307 57T312 61V150H310Q309 151 289 153T232 166T160 195Q149 201 136 210T103 238T69 284T56 342Q56 414 128 467T294 530Q309 532 310 533H312V622ZM170 342Q170 207 307 188H312V495H309Q301 495 282 491T231 469T186 423Q170 389 170 342ZM415 188Q487 199 519 236T551 342Q551 384 539 414T507 459T470 481T434 491T415 495H410V188H415Z"/></g><g data-mml-node="TeXAtom" transform="translate(755,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"/></g><g data-mml-node="mi" transform="translate(576,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"/></g><g data-mml-node="mi" transform="translate(1105,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="mi" transform="translate(1705,0)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"/></g></g></g></g></g></svg></mjx-container>来输出对象网格<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.666ex" xmlns="http://www.w3.org/2000/svg" width="4.296ex" height="1.666ex" role="img" focusable="false" viewbox="0 -442 1898.6 736.2"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="TeXAtom" transform="translate(911,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"/></g><g data-mml-node="mi" transform="translate(485,0)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"/></g><g data-mml-node="mi" transform="translate(914,0)"><path data-c="1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"/></g></g></g></g></g></svg></mjx-container>，传递到图卷及模块输出<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.666ex" xmlns="http://www.w3.org/2000/svg" width="3.943ex" height="2.211ex" role="img" focusable="false" viewbox="0 -683 1742.6 977.2"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="3A6" d="M312 622Q310 623 307 625T303 629T297 631T286 634T270 635T246 636T211 637H184V683H196Q220 680 361 680T526 683H538V637H511Q468 637 447 635T422 631T411 622V533L425 531Q525 519 595 466T665 342Q665 301 642 267T583 209T506 172T425 152L411 150V61Q417 55 421 53T447 48T511 46H538V0H526Q502 3 361 3T196 0H184V46H211Q231 46 245 46T270 47T286 48T297 51T303 54T307 57T312 61V150H310Q309 151 289 153T232 166T160 195Q149 201 136 210T103 238T69 284T56 342Q56 414 128 467T294 530Q309 532 310 533H312V622ZM170 342Q170 207 307 188H312V495H309Q301 495 282 491T231 469T186 423Q170 389 170 342ZM415 188Q487 199 519 236T551 342Q551 384 539 414T507 459T470 481T434 491T415 495H410V188H415Z"/></g><g data-mml-node="TeXAtom" transform="translate(755,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"/></g><g data-mml-node="mi" transform="translate(485,0)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"/></g><g data-mml-node="mi" transform="translate(914,0)"><path data-c="1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"/></g></g></g></g></g></svg></mjx-container>，再将其与手特征<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex" xmlns="http://www.w3.org/2000/svg" width="4.768ex" height="1.357ex" role="img" focusable="false" viewbox="0 -442 2107.3 599.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="TeXAtom" transform="translate(484,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"/></g><g data-mml-node="mi" transform="translate(576,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"/></g><g data-mml-node="mi" transform="translate(1105,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="mi" transform="translate(1705,0)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"/></g></g></g></g></g></svg></mjx-container>结合，进入手网格估计器。使用无监督关联损失来监督网络迭代下的特征转移过程，即<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex" xmlns="http://www.w3.org/2000/svg" width="5.381ex" height="1.902ex" role="img" focusable="false" viewbox="0 -683 2378.3 840.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="3A6" d="M312 622Q310 623 307 625T303 629T297 631T286 634T270 635T246 636T211 637H184V683H196Q220 680 361 680T526 683H538V637H511Q468 637 447 635T422 631T411 622V533L425 531Q525 519 595 466T665 342Q665 301 642 267T583 209T506 172T425 152L411 150V61Q417 55 421 53T447 48T511 46H538V0H526Q502 3 361 3T196 0H184V46H211Q231 46 245 46T270 47T286 48T297 51T303 54T307 57T312 61V150H310Q309 151 289 153T232 166T160 195Q149 201 136 210T103 238T69 284T56 342Q56 414 128 467T294 530Q309 532 310 533H312V622ZM170 342Q170 207 307 188H312V495H309Q301 495 282 491T231 469T186 423Q170 389 170 342ZM415 188Q487 199 519 236T551 342Q551 384 539 414T507 459T470 481T434 491T415 495H410V188H415Z"/></g><g data-mml-node="TeXAtom" transform="translate(755,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"/></g><g data-mml-node="mi" transform="translate(576,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"/></g><g data-mml-node="mi" transform="translate(1105,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="mi" transform="translate(1705,0)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"/></g></g></g></g></g></svg></mjx-container>和<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.666ex" xmlns="http://www.w3.org/2000/svg" width="3.943ex" height="2.211ex" role="img" focusable="false" viewbox="0 -683 1742.6 977.2"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="3A6" d="M312 622Q310 623 307 625T303 629T297 631T286 634T270 635T246 636T211 637H184V683H196Q220 680 361 680T526 683H538V637H511Q468 637 447 635T422 631T411 622V533L425 531Q525 519 595 466T665 342Q665 301 642 267T583 209T506 172T425 152L411 150V61Q417 55 421 53T447 48T511 46H538V0H526Q502 3 361 3T196 0H184V46H211Q231 46 245 46T270 47T286 48T297 51T303 54T307 57T312 61V150H310Q309 151 289 153T232 166T160 195Q149 201 136 210T103 238T69 284T56 342Q56 414 128 467T294 530Q309 532 310 533H312V622ZM170 342Q170 207 307 188H312V495H309Q301 495 282 491T231 469T186 423Q170 389 170 342ZM415 188Q487 199 519 236T551 342Q551 384 539 414T507 459T470 481T434 491T415 495H410V188H415Z"/></g><g data-mml-node="TeXAtom" transform="translate(755,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"/></g><g data-mml-node="mi" transform="translate(485,0)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"/></g><g data-mml-node="mi" transform="translate(914,0)"><path data-c="1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"/></g></g></g></g></g></svg></mjx-container>。</p>
+<hr>
+<h5 id="mobrecon-mobile-friendly-hand-mesh-reconstruction-from-monocular-image">MobRecon: Mobile-Friendly Hand Mesh Reconstruction from Monocular Image</h5>
+<p>MobRecon:基于单目图像的移动端手部网格重建</p>
+<blockquote>
+<p><em>Xingyu Chen, Yufeng Liu, Yajiao Dong, et al.</em> | <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2112.02753">PDF</a> | <a target="_blank" rel="noopener" href="https://github.com/SeanChenxy/HandMesh">Code</a></p>
+</blockquote>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202302232329290.png" alt="image-20230223232948247"></p>
+<p><strong>Abstract</strong>：我们探索了面向移动端的手部mesh估计方法，沿用基于图方法的vertex回归思路，设计了轻量化的2D编码结构与3D解码结构，提出了feature lifting模块来桥接2D与3D特征表达，其中包括了用于2D关键点估计的MapReg(map-based position regression)，用于点特征提取的pose pooling，用于特征映射的PVL(pose-to-vertex lifting)。MobRecon仅包含123M Mult-Adds(乘加操作)和5M #Param(参数量)。</p>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202302232329401.png" alt="image-20230223232924324"></p>
+<p>2D encoding负责图像特征编码，Feature lifting负责2D特征向3D空间映射，3D decoding负责3D特征向3D坐标解码。</p>
+<p><strong>Method</strong>：2D encoding中设计了两种Hourglass结构DenseStack和GhostStack来表达图像；Feature lifting分为三部分，MapReg进行2D关键点估计、Pose pooling进行关键点特征提取、PVL实现特征映射；最后3D decoding采用螺旋卷积，随后用DSConv(深度可分离卷积针对mesh顶点的特征操作)来进行特征融合。整个过程中参数量和复杂度都进行了优化。</p>
+<hr>
+<h2 id="2022eccv">2022ECCV</h2>
+<h5 id="alignsdf-pose-aligned-signed-distance-fields-for-hand-object-reconstruction">AlignSDF: Pose-Aligned Signed Distance Fields for Hand-Object Reconstruction</h5>
+<p>AlignSDF：用于手-物重建的姿势对齐有符号距离字段</p>
+<blockquote>
+<p><em>Zerui Chen, Yana Hasson, Cordelia Schmid, Ivan Laptev</em> | <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2207.12909.pdf">PDF</a> | <a target="_blank" rel="noopener" href="https://zerchen.github.io/projects/alignsdf.html">Project</a> | <a target="_blank" rel="noopener" href="https://github.com/zerchen/alignsdf">Code</a></p>
+</blockquote>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303180026258.png" alt="image-20230318002625179"></p>
+<p><strong>Abstract</strong>：单目手-物联合重建中的现有方法侧重于参数化网格或符号距离字段(SDFs)的两种替代表示。参数化模型可从先验知识中受益，但代价是有限的形状变形和网格分辨率。基于sdf的方法可以表示任意细节，但缺乏显式先验。我们利用参数表示提供的先验来改进SDF模型，提出了一种联合学习框架，将姿态和形状分离开来。我们从参数化模型中获得手和物体的姿态，并使用它们在三维空间中对齐sdf。</p>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303180027595.png" alt="image-20230318002738536"></p>
+<p><strong>Method</strong>：可分为手和物体两部分，手部部分估计MANO参数，利用其将3D点转换为手部标准坐标系，随后手部SDF解码器预测每个输入3D点的符号距离，并在测试时使用Marching Cubes算法重建手部网格。类似地，物体部分估计相对于手腕部的对象平移，并使用它来转换相同的3D点集。物体SDF解码器将转换后的三维点作为输入，重构目标网格。</p>
+<hr>
+<h5 id="s2contact-graph-based-network-for-3d-hand-object-contact-estimation-with-semi-supervised-learning">S2Contact: Graph-based Network for 3D Hand-Object Contact Estimation with Semi-Supervised Learning</h5>
+<p>S2Contact:基于图的网络，用于半监督学习的三维手-物接触估计</p>
+<blockquote>
+<p><em>Tze Ho Elden Tse, Zhongqun Zhang, Kwang In Kim, et al.</em> | <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2208.00874.pdf">PDF</a> | <a target="_blank" rel="noopener" href="https://eldentse.github.io/s2contact/">Project</a> | <a target="_blank" rel="noopener" href="https://github.com/eldentse/s2contact">Code</a></p>
+</blockquote>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303181426813.png" alt="image-20230318142623668"></p>
+<p><strong>Abstract</strong>：现有的工作在手-物三维重建上利用接触图来细化不准确的手-物姿态估计并生成给定的物体模型，然而需要明确的3D监控。我们利用大规模数据集中的视觉和几何一致性约束在半监督学习中生成伪标签，并提出了一种有效的基于图的网络来推断接触。</p>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303181428348.png" alt="image-20230318142832292"></p>
+<p><strong>Method</strong>：分为两部分，半监督学习和基于图的网络。半监督学习方面作者使用了视觉和集合一致性约束来生成伪标签，用一个预训练的模型来预测未标注数据的接触情况，并且保证同一场景下不同视角的接触一致。基于图的网络GCN-Contact框架以手-物点云为输入，分别对三维位置和点特征进行K-NN搜索。对于图卷积使用不同的扩张因子来放大感受野。最后将特征进行拼接并传递给MLP来预测接触图。作者设计了一个多任务损失函数来优化接触分类、接触回归和接触关联三个子任务。</p>
+<hr>
+<h5 id="3d-interacting-hand-pose-estimation-by-hand-de-occlusion-and-removal">3D Interacting Hand Pose Estimation by Hand De-occlusion and Removal</h5>
+<p>基于去遮挡和移除的3D交互双手姿态估计</p>
+<blockquote>
+<p><em>Hao Meng, Sheng Jin, Wentao Liu, et al. (SenseTime)</em> | <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2207.11061">PDF</a> | <a target="_blank" rel="noopener" href="https://menghao666.github.io/HDR/">Project</a> | <a target="_blank" rel="noopener" href="https://connecthkuhk-my.sharepoint.com/personal/js20_connect_hku_hk/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fjs20%5Fconnect%5Fhku%5Fhk%2FDocuments%2FAIH%5Fdataset&amp;ga=1">Dataset</a></p>
+</blockquote>
+<p><strong>Abstract</strong>：从单目RGB图像中估计3D交互手部姿势，存在的难点是左右手的相互遮挡和双手颜色纹理具有的歧义性，容易互相干扰。作者将交互手分解，分别估计每只手的姿态。提出了一种基于去遮挡和移除的3D交互手姿态估计框架，补全目标手被遮挡的部分，并移除另一只有干扰的手。此外，作者还构建了一个大规模数据集Amodal InterHand Dataset (AIH)，用以训练手势去遮挡和移除网络。</p>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202302241923752.png" alt="image-20230224192306684"></p>
+<p><strong>Method</strong>：包括三个部分：手部非模态分割模块(HASM)、手部去遮挡和移除模块(HDRM)、单手姿态估计模块(SHPE)。我们首先用HASM去分割图像中左右手的模态和非模态掩码，分别得到左手可见区域、左手完整区域、右手可见区域和右手完整区域。在得到掩码后，我们可以分别定位左右两手的位置并对图片进行裁剪。之后，我们利用HDRM恢复手被遮挡的部分并移除另一只有干扰的手。这样，一个交互手的图片会被转换成左右两手的单个手的图片，通过SHPE后可以得到左右手分别的姿态。</p>
+<hr>
+<h5 id="cross-attention-of-disentangled-modalities-for-3d-human-mesh-recovery-with-transformers">Cross-Attention of Disentangled Modalities for 3D Human Mesh Recovery with Transformers</h5>
+<p>交叉注意力的解耦模态用于Transformers进行3D人体网格恢复</p>
+<blockquote>
+<p><em>Junhyeong Cho, Kim Youwang, Tae-Hyun Oh</em> | <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2207.13820">PDF</a> | <a target="_blank" rel="noopener" href="https://fastmetro.github.io/">Project</a> | <a target="_blank" rel="noopener" href="https://github.com/postech-ami/FastMETRO">Code</a></p>
+</blockquote>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303162321002.png" alt="image-20230316232110940"></p>
+<p><strong>Abstract</strong>：提出了一种新的transformer encoder-decoder结构从单目图像重建人体mesh，称为FastMETRO。我们认为transformer encoder的性能瓶颈是由于token的设计引起，引入了输入token之间的高度复杂性交互。我们提出一种新的交叉注意力机制，用于解耦不同模态之间的交互。模型参数更少推理更快。</p>
+<p><img src="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303162325853.png" alt="image-20230316232504795"></p>
+<p><strong>Method</strong>：FastMETRO没有连接图像特征向量来构造输入标记。通过encoder-decoder将图像编码部分和网格估计部分分开。关节和顶点标记通过decoder中的交叉注意模块聚焦于某些图像区域。为了有效地捕获非局部联合顶点关系和局部顶点-顶点关系，我们根据人三角网格的拓扑结构对非相邻顶点的自注意进行了mask。为了避免人体网格顶点的空间局域性造成的冗余，我们执行粗到细网格上采样，利用人体形态关系的先验知识，大大降低了优化难度，更快收敛且精度更高。</p>
+<hr>
+<p>[blank]</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+              <a href="/tags/pose/" rel="tag"># pose</a>
+              <a href="/tags/hand/" rel="tag"># hand</a>
+              <a href="/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/" rel="tag"># 三维重建</a>
+              <a href="/tags/H-O/" rel="tag"># H-O</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/post/dl/action/hand/2022CVPR_MobRecon.html" rel="prev" title="论文笔记|MobRecon: Mobile-Friendly Hand Mesh Reconstruction from Monocular Image(2022CVPR)">
+      <i class="fa fa-chevron-left"></i> 论文笔记|MobRecon: Mobile-Friendly Hand Mesh Reconstruction from Monocular Image(2022CVPR)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#cvpr2022"><span class="nav-text">CVPR2022</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022eccv"><span class="nav-text">2022ECCV</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Maskros"
+      src="/img/logo_Maskros.jpg">
+  <p class="site-author-name" itemprop="name">Maskros</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Maskros-new" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Maskros-new" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:haohangjian2002@gmail.com" title="E-Mail → mailto:haohangjian2002@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/355516889" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;355516889" rel="noopener" target="_blank"><i class="fas fa-tv fa-fw"></i>Bilibili</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://codeforces.com/profile/1ronMaker" title="Codeforces1 → https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;1ronMaker" rel="noopener" target="_blank"><i class="far fa-chart-bar fa-fw"></i>Codeforces1</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://codeforces.com/profile/7hhnewbee" title="Codeforces2 → https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;7hhnewbee" rel="noopener" target="_blank"><i class="far fa-chart-bar fa-fw"></i>Codeforces2</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/lipoicyclic/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;lipoicyclic&#x2F;" rel="noopener" target="_blank">脂环</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://coinc1dens.me/" title="https:&#x2F;&#x2F;coinc1dens.me&#x2F;" rel="noopener" target="_blank">x1</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://rayjinx.com/" title="https:&#x2F;&#x2F;rayjinx.com&#x2F;" rel="noopener" target="_blank">栗悟饭</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://nerdzzh.me/" title="https:&#x2F;&#x2F;nerdzzh.me&#x2F;" rel="noopener" target="_blank">edicius</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://zwh-sdu.github.io/" title="https:&#x2F;&#x2F;zwh-sdu.github.io&#x2F;" rel="noopener" target="_blank">zwh</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maskros</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Nmc1pCkN608WUnjzl1OVUJwp-gzGzoHsz',
+      appKey     : 'AgMMODlKtVQJ8D2ksYM7tqFv',
+      placeholder: "Leave your thoughts behind~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

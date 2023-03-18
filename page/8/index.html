@@ -268,6 +268,114 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/algorithm/learn/kmp%20&%20exkmp.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/logo_Maskros.jpg">
+      <meta itemprop="name" content="Maskros">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maskros' Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/post/algorithm/learn/kmp%20&%20exkmp.html" class="post-title-link" itemprop="url">kmp & exkmp</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-24 01:02:50" itemprop="dateCreated datePublished" datetime="2021-10-24T01:02:50+08:00">2021-10-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-13 17:03:32" itemprop="dateModified" datetime="2022-07-13T17:03:32+08:00">2022-07-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ALGORITHMS/" itemprop="url" rel="index"><span itemprop="name">ALGORITHMS</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/algorithm/learn/kmp%20&%20exkmp.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/algorithm/learn/kmp%20&%20exkmp.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>kmp &amp; exkmp</h1>
+<p>Knuth-Morris-Pratt &amp; entend kmp</p>
+<p>字符串匹配</p>
+<h2 id="kmp">kmp</h2>
+<blockquote>
+<p><strong>Keywords</strong>：next[]</p>
+<p>由BF改进，O(m+n)，传世经典属于是😅</p>
+<p>以下均假设主串为 <code>S</code>，模式串为 <code>P</code></p>
+</blockquote>
+<ul>
+<li>
+<p><strong>What is <code>next[]</code> ?</strong></p>
+<p>针对模式串，<code>next[j]</code> 表示模式串下标 <code>j</code> <strong>之前</strong> 最长<strong>相同前后缀</strong>的长度，这不重要。</p>
+<p>你只需要记住：<code>next[j]</code>表示当 <code>P[j]!=S[i]</code> 时，<code>j</code> 指针的<strong>下一步移动位置</strong>。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/algorithm/learn/kmp%20&%20exkmp.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://maskros.top/post/note/springMVC.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -950,7 +1058,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -961,7 +1069,7 @@ mjx-container[display="true"] + br {
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
