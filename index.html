@@ -72,7 +72,6 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="Maskros' Blog" type="application/atom+xml">
 <style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
@@ -185,7 +184,8 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head>
+</style><link rel="alternate" href="/atom.xml" title="Maskros' Blog" type="application/atom+xml">
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -264,6 +264,97 @@ mjx-container[display="true"] + br {
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/dl/action/hand/SDF%E4%B8%8E%E6%89%8B%E7%89%A9%E4%BA%A4%E4%BA%92.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/logo_Maskros.jpg">
+      <meta itemprop="name" content="Maskros">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maskros' Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/post/dl/action/hand/SDF%E4%B8%8E%E6%89%8B%E7%89%A9%E4%BA%A4%E4%BA%92.html" class="post-title-link" itemprop="url">论文笔记|SDF建模手物相互作用(3DV2020 x ECCV2022)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-20 19:30:00 / 修改时间：19:55:19" itemprop="dateCreated datePublished" datetime="2023-03-20T19:30:00+08:00">2023-03-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NOTE/" itemprop="url" rel="index"><span itemprop="name">NOTE</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/dl/action/hand/SDF%E4%B8%8E%E6%89%8B%E7%89%A9%E4%BA%A4%E4%BA%92.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/dl/action/hand/SDF%E4%B8%8E%E6%89%8B%E7%89%A9%E4%BA%A4%E4%BA%92.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>符号距离场(Signed Distance Field, SDF)，用于表示空间中各点到物体表面的有向距离，正负符号指示该点是在表面内部还是外部，这样就可以找到物体表面在三维空间中的位置，自然而然的生成三维表面。使用SDF的一大好处是，SDF函数本身在空间是连续的，这样子就不需要考虑离散化的问题。之后使用Marching cubes方法来生成mesh。</p>
+<p>3DV2020的论文Grasping Field将SDF引入来表示手和物体，并展示了建模手物相互作用的潜力。ECCV2022的论文AlignSDF利用参数表示提供的先验改进了SDF模型，进一步提高了重建精度。</p>
+<!--toc-->
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/dl/action/hand/SDF%E4%B8%8E%E6%89%8B%E7%89%A9%E4%BA%A4%E4%BA%92.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -392,7 +483,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-19 15:25:57" itemprop="dateModified" datetime="2023-03-19T15:25:57+08:00">2023-03-19</time>
+                <time title="修改时间：2023-03-19 17:05:30" itemprop="dateModified" datetime="2023-03-19T17:05:30+08:00">2023-03-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -437,7 +528,7 @@ mjx-container[display="true"] + br {
 - <a href="#keypoint-transformer-solving-joint-identification-in-challenging-hands-and-object-interactions-for-accurate-3d-pose-estimation">Keypoint Transformer: Solving Joint Identification in Challenging Hands and Object Interactions for Accurate 3D Pose Estimation</a><br>
 - <a href="#collaborative-learning-for-hand-and-object-reconstruction-with-attention-guided-graph-convolution">Collaborative Learning for Hand and Object Reconstruction with Attention-guided Graph Convolution</a><br>
 - <a href="#mobrecon-mobile-friendly-hand-mesh-reconstruction-from-monocular-image">MobRecon: Mobile-Friendly Hand Mesh Reconstruction from Monocular Image</a></li>
-<li><a href="#2022eccv">2022ECCV</a><br>
+<li><a href="#eccv2022">ECCV2022</a><br>
 - <a href="#alignsdf-pose-aligned-signed-distance-fields-for-hand-object-reconstruction">AlignSDF: Pose-Aligned Signed Distance Fields for Hand-Object Reconstruction</a><br>
 - <a href="#s2contact-graph-based-network-for-3d-hand-object-contact-estimation-with-semi-supervised-learning">S2Contact: Graph-based Network for 3D Hand-Object Contact Estimation with Semi-Supervised Learning</a><br>
 - <a href="#3d-interacting-hand-pose-estimation-by-hand-de-occlusion-and-removal">3D Interacting Hand Pose Estimation by Hand De-occlusion and Removal</a><br>
@@ -681,7 +772,7 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/dl/action/hand/Learning%20joint%20reconstruction%20of%20hands%20and%20manipulated%20objects.html">
+    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/dl/action/hand/2019CVPR_ObMan.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/img/logo_Maskros.jpg">
@@ -695,7 +786,7 @@ mjx-container[display="true"] + br {
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/post/dl/action/hand/Learning%20joint%20reconstruction%20of%20hands%20and%20manipulated%20objects.html" class="post-title-link" itemprop="url">论文笔记|Learning joint reconstruction of hands and manipulated objects</a>
+            <a href="/post/dl/action/hand/2019CVPR_ObMan.html" class="post-title-link" itemprop="url">论文笔记|Learning joint reconstruction of hands and manipulated objects</a>
         </h2>
 
         <div class="post-meta">
@@ -712,7 +803,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-02-12 16:41:54" itemprop="dateModified" datetime="2023-02-12T16:41:54+08:00">2023-02-12</time>
+                <time title="修改时间：2023-03-19 23:36:11" itemprop="dateModified" datetime="2023-03-19T23:36:11+08:00">2023-03-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -733,8 +824,8 @@ mjx-container[display="true"] + br {
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/post/dl/action/hand/Learning%20joint%20reconstruction%20of%20hands%20and%20manipulated%20objects.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/dl/action/hand/Learning%20joint%20reconstruction%20of%20hands%20and%20manipulated%20objects.html" itemprop="commentCount"></span>
+    <a title="valine" href="/post/dl/action/hand/2019CVPR_ObMan.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/dl/action/hand/2019CVPR_ObMan.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -756,7 +847,7 @@ mjx-container[display="true"] + br {
 <p>本文设计了一个端到端的可学习模型，通过输入RGB图像重建手物模型；利用一种新的接触损失函数，鼓励手物的接触；新建了一个大范围的合成数据集ObMan。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/post/dl/action/hand/Learning%20joint%20reconstruction%20of%20hands%20and%20manipulated%20objects.html#more" rel="contents">
+              <a class="btn" href="/post/dl/action/hand/2019CVPR_ObMan.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -780,7 +871,7 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/dl/action/hand/MANO.html">
+    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/dl/action/hand/2017_MANO.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/img/logo_Maskros.jpg">
@@ -794,7 +885,7 @@ mjx-container[display="true"] + br {
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/post/dl/action/hand/MANO.html" class="post-title-link" itemprop="url">论文笔记|Embodied Hands: Modeling and Capturing Hands and Bodies Together</a>
+            <a href="/post/dl/action/hand/2017_MANO.html" class="post-title-link" itemprop="url">论文笔记|Embodied Hands: Modeling and Capturing Hands and Bodies Together</a>
         </h2>
 
         <div class="post-meta">
@@ -832,8 +923,8 @@ mjx-container[display="true"] + br {
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/post/dl/action/hand/MANO.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/dl/action/hand/MANO.html" itemprop="commentCount"></span>
+    <a title="valine" href="/post/dl/action/hand/2017_MANO.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/dl/action/hand/2017_MANO.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -860,7 +951,7 @@ mjx-container[display="true"] + br {
 <p>Keywords: Hands, Human body shape, 3D shape, Learning, Performance capture, Motion capture</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/post/dl/action/hand/MANO.html#more" rel="contents">
+              <a class="btn" href="/post/dl/action/hand/2017_MANO.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1079,111 +1170,6 @@ mjx-container[display="true"] + br {
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://maskros.top/post/dl/Transformer.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/logo_Maskros.jpg">
-      <meta itemprop="name" content="Maskros">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Maskros' Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/post/dl/Transformer.html" class="post-title-link" itemprop="url">Transformer in CV：ViT, DETR, Deformable DETR</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-12-11 16:00:00" itemprop="dateCreated datePublished" datetime="2022-12-11T16:00:00+08:00">2022-12-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-02-12 16:40:28" itemprop="dateModified" datetime="2023-02-12T16:40:28+08:00">2023-02-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NOTE/" itemprop="url" rel="index"><span itemprop="name">NOTE</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/dl/Transformer.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/dl/Transformer.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>Transformer -&gt; ViT -&gt; DETR -&gt; Deformable DETR</p>
-</blockquote>
-<p>Transformer是一个基于<strong>注意力机制</strong>的深度学习模型，不同于 RNN，可以较好地并行训练。自提出后便在 NLP 的各种任务上取代了 RNN/CNN，后来在视觉领域也取得了很好的效果。</p>
-<h2 id="Transformer">Transformer</h2>
-<blockquote>
-<p>论文：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a></p>
-</blockquote>
-<h3 id="Architecture">Architecture</h3>
-<p>Transformer 整体结构主要由 <strong>Encoder</strong> 和 <strong>Decoder</strong> 两部分组成。下面以中英文翻译举例来展示整体结构：</p>
-<p><img src="https://raw.githubusercontent.com/Maskros-new/myPic/main/img/202212081519377.png" alt="image-20221208151858240"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/dl/Transformer.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1255,7 +1241,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1266,7 +1252,7 @@ mjx-container[display="true"] + br {
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

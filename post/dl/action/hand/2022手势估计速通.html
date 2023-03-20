@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303162321002.png">
 <meta property="og:image" content="https://maskrospic.oss-cn-shanghai.aliyuncs.com/img/202303162325853.png">
 <meta property="article:published_time" content="2023-03-18T04:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-19T07:25:57.568Z">
+<meta property="article:modified_time" content="2023-03-19T09:05:30.996Z">
 <meta property="article:author" content="Maskros">
 <meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="pose">
@@ -95,7 +95,6 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="Maskros' Blog" type="application/atom+xml">
 <style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
@@ -208,7 +207,8 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head>
+</style><link rel="alternate" href="/atom.xml" title="Maskros' Blog" type="application/atom+xml">
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -322,7 +322,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-19 15:25:57" itemprop="dateModified" datetime="2023-03-19T15:25:57+08:00">2023-03-19</time>
+                <time title="修改时间：2023-03-19 17:05:30" itemprop="dateModified" datetime="2023-03-19T17:05:30+08:00">2023-03-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -367,7 +367,7 @@ mjx-container[display="true"] + br {
 - <a href="#keypoint-transformer-solving-joint-identification-in-challenging-hands-and-object-interactions-for-accurate-3d-pose-estimation">Keypoint Transformer: Solving Joint Identification in Challenging Hands and Object Interactions for Accurate 3D Pose Estimation</a><br>
 - <a href="#collaborative-learning-for-hand-and-object-reconstruction-with-attention-guided-graph-convolution">Collaborative Learning for Hand and Object Reconstruction with Attention-guided Graph Convolution</a><br>
 - <a href="#mobrecon-mobile-friendly-hand-mesh-reconstruction-from-monocular-image">MobRecon: Mobile-Friendly Hand Mesh Reconstruction from Monocular Image</a></li>
-<li><a href="#2022eccv">2022ECCV</a><br>
+<li><a href="#eccv2022">ECCV2022</a><br>
 - <a href="#alignsdf-pose-aligned-signed-distance-fields-for-hand-object-reconstruction">AlignSDF: Pose-Aligned Signed Distance Fields for Hand-Object Reconstruction</a><br>
 - <a href="#s2contact-graph-based-network-for-3d-hand-object-contact-estimation-with-semi-supervised-learning">S2Contact: Graph-based Network for 3D Hand-Object Contact Estimation with Semi-Supervised Learning</a><br>
 - <a href="#3d-interacting-hand-pose-estimation-by-hand-de-occlusion-and-removal">3D Interacting Hand Pose Estimation by Hand De-occlusion and Removal</a><br>
@@ -415,7 +415,7 @@ mjx-container[display="true"] + br {
 <p>2D encoding负责图像特征编码，Feature lifting负责2D特征向3D空间映射，3D decoding负责3D特征向3D坐标解码。</p>
 <p><strong>Method</strong>：2D encoding中设计了两种Hourglass结构DenseStack和GhostStack来表达图像；Feature lifting分为三部分，MapReg进行2D关键点估计、Pose pooling进行关键点特征提取、PVL实现特征映射；最后3D decoding采用螺旋卷积，随后用DSConv(深度可分离卷积针对mesh顶点的特征操作)来进行特征融合。整个过程中参数量和复杂度都进行了优化。</p>
 <hr>
-<h2 id="2022eccv">2022ECCV</h2>
+<h2 id="eccv2022">ECCV2022</h2>
 <h5 id="alignsdf-pose-aligned-signed-distance-fields-for-hand-object-reconstruction">AlignSDF: Pose-Aligned Signed Distance Fields for Hand-Object Reconstruction</h5>
 <p>AlignSDF：用于手-物重建的姿势对齐有符号距离字段</p>
 <blockquote>
@@ -544,7 +544,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#cvpr2022"><span class="nav-text">CVPR2022</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022eccv"><span class="nav-text">2022ECCV</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#cvpr2022"><span class="nav-text">CVPR2022</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eccv2022"><span class="nav-text">ECCV2022</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -560,7 +560,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -571,7 +571,7 @@ mjx-container[display="true"] + br {
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
